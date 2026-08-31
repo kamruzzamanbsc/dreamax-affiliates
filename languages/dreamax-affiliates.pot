@@ -1,0 +1,3578 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Dreamax Affiliates 2.1.2\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/dreamax-affiliates/\n"
+"POT-Creation-Date: 2026-08-08 00:00+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Dreamax Affiliates dependency-free POT generator\n"
+"X-Domain: dreamax-affiliates\n"
+
+#: dreamax-affiliates.php:107
+#. translators: 1: minimum WordPress version, 2: minimum PHP version.
+msgid "Dreamax Affiliates requires WordPress %1$s or later and PHP %2$s or later. The plugin has not been loaded."
+msgstr ""
+
+#: includes/admin/class-affilio-affiliates-list-table.php:34
+msgid "Name"
+msgstr ""
+
+#: includes/admin/class-affilio-affiliates-list-table.php:35
+#: includes/class-affilio-dashboard.php:174
+msgid "Email"
+msgstr ""
+
+#: includes/admin/class-affilio-affiliates-list-table.php:36
+#: includes/class-affilio-reports.php:227
+msgid "Referral Code"
+msgstr ""
+
+#: includes/admin/class-affilio-affiliates-list-table.php:37
+#: includes/admin/class-affilio-referrals-list-table.php:43
+#: includes/class-affilio-admin-menu.php:286
+#: includes/class-affilio-admin-menu.php:614
+#: includes/class-affilio-admin-workflows.php:179
+#: includes/class-affilio-dashboard.php:274
+#: includes/class-affilio-onboarding.php:448
+#: includes/class-affilio-privacy.php:186
+#: includes/class-affilio-reports.php:262
+msgid "Commission"
+msgstr ""
+
+#: includes/admin/class-affilio-affiliates-list-table.php:38
+msgid "Payout Method"
+msgstr ""
+
+#: includes/admin/class-affilio-affiliates-list-table.php:39
+#: includes/admin/class-affilio-payouts-list-table.php:41
+#: includes/admin/class-affilio-referrals-list-table.php:45
+#: includes/class-affilio-admin-menu.php:488
+#: includes/class-affilio-admin-menu.php:603
+#: includes/class-affilio-admin-menu.php:614
+#: includes/class-affilio-admin-workflows.php:100
+#: includes/class-affilio-admin-workflows.php:181
+#: includes/class-affilio-admin-workflows.php:211
+#: includes/class-affilio-admin-workflows.php:229
+#: includes/class-affilio-dashboard.php:276
+#: includes/class-affilio-dashboard.php:394
+#: includes/class-affilio-dashboard.php:435
+#: includes/class-affilio-privacy.php:93
+#: includes/class-affilio-privacy.php:142
+#: includes/class-affilio-privacy.php:167
+#: includes/class-affilio-privacy.php:188
+#: includes/class-affilio-reports.php:262
+msgid "Status"
+msgstr ""
+
+#: includes/admin/class-affilio-affiliates-list-table.php:40
+msgid "Registered"
+msgstr ""
+
+#: includes/admin/class-affilio-affiliates-list-table.php:61
+msgid "Approve / Reactivate"
+msgstr ""
+
+#: includes/admin/class-affilio-affiliates-list-table.php:62
+#: includes/class-affilio-admin-workflows.php:275
+msgid "Reject"
+msgstr ""
+
+#: includes/admin/class-affilio-affiliates-list-table.php:63
+msgid "Suspend"
+msgstr ""
+
+#: includes/admin/class-affilio-affiliates-list-table.php:64
+msgid "Ban"
+msgstr ""
+
+#: includes/admin/class-affilio-affiliates-list-table.php:148
+#: includes/class-affilio-admin-menu.php:279
+#: includes/class-affilio-admin-workflows.php:93
+msgid "(deleted user)"
+msgstr ""
+
+#: includes/admin/class-affilio-affiliates-list-table.php:208
+#. translators: %s: default commission percentage rate, e.g. "10.00".
+msgid "Default: %s%%"
+msgstr ""
+
+#: includes/admin/class-affilio-affiliates-list-table.php:210
+#. translators: %s: default flat commission amount in the site's currency, e.g. "5.00".
+msgid "Default flat: %s"
+msgstr ""
+
+#: includes/admin/class-affilio-affiliates-list-table.php:217
+#. translators: %s: this affiliate's commission percentage rate override, e.g. "12.50".
+msgid "%s%%"
+msgstr ""
+
+#: includes/admin/class-affilio-affiliates-list-table.php:219
+#. translators: %s: this affiliate's flat commission amount override, e.g. "7.50".
+msgid "Flat: %s"
+msgstr ""
+
+#: includes/admin/class-affilio-affiliates-list-table.php:121
+#: includes/admin/class-affilio-payouts-list-table.php:89
+msgid "All"
+msgstr ""
+
+#: includes/admin/class-affilio-affiliates-list-table.php:155
+msgid "Edit affiliate"
+msgstr ""
+
+#: includes/admin/class-affilio-affiliates-list-table.php:163
+#: includes/class-affilio-admin-workflows.php:267
+msgid "Approve"
+msgstr ""
+
+#: includes/admin/class-affilio-affiliates-list-table.php:171
+msgid "Reactivate"
+msgstr ""
+
+#: includes/admin/class-affilio-affiliates-list-table.php:175
+msgid "Change status"
+msgstr ""
+
+#: includes/admin/class-affilio-payouts-list-table.php:36
+#: includes/class-affilio-dashboard.php:432
+#: includes/class-affilio-privacy.php:137
+msgid "Batch"
+msgstr ""
+
+#: includes/admin/class-affilio-payouts-list-table.php:37
+#: includes/admin/class-affilio-referrals-list-table.php:40
+#: includes/admin/class-affilio-visits-list-table.php:36
+#: includes/class-affilio-admin-menu.php:369
+#: includes/class-affilio-admin-menu.php:480
+#: includes/class-affilio-admin-menu.php:599
+#: includes/class-affilio-admin-workflows.php:176
+#: includes/class-affilio-admin-workflows.php:226
+#: includes/class-affilio-coupons.php:346
+#: includes/class-affilio-coupons.php:357
+#: includes/class-affilio-dashboard.php:108
+#: includes/class-affilio-diagnostics.php:205
+#: includes/class-affilio-reports.php:226
+#: includes/class-affilio-reports.php:260
+msgid "Affiliate"
+msgstr ""
+
+#: includes/admin/class-affilio-payouts-list-table.php:38
+#: includes/class-affilio-admin-menu.php:600
+#: includes/class-affilio-admin-workflows.php:227
+#: includes/class-affilio-dashboard.php:394
+#: includes/class-affilio-dashboard.php:433
+#: includes/class-affilio-privacy.php:138
+#: includes/class-affilio-privacy.php:161
+msgid "Amount"
+msgstr ""
+
+#: includes/admin/class-affilio-payouts-list-table.php:39
+#: includes/class-affilio-admin-menu.php:601
+#: includes/class-affilio-dashboard.php:434
+#: includes/class-affilio-privacy.php:140
+#: includes/class-affilio-privacy.php:163
+msgid "Method"
+msgstr ""
+
+#: includes/admin/class-affilio-payouts-list-table.php:40
+#: includes/class-affilio-admin-menu.php:602
+#: includes/class-affilio-creatives.php:213
+#: includes/class-affilio-privacy.php:141
+#: includes/class-affilio-privacy.php:164
+msgid "Destination"
+msgstr ""
+
+#: includes/admin/class-affilio-payouts-list-table.php:42
+#: includes/class-affilio-privacy.php:144
+#: includes/class-affilio-privacy.php:168
+msgid "Created"
+msgstr ""
+
+#: includes/admin/class-affilio-payouts-list-table.php:43
+#: includes/class-affilio-i18n.php:33
+#: includes/class-affilio-privacy.php:145
+msgid "Paid"
+msgstr ""
+
+#: includes/admin/class-affilio-payouts-list-table.php:128
+#: includes/admin/class-affilio-referrals-list-table.php:122
+#: includes/admin/class-affilio-visits-list-table.php:90
+#: includes/class-affilio-admin-menu.php:599
+#: includes/class-affilio-reports.php:358
+msgid "(unknown)"
+msgstr ""
+
+#: includes/admin/class-affilio-referrals-list-table.php:41
+#: includes/class-affilio-admin-menu.php:614
+#: includes/class-affilio-settings.php:818
+msgid "Order"
+msgstr ""
+
+#: includes/admin/class-affilio-referrals-list-table.php:42
+msgid "Commissionable Amount"
+msgstr ""
+
+#: includes/admin/class-affilio-referrals-list-table.php:44
+#: includes/class-affilio-admin-menu.php:505
+#: includes/class-affilio-dashboard.php:275
+#: includes/class-affilio-reports.php:262
+msgid "Source"
+msgstr ""
+
+#: includes/admin/class-affilio-referrals-list-table.php:46
+msgid "Payout"
+msgstr ""
+
+#: includes/admin/class-affilio-referrals-list-table.php:47
+#: includes/admin/class-affilio-visits-list-table.php:41
+#: includes/class-affilio-admin-workflows.php:231
+#: includes/class-affilio-admin-workflows.php:341
+#: includes/class-affilio-dashboard.php:248
+#: includes/class-affilio-dashboard.php:272
+#: includes/class-affilio-dashboard.php:394
+#: includes/class-affilio-dashboard.php:431
+#: includes/class-affilio-privacy.php:121
+#: includes/class-affilio-privacy.php:189
+#: includes/class-affilio-reports.php:224
+#: includes/class-affilio-reports.php:258
+msgid "Date"
+msgstr ""
+
+#: includes/admin/class-affilio-referrals-list-table.php:71
+msgid "Create payout batch"
+msgstr ""
+
+#: includes/admin/class-affilio-referrals-list-table.php:127
+msgid "Edit"
+msgstr ""
+
+#: includes/admin/class-affilio-referrals-list-table.php:200
+msgid "(missing)"
+msgstr ""
+
+#: includes/admin/class-affilio-visits-list-table.php:37
+#: includes/class-affilio-dashboard.php:248
+#: includes/class-affilio-reports.php:229
+msgid "Landing Page"
+msgstr ""
+
+#: includes/admin/class-affilio-visits-list-table.php:38
+#: includes/class-affilio-admin-menu.php:386
+#: includes/class-affilio-coupons.php:357
+#: includes/class-affilio-creatives.php:212
+#: includes/class-affilio-dashboard.php:248
+#: includes/class-affilio-reports.php:229
+#: includes/class-affilio-reports.php:262
+msgid "Campaign"
+msgstr ""
+
+#: includes/admin/class-affilio-visits-list-table.php:39
+msgid "Referrer"
+msgstr ""
+
+#: includes/admin/class-affilio-visits-list-table.php:40
+#: includes/class-affilio-admin-menu.php:393
+#: includes/class-affilio-dashboard.php:248
+#: includes/class-affilio-reports.php:229
+msgid "Converted"
+msgstr ""
+
+#: includes/admin/class-affilio-visits-list-table.php:120
+msgid "Direct / unknown"
+msgstr ""
+
+#: includes/admin/class-affilio-visits-list-table.php:132
+#: includes/class-affilio-dashboard.php:255
+#: includes/class-affilio-reports.php:244
+msgid "Yes"
+msgstr ""
+
+#: includes/admin/class-affilio-visits-list-table.php:133
+#: includes/class-affilio-dashboard.php:255
+#: includes/class-affilio-reports.php:244
+msgid "No"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:31
+#: includes/class-affilio-admin-menu.php:32
+msgid "Dreamax Affiliates"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:40
+#: includes/class-affilio-admin-menu.php:97
+msgid "Dreamax Affiliates Overview"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:40
+msgid "Overview"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:42
+#: includes/class-affilio-onboarding.php:114
+#: includes/class-affilio-onboarding.php:200
+msgid "Dreamax Affiliates Setup"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:42
+#: includes/class-affilio-onboarding.php:115
+#: includes/class-affilio-onboarding.php:179
+msgid "Setup"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:44
+#: includes/class-affilio-admin-menu.php:108
+#: includes/class-affilio-admin-menu.php:158
+#: includes/class-affilio-admin-menu.php:246
+#: includes/class-affilio-admin-workflows.php:47
+#. translators: %1$s: number of active affiliates; %2$s: number of affiliates awaiting review.
+msgid "Affiliates"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:45
+#: includes/class-affilio-admin-menu.php:110
+#: includes/class-affilio-admin-menu.php:408
+#: includes/class-affilio-admin-menu.php:159
+#: includes/class-affilio-admin-menu.php:472
+#: includes/class-affilio-admin-workflows.php:148
+#: includes/class-affilio-dashboard.php:220
+msgid "Referrals"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:46
+#: includes/class-affilio-admin-menu.php:160
+msgid "Reports"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:47
+#: includes/class-affilio-coupons.php:334
+msgid "Affiliate Coupons"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:47
+msgid "Coupons"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:48
+#: includes/class-affilio-admin-workflows.php:206
+msgid "Payout Requests"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:49
+#: includes/class-affilio-admin-menu.php:161
+#: includes/class-affilio-admin-menu.php:559
+msgid "Payouts"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:53
+#: includes/class-affilio-diagnostics.php:40
+msgid "Dreamax Affiliates Diagnostics"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:53
+msgid "Diagnostics"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:58
+#: includes/class-affilio-upgrade-page.php:32
+msgid "Dreamax Affiliates Pro"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:61
+#: includes/class-affilio-admin-menu.php:163
+#: includes/class-affilio-onboarding.php:180
+msgid "Settings"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:108
+#. translators: %1$s: number of active affiliates; %2$s: number of affiliates awaiting review.
+msgid "%1$s active, %2$s awaiting review"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:109
+msgid "Tracked Clicks"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:109
+msgid "All recorded affiliate visits"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:110
+msgid "Recorded commissions and conversions"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:111
+msgid "Commission Rule"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:111
+#: includes/class-affilio-admin-menu.php:294
+#: includes/class-affilio-admin-workflows.php:114
+msgid "Flat amount per order"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:111
+msgid "Percentage of the commission base"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:119
+msgid "Core setup saved"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:120
+msgid "Registration page is published and contains its shortcode"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:121
+msgid "Dashboard page is published and contains its shortcode"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:122
+msgid "WooCommerce is active for sale attribution"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:250
+#: includes/class-affilio-admin-workflows.php:55
+msgid "Search affiliates"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:333
+#: includes/class-affilio-admin-workflows.php:121
+msgid "Save Affiliate"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:404
+#: includes/class-affilio-dashboard.php:217
+msgid "Clicks"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:405
+#: includes/class-affilio-dashboard.php:218
+msgid "Unique Visitors"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:406
+msgid "Conversions"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:407
+#: includes/class-affilio-dashboard.php:219
+msgid "Conversion Rate"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:409
+msgid "Recorded Commission"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:436
+msgid "Search clicks"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:564
+msgid "Search payouts"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:592
+#. translators: %s: payout batch key/identifier.
+msgid "Payout %s"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:641
+msgid "Mark Payout as Paid"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:644
+msgid "Cancel this payout and return its referrals to unpaid status?"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:648
+msgid "Cancel Payout"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:658
+msgid "Mark Payout as Failed"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:101
+msgid "Review Setup"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:101
+msgid "Continue Setup"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:202
+msgid "Complete"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:202
+msgid "Needs action"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:267
+#: includes/class-affilio-admin-workflows.php:70
+msgid "Affiliate not found"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:581
+msgid "Payout not found"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:98
+msgid "Launch your affiliate program, review the work that needs attention, and jump directly to the next task."
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:102
+#: includes/class-affilio-diagnostics.php:200
+#: includes/class-affilio-onboarding.php:543
+msgid "Manage Affiliates"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:103
+msgid "View Registration Page"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:116
+msgid "Launch Checklist"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:117
+msgid "Complete these essentials before inviting affiliates."
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:127
+msgid "Needs Attention"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:129
+msgid "There are no pending affiliate applications or payout requests right now."
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:138
+msgid "Helpful next action"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:140
+msgid "Finish the setup checklist so affiliates have a working application and dashboard."
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:141
+msgid "Open Setup"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:143
+msgid "Invite your first affiliate or add an existing WordPress user manually."
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:144
+#: includes/class-affilio-admin-workflows.php:79
+#: includes/class-affilio-admin-workflows.php:48
+msgid "Add Affiliate"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:146
+msgid "Open the affiliate dashboard and test one referral link before sharing the program publicly."
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:147
+msgid "Test Dashboard"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:149
+msgid "Review performance regularly and process eligible commissions through the manual payout workflow."
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:150
+msgid "View Reports"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:156
+msgid "Quick Actions"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:158
+msgid "Approve applications and manage accounts."
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:159
+msgid "Review commissions or add a manual referral."
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:160
+msgid "See clicks, conversions, and earnings."
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:161
+msgid "Create batches and record completed payments."
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:162
+#: includes/class-affilio-creatives.php:39
+#: includes/class-affilio-dashboard.php:139
+msgid "Creatives"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:162
+msgid "Publish reusable banners and campaign links."
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:163
+msgid "Adjust tracking, commissions, emails, and privacy."
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:277
+#: includes/class-affilio-admin-workflows.php:79
+msgid "Edit Affiliate"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:278
+#: includes/class-affilio-admin-workflows.php:80
+msgid "Back to affiliates"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:289
+#: includes/class-affilio-admin-workflows.php:114
+msgid "Commission rule"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:292
+#: includes/class-affilio-admin-workflows.php:114
+msgid "Use site default"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:293
+#: includes/class-affilio-admin-workflows.php:114
+msgid "Percentage override"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:296
+msgid "Product and category rules take priority over this affiliate-level rule."
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:300
+#: includes/class-affilio-admin-workflows.php:115
+#: includes/class-affilio-onboarding.php:454
+msgid "Commission rate"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:303
+msgid "Enter percentage points or a flat order amount. Ignored when using the site default."
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:308
+msgid "Payout Details"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:311
+#: includes/class-affilio-admin-workflows.php:116
+#: includes/class-affilio-dashboard.php:323
+#: includes/class-affilio-privacy.php:94
+msgid "Payout method"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:321
+#: includes/class-affilio-admin-workflows.php:117
+#: includes/class-affilio-dashboard.php:332
+#: includes/class-affilio-registration.php:92
+msgid "Payout/contact email"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:325
+#: includes/class-affilio-admin-workflows.php:118
+#: includes/class-affilio-registration.php:97
+msgid "Payout account details"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:328
+msgid "Required for bank transfer or other methods. Do not store passwords or card security codes."
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:364
+msgid "Affiliate Reports"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:371
+#: includes/class-affilio-admin-menu.php:482
+msgid "All affiliates"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:378
+#: includes/class-affilio-admin-menu.php:514
+#: includes/class-affilio-dashboard.php:206
+msgid "From"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:382
+#: includes/class-affilio-admin-menu.php:515
+#: includes/class-affilio-dashboard.php:210
+msgid "To"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:390
+msgid "Conversion"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:392
+msgid "All clicks"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:394
+msgid "Not converted"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:398
+#: includes/class-affilio-admin-menu.php:518
+msgid "Apply Filters"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:399
+#: includes/class-affilio-admin-menu.php:519
+msgid "Reset"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:423
+msgid "Export Clicks CSV"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:424
+msgid "Export Referrals CSV"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:428
+msgid "Click Log"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:474
+msgid "Available to pay:"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:490
+#: includes/class-affilio-admin-workflows.php:213
+msgid "All statuses"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:496
+#: includes/class-affilio-admin-workflows.php:180
+#: includes/class-affilio-privacy.php:139
+#: includes/class-affilio-privacy.php:162
+#: includes/class-affilio-privacy.php:187
+#: includes/class-affilio-reports.php:262
+msgid "Currency"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:498
+msgid "All currencies"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:507
+msgid "All sources"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:508
+#: includes/class-affilio-i18n.php:53
+msgid "Referral link"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:509
+#: includes/class-affilio-i18n.php:54
+msgid "Affiliate coupon"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:510
+msgid "Imported"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:513
+#: includes/class-affilio-coupons.php:345
+msgid "Coupon code"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:516
+msgid "Order / Referral ID"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:524
+msgid "Select unpaid referrals, choose “Create payout batch,” and click Apply. Referrals are grouped by affiliate and currency."
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:525
+msgid "Export Filtered CSV"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:560
+msgid "Create new payout batches from the Referrals screen. Mark a payout paid only after the funds have been sent."
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:593
+msgid "Back to payouts"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:597
+msgid "Payout summary"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:604
+#: includes/class-affilio-dashboard.php:436
+#: includes/class-affilio-privacy.php:143
+msgid "Reference"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:605
+#: includes/class-affilio-admin-workflows.php:230
+msgid "Notes"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:610
+msgid "Included Referrals"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:613
+msgid "Referrals included in this payout"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:614
+msgid "Referral"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:617
+msgid "No referrals are linked to this payout."
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:635
+msgid "Complete Payout"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:639
+msgid "Payment reference (optional)"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:640
+msgid "Internal notes (optional)"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:653
+msgid "Failed Payment Attempt"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:657
+msgid "Failure reason"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:674
+msgid "Dreamax Affiliates Settings"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:106
+msgid "Affiliate program summary"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:403
+msgid "Affiliate report summary"
+msgstr ""
+
+#: includes/class-affilio-admin-menu.php:133
+#. translators: %s: number of pending affiliate applications.
+msgid "%s affiliate application is waiting for review"
+msgid_plural "%s affiliate applications are waiting for review"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-affilio-admin-menu.php:135
+#. translators: %s: number of pending payout requests.
+msgid "%s payout request is waiting"
+msgid_plural "%s payout requests are waiting"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-affilio-admin-workflows.php:38
+msgid "Enter a reason before applying that bulk status."
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:40
+#. translators: %1$d: number of affiliates updated; %2$d: number of affiliates skipped.
+msgid "%1$d affiliate(s) updated; %2$d skipped."
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:121
+msgid "Create Affiliate"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:127
+msgid "Remove this affiliate record? The WordPress user will remain."
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:127
+msgid "Remove Affiliate Record"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:154
+msgid "Search referrals"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:172
+msgid "Edit Referral"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:172
+#: includes/class-affilio-admin-workflows.php:149
+msgid "Add Manual Referral"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:184
+msgid "Update Referral"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:184
+msgid "Create Referral"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:218
+msgid "Filter"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:298
+msgid "&laquo; Previous"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:299
+msgid "Next &raquo;"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:352
+msgid "System"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:165
+msgid "Referral not found"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:54
+msgid "Bulk status reason"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:90
+msgid "Account and Status"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:93
+msgid "WordPress user"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:95
+msgid "User source"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:95
+msgid "Existing WordPress user"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:95
+msgid "Create a new user"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:96
+msgid "Existing user ID"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:96
+msgid "Enter the numeric WordPress user ID when Existing user is selected."
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:97
+msgid "New user email"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:98
+msgid "New user display name"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:101
+#: includes/class-affilio-privacy.php:101
+msgid "Status reason"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:101
+msgid "Required when rejecting, suspending, or banning."
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:104
+msgid "Application Profile"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:106
+#: includes/class-affilio-privacy.php:97
+#: includes/class-affilio-registration.php:363
+msgid "Website"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:107
+#: includes/class-affilio-privacy.php:98
+msgid "Promotion method"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:108
+#: includes/class-affilio-privacy.php:99
+msgid "Social profile"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:109
+#: includes/class-affilio-privacy.php:100
+#: includes/class-affilio-registration.php:387
+msgid "Application message"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:112
+msgid "Commission and Payout"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:119
+msgid "Internal notes"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:172
+msgid "Back to referrals"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:173
+msgid "Processing and paid referrals are locked. Review the linked payout instead."
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:176
+#: includes/class-affilio-coupons.php:346
+msgid "Select affiliate"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:177
+msgid "WooCommerce order ID"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:177
+msgid "Optional. Leave empty for an internal manual reference."
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:178
+msgid "Commissionable amount"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:182
+msgid "Description"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:183
+msgid "Change reason"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:207
+msgid "Review affiliate withdrawal requests. Approving a request creates and locks a manual payout batch from currently eligible unpaid referrals."
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:223
+msgid "Affiliate payout requests and available administrative actions"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:228
+msgid "Method / Destination"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:232
+#: includes/class-affilio-coupons.php:357
+msgid "Actions"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:237
+msgid "No payout requests found."
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:265
+msgid "Approval note"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:273
+msgid "Rejection reason"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:332
+msgid "Activity History"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:335
+msgid "Recent status and administrative changes"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:338
+#: includes/class-affilio-privacy.php:119
+msgid "Event"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:339
+#: includes/class-affilio-privacy.php:120
+msgid "Reason"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:340
+msgid "Actor"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:346
+msgid "No activity has been recorded yet."
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:209
+msgid "Filter payout requests"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:54
+msgid "Required for rejection, suspension, or ban"
+msgstr ""
+
+#: includes/class-affilio-admin-workflows.php:266
+msgid "Optional"
+msgstr ""
+
+#: includes/class-affilio-affiliate-admin.php:41
+#: includes/class-affilio-affiliate-admin.php:159
+msgid "A reason is required when rejecting, suspending, or banning an affiliate."
+msgstr ""
+
+#: includes/class-affilio-affiliate-admin.php:52
+msgid "Enter a valid email address and display name."
+msgstr ""
+
+#: includes/class-affilio-affiliate-admin.php:55
+msgid "A WordPress account already uses that email. Choose Existing user instead."
+msgstr ""
+
+#: includes/class-affilio-affiliate-admin.php:85
+msgid "Select a valid existing WordPress user."
+msgstr ""
+
+#: includes/class-affilio-affiliate-admin.php:94
+msgid "That WordPress user is already an affiliate."
+msgstr ""
+
+#: includes/class-affilio-affiliate-admin.php:119
+msgid "The affiliate could not be created."
+msgstr ""
+
+#: includes/class-affilio-affiliate-admin.php:128
+msgid "Affiliate created successfully."
+msgstr ""
+
+#: includes/class-affilio-affiliate-admin.php:156
+msgid "That affiliate status transition is not allowed."
+msgstr ""
+
+#: includes/class-affilio-affiliate-admin.php:174
+msgid "The affiliate could not be updated."
+msgstr ""
+
+#: includes/class-affilio-affiliate-admin.php:190
+msgid "Affiliate updated successfully."
+msgstr ""
+
+#: includes/class-affilio-affiliate-admin.php:242
+#: includes/class-affilio-affiliate-admin.php:261
+msgid "The affiliate status could not be changed."
+msgstr ""
+
+#: includes/class-affilio-affiliate-admin.php:247
+msgid "Open the affiliate record and enter a reason before rejecting, suspending, or banning."
+msgstr ""
+
+#: includes/class-affilio-affiliate-admin.php:265
+msgid "Affiliate status updated."
+msgstr ""
+
+#: includes/class-affilio-affiliate-admin.php:280
+#: includes/class-affilio-affiliate-admin.php:143
+msgid "Affiliate not found."
+msgstr ""
+
+#: includes/class-affilio-affiliate-admin.php:283
+msgid "This affiliate has referral or payout history and cannot be deleted. Ban the account instead."
+msgstr ""
+
+#: includes/class-affilio-affiliate-admin.php:288
+msgid "The affiliate record could not be removed."
+msgstr ""
+
+#: includes/class-affilio-affiliate-admin.php:291
+msgid "Affiliate record removed. The WordPress user account was preserved."
+msgstr ""
+
+#: includes/class-affilio-affiliate-admin.php:414
+msgid "You do not have permission to manage affiliates."
+msgstr ""
+
+#: includes/class-affilio-assets.php:76
+msgid "Something went wrong. Please try again."
+msgstr ""
+
+#: includes/class-affilio-assets.php:77
+msgid "Link copied."
+msgstr ""
+
+#: includes/class-affilio-assets.php:78
+msgid "Please enter a page or product URL from this website."
+msgstr ""
+
+#: includes/class-affilio-assets.php:79
+msgid "Copy failed. Select the link and copy it manually."
+msgstr ""
+
+#: includes/class-affilio-assets.php:80
+#: includes/class-affilio-registration.php:44
+msgid "Open affiliate area"
+msgstr ""
+
+#: includes/class-affilio-assets.php:82
+msgid "Visit this page using my affiliate link:"
+msgstr ""
+
+#: includes/class-affilio-assets.php:83
+msgid "Sharing is not available in this browser. Copy the link instead."
+msgstr ""
+
+#: includes/class-affilio-assets.php:84
+msgid "QR code created."
+msgstr ""
+
+#: includes/class-affilio-assets.php:85
+msgid "The QR code could not be created. Shorten the destination URL and try again."
+msgstr ""
+
+#: includes/class-affilio-assets.php:86
+msgid "affiliate-link-qr-code.svg"
+msgstr ""
+
+#: includes/class-affilio-assets.php:87
+msgid "QR code panel opened."
+msgstr ""
+
+#: includes/class-affilio-assets.php:88
+msgid "QR code panel closed."
+msgstr ""
+
+#: includes/class-affilio-assets.php:89
+msgid "Submitting your application…"
+msgstr ""
+
+#: includes/class-affilio-assets.php:90
+msgid "Submitting…"
+msgstr ""
+
+#: includes/class-affilio-assets.php:91
+msgid "Payout account details are required for the selected method."
+msgstr ""
+
+#: includes/class-affilio-assets.php:92
+msgid "Value copied."
+msgstr ""
+
+#: includes/class-affilio-coupons.php:35
+msgid "No affiliate"
+msgstr ""
+
+#: includes/class-affilio-coupons.php:46
+msgid "Affiliate (Dreamax Affiliates)"
+msgstr ""
+
+#: includes/class-affilio-coupons.php:47
+msgid "Credit this active affiliate when the coupon is used, subject to the attribution-priority setting."
+msgstr ""
+
+#: includes/class-affilio-coupons.php:56
+msgid "Dreamax Affiliates campaign"
+msgstr ""
+
+#: includes/class-affilio-coupons.php:57
+msgid "Optional campaign label stored with coupon-attributed referrals."
+msgstr ""
+
+#: includes/class-affilio-coupons.php:140
+msgid "Multiple coupons assigned to different affiliates were used on the same order."
+msgstr ""
+
+#: includes/class-affilio-coupons.php:349
+msgid "Assign Coupon"
+msgstr ""
+
+#: includes/class-affilio-coupons.php:383
+msgid "Coupon assignment saved."
+msgstr ""
+
+#: includes/class-affilio-coupons.php:384
+msgid "Coupon assignment removed."
+msgstr ""
+
+#: includes/class-affilio-coupons.php:385
+msgid "That WooCommerce coupon could not be found."
+msgstr ""
+
+#: includes/class-affilio-coupons.php:386
+msgid "Select an active affiliate and a valid coupon."
+msgstr ""
+
+#: includes/class-affilio-coupons.php:387
+msgid "WooCommerce must be active."
+msgstr ""
+
+#: includes/class-affilio-coupons.php:371
+msgid "You do not have permission to manage affiliate coupons."
+msgstr ""
+
+#: includes/class-affilio-coupons.php:336
+msgid "Assign an existing WooCommerce coupon to one affiliate. Orders using that coupon can be attributed even when no referral cookie is present."
+msgstr ""
+
+#: includes/class-affilio-coupons.php:339
+msgid "WooCommerce must be active to manage coupon attribution."
+msgstr ""
+
+#: includes/class-affilio-coupons.php:347
+#: includes/class-affilio-creatives.php:112
+msgid "Campaign label"
+msgstr ""
+
+#: includes/class-affilio-coupons.php:347
+msgid "Optional label included in referral reports."
+msgstr ""
+
+#: includes/class-affilio-coupons.php:353
+msgid "Assigned Coupons"
+msgstr ""
+
+#: includes/class-affilio-coupons.php:356
+msgid "Coupons assigned to affiliates"
+msgstr ""
+
+#: includes/class-affilio-coupons.php:357
+#: includes/class-affilio-reports.php:262
+msgid "Coupon"
+msgstr ""
+
+#: includes/class-affilio-coupons.php:359
+msgid "No coupons are assigned yet."
+msgstr ""
+
+#: includes/class-affilio-coupons.php:360
+msgid "Edit coupon"
+msgstr ""
+
+#: includes/class-affilio-coupons.php:360
+msgid "Unassign"
+msgstr ""
+
+#: includes/class-affilio-creatives.php:40
+msgid "Creative"
+msgstr ""
+
+#: includes/class-affilio-creatives.php:41
+msgid "Add Creative"
+msgstr ""
+
+#: includes/class-affilio-creatives.php:42
+msgid "Add New Creative"
+msgstr ""
+
+#: includes/class-affilio-creatives.php:43
+msgid "Edit Creative"
+msgstr ""
+
+#: includes/class-affilio-creatives.php:44
+msgid "New Creative"
+msgstr ""
+
+#: includes/class-affilio-creatives.php:45
+msgid "View Creative"
+msgstr ""
+
+#: includes/class-affilio-creatives.php:46
+msgid "Search Creatives"
+msgstr ""
+
+#: includes/class-affilio-creatives.php:47
+msgid "No creatives found."
+msgstr ""
+
+#: includes/class-affilio-creatives.php:48
+msgid "No creatives found in Trash."
+msgstr ""
+
+#: includes/class-affilio-creatives.php:89
+msgid "Creative Details"
+msgstr ""
+
+#: includes/class-affilio-creatives.php:190
+msgid "Learn More"
+msgstr ""
+
+#: includes/class-affilio-creatives.php:108
+msgid "Destination URL"
+msgstr ""
+
+#: includes/class-affilio-creatives.php:110
+msgid "Must be a URL on this website. The affiliate referral code is added automatically."
+msgstr ""
+
+#: includes/class-affilio-creatives.php:115
+msgid "Button / link text"
+msgstr ""
+
+#: includes/class-affilio-creatives.php:118
+msgid "Fallback image URL"
+msgstr ""
+
+#: includes/class-affilio-creatives.php:120
+msgid "Prefer an image from this site’s Media Library. If you use an external image URL, the external host receives a browser request when an affiliate views the creative."
+msgstr ""
+
+#: includes/class-affilio-creatives.php:121
+msgid "Use a Featured Image when available. This optional URL is used when no Featured Image is set, including on themes without thumbnail support. The editor content is shown as the creative description."
+msgstr ""
+
+#: includes/class-affilio-creatives.php:116
+msgid "Shop Now"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:119
+#. translators: %s: the logged-in affiliate's display name.
+msgid "Welcome, %s"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:121
+#. translators: %s: the affiliate's unique referral code.
+msgid "Your referral code is %s. Create a link, share it, and return here to follow your results."
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:351
+#. translators: %s: minimum payout amount.
+msgid "Minimum request threshold: %s per currency."
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:29
+msgid "Please log in to view your affiliate dashboard."
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:30
+msgid "Log in"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:39
+msgid "You are not yet registered as an affiliate."
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:42
+#: includes/class-affilio-registration.php:129
+msgid "Apply now"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:52
+#. translators: %s: current application status.
+msgid "Your affiliate application status: %s"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:130
+msgid "Activity is being recorded."
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:130
+msgid "Your first click and referral will appear in Results."
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:131
+msgid "Your payout profile is ready."
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:131
+msgid "Add the details the program owner needs to pay you."
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:473
+msgid "Your payout settings were saved."
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:117
+msgid "Affiliate dashboard"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:126
+msgid "Start here"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:128
+msgid "Create your link"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:128
+msgid "Choose a page or product and generate your personal URL."
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:129
+msgid "Share it"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:129
+msgid "Copy the link, use a social button, or download its QR code."
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:130
+msgid "Follow results"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:131
+msgid "Prepare for payouts"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:137
+msgid "Get links"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:138
+msgid "Results"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:140
+msgid "Get paid"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:145
+msgid "Create and Share Referral Links"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:146
+msgid "Start with the homepage or paste any page or product URL from this website. The generated link already includes your referral code."
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:149
+msgid "Page or product URL"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:153
+msgid "Campaign label (optional)"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:157
+msgid "Your affiliate link"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:161
+msgid "Generate Link"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:162
+#: includes/class-affilio-dashboard.php:308
+msgid "Copy Link"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:167
+msgid "Share Your Affiliate Link"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:169
+msgid "Share"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:170
+msgid "Facebook"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:171
+msgid "LinkedIn"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:172
+msgid "X"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:173
+msgid "WhatsApp"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:177
+msgid "Create QR Code"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:180
+msgid "Download QR as SVG"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:188
+msgid "Your Coupon Codes"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:194
+msgid "Copy Code"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:202
+msgid "Your Results"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:203
+msgid "See the traffic, referrals, and commissions attributed to your links and coupon codes."
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:213
+msgid "Filter Reports"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:221
+msgid "Paid commission"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:222
+msgid "Pending / processing"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:237
+msgid "Download Clicks CSV"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:238
+msgid "Download Referrals CSV"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:241
+msgid "Recent Clicks"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:243
+msgid "No tracked clicks yet"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:243
+msgid "Generate a referral link above and share it. New visits will appear here after someone opens that link."
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:243
+msgid "Create a link"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:247
+msgid "Recent affiliate clicks"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:263
+msgid "Recent Referrals"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:265
+msgid "No referrals yet"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:265
+msgid "A referral appears after a qualifying order is attributed to your link or assigned coupon."
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:269
+msgid "Recent affiliate referrals"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:273
+#: includes/class-affilio-reports.php:262
+msgid "Order Amount"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:298
+msgid "Creative Library"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:299
+msgid "Use these ready-made banners and links. Every URL below already contains your affiliate code."
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:307
+msgid "Affiliate URL"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:308
+msgid "Copy HTML"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:316
+msgid "Payouts and Payment Details"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:317
+msgid "Keep your payment information current. Eligible balances can be requested when they reach the program threshold."
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:337
+msgid "Payout account details or instructions"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:339
+#: includes/class-affilio-registration.php:99
+msgid "Required for bank transfer or other manual methods. Never enter passwords or card security codes."
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:342
+msgid "Save Payout Settings"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:345
+msgid "Request a Payout"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:368
+msgid "No unpaid currency balance has reached the request threshold yet."
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:373
+msgid "Currency and eligible balance"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:379
+msgid "Request note (optional)"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:381
+msgid "Submit Payout Request"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:385
+msgid "New payout requests are currently disabled by the program administrator."
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:389
+msgid "Payout Request History"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:392
+msgid "Payout request history"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:394
+#: includes/class-affilio-privacy.php:166
+msgid "Admin note"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:394
+msgid "Action"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:409
+msgid "Cancel"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:422
+msgid "Payout History"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:424
+msgid "No payout history yet"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:424
+msgid "Completed and in-progress payout batches will appear here."
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:428
+msgid "Payout history"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:135
+msgid "Affiliate dashboard sections"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:154
+msgid "summer-email"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:168
+msgid "Affiliate link sharing options"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:179
+msgid "QR code for the generated affiliate link"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:204
+msgid "Filter affiliate reports"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:216
+msgid "Affiliate performance summary"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php:359
+msgid "Available unpaid balances"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:149
+#. translators: %s: number of "good" status checks.
+msgid "%s good"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:151
+#. translators: %s: number of "warning" status checks.
+msgid "%s warnings"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:153
+#. translators: %s: number of "critical" status checks.
+msgid "%s critical"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:212
+msgid "Prepare Test"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:230
+#. translators: %s: the referral code generated for this diagnostic test.
+msgid "Expected referral code: %s"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:232
+#. translators: %s: the campaign label generated for this diagnostic test.
+msgid "Diagnostic campaign: %s"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:241
+msgid "Verify Attribution"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:253
+msgid "Remove Test Data"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:272
+#: includes/class-affilio-onboarding.php:338
+msgid "WordPress version"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:274
+#: includes/class-affilio-diagnostics.php:282
+#. translators: %1$s: installed WordPress version; %2$s: minimum WordPress version Dreamax Affiliates requires.
+msgid "Installed: %1$s. Required: %2$s or later."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:276
+msgid "Open Updates"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:280
+#: includes/class-affilio-onboarding.php:339
+msgid "PHP version"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:286
+msgid "WooCommerce integration"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:287
+msgid "WooCommerce is active and the Dreamax Affiliates integration is loaded."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:287
+msgid "WooCommerce is not active, so order attribution and commission creation cannot run."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:289
+msgid "Open Plugins"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:295
+msgid "Plugin migration state"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:298
+#. translators: %s: currently installed plugin version.
+msgid "Installed migration version matches %s."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:300
+#. translators: %1$s: version recorded in the database; %2$s: version of the currently loaded plugin code.
+msgid "Stored version is %1$s while the loaded code is %2$s. Reload a Dreamax Affiliates admin page to allow bounded upgrades to continue."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:300
+#: includes/class-affilio-diagnostics.php:308
+#. translators: %1$s: version recorded in the database; %2$s: version of the currently loaded plugin code.
+msgid "not recorded"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:306
+msgid "Database schema version"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:308
+#. translators: %1$s: database schema version stored in the site's options; %2$s: schema version the loaded plugin code requires.
+msgid "Stored schema: %1$s. Required schema: %2$s."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:314
+msgid "Dreamax Affiliates database tables"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:316
+msgid "All six required Dreamax Affiliates tables are present."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:318
+#. translators: %s: number of required Dreamax Affiliates database tables that are missing.
+msgid "%s required table(s) could not be found."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:321
+#: includes/class-affilio-onboarding.php:385
+#: includes/class-affilio-settings.php:214
+msgid "Registration page"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:322
+#: includes/class-affilio-onboarding.php:404
+#: includes/class-affilio-settings.php:222
+msgid "Dashboard page"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:329
+msgid "The daily privacy-retention cleanup event is scheduled."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:329
+msgid "The daily privacy-retention cleanup event is not currently scheduled."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:331
+msgid "WordPress cron is disabled; confirm that the server runs wp-cron.php externally."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:333
+msgid "Scheduled privacy cleanup"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:337
+msgid "HTTPS"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:338
+msgid "The current administrator request uses HTTPS."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:338
+msgid "HTTPS is not detected on this request. Secure cookies are strongly recommended for production stores."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:342
+msgid "Dreamax Affiliates administrator capability"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:343
+msgid "The current administrator can manage the affiliate program."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:343
+msgid "The current user is missing the required Dreamax Affiliates management capability."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:349
+msgid "Free/Pro feature boundary"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:351
+msgid "The local feature catalog is valid and the Free/Pro boundary can be read."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:353
+#. translators: %s: number of feature-catalog validation errors detected.
+msgid "%s feature-catalog validation error(s) were detected."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:373
+msgid "No valid page is selected."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:373
+msgid "Review Pages"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:376
+msgid "The selected page is not published."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:376
+#: includes/class-affilio-diagnostics.php:380
+#. translators: %s: required shortcode tag, e.g. "dreamax_affiliates_registration".
+msgid "Edit Page"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:380
+#. translators: %s: required shortcode tag, e.g. "dreamax_affiliates_registration".
+msgid "The selected page is missing the [%s] shortcode."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:384
+#. translators: %s: required shortcode tag, e.g. "dreamax_affiliates_registration".
+msgid "Published page contains the [%s] shortcode."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:384
+#. translators: %s: required shortcode tag, e.g. "dreamax_affiliates_registration".
+msgid "View Page"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:539
+msgid "The attribution test is ready. Open the test link, then return and verify it."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:540
+msgid "Attribution passed: the secure cookie resolved to the expected affiliate and diagnostic visit."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:541
+msgid "Diagnostic visit data and temporary test state were removed."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:542
+msgid "Choose an active affiliate before preparing the test."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:543
+msgid "The attribution test expired. Prepare a new test and try again."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:544
+msgid "The expected attribution was not detected. Open the prepared link in this browser, allow cookies, and verify again."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:589
+msgid "You do not have permission to access Dreamax Affiliates diagnostics."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:41
+msgid "Review local system readiness and test the real referral-attribution path without sending diagnostics to an external service."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:43
+#: includes/class-affilio-diagnostics.php:144
+msgid "System Status"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:44
+#: includes/class-affilio-diagnostics.php:191
+msgid "Test Attribution"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:145
+msgid "Checks are performed locally on this WordPress site. No report is transmitted automatically."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:174
+msgid "Privacy-safe Support Report"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:175
+msgid "Copy this report when requesting support. It excludes administrator email addresses, filesystem paths, database credentials, table prefixes, cookies, and visitor data."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:192
+msgid "This guided test opens a real referral link, writes the normal secure attribution cookie, and confirms that the cookie resolves to the expected visit. Test visits use a diagnostic campaign and can be removed here."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:193
+msgid "Preparing a test clears any existing Dreamax Affiliates attribution cookie in this administrator browser so first-click and last-click modes can be tested consistently. It does not delete the earlier visit row."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:197
+msgid "1. Choose an active affiliate"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:199
+msgid "Create or approve at least one affiliate before running the attribution test."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:207
+msgid "Select an affiliate"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:228
+msgid "1. Open the test link"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:233
+msgid "Open Test Link"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:236
+msgid "2. Verify this browser"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:237
+msgid "After the front-end page loads, return here and verify the secure cookie and visit record."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:244
+msgid "Attribution verified for the expected affiliate and diagnostic campaign."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:248
+msgid "3. Remove test data"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:249
+msgid "Clear the diagnostic visit, temporary test state, and matching test cookie after verification."
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:42
+msgid "Diagnostics sections"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:147
+msgid "Status summary"
+msgstr ""
+
+#: includes/class-affilio-diagnostics.php:176
+msgid "Dreamax Affiliates support report"
+msgstr ""
+
+#: includes/class-affilio-email-templates.php:26
+msgid "Admin: new affiliate application"
+msgstr ""
+
+#: includes/class-affilio-email-templates.php:28
+msgid "New affiliate application from {affiliate_name}"
+msgstr ""
+
+#: includes/class-affilio-email-templates.php:29
+msgid "A new affiliate application was submitted.\n\nName: {affiliate_name}\nEmail: {affiliate_email}\nStatus: {status}\n\nReview it in WordPress admin: {admin_url}"
+msgstr ""
+
+#: includes/class-affilio-email-templates.php:32
+msgid "Affiliate: application or account status changed"
+msgstr ""
+
+#: includes/class-affilio-email-templates.php:34
+msgid "Your affiliate account status is now {status}"
+msgstr ""
+
+#: includes/class-affilio-email-templates.php:35
+msgid "Hello {affiliate_name},\n\nYour affiliate account status is now: {status}.\nReason: {reason}\n\nAffiliate area: {dashboard_url}"
+msgstr ""
+
+#: includes/class-affilio-email-templates.php:38
+msgid "Admin: new referral"
+msgstr ""
+
+#: includes/class-affilio-email-templates.php:40
+msgid "New affiliate referral recorded"
+msgstr ""
+
+#: includes/class-affilio-email-templates.php:41
+msgid "A new referral was recorded.\n\nAffiliate: {affiliate_name}\nOrder/reference: {order_id}\nCommission: {commission} {currency}\nStatus: {status}"
+msgstr ""
+
+#: includes/class-affilio-email-templates.php:44
+msgid "Affiliate: new referral"
+msgstr ""
+
+#: includes/class-affilio-email-templates.php:46
+msgid "You earned a new affiliate commission"
+msgstr ""
+
+#: includes/class-affilio-email-templates.php:47
+msgid "Hello {affiliate_name},\n\nA referral was recorded for you.\nCommission: {commission} {currency}\nStatus: {status}\n\nAffiliate area: {dashboard_url}"
+msgstr ""
+
+#: includes/class-affilio-email-templates.php:50
+msgid "Affiliate: referral cancelled or released"
+msgstr ""
+
+#: includes/class-affilio-email-templates.php:52
+msgid "Affiliate referral status changed to {status}"
+msgstr ""
+
+#: includes/class-affilio-email-templates.php:53
+msgid "Hello {affiliate_name},\n\nA referral status changed to {status}.\nReason: {reason}\nCommission: {commission} {currency}\n\nAffiliate area: {dashboard_url}"
+msgstr ""
+
+#: includes/class-affilio-email-templates.php:56
+msgid "Affiliate: payout batch created"
+msgstr ""
+
+#: includes/class-affilio-email-templates.php:58
+msgid "Your affiliate payout is being processed"
+msgstr ""
+
+#: includes/class-affilio-email-templates.php:59
+msgid "Hello {affiliate_name},\n\nA payout batch was created.\nAmount: {amount} {currency}\nBatch: {batch}\n\nAffiliate area: {dashboard_url}"
+msgstr ""
+
+#: includes/class-affilio-email-templates.php:62
+msgid "Affiliate: payout marked paid"
+msgstr ""
+
+#: includes/class-affilio-email-templates.php:64
+msgid "Your affiliate payout has been marked paid"
+msgstr ""
+
+#: includes/class-affilio-email-templates.php:65
+msgid "Hello {affiliate_name},\n\nYour payout has been completed.\nAmount: {amount} {currency}\nBatch: {batch}\nReference: {reference}\n\nAffiliate area: {dashboard_url}"
+msgstr ""
+
+#: includes/class-affilio-email-templates.php:68
+msgid "Admin: new payout request"
+msgstr ""
+
+#: includes/class-affilio-email-templates.php:70
+msgid "New affiliate payout request"
+msgstr ""
+
+#: includes/class-affilio-email-templates.php:71
+msgid "A payout request was submitted.\n\nAffiliate: {affiliate_name}\nAmount: {amount} {currency}\n\nReview it in WordPress admin: {admin_url}"
+msgstr ""
+
+#: includes/class-affilio-email-templates.php:74
+msgid "Affiliate: payout request reviewed"
+msgstr ""
+
+#: includes/class-affilio-email-templates.php:76
+msgid "Your payout request is now {status}"
+msgstr ""
+
+#: includes/class-affilio-email-templates.php:77
+msgid "Hello {affiliate_name},\n\nYour payout request is now: {status}.\nAmount: {amount} {currency}\nNote: {reason}\n\nAffiliate area: {dashboard_url}"
+msgstr ""
+
+#: includes/class-affilio-emails.php:56
+#: includes/class-affilio-emails.php:89
+#: includes/class-affilio-emails.php:154
+#: includes/class-affilio-emails.php:179
+#: includes/class-affilio-emails.php:194
+#: includes/class-affilio-emails.php:223
+msgid "No reason was provided."
+msgstr ""
+
+#: includes/class-affilio-emails.php:155
+#: includes/class-affilio-emails.php:208
+msgid "Not provided"
+msgstr ""
+
+#: includes/class-affilio-i18n.php:26
+msgid "Pending"
+msgstr ""
+
+#: includes/class-affilio-i18n.php:27
+#: includes/class-affilio-onboarding.php:340
+msgid "Active"
+msgstr ""
+
+#: includes/class-affilio-i18n.php:28
+msgid "Rejected"
+msgstr ""
+
+#: includes/class-affilio-i18n.php:29
+msgid "Suspended"
+msgstr ""
+
+#: includes/class-affilio-i18n.php:30
+msgid "Banned"
+msgstr ""
+
+#: includes/class-affilio-i18n.php:31
+msgid "Unpaid"
+msgstr ""
+
+#: includes/class-affilio-i18n.php:32
+#: includes/class-affilio-settings.php:794
+msgid "Processing"
+msgstr ""
+
+#: includes/class-affilio-i18n.php:34
+msgid "Cancelled"
+msgstr ""
+
+#: includes/class-affilio-i18n.php:35
+msgid "Failed"
+msgstr ""
+
+#: includes/class-affilio-i18n.php:36
+msgid "Requested"
+msgstr ""
+
+#: includes/class-affilio-i18n.php:37
+msgid "Approved"
+msgstr ""
+
+#: includes/class-affilio-i18n.php:38
+msgid "Refunded"
+msgstr ""
+
+#: includes/class-affilio-i18n.php:55
+msgid "Manual referral"
+msgstr ""
+
+#: includes/class-affilio-i18n.php:56
+msgid "Imported referral"
+msgstr ""
+
+#: includes/class-affilio-i18n.php:57
+msgid "Direct attribution"
+msgstr ""
+
+#: includes/class-affilio-i18n.php:78
+#: includes/class-affilio-payouts.php:47
+msgid "PayPal"
+msgstr ""
+
+#: includes/class-affilio-i18n.php:79
+#: includes/class-affilio-i18n.php:80
+#: includes/class-affilio-payouts.php:48
+msgid "Bank transfer"
+msgstr ""
+
+#: includes/class-affilio-i18n.php:81
+msgid "Manual payment"
+msgstr ""
+
+#: includes/class-affilio-i18n.php:82
+msgid "Stripe"
+msgstr ""
+
+#: includes/class-affilio-i18n.php:171
+msgid "Unknown"
+msgstr ""
+
+#: includes/class-affilio-manual-referrals.php:40
+msgid "Select an eligible affiliate."
+msgstr ""
+
+#: includes/class-affilio-manual-referrals.php:46
+#: includes/class-affilio-manual-referrals.php:133
+msgid "A referral already exists for that order ID."
+msgstr ""
+
+#: includes/class-affilio-manual-referrals.php:81
+msgid "The manual referral could not be created."
+msgstr ""
+
+#: includes/class-affilio-manual-referrals.php:98
+msgid "Manual referral created."
+msgstr ""
+
+#: includes/class-affilio-manual-referrals.php:116
+msgid "Processing or paid referrals cannot be edited."
+msgstr ""
+
+#: includes/class-affilio-manual-referrals.php:125
+msgid "Select an active affiliate. An existing referral may remain assigned if the account was later suspended."
+msgstr ""
+
+#: includes/class-affilio-manual-referrals.php:128
+msgid "That referral status transition is not allowed."
+msgstr ""
+
+#: includes/class-affilio-manual-referrals.php:155
+msgid "The referral could not be updated."
+msgstr ""
+
+#: includes/class-affilio-manual-referrals.php:173
+msgid "Referral updated."
+msgstr ""
+
+#: includes/class-affilio-manual-referrals.php:189
+#: includes/class-affilio-manual-referrals.php:207
+msgid "The referral status could not be changed."
+msgstr ""
+
+#: includes/class-affilio-manual-referrals.php:194
+msgid "Open the referral and enter a reason before cancelling it."
+msgstr ""
+
+#: includes/class-affilio-manual-referrals.php:211
+msgid "Referral status updated."
+msgstr ""
+
+#: includes/class-affilio-manual-referrals.php:230
+msgid "Enter a valid positive WooCommerce order ID within the supported database range."
+msgstr ""
+
+#: includes/class-affilio-manual-referrals.php:242
+msgid "Enter a valid affiliate, currency, commissionable amount, and positive commission within the supported range."
+msgstr ""
+
+#: includes/class-affilio-manual-referrals.php:245
+msgid "Choose a valid editable referral status."
+msgstr ""
+
+#: includes/class-affilio-manual-referrals.php:248
+msgid "A reason is required for a cancelled referral."
+msgstr ""
+
+#: includes/class-affilio-manual-referrals.php:113
+msgid "Referral not found."
+msgstr ""
+
+#: includes/class-affilio-manual-referrals.php:292
+msgid "You do not have permission to manage referrals."
+msgstr ""
+
+#: includes/class-affilio-my-account.php:66
+#: includes/class-affilio-my-account.php:105
+msgid "Affiliate Area"
+msgstr ""
+
+#: includes/class-affilio-my-account.php:90
+msgid "The affiliate account area is currently disabled."
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:75
+#: includes/class-affilio-onboarding.php:242
+msgid "Affiliate Registration"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:81
+#: includes/class-affilio-onboarding.php:249
+msgid "Affiliate Dashboard"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:255
+msgid "Dreamax Affiliates could not prepare both pages. Please verify your page permissions and try again."
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:317
+msgid "Start"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:318
+msgid "Pages"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:319
+msgid "Program"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:320
+msgid "Launch"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:340
+msgid "WooCommerce"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:340
+msgid "Not detected"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:393
+#: includes/class-affilio-onboarding.php:412
+msgid "Create a new default page"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:500
+#: includes/class-affilio-onboarding.php:505
+#. translators: %s: formatted currency amount.
+msgid "%s per qualifying order"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:510
+#: includes/class-affilio-onboarding.php:468
+#: includes/class-affilio-settings.php:618
+msgid "First affiliate click"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:511
+#: includes/class-affilio-onboarding.php:467
+#: includes/class-affilio-settings.php:617
+msgid "Last affiliate click"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:193
+msgid "You do not have permission to access this page."
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:358
+#: includes/class-affilio-onboarding.php:562
+msgid "Ready"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:358
+msgid "Review"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:514
+msgid "Dreamax Affiliates setup is complete"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:514
+msgid "Ready to launch your affiliate program"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:562
+msgid "Needs review"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:579
+msgid "You do not have permission to perform this action."
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:649
+msgid "Settings saved."
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:163
+msgid "Dreamax Affiliates is ready to configure."
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:164
+msgid "Review the generated pages and core affiliate-program settings in the setup wizard."
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:165
+msgid "Run Setup"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:201
+msgid "Complete the essentials in a few minutes. Existing affiliate data and assigned pages are preserved unless you deliberately choose different pages."
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:343
+msgid "Welcome to Dreamax Affiliates"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:344
+msgid "This guided setup prepares the public application page, the private affiliate dashboard, your default commission, and referral tracking behavior."
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:346
+msgid "Affiliate pages"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:346
+msgid "Use safe generated pages or select your own."
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:347
+msgid "Commission basics"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:347
+msgid "Choose a percentage or flat amount per order."
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:348
+msgid "Referral tracking"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:348
+msgid "Set the cookie duration and click attribution rule."
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:350
+msgid "System readiness"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:352
+msgid "System readiness checks"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:364
+msgid "You can finish setup without WooCommerce, but sale attribution and the My Account affiliate tab will remain inactive until WooCommerce is installed and activated."
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:366
+msgid "Start Setup"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:378
+msgid "Affiliate Pages"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:379
+msgid "Dreamax Affiliates created sensible default pages. You can keep them or select existing pages; the required shortcode will be added only when it is missing."
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:399
+msgid "Visitors use this page to apply. Dreamax Affiliates adds [dreamax_affiliates_registration] only when it is missing."
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:418
+msgid "Approved affiliates use this page to create links, view results, and manage payout details."
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:424
+#: includes/class-affilio-onboarding.php:481
+#: includes/class-affilio-onboarding.php:536
+msgid "Back"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:425
+#: includes/class-affilio-onboarding.php:482
+msgid "Save and Continue"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:437
+msgid "Affiliate Program Settings"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:438
+msgid "Start with simple defaults. Every option on this screen can be changed later from Dreamax Affiliates Settings."
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:444
+msgid "Affiliate approval"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:445
+msgid "Automatically approve new applications"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:445
+msgid "Leave this off when you want to review each applicant before they can promote your store."
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:451
+#: includes/class-affilio-settings.php:674
+msgid "Percentage"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:452
+#: includes/class-affilio-settings.php:675
+msgid "Flat amount"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:456
+msgid "For percentage commissions, enter percentage points such as 20. For flat commissions, enter the amount paid per qualifying order."
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:460
+msgid "Referral duration"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:461
+#: includes/class-affilio-settings.php:605
+#: includes/class-affilio-settings.php:662
+msgid "days"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:461
+msgid "A sale can be credited when it happens within this many days after the affiliate click."
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:464
+#: includes/class-affilio-settings.php:261
+msgid "Attribution model"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:470
+msgid "Last click is the simplest default. First click keeps the earliest affiliate visit during the referral window."
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:474
+#: includes/class-affilio-settings.php:230
+msgid "WooCommerce My Account"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:476
+#: includes/class-affilio-settings.php:547
+msgid "Add an Affiliate Area tab to WooCommerce My Account"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:515
+msgid "Review the essentials below. You can return to this wizard at any time without removing affiliate data."
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:517
+msgid "Registration:"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:518
+msgid "Dashboard:"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:519
+msgid "Commission:"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:520
+msgid "Attribution:"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:523
+msgid "Recommended launch test"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:525
+msgid "Open the registration page and submit one test application."
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:526
+msgid "Approve the test affiliate and copy a referral link from the dashboard."
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:527
+msgid "Complete a staging WooCommerce order through that link and confirm the referral appears."
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:528
+msgid "Test the manual payout workflow before sending real funds."
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:537
+msgid "Finish Setup"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:542
+msgid "Open Overview"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:544
+msgid "Open Settings"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:564
+msgid "Preview"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:565
+msgid "Edit page"
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:567
+msgid "A safe default page will be created when you continue."
+msgstr ""
+
+#: includes/class-affilio-onboarding.php:323
+msgid "Setup progress"
+msgstr ""
+
+#: includes/class-affilio-payout-requests.php:45
+msgid "Payout requests are currently disabled."
+msgstr ""
+
+#: includes/class-affilio-payout-requests.php:50
+msgid "Only active affiliates can request a payout."
+msgstr ""
+
+#: includes/class-affilio-payout-requests.php:63
+#. translators: 1: minimum amount, 2: currency.
+msgid "Your available balance must be at least %1$s %2$s before requesting payment."
+msgstr ""
+
+#: includes/class-affilio-payout-requests.php:71
+msgid "You already have an open payout request for this currency."
+msgstr ""
+
+#: includes/class-affilio-payout-requests.php:77
+msgid "Save valid payout details before requesting payment."
+msgstr ""
+
+#: includes/class-affilio-payout-requests.php:97
+msgid "The payout request could not be created. Please try again."
+msgstr ""
+
+#: includes/class-affilio-payout-requests.php:102
+msgid "Your payout request was submitted."
+msgstr ""
+
+#: includes/class-affilio-payout-requests.php:117
+#: includes/class-affilio-payout-requests.php:198
+#: includes/class-affilio-payout-requests.php:217
+msgid "That payout request is no longer open."
+msgstr ""
+
+#: includes/class-affilio-payout-requests.php:125
+msgid "The affiliate no longer has enough eligible unpaid commission for this request."
+msgstr ""
+
+#: includes/class-affilio-payout-requests.php:153
+msgid "The request changed while it was being approved. The new payout was cancelled."
+msgstr ""
+
+#: includes/class-affilio-payout-requests.php:158
+msgid "Payout request approved and payout batch created."
+msgstr ""
+
+#: includes/class-affilio-payout-requests.php:184
+msgid "That payout request cannot be cancelled."
+msgstr ""
+
+#: includes/class-affilio-payout-requests.php:202
+msgid "Payout request cancelled."
+msgstr ""
+
+#: includes/class-affilio-payout-requests.php:221
+msgid "Enter a reason before rejecting a payout request."
+msgstr ""
+
+#: includes/class-affilio-payout-requests.php:236
+msgid "That payout request changed before it could be reviewed."
+msgstr ""
+
+#: includes/class-affilio-payout-requests.php:240
+msgid "Payout request rejected."
+msgstr ""
+
+#: includes/class-affilio-payout-requests.php:262
+msgid "You do not have permission to manage payout requests."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:49
+msgid "Other / manual"
+msgstr ""
+
+#: includes/class-affilio-payouts.php:74
+msgid "Select at least one unpaid referral."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:78
+msgid "Create payout batches with no more than 5,000 referrals at a time."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:84
+msgid "One or more selected referrals no longer exist. Refresh the page and try again."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:91
+msgid "One or more selected referrals are already paid, cancelled, or included in another payout."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:95
+msgid "Payout batches can only include referrals with a positive commission amount."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:101
+msgid "A selected referral is linked to a missing affiliate."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:138
+#. translators: %s: affiliate name.
+msgid "Payout details are missing for %s. Update the affiliate profile before creating this batch."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:160
+msgid "The payout record could not be created."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:167
+msgid "The selected referrals changed while the payout was being created. No changes were saved."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:216
+#: includes/class-affilio-payouts.php:343
+msgid "Invalid payout."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:221
+msgid "Only processing payouts can be marked as paid."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:228
+msgid "This payout has no linked referrals."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:245
+msgid "This payout has no positive linked commission."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:264
+msgid "This payout changed before it could be completed. Refresh and try again."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:286
+msgid "The payout could not be completed. No changes were saved."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:316
+msgid "Enter a failure reason before marking a payout as failed."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:335
+msgid "Invalid payout status transition."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:348
+msgid "Only processing payouts can be closed."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:362
+msgid "This payout changed before it could be closed. Refresh and try again."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:381
+msgid "The payout could not be closed. No changes were saved."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:407
+msgid "The referral is not inside an open payout."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:422
+msgid "The linked payout is no longer open."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:434
+msgid "The referral changed before it could be adjusted."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:462
+msgid "The payout total could not be recalculated."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:562
+#. translators: %s: payout batch key.
+msgid "Payout batch %s was created. Review each payout and mark it paid after sending the funds."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:586
+msgid "Payout marked as paid and linked referrals updated."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:605
+msgid "Payout cancelled. Linked referrals are unpaid again."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:626
+msgid "Payout marked as failed. Linked referrals are unpaid and can be included in a new payout."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:676
+msgid "Affiliate details updated."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:694
+msgid "Invalid affiliate."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:706
+msgid "Enter a valid payout/contact email address."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:710
+msgid "Enter the payout account details or instructions for the selected method."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:732
+msgid "Enter a valid non-negative commission rate."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:745
+msgid "Affiliate details could not be saved."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:544
+#: includes/class-affilio-payouts.php:796
+msgid "You do not have permission to manage payouts."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:640
+#: includes/class-affilio-reports.php:160
+msgid "Please log in first."
+msgstr ""
+
+#: includes/class-affilio-payouts.php:647
+msgid "Affiliate profile not found."
+msgstr ""
+
+#: includes/class-affilio-privacy.php:42
+#: includes/class-affilio-privacy.php:55
+msgid "Dreamax Affiliates affiliate data"
+msgstr ""
+
+#: includes/class-affilio-privacy.php:89
+msgid "Affiliate profile"
+msgstr ""
+
+#: includes/class-affilio-privacy.php:92
+msgid "Referral code"
+msgstr ""
+
+#: includes/class-affilio-privacy.php:95
+msgid "Payout email"
+msgstr ""
+
+#: includes/class-affilio-privacy.php:96
+msgid "Payout details"
+msgstr ""
+
+#: includes/class-affilio-privacy.php:102
+msgid "Registration date"
+msgstr ""
+
+#: includes/class-affilio-privacy.php:116
+msgid "Affiliate activity history"
+msgstr ""
+
+#: includes/class-affilio-privacy.php:134
+msgid "Affiliate payouts"
+msgstr ""
+
+#: includes/class-affilio-privacy.php:158
+msgid "Affiliate payout requests"
+msgstr ""
+
+#: includes/class-affilio-privacy.php:165
+msgid "Request note"
+msgstr ""
+
+#: includes/class-affilio-privacy.php:181
+msgid "Affiliate referrals"
+msgstr ""
+
+#: includes/class-affilio-privacy.php:184
+#: includes/class-affilio-reports.php:262
+msgid "Order ID"
+msgstr ""
+
+#: includes/class-affilio-privacy.php:185
+msgid "Order amount"
+msgstr ""
+
+#: includes/class-affilio-privacy.php:263
+msgid "Affiliate payout, payout-request, application, website, status-reason, and audit-detail fields were erased or anonymized. Referral and payout ledger entries were retained for accounting and program-integrity purposes."
+msgstr ""
+
+#: includes/class-affilio-privacy.php:279
+msgid "When visitors use an affiliate referral link, Dreamax Affiliates stores an opaque referral cookie and records the landing page, referring page, timestamp, optional campaign label, an anonymized IP address, and a site-specific one-way visitor hash for referral attribution, unique-visitor reporting, and fraud prevention. The visitor hash cannot be used to recover the raw IP address or user agent and is cleared with retained IP data after the configured retention period. Affiliate applications store the applicant’s payout method, payout details, payout email, website, promotion method, social profile, and application message when enabled. Payout and payout-request records store payment status, amount, notes, and a destination snapshot. Referral, commission, and payout accounting records may be retained for accounting and program-integrity purposes. Dreamax Affiliates preserves its program data when the plugin is deleted unless a site administrator explicitly enables the destructive delete-on-uninstall setting."
+msgstr ""
+
+#: includes/class-affilio-registration.php:116
+#. translators: %s: privacy policy link.
+msgid "I confirm that the information is accurate and agree to the site’s %s."
+msgstr ""
+
+#: includes/class-affilio-registration.php:148
+msgid "Unable to process the application."
+msgstr ""
+
+#: includes/class-affilio-registration.php:152
+msgid "Please accept the terms and privacy notice before applying."
+msgstr ""
+
+#: includes/class-affilio-registration.php:166
+msgid "Please enter a valid payout email address."
+msgstr ""
+
+#: includes/class-affilio-registration.php:170
+msgid "Please enter the payout account details for your selected method."
+msgstr ""
+
+#: includes/class-affilio-registration.php:176
+msgid "Too many application attempts. Please wait and try again later."
+msgstr ""
+
+#: includes/class-affilio-registration.php:187
+msgid "You have already applied to the affiliate program."
+msgstr ""
+
+#: includes/class-affilio-registration.php:228
+msgid "Something went wrong saving your application. Please try again."
+msgstr ""
+
+#: includes/class-affilio-registration.php:251
+msgid "You are now an affiliate! Open your affiliate area to get your referral link."
+msgstr ""
+
+#: includes/class-affilio-registration.php:252
+msgid "Thanks! Your application is under review."
+msgstr ""
+
+#: includes/class-affilio-registration.php:279
+msgid "Please enter a valid name and email address."
+msgstr ""
+
+#: includes/class-affilio-registration.php:283
+msgid "An account with that email already exists. Please log in first."
+msgstr ""
+
+#: includes/class-affilio-registration.php:290
+msgid "Could not create your account. Please try again."
+msgstr ""
+
+#: includes/class-affilio-registration.php:364
+msgid "The main website or channel where you plan to promote products."
+msgstr ""
+
+#: includes/class-affilio-registration.php:371
+msgid "How will you promote us?"
+msgstr ""
+
+#: includes/class-affilio-registration.php:372
+msgid "Briefly describe your audience and promotion method."
+msgstr ""
+
+#: includes/class-affilio-registration.php:379
+msgid "Primary social profile"
+msgstr ""
+
+#: includes/class-affilio-registration.php:380
+msgid "Optional public profile URL."
+msgstr ""
+
+#: includes/class-affilio-registration.php:388
+msgid "Share any additional information that may help us review your application."
+msgstr ""
+
+#: includes/class-affilio-registration.php:480
+#. translators: %s: field label.
+msgid "%s is required."
+msgstr ""
+
+#: includes/class-affilio-registration.php:39
+#. translators: %s: current application status (pending, active, or rejected).
+msgid "You have already applied to the affiliate program. Current status: %s"
+msgstr ""
+
+#: includes/class-affilio-registration.php:117
+msgid "privacy policy"
+msgstr ""
+
+#: includes/class-affilio-registration.php:64
+msgid "Required fields"
+msgstr ""
+
+#: includes/class-affilio-registration.php:70
+msgid "Your name"
+msgstr ""
+
+#: includes/class-affilio-registration.php:75
+msgid "Email address"
+msgstr ""
+
+#: includes/class-affilio-registration.php:83
+msgid "Preferred payout method"
+msgstr ""
+
+#: includes/class-affilio-registration.php:103
+msgid "Company fax"
+msgstr ""
+
+#: includes/class-affilio-registration.php:122
+msgid "I confirm that the information is accurate and agree to the site’s terms and privacy practices."
+msgstr ""
+
+#: includes/class-affilio-reports.php:229
+msgid "Referrer URL"
+msgstr ""
+
+#: includes/class-affilio-reports.php:262
+msgid "Referral ID"
+msgstr ""
+
+#: includes/class-affilio-reports.php:262
+msgid "Paid Date"
+msgstr ""
+
+#: includes/class-affilio-reports.php:143
+msgid "You do not have permission to export affiliate reports."
+msgstr ""
+
+#: includes/class-affilio-reports.php:165
+msgid "An active affiliate account is required."
+msgstr ""
+
+#: includes/class-affilio-reports.php:186
+msgid "Invalid report type."
+msgstr ""
+
+#: includes/class-affilio-reports.php:201
+msgid "The export file could not be opened."
+msgstr ""
+
+#: includes/class-affilio-settings.php:207
+msgid "Pages and Account Integration"
+msgstr ""
+
+#: includes/class-affilio-settings.php:238
+msgid "General Settings"
+msgstr ""
+
+#: includes/class-affilio-settings.php:245
+msgid "Auto-approve new affiliates"
+msgstr ""
+
+#: includes/class-affilio-settings.php:253
+msgid "Referral cookie duration"
+msgstr ""
+
+#: includes/class-affilio-settings.php:270
+msgid "Coupon attribution priority"
+msgstr ""
+
+#: includes/class-affilio-settings.php:278
+msgid "IP privacy"
+msgstr ""
+
+#: includes/class-affilio-settings.php:286
+msgid "IP retention period"
+msgstr ""
+
+#: includes/class-affilio-settings.php:296
+#: includes/class-affilio-settings.php:673
+msgid "Default commission type"
+msgstr ""
+
+#: includes/class-affilio-settings.php:304
+#: includes/class-affilio-settings.php:686
+msgid "Default commission rate"
+msgstr ""
+
+#: includes/class-affilio-settings.php:313
+msgid "Affiliate Registration Fields"
+msgstr ""
+
+#: includes/class-affilio-settings.php:320
+msgid "Application fields"
+msgstr ""
+
+#: includes/class-affilio-settings.php:328
+msgid "Commission Approval"
+msgstr ""
+
+#: includes/class-affilio-settings.php:335
+msgid "Qualifying order statuses"
+msgstr ""
+
+#: includes/class-affilio-settings.php:344
+msgid "Affiliate Payout Requests"
+msgstr ""
+
+#: includes/class-affilio-settings.php:351
+msgid "Payout requests"
+msgstr ""
+
+#: includes/class-affilio-settings.php:359
+msgid "Minimum payout threshold"
+msgstr ""
+
+#: includes/class-affilio-settings.php:367
+msgid "Email Notifications"
+msgstr ""
+
+#: includes/class-affilio-settings.php:375
+msgid "Essential notifications"
+msgstr ""
+
+#: includes/class-affilio-settings.php:383
+msgid "Data Removal"
+msgstr ""
+
+#: includes/class-affilio-settings.php:390
+msgid "Delete data on uninstall"
+msgstr ""
+
+#: includes/class-affilio-settings.php:432
+msgid "The selected Dreamax Affiliates page is not valid."
+msgstr ""
+
+#: includes/class-affilio-settings.php:450
+msgid "Dreamax Affiliates could not add the required shortcode to the selected page."
+msgstr ""
+
+#: includes/class-affilio-settings.php:574
+#. translators: %s: shortcode tag required on this page, e.g. "dreamax_affiliates_registration".
+msgid "The required [%s] shortcode is added automatically when it is missing."
+msgstr ""
+
+#: includes/class-affilio-settings.php:789
+#: includes/class-affilio-settings.php:796
+msgid "Completed"
+msgstr ""
+
+#: includes/class-affilio-settings.php:793
+msgid "Pending payment"
+msgstr ""
+
+#: includes/class-affilio-settings.php:795
+msgid "On hold"
+msgstr ""
+
+#: includes/class-affilio-settings.php:835
+#. translators: %s: registration field label, e.g. "Website URL".
+msgid "Enable %s"
+msgstr ""
+
+#: includes/class-affilio-settings.php:841
+#. translators: %s: registration field label, e.g. "Website URL".
+msgid "Require %s"
+msgstr ""
+
+#: includes/class-affilio-settings.php:845
+#. translators: %s: registration field label, e.g. "Website URL".
+msgid "Display order for %s"
+msgstr ""
+
+#: includes/class-affilio-settings.php:521
+msgid "Choose the standalone affiliate pages and optionally expose the same experience inside WooCommerce My Account."
+msgstr ""
+
+#: includes/class-affilio-settings.php:521
+msgid "Open setup wizard"
+msgstr ""
+
+#: includes/class-affilio-settings.php:569
+msgid "Select a page"
+msgstr ""
+
+#: includes/class-affilio-settings.php:695
+msgid "Dreamax Affiliates preserves program data by default when the plugin is deleted, protecting against accidental loss."
+msgstr ""
+
+#: includes/class-affilio-settings.php:806
+msgid "Choose the basic information collected with each affiliate application. Existing honeypot, consent, nonce, and rate-limit protections remain active. An anti-spam filter is available for approved CAPTCHA integrations."
+msgstr ""
+
+#: includes/class-affilio-settings.php:818
+msgid "Affiliate application field configuration"
+msgstr ""
+
+#: includes/class-affilio-settings.php:818
+msgid "Field"
+msgstr ""
+
+#: includes/class-affilio-settings.php:818
+msgid "Enabled"
+msgstr ""
+
+#: includes/class-affilio-settings.php:818
+msgid "Required"
+msgstr ""
+
+#: includes/class-affilio-settings.php:861
+msgid "Choose which WooCommerce order statuses create an immediately payout-eligible referral in the Free plugin."
+msgstr ""
+
+#: includes/class-affilio-settings.php:884
+msgid "Allow active affiliates to request their available unpaid balance. Administrators review and pay requests manually."
+msgstr ""
+
+#: includes/class-affilio-settings.php:894
+msgid "Enable affiliate payout requests"
+msgstr ""
+
+#: includes/class-affilio-settings.php:905
+msgid "The threshold is evaluated separately for each referral currency."
+msgstr ""
+
+#: includes/class-affilio-settings.php:915
+msgid "Choose which essential application, referral, and payout emails Dreamax Affiliates sends. Free uses fixed, translatable plain-text content; a separately distributed add-on may provide editable templates."
+msgstr ""
+
+#: includes/class-affilio-settings.php:926
+msgid "Essential email notifications"
+msgstr ""
+
+#: includes/class-affilio-settings.php:933
+msgid "Email delivery depends on the site mail configuration. Existing custom subjects and messages are preserved in the database for a compatible add-on but are not executed or editable by Dreamax Affiliates Free."
+msgstr ""
+
+#: includes/class-affilio-settings.php:593
+msgid "Automatically approve new affiliate applications instead of requiring manual review"
+msgstr ""
+
+#: includes/class-affilio-settings.php:606
+msgid "How long a referral click remains eligible for commission."
+msgstr ""
+
+#: includes/class-affilio-settings.php:620
+msgid "Choose whether a later affiliate link replaces an existing valid attribution."
+msgstr ""
+
+#: includes/class-affilio-settings.php:634
+msgid "Assigned coupon overrides referral cookie"
+msgstr ""
+
+#: includes/class-affilio-settings.php:635
+msgid "Referral cookie overrides assigned coupon"
+msgstr ""
+
+#: includes/class-affilio-settings.php:637
+msgid "Controls attribution when an order has both a tracked referral visit and an affiliate-assigned coupon."
+msgstr ""
+
+#: includes/class-affilio-settings.php:650
+msgid "Anonymize visitor IP addresses before storing them"
+msgstr ""
+
+#: includes/class-affilio-settings.php:663
+msgid "Stored IP values are cleared after this period while visit totals remain available."
+msgstr ""
+
+#: includes/class-affilio-settings.php:687
+msgid "A percentage (e.g. 20 for 20%) or a flat currency amount, depending on the type above. Individual affiliates can still override this."
+msgstr ""
+
+#: includes/class-affilio-settings.php:707
+msgid "Permanently delete Dreamax Affiliates tables, settings, creatives, and plugin-owned metadata when the plugin is deleted"
+msgstr ""
+
+#: includes/class-affilio-settings.php:709
+msgid "This cannot be undone."
+msgstr ""
+
+#: includes/class-affilio-settings.php:709
+msgid "WordPress user accounts are never deleted."
+msgstr ""
+
+#: includes/class-affilio-upgrade-page.php:40
+#. translators: %s: installed Dreamax Affiliates Pro add-on version number, e.g. "1.4.0".
+msgid "The installed Pro add-on reports version %s."
+msgstr ""
+
+#: includes/class-affilio-upgrade-page.php:40
+#. translators: %s: installed Dreamax Affiliates Pro add-on version number, e.g. "1.4.0".
+msgid "unknown"
+msgstr ""
+
+#: includes/class-affilio-upgrade-page.php:23
+msgid "You do not have permission to view this page."
+msgstr ""
+
+#: includes/class-affilio-upgrade-page.php:38
+msgid "Pro add-on detected"
+msgstr ""
+
+#: includes/class-affilio-upgrade-page.php:38
+msgid "Free edition active"
+msgstr ""
+
+#: includes/class-affilio-upgrade-page.php:40
+#. translators: %s: installed Dreamax Affiliates Pro add-on version number, e.g. "1.4.0".
+msgid "No Pro add-on was detected. Nothing on this page disables or limits the Free workflows."
+msgstr ""
+
+#: includes/class-affilio-upgrade-page.php:33
+msgid "Dreamax Affiliates Free remains a complete, independently useful affiliate program. Pro is a separately distributed add-on for advanced workflows and is never required to keep existing Free data or features working."
+msgstr ""
+
+#: includes/class-affilio-upgrade-page.php:46
+msgid "Included in Free"
+msgstr ""
+
+#: includes/class-affilio-upgrade-page.php:48
+msgid "Unlimited affiliate records and application review"
+msgstr ""
+
+#: includes/class-affilio-upgrade-page.php:49
+msgid "Referral links, first/last-click attribution, and coupons"
+msgstr ""
+
+#: includes/class-affilio-upgrade-page.php:50
+msgid "Percentage, flat-order, and per-affiliate commission rates"
+msgstr ""
+
+#: includes/class-affilio-upgrade-page.php:51
+msgid "Manual referrals, payout requests, and manual payout batches"
+msgstr ""
+
+#: includes/class-affilio-upgrade-page.php:52
+msgid "Basic reports, CSV exports, creatives, QR codes, and sharing"
+msgstr ""
+
+#: includes/class-affilio-upgrade-page.php:53
+msgid "System Status, attribution testing, privacy, and lifecycle safeguards"
+msgstr ""
+
+#: includes/class-affilio-upgrade-page.php:58
+msgid "Advanced Pro scope"
+msgstr ""
+
+#: includes/class-affilio-upgrade-page.php:59
+msgid "The audited product boundary reserves these workflows for separately maintained add-ons. Availability depends on the published Pro release."
+msgstr ""
+
+#: includes/class-affilio-upgrade-page.php:69
+msgid "A restrained upgrade path"
+msgstr ""
+
+#: includes/class-affilio-upgrade-page.php:71
+msgid "No dashboard banners, pop-ups, recurring notices, or feature lock screens."
+msgstr ""
+
+#: includes/class-affilio-upgrade-page.php:72
+msgid "No Pro implementation or dormant premium code is bundled in the WordPress.org Free package."
+msgstr ""
+
+#: includes/class-affilio-upgrade-page.php:73
+msgid "Free and shared data remains preserved when an add-on is installed, removed, or upgraded."
+msgstr ""
+
+#: includes/class-affilio-upgrade-page.php:76
+msgid "Learn About Dreamax Affiliates Pro"
+msgstr ""
+
+#: includes/class-affilio-upgrade-page.php:78
+msgid "A verified product URL has not been configured in this package. The upgrade button will appear only when an approved URL is supplied."
+msgstr ""
+
+#: includes/class-affilio.php:245
+msgid "Dreamax Affiliates is a singleton and cannot be cloned."
+msgstr ""
+
+#: includes/class-affilio.php:254
+msgid "Dreamax Affiliates is a singleton and cannot be unserialized."
+msgstr ""
+
+#: includes/class-affilio.php:446
+msgid "Dreamax Affiliates is active, but no supported e-commerce plugin (currently: WooCommerce) was detected, so order tracking is disabled until one is installed and active."
+msgstr ""
+
+#: includes/database/class-affilio-db-referrals.php:731
+msgid "Released when Dreamax Affiliates Free removed holding-period automation."
+msgstr ""
+
+#: includes/database/class-affilio-db-referrals.php:816
+msgid "Commission holding period completed."
+msgstr ""
+
+#: includes/integrations/class-affilio-integration-woocommerce.php:69
+msgid "Dreamax Affiliates: Affiliate attribution was skipped because coupons assigned to different affiliates were used on this order."
+msgstr ""
+
+#: includes/integrations/class-affilio-integration-woocommerce.php:268
+#. translators: %d: refund ID.
+msgid "Dreamax Affiliates: Refund #%d was created after the affiliate commission had been paid. Review the payout manually."
+msgstr ""
+
+#: includes/integrations/class-affilio-integration-woocommerce.php:294
+msgid "Dreamax Affiliates: The unpaid affiliate referral was cancelled because the refund removed all commissionable value."
+msgstr ""
+
+#: includes/integrations/class-affilio-integration-woocommerce.php:303
+#: includes/integrations/class-affilio-integration-woocommerce.php:313
+msgid "Dreamax Affiliates: The partial-refund commission could not be updated automatically. Review the open payout manually."
+msgstr ""
+
+#: includes/integrations/class-affilio-integration-woocommerce.php:322
+#. translators: %d: refund ID.
+msgid "Dreamax Affiliates: Refund #%d arrived while the affiliate payout was completing. The commission is already paid; review the payout manually."
+msgstr ""
+
+#: includes/integrations/class-affilio-integration-woocommerce.php:346
+#. translators: 1: old commission, 2: new commission, 3: currency.
+msgid "Dreamax Affiliates: Partial refund adjusted affiliate commission from %1$s to %2$s %3$s."
+msgstr ""
+
+#: includes/integrations/class-affilio-integration-woocommerce.php:394
+msgid "The WooCommerce order was cancelled, failed, or fully refunded."
+msgstr ""
+
+#: includes/integrations/class-affilio-integration-woocommerce.php:443
+msgid "Dreamax Affiliates: This order was cancelled or fully refunded after the affiliate commission had been paid. Review the payout manually."
+msgstr ""
+
+#: src/Infrastructure/WordPress/MultisiteManager.php:313
+#. translators: 1: processed site count, 2: total site count.
+msgid "Dreamax Affiliates network synchronization is in progress: %1$d of %2$d sites processed."
+msgstr ""
+
+#: src/Infrastructure/WordPress/MultisiteManager.php:273
+msgid "You do not have permission to synchronize Dreamax Affiliates across this network."
+msgstr ""
+
+#: src/Infrastructure/WordPress/MultisiteManager.php:318
+msgid "Process next batch"
+msgstr ""
+
+#: src/Infrastructure/WordPress/UpgradeCoordinator.php:123
+msgid "Dreamax Affiliates has a pending database upgrade. Keep this administration page open and refresh once if the notice does not clear."
+msgstr ""
+
+#: uninstall.php:43
+msgid "Dreamax Affiliates is still cleaning this network in safe batches. Run the plugin deletion action again to continue; completed sites will not be repeated."
+msgstr ""
+
+#: uninstall.php:44
+msgid "Dreamax Affiliates network cleanup incomplete"
+msgstr ""

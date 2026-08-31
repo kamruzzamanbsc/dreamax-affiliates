@@ -1,0 +1,1115 @@
+/**
+ * Dreamax Affiliates admin screen styles.
+ */
+
+.affilio-status {
+	display: inline-block;
+	padding: 2px 10px;
+	border-radius: 10px;
+	font-size: 12px;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+.affilio-status-pending {
+	background: #fff8e1;
+	color: #8a6d00;
+}
+
+.affilio-status-active {
+	background: #eafaea;
+	color: #1e7e1e;
+}
+
+.affilio-status-rejected,
+.affilio-status-cancelled {
+	background: #fbeaea;
+	color: #a02222;
+}
+
+.affilio-status-unpaid {
+	background: #fff8e1;
+	color: #8a6d00;
+}
+
+.affilio-status-paid {
+	background: #eafaea;
+	color: #1e7e1e;
+}
+
+.affilio-summary {
+	font-size: 14px;
+	padding: 10px 0;
+}
+
+/* Payout workflow
+------------------------------------------------ */
+.affilio-status-processing {
+	background: #e8f2ff;
+	color: #135e96;
+}
+
+.affilio-status-failed {
+	background: #fbeaea;
+	color: #a02222;
+}
+
+.affilio-payout-destination {
+	display: inline-block;
+	max-width: 360px;
+	white-space: pre-line;
+	overflow: visible;
+	text-overflow: clip;
+	vertical-align: top;
+	line-height: 1.45;
+	word-break: break-word;
+	overflow-wrap: anywhere;
+}
+
+.affilio-payout-summary-table {
+	max-width: 900px;
+	margin: 18px 0 24px;
+}
+
+.affilio-payout-summary-table th {
+	width: 180px;
+}
+
+.affilio-destination-pre {
+	white-space: pre-wrap;
+	word-break: break-word;
+	margin: 0;
+	font-family: inherit;
+}
+
+.affilio-payout-actions {
+	max-width: 900px;
+	margin-top: 24px;
+	padding: 20px;
+	background: #fff;
+	border: 1px solid #dcdcde;
+}
+
+.affilio-payout-actions form + form {
+	margin-top: 18px;
+	padding-top: 18px;
+	border-top: 1px solid #dcdcde;
+}
+
+/* Reports and list filters
+------------------------------------------------ */
+.affilio-report-filters {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: end;
+	gap: 12px;
+	margin: 16px 0 20px;
+	padding: 16px;
+	background: #fff;
+	border: 1px solid #dcdcde;
+}
+
+.affilio-report-filters label {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	font-weight: 600;
+}
+
+.affilio-report-filters select,
+.affilio-report-filters input {
+	min-width: 150px;
+}
+
+.affilio-report-filter-actions {
+	display: flex;
+	gap: 8px;
+}
+
+.affilio-report-cards {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	gap: 12px;
+	margin: 18px 0;
+}
+
+.affilio-report-card {
+	padding: 18px;
+	background: #fff;
+	border: 1px solid #dcdcde;
+	border-radius: 3px;
+}
+
+.affilio-report-card dd {
+	display: block;
+	font-size: 22px;
+	line-height: 1.25;
+	word-break: break-word;
+}
+
+.affilio-report-card dt {
+	display: block;
+	margin-top: 6px;
+	color: #646970;
+}
+
+.affilio-export-actions {
+	display: flex;
+	gap: 8px;
+	margin: 12px 0 20px;
+}
+
+.affilio-report-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+	gap: 18px;
+	margin: 20px 0 28px;
+}
+
+.affilio-report-panel {
+	padding: 16px;
+	background: #fff;
+	border: 1px solid #dcdcde;
+}
+
+.affilio-report-panel h2 {
+	margin-top: 0;
+}
+
+/* Setup wizard
+------------------------------------------------ */
+.affilio-setup-wrap {
+	max-width: 980px;
+}
+
+.affilio-setup-progress {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(120px, 1fr));
+	gap: 8px;
+	margin: 20px 0;
+	padding: 0;
+	list-style: none;
+}
+
+.affilio-setup-progress li {
+	margin: 0;
+	padding: 12px;
+	background: #f0f0f1;
+	border: 1px solid #dcdcde;
+	color: #50575e;
+}
+
+.affilio-setup-progress li span {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	margin-right: 5px;
+	border-radius: 50%;
+	background: #dcdcde;
+	font-weight: 700;
+}
+
+.affilio-setup-progress .is-current {
+	border-color: #2271b1;
+	background: #fff;
+	color: #1d2327;
+}
+
+.affilio-setup-progress .is-current span,
+.affilio-setup-progress .is-complete span {
+	background: #2271b1;
+	color: #fff;
+}
+
+.affilio-setup-card {
+	padding: 24px;
+	background: #fff;
+	border: 1px solid #dcdcde;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+.affilio-setup-card h2 {
+	margin-top: 0;
+}
+
+.affilio-system-checks {
+	max-width: 680px;
+	margin: 20px 0;
+}
+
+.affilio-system-checks th {
+	width: 220px;
+}
+
+.affilio-check-pass,
+.affilio-check-warn {
+	display: inline-block;
+	padding: 2px 9px;
+	border-radius: 10px;
+	font-weight: 600;
+}
+
+.affilio-check-pass {
+	background: #eafaea;
+	color: #1e7e1e;
+}
+
+.affilio-check-warn {
+	background: #fff8e1;
+	color: #8a6d00;
+}
+
+.affilio-setup-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	align-items: center;
+	margin-top: 24px;
+}
+
+.affilio-setup-summary {
+	margin: 18px 0;
+	padding: 16px 20px 16px 38px;
+	background: #f6f7f7;
+	border-left: 4px solid #2271b1;
+}
+
+.affilio-setup-summary li {
+	margin-bottom: 8px;
+	word-break: break-word;
+}
+
+@media screen and (max-width: 782px) {
+	.affilio-setup-progress {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+/* Coupon and administrative tools
+------------------------------------------------ */
+.affilio-admin-card {
+	max-width: 900px;
+	padding: 20px;
+	margin: 18px 0;
+	background: #fff;
+	border: 1px solid #dcdcde;
+}
+
+.affilio-tools-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+	gap: 18px;
+	max-width: 1100px;
+}
+
+.affilio-tools-grid .affilio-admin-card {
+	margin: 0;
+	max-width: none;
+}
+
+.affilio-tools-grid form {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 12px;
+}
+
+/* Step 10A: affiliate administration, registration settings, and emails
+------------------------------------------------ */
+.affilio-admin-form {
+	max-width: 1100px;
+}
+
+.affilio-admin-form > form,
+.affilio-email-template,
+.affilio-registration-fields-table {
+	padding: 20px;
+	margin: 18px 0;
+	background: #fff;
+	border: 1px solid #dcdcde;
+}
+
+.affilio-admin-form h2 {
+	margin-top: 26px;
+}
+
+.affilio-admin-form > form > h2:first-child {
+	margin-top: 0;
+}
+
+.affilio-status--suspended,
+.affilio-status-suspended {
+	color: #8a6d00;
+	font-weight: 600;
+}
+
+.affilio-status--banned,
+.affilio-status-banned,
+.affilio-status--rejected,
+.affilio-status-rejected {
+	color: #b32d2e;
+	font-weight: 600;
+}
+
+.affilio-email-template {
+	max-width: 980px;
+}
+
+.affilio-email-template legend {
+	padding: 0 6px;
+}
+
+@media screen and (max-width: 782px) {
+	.affilio-admin-form > form,
+	.affilio-email-template,
+	.affilio-registration-fields-table {
+		padding: 14px;
+	}
+}
+
+/* Step 10B: referral and payout-request administration
+------------------------------------------------ */
+.affilio-admin-form .affilio-activity {
+	padding: 20px;
+	border: 1px solid #dcdcde;
+	background: #fff;
+}
+
+.affilio-payout-request-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	align-items: flex-start;
+}
+
+.affilio-payout-request-actions form {
+	margin: 0;
+}
+
+.affilio-inline-checkbox {
+	display: inline-block;
+	margin: 0 14px 8px 0;
+}
+
+@media screen and (max-width: 782px) {
+	.affilio-admin-form .affilio-activity {
+		padding: 14px;
+	}
+
+	.affilio-payout-request-actions {
+		align-items: stretch;
+	}
+}
+
+/* Step 11: admin accessibility, responsive layout, and high-contrast support
+------------------------------------------------ */
+.affilio-reports-page :where(a, button, input, select, textarea, summary):focus-visible,
+.affilio-admin-form :where(a, button, input, select, textarea):focus-visible,
+.affilio-setup-wrap :where(a, button, input, select, textarea):focus-visible {
+	outline: 3px solid #005fcc;
+	outline-offset: 2px;
+	box-shadow: none;
+}
+
+.affilio-status::before {
+	content: "";
+	display: inline-block;
+	width: 0.55em;
+	height: 0.55em;
+	margin-inline-end: 0.4em;
+	border: 1px solid currentColor;
+	border-radius: 50%;
+	background: currentColor;
+}
+
+.affilio-report-panel,
+.affilio-admin-card,
+.affilio-payout-actions {
+	box-sizing: border-box;
+}
+
+.affilio-report-filters label,
+.affilio-admin-form label {
+	max-width: 70ch;
+}
+
+@media screen and (max-width: 782px) {
+	.affilio-report-filters,
+	.affilio-report-filter-actions,
+	.affilio-export-actions {
+		display: grid;
+		grid-template-columns: 1fr;
+		align-items: stretch;
+	}
+
+	.affilio-report-filters select,
+	.affilio-report-filters input,
+	.affilio-report-filter-actions .button,
+	.affilio-export-actions .button {
+		width: 100%;
+		max-width: none;
+	}
+
+	.affilio-report-grid,
+	.affilio-tools-grid {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+@media (prefers-contrast: more) {
+	.affilio-report-card,
+	.affilio-report-panel,
+	.affilio-admin-card,
+	.affilio-admin-form > form,
+	.affilio-email-template,
+	.affilio-registration-fields-table {
+		border: 2px solid currentColor;
+	}
+}
+
+@media (forced-colors: active) {
+	.affilio-status,
+	.affilio-check-pass,
+	.affilio-check-warn {
+		border: 1px solid ButtonText;
+		forced-color-adjust: auto;
+	}
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.affilio-reports-page *,
+	.affilio-admin-form *,
+	.affilio-setup-wrap * {
+		transition-duration: 0.01ms !important;
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+	}
+}
+
+.affilio-payout-requests-page :where(a, button, input, select, textarea):focus-visible,
+.affilio-tools-page :where(a, button, input, select, textarea):focus-visible {
+	outline: 3px solid #005fcc;
+	outline-offset: 2px;
+	box-shadow: none;
+}
+
+.affilio-inline-filter {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	align-items: center;
+	margin-block: 16px;
+}
+
+.affilio-admin-table-wrap {
+	max-width: 100%;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+.affilio-payout-requests-page .widefat th,
+.affilio-payout-requests-page .widefat td {
+	vertical-align: middle;
+}
+
+.affilio-payout-requests-page .affilio-col-affiliate {
+	min-width: 150px;
+}
+
+.affilio-payout-requests-page .affilio-col-amount {
+	width: 90px;
+	white-space: nowrap;
+}
+
+.affilio-payout-requests-page .affilio-col-method {
+	min-width: 230px;
+	max-width: 300px;
+}
+
+.affilio-payout-requests-page .affilio-col-status,
+.affilio-payout-requests-page .affilio-col-date {
+	width: 120px;
+	white-space: nowrap;
+}
+
+.affilio-payout-requests-page .affilio-col-notes {
+	min-width: 180px;
+	max-width: 260px;
+}
+
+.affilio-payout-requests-page .affilio-col-actions {
+	width: 330px;
+	min-width: 300px;
+	max-width: 320px;
+}
+
+.affilio-payout-requests-page .affilio-payment-meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+	margin-top: 4px;
+	color: #50575e;
+	font-size: 12px;
+	line-height: 1.35;
+	word-break: break-word;
+}
+
+.affilio-payout-requests-page .affilio-payment-meta-label {
+	font-weight: 600;
+	color: #3c434a;
+}
+
+.affilio-payout-requests-page .affilio-payment-destination {
+	display: inline-block;
+	color: #50575e;
+	white-space: pre-line;
+	line-height: 1.5;
+}
+
+.affilio-payout-request-actions {
+	display: grid;
+	gap: 10px;
+	width: 100%;
+	max-width: 350px;
+}
+
+.affilio-payout-request-actions .affilio-payout-request-action-form {
+	display: grid;
+	grid-template-columns: minmax(180px, 1fr) auto;
+	grid-template-areas:
+		"label label"
+		"field button";
+	gap: 5px 8px;
+	align-items: end;
+	margin: 0;
+}
+
+.affilio-payout-request-actions label {
+	grid-area: label;
+	margin: 0;
+	font-weight: 600;
+	line-height: 1.3;
+}
+
+.affilio-payout-request-actions input.regular-text {
+	grid-area: field;
+	width: 100%;
+	min-width: 0;
+	max-width: 240px;
+}
+
+.affilio-payout-requests-page .affilio-payout-request-actions input[type="submit"].button {
+	grid-area: button;
+	display: inline-flex !important;
+	align-items: center;
+	justify-content: center;
+	justify-self: start;
+	width: max-content !important;
+	min-width: 84px !important;
+	max-width: 110px !important;
+	margin: 0 !important;
+	padding-inline: 14px !important;
+	white-space: nowrap;
+}
+
+.affilio-payout-request-actions .affilio-payout-reject-button {
+	color: #b32d2e;
+	border-color: #d63638;
+}
+
+.affilio-payout-request-actions .affilio-payout-reject-button:hover,
+.affilio-payout-request-actions .affilio-payout-reject-button:focus {
+	color: #8a2424;
+	border-color: #8a2424;
+}
+
+.affilio-payout-request-row-requested td {
+	padding-top: 12px;
+	padding-bottom: 12px;
+}
+
+.affilio-system-info-card textarea {
+	width: 100%;
+	min-height: 20rem;
+	resize: vertical;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+}
+
+@media screen and (max-width: 782px) {
+	.affilio-inline-filter,
+	.affilio-payout-request-actions {
+		display: grid;
+		grid-template-columns: 1fr;
+	}
+
+	.affilio-payout-requests-page .affilio-col-actions {
+		width: 300px;
+		min-width: 280px;
+	}
+
+	.affilio-payout-request-actions .affilio-payout-request-action-form {
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			"label"
+			"field"
+			"button";
+	}
+
+	.affilio-inline-filter select,
+	.affilio-inline-filter .button,
+	.affilio-payout-request-actions input.regular-text,
+	.affilio-payout-requests-page .affilio-payout-request-actions input[type="submit"].button {
+		width: 100% !important;
+		max-width: none !important;
+	}
+}
+
+
+.affilio-report-cards,
+.affilio-report-card dt,
+.affilio-report-card dd {
+	padding: 0;
+}
+
+.affilio-report-card dt,
+.affilio-report-card dd {
+	margin: 0;
+}
+
+.affilio-admin-table-wrap table {
+	min-width: 560px;
+}
+
+@media screen and (max-width: 782px) {
+	.affilio-registration-fields-table input[type="number"] {
+		min-width: 5rem;
+	}
+}
+
+/* FT-3.1: beginner overview and guided setup
+------------------------------------------------ */
+.affilio-overview-wrap,
+.affilio-setup-wrap {
+	max-width: 1180px;
+}
+
+.affilio-overview-intro,
+.affilio-setup-intro {
+	max-width: 76ch;
+	font-size: 15px;
+	color: #50575e;
+}
+
+.affilio-overview-actions,
+.affilio-setup-actions,
+.affilio-page-state {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+}
+
+.affilio-overview-grid {
+	display: grid;
+	gap: 16px;
+}
+
+.affilio-overview-metrics {
+	grid-template-columns: repeat(4, minmax(180px, 1fr));
+	margin: 22px 0;
+}
+
+.affilio-overview-metric {
+	display: grid;
+	gap: 6px;
+	min-height: 112px;
+	padding: 18px;
+	border: 1px solid #dcdcde;
+	border-radius: 6px;
+	background: #fff;
+	color: #1d2327;
+	text-decoration: none;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+.affilio-overview-metric:hover,
+.affilio-overview-metric:focus {
+	border-color: #2271b1;
+	color: #135e96;
+}
+
+.affilio-overview-metric strong {
+	font-size: 26px;
+	line-height: 1.15;
+}
+
+.affilio-overview-metric > span:last-child,
+.affilio-overview-metric-label {
+	color: #50575e;
+}
+
+.affilio-overview-metric-label {
+	font-weight: 600;
+}
+
+.affilio-overview-columns {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	margin: 0 0 16px;
+}
+
+.affilio-admin-card {
+	padding: 20px;
+	border: 1px solid #dcdcde;
+	border-radius: 6px;
+	background: #fff;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+.affilio-admin-card h2:first-child {
+	margin-top: 0;
+}
+
+.affilio-checklist,
+.affilio-task-list {
+	margin: 16px 0;
+	padding: 0;
+	list-style: none;
+}
+
+.affilio-checklist li,
+.affilio-task-list li {
+	display: flex;
+	align-items: flex-start;
+	gap: 9px;
+	margin: 0;
+	padding: 10px 0;
+	border-bottom: 1px solid #f0f0f1;
+}
+
+.affilio-checklist li:last-child,
+.affilio-task-list li:last-child {
+	border-bottom: 0;
+}
+
+.affilio-checklist .is-complete .dashicons {
+	color: #008a20;
+}
+
+.affilio-checklist .needs-action .dashicons {
+	color: #996800;
+}
+
+.affilio-empty-state {
+	padding: 14px;
+	border: 1px solid #dcdcde;
+	border-radius: 4px;
+	background: #f6f7f7;
+}
+
+.affilio-quick-links {
+	margin-top: 16px;
+}
+
+.affilio-quick-link-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(180px, 1fr));
+	gap: 12px;
+}
+
+.affilio-quick-link-grid a {
+	display: grid;
+	gap: 5px;
+	min-height: 74px;
+	padding: 14px;
+	border: 1px solid #dcdcde;
+	border-radius: 4px;
+	text-decoration: none;
+}
+
+.affilio-quick-link-grid a:hover,
+.affilio-quick-link-grid a:focus {
+	border-color: #2271b1;
+	background: #f0f6fc;
+}
+
+.affilio-quick-link-grid span {
+	color: #50575e;
+}
+
+.affilio-setup-benefits {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 12px;
+	margin: 20px 0 24px;
+}
+
+.affilio-setup-benefits > div {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 4px 10px;
+	padding: 16px;
+	border: 1px solid #dcdcde;
+	border-radius: 5px;
+	background: #f6f7f7;
+}
+
+.affilio-setup-benefits .dashicons {
+	grid-row: 1 / span 2;
+	color: #2271b1;
+}
+
+.affilio-setup-benefits > div > span:last-child {
+	color: #50575e;
+}
+
+.affilio-page-state {
+	margin-top: 10px;
+}
+
+.affilio-page-state a {
+	font-weight: 600;
+}
+
+.affilio-launch-steps {
+	margin: 20px 0;
+	padding: 18px 20px;
+	border: 1px solid #dcdcde;
+	border-radius: 5px;
+	background: #f6f7f7;
+}
+
+.affilio-launch-steps h3 {
+	margin-top: 0;
+}
+
+.affilio-launch-steps li {
+	margin-bottom: 8px;
+}
+
+@media screen and (max-width: 960px) {
+	.affilio-overview-metrics,
+	.affilio-quick-link-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media screen and (max-width: 700px) {
+	.affilio-overview-metrics,
+	.affilio-overview-columns,
+	.affilio-quick-link-grid,
+	.affilio-setup-benefits,
+	.affilio-setup-progress {
+		grid-template-columns: 1fr;
+	}
+
+	.affilio-setup-card {
+		padding: 18px;
+	}
+}
+
+/* FT-3.2: local diagnostics and restrained upgrade path
+-------------------------------------------------------- */
+.affilio-diagnostics-wrap,
+.affilio-upgrade-wrap {
+	max-width: 1180px;
+}
+
+.affilio-diagnostics-intro,
+.affilio-upgrade-intro {
+	max-width: 80ch;
+	font-size: 15px;
+	color: #50575e;
+}
+
+.affilio-diagnostics-wrap .nav-tab-wrapper {
+	margin: 22px 0 18px;
+}
+
+.affilio-diagnostics-section {
+	margin-top: 18px;
+}
+
+.affilio-diagnostics-heading,
+.affilio-status-summary,
+.affilio-upgrade-status {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.affilio-diagnostics-heading {
+	justify-content: space-between;
+}
+
+.affilio-status-summary {
+	flex-wrap: wrap;
+}
+
+.affilio-status-summary span {
+	padding: 5px 9px;
+	border-radius: 999px;
+	background: #f0f0f1;
+	font-weight: 600;
+}
+
+.affilio-status-summary .is-good,
+.affilio-status-row.is-good .dashicons,
+.affilio-test-success,
+.affilio-upgrade-status.is-active .dashicons {
+	color: #008a20;
+}
+
+.affilio-status-summary .is-warning,
+.affilio-status-row.is-warning .dashicons {
+	color: #996800;
+}
+
+.affilio-status-summary .is-critical,
+.affilio-status-row.is-critical .dashicons {
+	color: #b32d2e;
+}
+
+.affilio-status-list {
+	display: grid;
+	gap: 10px;
+	margin: 18px 0;
+}
+
+.affilio-status-row {
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr) auto;
+	align-items: center;
+	gap: 13px;
+	padding: 14px 16px;
+	border: 1px solid #dcdcde;
+	border-left-width: 4px;
+	border-radius: 5px;
+	background: #fff;
+}
+
+.affilio-status-row.is-good {
+	border-left-color: #008a20;
+}
+
+.affilio-status-row.is-warning {
+	border-left-color: #dba617;
+}
+
+.affilio-status-row.is-critical {
+	border-left-color: #b32d2e;
+}
+
+.affilio-status-row h3,
+.affilio-status-row p {
+	margin: 0;
+}
+
+.affilio-status-row p {
+	margin-top: 4px;
+	color: #50575e;
+}
+
+.affilio-support-report {
+	margin-top: 18px;
+}
+
+.affilio-support-report textarea {
+	width: 100%;
+	min-height: 270px;
+	white-space: pre;
+}
+
+.affilio-diagnostics-steps,
+.affilio-upgrade-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 16px;
+	margin-top: 18px;
+}
+
+.affilio-diagnostics-steps form,
+.affilio-diagnostics-section form {
+	margin-top: 14px;
+}
+
+.affilio-diagnostics-section select {
+	min-width: 280px;
+	margin: 0 8px;
+}
+
+.affilio-test-success {
+	display: flex;
+	align-items: flex-start;
+	gap: 6px;
+	font-weight: 600;
+}
+
+.affilio-upgrade-grid {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.affilio-upgrade-status {
+	margin: 20px 0;
+	padding: 15px 18px;
+	border: 1px solid #dcdcde;
+	border-radius: 5px;
+	background: #fff;
+}
+
+.affilio-upgrade-status p {
+	margin: 4px 0 0;
+}
+
+.affilio-feature-list,
+.affilio-upgrade-principles ul {
+	margin: 15px 0;
+	padding-left: 22px;
+}
+
+.affilio-feature-list li,
+.affilio-upgrade-principles li {
+	margin-bottom: 9px;
+}
+
+.affilio-upgrade-principles {
+	margin-top: 16px;
+}
+
+@media screen and (max-width: 900px) {
+	.affilio-diagnostics-steps {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media screen and (max-width: 700px) {
+	.affilio-diagnostics-heading,
+	.affilio-upgrade-status {
+		align-items: flex-start;
+		flex-direction: column;
+	}
+
+	.affilio-status-row {
+		grid-template-columns: auto minmax(0, 1fr);
+	}
+
+	.affilio-status-row .button {
+		grid-column: 2;
+		justify-self: start;
+	}
+
+	.affilio-upgrade-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.affilio-diagnostics-section select {
+		display: block;
+		width: 100%;
+		min-width: 0;
+		margin: 8px 0;
+	}
+}

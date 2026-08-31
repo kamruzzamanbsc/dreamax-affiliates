@@ -1,0 +1,125 @@
+/**
+ * Dreamax Affiliates frontend RTL adjustments.
+ */
+
+.affilio-notice,
+.affilio-form-message,
+.affilio-setup-summary {
+	border-left: 0;
+	border-right: 4px solid currentColor;
+}
+
+.affilio-referrals-table th,
+.affilio-referrals-table td,
+.affilio-referrals-table caption {
+	text-align: right;
+}
+
+.affilio-qr-status {
+	margin-left: 0;
+	margin-right: 8px;
+}
+
+.affilio-share-actions,
+.affilio-qr-tools,
+.affilio-link-actions,
+.affilio-export-links,
+.affilio-creative-actions {
+	direction: rtl;
+}
+
+.affilio-hp-field {
+	left: auto !important;
+	right: -10000px !important;
+}
+
+
+.affilio-dashboard-nav ul {
+	padding-inline-start: 0;
+}
+
+.affilio-dashboard-nav,
+.affilio-dashboard-section,
+.affilio-registration-form {
+	direction: rtl;
+}
+
+.affilio-dashboard-welcome,
+.affilio-affiliate-start,
+.affilio-affiliate-steps,
+.affilio-dashboard-empty {
+	text-align: right;
+}
+
+.affilio-affiliate-steps a {
+	direction: rtl;
+}
+
+
+/* FT-3.3 frontend UI RTL adjustments. */
+.affilio-registration-form .affilio-terms-field > label {
+	grid-template-columns: 18px minmax(0, 1fr);
+}
+
+.affilio-application-state,
+.affilio-application-state-heading,
+.affilio-application-state-meta,
+.affilio-application-state-note {
+	direction: rtl;
+	text-align: right;
+}
+
+.affilio-application-status-badge {
+	direction: rtl;
+}
+
+.affilio-notice {
+	border-left-width: 1px;
+	border-right: 4px solid #8c8f94;
+}
+
+
+/* Premium standalone portal additions. */
+[dir="rtl"] .affilio-dashboard-account-actions,
+[dir="rtl"] .affilio-application-state-actions,
+[dir="rtl"] .affilio-dashboard-code {
+	direction: rtl;
+}
+
+[dir="rtl"] .affilio-dashboard-nav {
+	direction: rtl;
+}
+
+[dir="rtl"] .affilio-referrals-table th,
+[dir="rtl"] .affilio-referrals-table td,
+[dir="rtl"] .affilio-stat {
+	text-align: right;
+}
+
+
+[dir="rtl"] .affilio-profile-settings-foot,
+[dir="rtl"] .affilio-payout-profile-summary,
+[dir="rtl"] .affilio-profile-settings-heading {
+	text-align: right;
+}
+
+
+/* Premium sidebar portal RTL support. */
+[dir="rtl"] .affilio-portal-sidebar-head,
+[dir="rtl"] .affilio-portal-sidebar-foot,
+[dir="rtl"] .affilio-portal-overview-heading {
+	text-align: right;
+}
+
+[dir="rtl"] .affilio-dashboard.affilio-portal .affilio-portal-sidebar a[data-affilio-panel-target]:hover,
+[dir="rtl"] .affilio-dashboard.affilio-portal .affilio-portal-sidebar a[data-affilio-panel-target]:focus-visible {
+	transform: translateX(-2px);
+}
+
+
+/* Profile & Settings refinement v2 RTL support. */
+[dir="rtl"] .affilio-profile-page-head,
+[dir="rtl"] .affilio-profile-settings-form--premium .affilio-profile-card-head,
+[dir="rtl"] .affilio-profile-settings-foot--premium {
+	text-align: right;
+}

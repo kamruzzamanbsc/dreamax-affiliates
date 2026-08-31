@@ -1,0 +1,59 @@
+/**
+ * Dreamax Affiliates admin RTL adjustments.
+ */
+
+.affilio-payout-destination,
+.affilio-report-card,
+.affilio-report-panel,
+.affilio-admin-card {
+	text-align: right;
+}
+
+.affilio-setup-progress li span {
+	margin-right: 0;
+	margin-left: 5px;
+}
+
+.affilio-setup-summary {
+	padding: 16px 38px 16px 20px;
+	border-left: 0;
+	border-right: 4px solid #2271b1;
+}
+
+.affilio-inline-checkbox {
+	margin-right: 0;
+	margin-left: 14px;
+}
+
+.affilio-report-filter-actions,
+.affilio-export-actions,
+.affilio-payout-request-actions {
+	direction: rtl;
+}
+
+.affilio-overview-wrap,
+.affilio-setup-wrap,
+.affilio-admin-card,
+.affilio-overview-metric,
+.affilio-quick-link-grid a,
+.affilio-setup-benefits > div {
+	text-align: right;
+}
+
+.affilio-overview-actions,
+.affilio-setup-actions,
+.affilio-page-state {
+	direction: rtl;
+}
+
+/* FT-3.2 diagnostics and upgrade path */
+.rtl .affilio-status-row {
+	border-right-width: 4px;
+	border-left-width: 1px;
+}
+
+.rtl .affilio-feature-list,
+.rtl .affilio-upgrade-principles ul {
+	padding-right: 22px;
+	padding-left: 0;
+}
