@@ -1,0 +1,182 @@
+/**
+ * Dreamax Affiliates: Pro information page.
+ * All selectors are scoped to this screen; no JavaScript is required.
+ */
+.affilio-upgrade-wrap {
+	--affilio-upgrade-ink: #101828;
+	--affilio-upgrade-muted: #5f6f89;
+	--affilio-upgrade-brand: #5146e5;
+	--affilio-upgrade-border: #dce3ef;
+	max-width: 1180px;
+	margin-top: 24px;
+	color: var(--affilio-upgrade-ink);
+}
+.affilio-upgrade-wrap *, .affilio-upgrade-wrap *::before, .affilio-upgrade-wrap *::after { box-sizing: border-box; }
+.affilio-upgrade-wrap p { font-size: 14px; line-height: 1.75; }
+.affilio-upgrade-wrap h2, .affilio-upgrade-wrap h3 { color: var(--affilio-upgrade-ink); }
+.affilio-upgrade-wrap .affilio-upgrade-hero {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 245px;
+	gap: 40px;
+	align-items: center;
+	padding: 38px 40px;
+	border: 1px solid #6459e6;
+	border-radius: 18px;
+	background: linear-gradient(125deg, #202d68 0%, #312f91 52%, #5548e3 100%);
+	color: #fff;
+}
+.affilio-upgrade-wrap .affilio-upgrade-eyebrow {
+	margin: 0 0 10px;
+	color: var(--affilio-upgrade-brand);
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 1.3px;
+	line-height: 1.5;
+	text-transform: uppercase;
+}
+.affilio-upgrade-wrap .affilio-upgrade-hero .affilio-upgrade-eyebrow { color: #e2e5ff; }
+.affilio-upgrade-wrap .affilio-upgrade-hero h1 {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 12px;
+	margin: 0;
+	padding: 0;
+	color: #fff;
+	font-size: clamp(28px, 3.2vw, 40px);
+	font-weight: 700;
+	letter-spacing: -0.025em;
+	line-height: 1.15;
+}
+.affilio-upgrade-wrap .affilio-upgrade-pro-badge {
+	display: inline-flex;
+	align-items: center;
+	min-height: 30px;
+	padding: 3px 10px;
+	border: 1px solid #b6b0ff;
+	border-radius: 8px;
+	background: #ffffff1a;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 600;
+	letter-spacing: 0;
+	line-height: 1.4;
+}
+.affilio-upgrade-wrap .affilio-upgrade-lead { max-width: 640px; margin: 16px 0 23px; color: #eef0ff; font-size: 15px; }
+.affilio-upgrade-wrap .affilio-upgrade-hero-note { padding: 23px; border: 1px solid #ffffff40; border-radius: 14px; background: #ffffff0d; }
+.affilio-upgrade-wrap .affilio-upgrade-hero-icon { display: block; width: 32px; height: 32px; margin-bottom: 14px; color: #dedaff; font-size: 32px; }
+.affilio-upgrade-wrap .affilio-upgrade-hero-note strong { display: block; color: #fff; font-size: 16px; line-height: 1.5; }
+.affilio-upgrade-wrap .affilio-upgrade-hero-note p { margin: 9px 0 0; color: #e4e5ff; font-size: 13px; }
+.affilio-upgrade-wrap .affilio-upgrade-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.affilio-upgrade-wrap .affilio-upgrade-actions .button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	min-height: 44px;
+	max-width: 100%;
+	margin: 0;
+	padding: 11px 16px;
+	border: 1px solid transparent;
+	border-radius: 8px;
+	box-shadow: none;
+	font-size: 13px;
+	font-weight: 600;
+	line-height: 20px;
+	text-align: center;
+	text-decoration: none;
+	white-space: normal;
+}
+.affilio-upgrade-wrap .affilio-upgrade-actions .button > .dashicons { flex: 0 0 18px; width: 18px; height: 18px; font-size: 18px; line-height: 18px; }
+.affilio-upgrade-wrap .affilio-upgrade-actions .affilio-upgrade-hero-primary { border-color: #fff; background: #fff; color: #302777; }
+.affilio-upgrade-wrap .affilio-upgrade-actions .affilio-upgrade-hero-primary:hover { background: #eeedff; border-color: #eeedff; }
+.affilio-upgrade-wrap .affilio-upgrade-actions .affilio-upgrade-hero-secondary { border-color: #b3adf2; background: transparent; color: #fff; }
+.affilio-upgrade-wrap .affilio-upgrade-actions .affilio-upgrade-hero-secondary:hover { background: #ffffff1a; border-color: #fff; }
+.affilio-upgrade-wrap .affilio-upgrade-actions .button-primary { background: var(--affilio-upgrade-brand); border-color: var(--affilio-upgrade-brand); color: #fff; }
+.affilio-upgrade-wrap .affilio-upgrade-actions .button-primary:hover { background: #4035c6; border-color: #4035c6; }
+.affilio-upgrade-wrap .affilio-upgrade-actions .affilio-upgrade-outline { background: #fff; border-color: #c7d2e5; color: #344563; }
+.affilio-upgrade-wrap .affilio-upgrade-actions .affilio-upgrade-outline:hover { border-color: var(--affilio-upgrade-brand); color: var(--affilio-upgrade-brand); }
+.affilio-upgrade-wrap a:focus-visible { outline: 3px solid var(--affilio-upgrade-brand); outline-offset: 3px; box-shadow: none; }
+.affilio-upgrade-wrap .affilio-upgrade-hero a:focus-visible { outline-color: #fff; }
+.affilio-upgrade-wrap .affilio-upgrade-installation {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+	margin-top: 20px;
+	padding: 20px 24px;
+	border: 1px solid var(--affilio-upgrade-border);
+	border-radius: 14px;
+	background: #fff;
+}
+.affilio-upgrade-wrap .affilio-upgrade-icon { display: inline-flex; flex: 0 0 42px; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 11px; background: #eeebff; color: var(--affilio-upgrade-brand); }
+.affilio-upgrade-wrap .affilio-upgrade-icon .dashicons { width: 22px; height: 22px; font-size: 22px; line-height: 22px; }
+.affilio-upgrade-wrap .affilio-upgrade-icon.is-success { background: #e8f7f0; color: #087e65; }
+.affilio-upgrade-wrap .affilio-upgrade-installation-copy { flex: 1; min-width: 0; }
+.affilio-upgrade-wrap .affilio-upgrade-installation h2 { margin: 0 0 4px; font-size: 15px; line-height: 1.5; }
+.affilio-upgrade-wrap .affilio-upgrade-installation p { margin: 0; color: var(--affilio-upgrade-muted); font-size: 13px; overflow-wrap: anywhere; }
+.affilio-upgrade-wrap .affilio-upgrade-installation-tag { flex-shrink: 0; padding: 5px 10px; border: 1px solid #e3e7f0; border-radius: 6px; background: #f8f9fc; color: #52617b; font-size: 11px; font-weight: 600; }
+.affilio-upgrade-wrap .affilio-upgrade-section { margin-top: 34px; scroll-margin-top: 56px; }
+.affilio-upgrade-wrap .affilio-upgrade-section-heading { margin-bottom: 20px; }
+.affilio-upgrade-wrap .affilio-upgrade-section-heading h2, .affilio-upgrade-wrap .affilio-upgrade-next h2 { margin: 0; font-size: 24px; font-weight: 600; letter-spacing: -.5px; line-height: 1.35; }
+.affilio-upgrade-wrap .affilio-upgrade-section-heading > p:last-child { margin: 9px 0 0; color: var(--affilio-upgrade-muted); }
+.affilio-upgrade-wrap .affilio-upgrade-features { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.affilio-upgrade-wrap .affilio-upgrade-feature { padding: 24px; border: 1px solid var(--affilio-upgrade-border); border-radius: 14px; background: #fff; }
+.affilio-upgrade-wrap .affilio-upgrade-feature-heading { display: flex; align-items: center; gap: 12px; }
+.affilio-upgrade-wrap .affilio-upgrade-feature h3 { margin: 0; font-size: 16px; font-weight: 600; line-height: 1.4; }
+.affilio-upgrade-wrap .affilio-upgrade-feature > p { margin: 16px 0; color: var(--affilio-upgrade-muted); font-size: 13px; }
+.affilio-upgrade-wrap .affilio-upgrade-feature ul { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.affilio-upgrade-wrap .affilio-upgrade-feature li { display: flex; align-items: flex-start; gap: 8px; margin: 0; color: #344563; font-size: 12px; line-height: 20px; }
+.affilio-upgrade-wrap .affilio-upgrade-feature li .dashicons { flex: 0 0 18px; width: 18px; height: 20px; color: #087e65; font-size: 18px; line-height: 20px; }
+.affilio-upgrade-wrap .affilio-upgrade-table-wrap { overflow: hidden; border: 1px solid var(--affilio-upgrade-border); border-radius: 14px; background: #fff; }
+.affilio-upgrade-wrap .affilio-upgrade-table { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 13px; line-height: 1.7; text-align: start; }
+.affilio-upgrade-wrap .affilio-upgrade-table th, .affilio-upgrade-wrap .affilio-upgrade-table td { padding: 16px 20px; border-bottom: 1px solid #e6eaf2; text-align: start; vertical-align: top; overflow-wrap: anywhere; }
+.affilio-upgrade-wrap .affilio-upgrade-table thead th { background: #f7f8fc; color: #344563; font-size: 13px; font-weight: 600; }
+.affilio-upgrade-wrap .affilio-upgrade-table thead th:first-child { width: 23%; }
+.affilio-upgrade-wrap .affilio-upgrade-table tbody th { color: #24334c; font-weight: 600; }
+.affilio-upgrade-wrap .affilio-upgrade-table td { color: var(--affilio-upgrade-muted); }
+.affilio-upgrade-wrap .affilio-upgrade-table tr > :last-child { background: #f8f7ff; color: #403681; }
+.affilio-upgrade-wrap .affilio-upgrade-table thead tr > :last-child { background: #efecff; }
+.affilio-upgrade-wrap .affilio-upgrade-table tbody tr:last-child > * { border-bottom: 0; }
+.affilio-upgrade-wrap .affilio-upgrade-mobile-label { display: none; }
+.affilio-upgrade-wrap .affilio-upgrade-foundation { display: flex; align-items: flex-start; gap: 10px; margin: 14px 4px 0; color: var(--affilio-upgrade-muted); font-size: 12px; line-height: 20px; }
+.affilio-upgrade-wrap .affilio-upgrade-foundation .dashicons { flex: 0 0 20px; width: 20px; height: 20px; color: #087e65; font-size: 18px; line-height: 20px; }
+.affilio-upgrade-wrap .affilio-upgrade-next { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 36px; margin-top: 30px; padding: 30px; border: 1px solid var(--affilio-upgrade-border); border-radius: 16px; background: #fff; }
+.affilio-upgrade-wrap .affilio-upgrade-next > div > p:not(.affilio-upgrade-eyebrow) { margin: 13px 0 20px; color: var(--affilio-upgrade-muted); font-size: 13px; }
+.affilio-upgrade-wrap .affilio-upgrade-reassurance { padding-inline-start: 28px; border-inline-start: 1px solid #e3e7f0; }
+.affilio-upgrade-wrap .affilio-upgrade-reassurance h3 { margin: 12px 0 0; font-size: 15px; line-height: 1.5; }
+.affilio-upgrade-wrap .affilio-upgrade-next .affilio-upgrade-reassurance p { margin-bottom: 0; font-size: 12px; }
+.affilio-upgrade-wrap [dir="rtl"] .dashicons-arrow-right-alt2, [dir="rtl"] .affilio-upgrade-wrap .dashicons-arrow-right-alt2 { transform: scaleX(-1); }
+@media (max-width: 1100px) {
+	.affilio-upgrade-wrap .affilio-upgrade-hero { grid-template-columns: minmax(0, 1fr) 220px; gap: 24px; padding: 30px; }
+	.affilio-upgrade-wrap .affilio-upgrade-features { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 782px) {
+	.affilio-upgrade-wrap { margin-top: 18px; }
+	.affilio-upgrade-wrap .affilio-upgrade-hero { grid-template-columns: 1fr; padding: 26px; }
+	.affilio-upgrade-wrap .affilio-upgrade-hero-note { display: none; }
+	.affilio-upgrade-wrap .affilio-upgrade-installation { align-items: flex-start; padding: 18px; }
+	.affilio-upgrade-wrap .affilio-upgrade-installation-tag { display: none; }
+	.affilio-upgrade-wrap .affilio-upgrade-next { grid-template-columns: 1fr; gap: 24px; padding: 24px; }
+	.affilio-upgrade-wrap .affilio-upgrade-reassurance { padding-inline-start: 0; padding-top: 22px; border-inline-start: 0; border-top: 1px solid #e3e7f0; }
+}
+@media (max-width: 600px) {
+	.affilio-upgrade-wrap .affilio-upgrade-features { grid-template-columns: 1fr; }
+	.affilio-upgrade-wrap .affilio-upgrade-feature { padding: 22px; }
+	.affilio-upgrade-wrap .affilio-upgrade-section-heading h2, .affilio-upgrade-wrap .affilio-upgrade-next h2 { font-size: 22px; }
+	.affilio-upgrade-wrap .affilio-upgrade-table thead { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); }
+	.affilio-upgrade-wrap .affilio-upgrade-table, .affilio-upgrade-wrap .affilio-upgrade-table tbody, .affilio-upgrade-wrap .affilio-upgrade-table tr { display: block; }
+	.affilio-upgrade-wrap .affilio-upgrade-table tbody th { display: block; padding: 16px 18px 10px; border-bottom: 0; }
+	.affilio-upgrade-wrap .affilio-upgrade-table td { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 10px; padding: 10px 18px; border-bottom: 0; }
+	.affilio-upgrade-wrap .affilio-upgrade-table tbody tr + tr { border-top: 1px solid var(--affilio-upgrade-border); }
+	.affilio-upgrade-wrap .affilio-upgrade-table tbody tr { padding-bottom: 10px; }
+	.affilio-upgrade-wrap .affilio-upgrade-mobile-label { display: block; font-weight: 600; }
+}
+@media (max-width: 380px) {
+	.affilio-upgrade-wrap .affilio-upgrade-hero { padding: 22px; }
+	.affilio-upgrade-wrap .affilio-upgrade-actions { align-items: stretch; flex-direction: column; }
+	.affilio-upgrade-wrap .affilio-upgrade-actions .button { width: 100%; }
+}
+@media (forced-colors: active) {
+	.affilio-upgrade-wrap .affilio-upgrade-hero, .affilio-upgrade-wrap .affilio-upgrade-pro-badge { border-color: CanvasText; }
+	.affilio-upgrade-wrap .affilio-upgrade-icon { border: 1px solid CanvasText; }
+}

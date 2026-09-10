@@ -1,0 +1,846 @@
+/* Dreamax Affiliates withdrawal review workspace. Loaded only on Payout Requests. */
+.affilio-payout-requests-page {
+	--affilio-requests-ink: #101828;
+	--affilio-requests-muted: #60708a;
+	--affilio-requests-border: #dce3ef;
+	--affilio-requests-soft: #f7f9fc;
+	--affilio-requests-brand: #5146e5;
+	--affilio-requests-good: #079447;
+	box-sizing: border-box;
+	max-inline-size: 1180px;
+	margin-block-start: 20px;
+	color: var(--affilio-requests-ink);
+}
+
+.affilio-payout-requests-page *,
+.affilio-payout-requests-page *::before,
+.affilio-payout-requests-page *::after {
+	box-sizing: border-box;
+}
+
+.affilio-payout-requests-page .wp-header-end {
+	margin: 0;
+}
+
+.affilio-payout-requests-hero {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 30px;
+	min-block-size: 196px;
+	margin-block-end: 22px;
+	padding: 38px 42px;
+	overflow: hidden;
+	border: 1px solid rgb(255 255 255 / 12%);
+	border-radius: 18px;
+	background:
+		radial-gradient(circle at 87% 15%, rgb(129 140 248 / 30%), transparent 31%),
+		linear-gradient(125deg, #202d68 0%, #312f91 56%, #5548e3 100%);
+	box-shadow: 0 20px 42px rgb(30 41 91 / 16%);
+	color: #fff;
+}
+
+.affilio-payout-requests-hero__content {
+	min-inline-size: 0;
+	max-inline-size: 780px;
+}
+
+.affilio-payout-requests-eyebrow {
+	display: block;
+	margin-block-end: 7px;
+	color: var(--affilio-requests-brand);
+	font-size: 11px;
+	font-weight: 750;
+	letter-spacing: 0.11em;
+	line-height: 1.4;
+	text-transform: uppercase;
+}
+
+.affilio-payout-requests-hero .affilio-payout-requests-eyebrow {
+	color: #c7d2fe;
+}
+
+.affilio-payout-requests-hero h1 {
+	margin: 0;
+	color: #fff;
+	font-size: clamp(28px, 3.2vw, 40px);
+	font-weight: 700;
+	letter-spacing: -0.025em;
+	line-height: 1.15;
+}
+
+.affilio-payout-requests-hero p {
+	max-inline-size: 760px;
+	margin: 15px 0 0;
+	color: #eef2ff;
+	font-size: 15px;
+	line-height: 1.65;
+}
+
+.affilio-payout-requests-hero__badge {
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	min-block-size: 38px;
+	padding: 8px 14px;
+	border: 1px solid rgb(255 255 255 / 28%);
+	border-radius: 999px;
+	background: rgb(255 255 255 / 12%);
+	color: #fff;
+	font-weight: 700;
+	line-height: 1.2;
+	white-space: nowrap;
+}
+
+.affilio-payout-requests-hero__badge.is-paused {
+	border-color: rgb(253 186 116 / 55%);
+	background: rgb(154 52 18 / 24%);
+}
+
+.affilio-payout-request-button-icon {
+	display: block;
+	flex: 0 0 18px;
+	inline-size: 18px;
+	block-size: 18px;
+	overflow: visible;
+}
+
+.affilio-payout-request-summary {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 14px;
+	margin-block-end: 22px;
+}
+
+.affilio-payout-request-stat {
+	display: grid;
+	grid-template-columns: 42px minmax(0, 1fr);
+	align-items: center;
+	gap: 12px;
+	min-block-size: 116px;
+	padding: 18px;
+	border: 1px solid var(--affilio-requests-border);
+	border-radius: 14px;
+	background: #fff;
+	box-shadow: 0 10px 25px rgb(26 36 72 / 6%);
+}
+
+.affilio-payout-request-stat__icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	inline-size: 42px;
+	block-size: 42px;
+	border-radius: 12px;
+	background: #eceeff;
+	color: var(--affilio-requests-brand);
+	font-size: 20px;
+	line-height: 1;
+}
+
+.affilio-payout-request-stat.is-pending .affilio-payout-request-stat__icon {
+	background: #fff6e8;
+	color: #b45309;
+}
+
+.affilio-payout-request-stat.is-good .affilio-payout-request-stat__icon {
+	background: #eafaf1;
+	color: var(--affilio-requests-good);
+}
+
+.affilio-payout-request-stat.is-closed .affilio-payout-request-stat__icon {
+	background: #fff0f1;
+	color: #c52a38;
+}
+
+.affilio-payout-request-stat > div {
+	display: flex;
+	min-inline-size: 0;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.affilio-payout-request-stat small,
+.affilio-payout-request-stat p {
+	color: var(--affilio-requests-muted);
+	font-size: 12px;
+	line-height: 1.4;
+}
+
+.affilio-payout-request-stat small {
+	font-weight: 650;
+}
+
+.affilio-payout-request-stat strong {
+	color: var(--affilio-requests-ink);
+	font-size: 25px;
+	line-height: 1.15;
+}
+
+.affilio-payout-request-stat p {
+	margin: 0;
+}
+
+.affilio-payout-request-assurance,
+.affilio-payout-request-footer-note {
+	display: grid;
+	grid-template-columns: 20px minmax(0, 1fr);
+	gap: 10px;
+	padding: 14px 16px;
+	border: 1px solid #c7d2fe;
+	border-inline-start: 4px solid var(--affilio-requests-brand);
+	border-radius: 10px;
+	background: #eef2ff;
+	color: #3730a3;
+}
+
+.affilio-payout-request-assurance {
+	margin-block-end: 22px;
+}
+
+.affilio-payout-request-footer-note {
+	margin-block-start: 22px;
+	border-color: var(--affilio-requests-border);
+	border-inline-start-color: #94a3b8;
+	background: #f8fafc;
+	color: #40516b;
+}
+
+.affilio-payout-request-assurance .dashicons,
+.affilio-payout-request-footer-note .dashicons {
+	inline-size: 20px;
+	block-size: 20px;
+	font-size: 19px;
+	line-height: 1.05;
+}
+
+.affilio-payout-request-assurance p,
+.affilio-payout-request-footer-note p {
+	margin: 0;
+	font-size: 12px;
+	line-height: 1.55;
+}
+
+.affilio-payout-request-panel {
+	padding: 26px;
+	border: 1px solid var(--affilio-requests-border);
+	border-radius: 16px;
+	background: #fff;
+	box-shadow: 0 12px 30px rgb(25 36 71 / 6%);
+}
+
+.affilio-payout-request-section-heading {
+	display: grid;
+	grid-template-columns: 42px minmax(0, 1fr) auto;
+	align-items: start;
+	gap: 14px;
+	margin-block-end: 20px;
+}
+
+.affilio-payout-request-section-heading__icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	inline-size: 42px;
+	block-size: 42px;
+	border-radius: 12px;
+	background: #eef0ff;
+	color: var(--affilio-requests-brand);
+	font-size: 20px;
+	line-height: 1;
+}
+
+.affilio-payout-request-section-heading h2 {
+	margin: 0;
+	color: var(--affilio-requests-ink);
+	font-size: 22px;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	line-height: 1.25;
+}
+
+.affilio-payout-request-section-heading p {
+	max-inline-size: 760px;
+	margin: 6px 0 0;
+	color: var(--affilio-requests-muted);
+	font-size: 13px;
+	line-height: 1.55;
+}
+
+.affilio-payout-request-count {
+	align-self: center;
+	padding: 6px 10px;
+	border: 1px solid #d6dcff;
+	border-radius: 999px;
+	background: #f1f3ff;
+	color: #4338ca;
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 1.25;
+	white-space: nowrap;
+}
+
+.affilio-payout-request-filter {
+	display: flex;
+	align-items: end;
+	gap: 10px;
+	margin-block-end: 18px;
+	padding: 14px;
+	border: 1px solid #e0e6ef;
+	border-radius: 11px;
+	background: var(--affilio-requests-soft);
+}
+
+.affilio-payout-request-filter label {
+	display: flex;
+	flex: 1 1 280px;
+	max-inline-size: 430px;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.affilio-payout-request-filter label > span {
+	color: var(--affilio-requests-ink);
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 1.4;
+}
+
+.affilio-payout-requests-page .affilio-payout-request-filter select {
+	inline-size: 100%;
+	max-inline-size: none;
+	min-block-size: 40px;
+	margin: 0;
+	padding-block: 6px;
+	padding-inline-start: 10px;
+	padding-inline-end: 32px;
+	border-color: #cbd5e1;
+	border-radius: 8px;
+	background-color: #fff;
+	color: var(--affilio-requests-ink);
+}
+
+.affilio-payout-request-filter__actions {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.affilio-payout-requests-page .affilio-payout-request-filter__actions .button,
+.affilio-payout-requests-page .affilio-payout-request-actions .button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 7px;
+	inline-size: auto;
+	min-block-size: 40px;
+	margin: 0;
+	padding: 8px 15px;
+	border-radius: 8px;
+	font-weight: 650;
+	line-height: 1.2;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+
+.affilio-payout-requests-page .affilio-payout-request-filter__actions .button-primary,
+.affilio-payout-requests-page .affilio-payout-request-actions .button-primary {
+	border-color: #4f46e5;
+	background: #4f46e5;
+	color: #fff;
+}
+
+.affilio-payout-requests-page .affilio-payout-request-filter__actions .button-primary:hover,
+.affilio-payout-requests-page .affilio-payout-request-filter__actions .button-primary:focus,
+.affilio-payout-requests-page .affilio-payout-request-actions .button-primary:hover,
+.affilio-payout-requests-page .affilio-payout-request-actions .button-primary:focus {
+	border-color: #4338ca;
+	background: #4338ca;
+	color: #fff;
+}
+
+.affilio-payout-request-empty-state {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 14px;
+	min-block-size: 180px;
+	padding: 30px;
+	border: 1px dashed #cbd5e1;
+	border-radius: 12px;
+	background: #fafbfc;
+	text-align: start;
+}
+
+.affilio-payout-request-empty-state__icon {
+	display: inline-flex;
+	flex: 0 0 44px;
+	align-items: center;
+	justify-content: center;
+	inline-size: 44px;
+	block-size: 44px;
+	border-radius: 12px;
+	background: #eef0ff;
+	color: var(--affilio-requests-brand);
+	font-size: 21px;
+	line-height: 1;
+}
+
+.affilio-payout-request-empty-state strong {
+	display: block;
+	margin-block-end: 4px;
+	color: var(--affilio-requests-ink);
+	font-size: 15px;
+}
+
+.affilio-payout-request-empty-state p {
+	margin: 0;
+	color: var(--affilio-requests-muted);
+	line-height: 1.5;
+}
+
+.affilio-payout-request-table-wrap {
+	max-inline-size: 100%;
+	overflow-x: auto;
+	border: 1px solid var(--affilio-requests-border);
+	border-radius: 12px;
+	-webkit-overflow-scrolling: touch;
+}
+
+.affilio-payout-requests-page .affilio-payout-request-table {
+	min-inline-size: 1080px;
+	margin: 0;
+	border: 0;
+	border-collapse: collapse;
+	box-shadow: none;
+}
+
+.affilio-payout-request-table thead {
+	background: #f3f6fb;
+}
+
+.affilio-payout-requests-page .affilio-payout-request-table th {
+	padding: 13px 12px;
+	border-block-end: 1px solid var(--affilio-requests-border);
+	color: #334155;
+	font-size: 10px;
+	font-weight: 750;
+	letter-spacing: 0.045em;
+	line-height: 1.4;
+	text-transform: uppercase;
+	vertical-align: middle;
+}
+
+.affilio-payout-requests-page .affilio-payout-request-table td {
+	padding: 15px 12px;
+	border-block-end: 1px solid #e7ebf2;
+	color: #344054;
+	vertical-align: top;
+}
+
+.affilio-payout-request-table tbody tr:last-child td {
+	border-block-end: 0;
+}
+
+.affilio-payout-request-table tbody tr:hover {
+	background: #fafbff;
+}
+
+.affilio-payout-requests-page .affilio-payout-request-table .affilio-col-affiliate {
+	min-inline-size: 125px;
+}
+
+.affilio-payout-requests-page .affilio-payout-request-table .affilio-col-amount {
+	inline-size: 105px;
+	min-inline-size: 105px;
+	color: var(--affilio-requests-ink);
+	font-weight: 700;
+	white-space: nowrap;
+}
+
+.affilio-payout-requests-page .affilio-payout-request-table .affilio-col-method {
+	min-inline-size: 220px;
+	max-inline-size: 250px;
+}
+
+.affilio-payout-requests-page .affilio-payout-request-table .affilio-col-status,
+.affilio-payout-requests-page .affilio-payout-request-table .affilio-col-date {
+	inline-size: 110px;
+	min-inline-size: 105px;
+	white-space: nowrap;
+}
+
+.affilio-payout-requests-page .affilio-payout-request-table .affilio-col-notes {
+	min-inline-size: 150px;
+	max-inline-size: 210px;
+	overflow-wrap: anywhere;
+}
+
+.affilio-payout-requests-page .affilio-payout-request-table .affilio-col-actions {
+	inline-size: 290px;
+	min-inline-size: 280px;
+	max-inline-size: 310px;
+}
+
+.affilio-payout-requests-page .affilio-payment-meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+	margin-block-start: 5px;
+	color: var(--affilio-requests-muted);
+	font-size: 11px;
+	line-height: 1.45;
+	overflow-wrap: anywhere;
+}
+
+.affilio-payout-requests-page .affilio-payment-meta-label {
+	color: #475467;
+	font-weight: 700;
+}
+
+.affilio-payout-requests-page .affilio-payment-destination {
+	color: var(--affilio-requests-muted);
+	white-space: pre-line;
+}
+
+.affilio-payout-requests-page .affilio-status {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 5px;
+	padding: 5px 8px;
+	border-radius: 999px;
+	background: #f1f4f8;
+	font-size: 11px;
+	font-weight: 700;
+	line-height: 1.2;
+	white-space: nowrap;
+}
+
+.affilio-payout-requests-page .affilio-status::before {
+	inline-size: 6px;
+	block-size: 6px;
+	margin: 0;
+	border: 0;
+}
+
+.affilio-payout-requests-page .affilio-status-requested {
+	background: #fff6e8;
+	color: #a34d05;
+}
+
+.affilio-payout-requests-page .affilio-status-approved {
+	background: #eafaf1;
+	color: #067a3b;
+}
+
+.affilio-payout-requests-page .affilio-status-rejected {
+	background: #fff0f1;
+	color: #b42318;
+}
+
+.affilio-payout-requests-page .affilio-status-cancelled {
+	background: #f1f4f8;
+	color: #52627a;
+}
+
+.affilio-payout-request-actions {
+	display: grid;
+	gap: 12px;
+	inline-size: 100%;
+	max-inline-size: none;
+}
+
+.affilio-payout-request-actions .affilio-payout-request-action-form {
+	display: grid;
+	grid-template-columns: minmax(130px, 1fr) auto;
+	grid-template-areas:
+		"label label"
+		"field button";
+	align-items: end;
+	gap: 6px 8px;
+	margin: 0;
+	padding: 11px;
+	border: 1px solid #e0e6ef;
+	border-radius: 9px;
+	background: var(--affilio-requests-soft);
+}
+
+.affilio-payout-request-actions .affilio-payout-request-action-reject {
+	border-color: #fee2e2;
+	background: #fffafa;
+}
+
+.affilio-payout-request-actions label {
+	grid-area: label;
+	margin: 0;
+	color: var(--affilio-requests-ink);
+	font-size: 11px;
+	font-weight: 700;
+	line-height: 1.35;
+}
+
+.affilio-payout-requests-page .affilio-payout-request-actions input.regular-text {
+	grid-area: field;
+	inline-size: 100%;
+	min-inline-size: 0;
+	max-inline-size: none;
+	min-block-size: 38px;
+	margin: 0;
+	border-color: #cbd5e1;
+	border-radius: 7px;
+}
+
+.affilio-payout-requests-page .affilio-payout-request-actions .button {
+	grid-area: button;
+	min-block-size: 38px;
+	padding: 7px 11px;
+}
+
+.affilio-payout-requests-page .affilio-payout-request-actions .affilio-payout-reject-button {
+	border-color: #fca5a5;
+	color: #b42318;
+}
+
+.affilio-payout-requests-page .affilio-payout-request-actions .affilio-payout-reject-button:hover,
+.affilio-payout-requests-page .affilio-payout-request-actions .affilio-payout-reject-button:focus {
+	border-color: #ef4444;
+	background: #fff1f2;
+	color: #991b1b;
+}
+
+.affilio-payout-request-reviewed {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	color: var(--affilio-requests-muted);
+	font-size: 11px;
+	font-weight: 650;
+	line-height: 1.35;
+}
+
+.affilio-payout-request-reviewed .dashicons {
+	inline-size: 16px;
+	block-size: 16px;
+	color: var(--affilio-requests-good);
+	font-size: 16px;
+	line-height: 1;
+}
+
+.affilio-payout-requests-page .tablenav {
+	block-size: auto;
+	margin: 18px 0 0;
+	padding: 0;
+}
+
+.affilio-payout-requests-page .tablenav-pages {
+	float: none;
+	margin: 0;
+}
+
+.affilio-payout-requests-page .page-numbers {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-inline-size: 34px;
+	min-block-size: 34px;
+	margin: 0 2px;
+	padding: 5px 9px;
+	border: 1px solid #cbd5e1;
+	border-radius: 7px;
+	background: #fff;
+	text-decoration: none;
+}
+
+.affilio-payout-requests-page .page-numbers.current {
+	border-color: #4f46e5;
+	background: #4f46e5;
+	color: #fff;
+}
+
+.affilio-payout-requests-page > .notice {
+	margin: 0 0 20px;
+	padding: 10px 14px;
+	border: 1px solid var(--affilio-requests-border);
+	border-inline-start-width: 4px;
+	border-radius: 9px;
+	background: #fff;
+	box-shadow: 0 8px 20px rgb(25 36 71 / 5%);
+}
+
+.affilio-payout-requests-page > .notice p {
+	margin: 3px 0;
+}
+
+.affilio-payout-requests-page :where(a, button, input, select):focus-visible,
+.affilio-payout-request-table tbody tr:focus-within {
+	outline: 2px solid #6366f1;
+	outline-offset: 2px;
+	box-shadow: none;
+}
+
+@media screen and (max-width: 1100px) {
+	.affilio-payout-request-summary {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media screen and (max-width: 900px) {
+	.affilio-payout-request-table-wrap {
+		overflow: visible;
+		border: 0;
+	}
+
+	.affilio-payout-requests-page .affilio-payout-request-table,
+	.affilio-payout-request-table tbody,
+	.affilio-payout-request-table tr,
+	.affilio-payout-requests-page .affilio-payout-request-table td {
+		display: block;
+		inline-size: 100%;
+		min-inline-size: 0;
+		max-inline-size: none;
+	}
+
+	.affilio-payout-request-table thead {
+		display: none;
+	}
+
+	.affilio-payout-request-table tbody {
+		display: grid;
+		gap: 14px;
+	}
+
+	.affilio-payout-request-table tbody tr {
+		overflow: hidden;
+		border: 1px solid var(--affilio-requests-border);
+		border-radius: 11px;
+		background: #fff;
+	}
+
+	.affilio-payout-requests-page .affilio-payout-request-table td {
+		display: grid;
+		grid-template-columns: minmax(135px, 0.34fr) minmax(0, 1fr);
+		gap: 12px;
+		padding: 12px 14px;
+		border-block-end: 1px solid #e7ebf2;
+		text-align: start;
+		white-space: normal;
+	}
+
+	.affilio-payout-request-table td::before {
+		content: attr(data-label);
+		color: var(--affilio-requests-muted);
+		font-size: 10px;
+		font-weight: 750;
+		letter-spacing: 0.045em;
+		line-height: 1.4;
+		text-transform: uppercase;
+	}
+
+	.affilio-payout-request-table td:last-child {
+		border-block-end: 0;
+	}
+}
+
+@media screen and (max-width: 782px) {
+	.affilio-payout-requests-page {
+		margin-inline-end: 10px;
+	}
+
+	.affilio-payout-requests-hero {
+		align-items: flex-start;
+		flex-direction: column;
+		min-block-size: 0;
+		padding: 30px;
+	}
+
+	.affilio-payout-request-section-heading {
+		grid-template-columns: 42px minmax(0, 1fr);
+	}
+
+	.affilio-payout-request-section-heading .affilio-payout-request-count {
+		grid-column: 2;
+		justify-self: start;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.affilio-payout-requests-hero {
+		padding: 25px 22px;
+		border-radius: 15px;
+	}
+
+	.affilio-payout-requests-hero h1 {
+		font-size: clamp(28px, 3.2vw, 40px);
+	}
+
+	.affilio-payout-requests-hero__badge {
+		inline-size: 100%;
+	}
+
+	.affilio-payout-request-summary {
+		grid-template-columns: 1fr;
+	}
+
+	.affilio-payout-request-panel {
+		padding: 20px;
+	}
+
+	.affilio-payout-request-section-heading {
+		grid-template-columns: 38px minmax(0, 1fr);
+		gap: 11px;
+	}
+
+	.affilio-payout-request-section-heading__icon {
+		inline-size: 38px;
+		block-size: 38px;
+	}
+
+	.affilio-payout-request-filter {
+		align-items: stretch;
+		flex-direction: column;
+	}
+
+	.affilio-payout-request-filter label {
+		flex-basis: auto;
+		max-inline-size: none;
+	}
+
+	.affilio-payout-request-filter__actions,
+	.affilio-payout-requests-page .affilio-payout-request-filter__actions .button {
+		inline-size: 100%;
+	}
+
+	.affilio-payout-request-empty-state {
+		align-items: flex-start;
+		flex-direction: column;
+	}
+
+	.affilio-payout-requests-page .affilio-payout-request-table td {
+		grid-template-columns: 1fr;
+		gap: 6px;
+	}
+
+	.affilio-payout-request-actions .affilio-payout-request-action-form {
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			"label"
+			"field"
+			"button";
+	}
+
+	.affilio-payout-requests-page .affilio-payout-request-actions .button {
+		inline-size: 100%;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.affilio-payout-requests-page *,
+	.affilio-payout-requests-page *::before,
+	.affilio-payout-requests-page *::after {
+		scroll-behavior: auto !important;
+		transition-duration: 0.01ms !important;
+	}
+}

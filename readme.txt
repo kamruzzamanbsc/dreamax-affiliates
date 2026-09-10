@@ -4,7 +4,7 @@ Tags: affiliate, referral tracking, woocommerce, commission, payouts
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.0
-Stable tag: 2.1.2
+Stable tag: 2.1.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -122,6 +122,11 @@ After publication, use the WordPress.org support forum for non-sensitive questio
 
 == Changelog ==
 
+= 2.1.3 =
+* Rebuilt affiliate registration as a compact, accessible three-step application wizard.
+* Added per-step required-field validation, progress feedback, Back/Continue navigation, and a no-JavaScript fallback.
+* Refined desktop and mobile registration layouts without changing stored affiliate data, Core API 1.3.0, or database schema 1.8.
+
 = 2.1.2 =
 * Added normalized diagnostics and commission initial-state extension filters.
 * Added hold-aware WooCommerce qualification and Free-owned bounded release/handoff operations that preserve future eligibility dates.
@@ -172,6 +177,9 @@ After publication, use the WordPress.org support forum for non-sensitive questio
 For older changes, see `CHANGELOG.md` in the development source package.
 
 == Upgrade Notice ==
+
+= 2.1.3 =
+Adds a compact progressive registration wizard with no database migration or stored-data rewrite.
 
 = 2.1.2 =
 Adds dormant public extension boundaries and date-preserving commission-handoff safeguards. Database schema remains 1.8.

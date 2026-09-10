@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Dreamax Affiliates
  * Description:       Self-hosted WooCommerce affiliate tracking, coupons, reports, commissions, creatives, and manual payouts.
- * Version:           2.1.2
+ * Version:           2.1.3
  * Requires at least: 6.4
  * Requires PHP:      8.0
  * WC requires at least: 8.2
@@ -36,7 +36,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 // -----------------------------------------------------------------------
 
 if ( ! defined( 'AFFILIO_VERSION' ) ) {
-	define( 'AFFILIO_VERSION', '2.1.2' );
+	define( 'AFFILIO_VERSION', '2.1.3' );
 }
 
 // Bump this only when a change to a create_table() method requires it.

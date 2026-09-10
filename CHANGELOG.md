@@ -1,5 +1,34 @@
 # Changelog
 
+# 2.1.3 - 2026-09-02
+
+- Corrected tracked landing URLs on WordPress subdirectory installs so the site path is not duplicated when a referral click is recorded.
+- Added a consistent indigo chevron to every single-choice Dreamax admin, customer-dashboard, payout, and registration dropdown, with RTL, disabled, and forced-colors handling.
+- Prevented browser/password-manager autofill from populating the anti-spam honeypot and rejecting valid applications; cached legacy honeypot submissions remain protected.
+- Replaced the browser-default black focus rectangle on portal headings with a clean pointer state and a branded keyboard-focus indicator.
+- Fixed affiliate portal navigation overflow on tablet/mobile while preserving horizontal navigation within the sidebar.
+- Prevented duplicate registration requests while submitting and replaced the completed form with a focused confirmation and affiliate-area link.
+- Matched profile payout requirements to server validation and made registration approval guidance reflect the configured approval mode.
+- Corrected failed-copy feedback and coupon/HTML copy labels; rejected non-web referral destinations and handled malformed dashboard URL fragments safely.
+- Kept an already-generated affiliate link synchronized when its destination or campaign label changes.
+- Kept dashboard panels reachable before JavaScript enhancement.
+
+
+- Standardized admin hero typography across Free and Pro, fixed the Add Affiliate form overflow on narrow screens, and simplified Settings and Reports guidance.
+
+- Redesigned the Dreamax Affiliates Pro information page with six current feature cards, a responsive Free/Pro comparison, installation status, and context-aware next steps.
+- Added page-scoped Upgrade styling, aligned icons and button labels, accessible comparison headings, and guarded Pro navigation without changing program data.
+
+- Redesigned the four-step admin Setup wizard with a premium header, progress cards, contextual guidance, responsive forms, and a clear final review.
+- Aligned icons, button labels, checkbox text, and commission controls across desktop/mobile layouts while preserving setup actions, nonces, validation, page creation, and saved settings.
+
+
+- Rebuilt the public affiliate registration experience as a compact progressive three-step wizard.
+- Added accessible application progress, completed-step navigation, per-step native validation, Back/Continue controls, focus management, and polite status announcements.
+- Kept the complete registration form visible before enhancement; step navigation and AJAX submission require JavaScript.
+- Refined the registration hero, trust indicators, card density, field sizing, responsive behavior, focus states, and reduced-motion handling.
+- Preserved registration field names, nonce protection, honeypot behavior, server validation, AJAX submission, stored affiliate data, Core API 1.3.0, and database schema 1.8.
+
 # 2.1.2 — 2026-08-23
 
 - Added the normalized `affilio_diagnostics_system_checks` filter while retaining Free capability checks, rendering, escaping, and deterministic collection order.

@@ -13,8 +13,14 @@ if ( ! class_exists( 'WP_List_Table' ) ) {
 	require_once ABSPATH . 'wp-admin/includes/class-wp-list-table.php';
 }
 
+/**
+ * Presents affiliate records through the protected WordPress list-table UI.
+ */
 class Affilio_Affiliates_List_Table extends WP_List_Table {
 
+	/**
+	 * Configures the affiliate list table.
+	 */
 	public function __construct() {
 		parent::__construct(
 			array(
@@ -26,6 +32,8 @@ class Affilio_Affiliates_List_Table extends WP_List_Table {
 	}
 
 	/**
+	 * Returns the visible affiliate directory columns.
+	 *
 	 * @inheritDoc
 	 */
 	public function get_columns() {
@@ -42,6 +50,8 @@ class Affilio_Affiliates_List_Table extends WP_List_Table {
 	}
 
 	/**
+	 * Returns columns that support server-side sorting.
+	 *
 	 * @inheritDoc
 	 */
 	protected function get_sortable_columns() {
@@ -55,7 +65,11 @@ class Affilio_Affiliates_List_Table extends WP_List_Table {
 		);
 	}
 
-	/** @inheritDoc */
+	/**
+	 * Returns protected bulk status operations.
+	 *
+	 * @inheritDoc
+	 */
 	protected function get_bulk_actions() {
 		return array(
 			'active'    => __( 'Approve / Reactivate', 'dreamax-affiliates' ),
@@ -65,7 +79,27 @@ class Affilio_Affiliates_List_Table extends WP_List_Table {
 		);
 	}
 
-	/** @param object $item Affiliate row. @return string */
+	/**
+	 * Renders a context-aware empty directory message.
+	 *
+	 * @return void
+	 */
+	public function no_items() {
+		$has_filter = ! empty( $_REQUEST['status'] ) || ! empty( $_REQUEST['s'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only list filters.
+		if ( $has_filter ) {
+			esc_html_e( 'No affiliates match the current filters.', 'dreamax-affiliates' );
+			return;
+		}
+
+		esc_html_e( 'No affiliates yet. Add a partner or wait for the first application.', 'dreamax-affiliates' );
+	}
+
+	/**
+	 * Renders the row-selection checkbox.
+	 *
+	 * @param object $item Affiliate row.
+	 * @return string
+	 */
 	public function column_cb( $item ) {
 		return sprintf( '<input type="checkbox" name="affiliate[]" value="%d" />', (int) $item->id );
 	}
@@ -93,7 +127,7 @@ class Affilio_Affiliates_List_Table extends WP_List_Table {
 
 		$this->_column_headers = array( $this->get_columns(), array(), $this->get_sortable_columns() );
 		$this->items           = affilio()->affiliates_db->query( $query_args );
-		$total_items          = affilio()->affiliates_db->count( $query_args );
+		$total_items           = affilio()->affiliates_db->count( $query_args );
 
 		$this->set_pagination_args(
 			array(
@@ -105,6 +139,8 @@ class Affilio_Affiliates_List_Table extends WP_List_Table {
 	}
 
 	/**
+	 * Returns the status-filter navigation links.
+	 *
 	 * @inheritDoc
 	 */
 	public function get_views() {
@@ -151,34 +187,71 @@ class Affilio_Affiliates_List_Table extends WP_List_Table {
 
 		$actions['payout'] = sprintf(
 			'<a href="%1$s">%2$s</a>',
-			esc_url( add_query_arg( array( 'page' => 'affilio-affiliates', 'view' => 'edit', 'affiliate_id' => (int) $item->id ), admin_url( 'admin.php' ) ) ),
+			esc_url(
+				add_query_arg(
+					array(
+						'page'         => 'affilio-affiliates',
+						'view'         => 'edit',
+						'affiliate_id' => (int) $item->id,
+					),
+					admin_url( 'admin.php' )
+				)
+			),
 			esc_html__( 'Edit affiliate', 'dreamax-affiliates' )
 		);
 
 		if ( 'pending' === $item->status ) {
-			$approve_url = wp_nonce_url(
-				add_query_arg( array( 'action' => 'affilio_approve_affiliate', 'affiliate_id' => $item->id ), admin_url( 'admin-post.php' ) ),
+			$approve_url        = wp_nonce_url(
+				add_query_arg(
+					array(
+						'action'       => 'affilio_approve_affiliate',
+						'affiliate_id' => $item->id,
+					),
+					admin_url( 'admin-post.php' )
+				),
 				'affilio_affiliate_status_active_' . (int) $item->id
 			);
 			$actions['approve'] = sprintf( '<a href="%s">%s</a>', esc_url( $approve_url ), esc_html__( 'Approve', 'dreamax-affiliates' ) );
 		}
 
 		if ( in_array( $item->status, array( 'rejected', 'suspended', 'banned' ), true ) ) {
-			$reactivate_url = wp_nonce_url(
-				add_query_arg( array( 'action' => 'affilio_change_affiliate_status', 'affiliate_id' => $item->id, 'status' => 'active' ), admin_url( 'admin-post.php' ) ),
+			$reactivate_url        = wp_nonce_url(
+				add_query_arg(
+					array(
+						'action'       => 'affilio_change_affiliate_status',
+						'affiliate_id' => $item->id,
+						'status'       => 'active',
+					),
+					admin_url( 'admin-post.php' )
+				),
 				'affilio_affiliate_status_active_' . (int) $item->id
 			);
 			$actions['reactivate'] = sprintf( '<a href="%s">%s</a>', esc_url( $reactivate_url ), esc_html__( 'Reactivate', 'dreamax-affiliates' ) );
 		}
 
 		if ( in_array( $item->status, array( 'active', 'pending' ), true ) ) {
-			$actions['review'] = sprintf( '<a href="%s#affilio-status">%s</a>', esc_url( add_query_arg( array( 'page' => 'affilio-affiliates', 'view' => 'edit', 'affiliate_id' => (int) $item->id ), admin_url( 'admin.php' ) ) ), esc_html__( 'Change status', 'dreamax-affiliates' ) );
+			$actions['review'] = sprintf(
+				'<a href="%s#affilio-status">%s</a>',
+				esc_url(
+					add_query_arg(
+						array(
+							'page'         => 'affilio-affiliates',
+							'view'         => 'edit',
+							'affiliate_id' => (int) $item->id,
+						),
+						admin_url( 'admin.php' )
+					)
+				),
+				esc_html__( 'Change status', 'dreamax-affiliates' )
+			);
 		}
 
 		return sprintf( '%1$s %2$s', esc_html( $name ), $this->row_actions( $actions ) );
 	}
 
 	/**
+	 * Renders the affiliate email column.
+	 *
 	 * @param object $item Affiliate row.
 	 * @return string
 	 */
@@ -187,6 +260,8 @@ class Affilio_Affiliates_List_Table extends WP_List_Table {
 	}
 
 	/**
+	 * Renders the referral-code column.
+	 *
 	 * @param object $item Affiliate row.
 	 * @return string
 	 */
@@ -196,6 +271,8 @@ class Affilio_Affiliates_List_Table extends WP_List_Table {
 
 
 	/**
+	 * Renders the effective commission column.
+	 *
 	 * @param object $item Affiliate row.
 	 * @return string
 	 */
@@ -222,6 +299,8 @@ class Affilio_Affiliates_List_Table extends WP_List_Table {
 
 
 	/**
+	 * Renders the configured payout-method column.
+	 *
 	 * @param object $item Affiliate row.
 	 * @return string
 	 */
@@ -232,6 +311,8 @@ class Affilio_Affiliates_List_Table extends WP_List_Table {
 	}
 
 	/**
+	 * Renders the affiliate status column.
+	 *
 	 * @param object $item Affiliate row.
 	 * @return string
 	 */
@@ -240,6 +321,8 @@ class Affilio_Affiliates_List_Table extends WP_List_Table {
 	}
 
 	/**
+	 * Renders the registration-date column.
+	 *
 	 * @param object $item Affiliate row.
 	 * @return string
 	 */

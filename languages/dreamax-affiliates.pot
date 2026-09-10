@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Dreamax Affiliates 2.1.2\n"
+"Project-Id-Version: Dreamax Affiliates 2.1.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/dreamax-affiliates/\n"
-"POT-Creation-Date: 2026-08-08 00:00+0000\n"
+"POT-Creation-Date: 2026-09-02 00:00+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -3575,4 +3575,80 @@ msgstr ""
 
 #: uninstall.php:44
 msgid "Dreamax Affiliates network cleanup incomplete"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Share products you believe in and earn commissions on qualified sales. Tell us about your audience to get started."
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Application highlights"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Secure application"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Human-reviewed"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Referral tools after approval"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Application progress"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "of"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Application completion"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Your details"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Promotion"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Payout"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Start with the contact details we will use for your application."
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Continue to promotion"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Help us understand where and how you plan to promote our products."
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Back"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Continue to payout"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Final step"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Submit application"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Your application is reviewed before referral tools become available."
 msgstr ""

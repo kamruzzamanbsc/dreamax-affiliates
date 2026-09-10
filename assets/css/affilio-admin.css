@@ -912,6 +912,35 @@
 	}
 }
 
+/* Keep every Dreamax admin dropdown visually identifiable after custom surfaces override WordPress backgrounds. */
+.wp-core-ui select:not([multiple]):not([size]) {
+	-webkit-appearance: none;
+	appearance: none;
+	padding-inline-end: 38px !important;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='m4 6 4 4 4-4' fill='none' stroke='%234f46e5' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+	background-repeat: no-repeat !important;
+	background-position: right 11px center !important;
+	background-size: 16px 16px !important;
+	cursor: pointer;
+}
+
+body.rtl.wp-core-ui select:not([multiple]):not([size]) {
+	background-position: left 11px center !important;
+}
+
+.wp-core-ui select:not([multiple]):not([size]):disabled {
+	cursor: not-allowed;
+}
+
+@media (forced-colors: active) {
+	.wp-core-ui select:not([multiple]):not([size]) {
+		-webkit-appearance: auto;
+		appearance: auto;
+		padding-inline-end: 12px !important;
+		background-image: none !important;
+	}
+}
+
 /* FT-3.2: local diagnostics and restrained upgrade path
 -------------------------------------------------------- */
 .affilio-diagnostics-wrap,

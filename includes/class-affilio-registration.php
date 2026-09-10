@@ -20,7 +20,6 @@ class Affilio_Registration {
 
 		add_action( 'wp_ajax_affilio_register', array( $this, 'handle_registration' ) );
 		add_action( 'wp_ajax_nopriv_affilio_register', array( $this, 'handle_registration' ) );
-
 	}
 
 	/**
@@ -48,77 +47,146 @@ class Affilio_Registration {
 			}
 		}
 
-		$instance_id       = wp_unique_id( 'affilio-registration-' );
-		$required_note_id  = $instance_id . '-required-note';
-		$message_id        = $instance_id . '-message';
-		$payout_method_id  = $instance_id . '-payout-method';
-		$payout_email_id   = $instance_id . '-payout-email';
-		$payout_details_id = $instance_id . '-payout-details';
-		$payout_help_id    = $instance_id . '-payout-details-help';
-		$terms_id          = $instance_id . '-terms-accepted';
-		$honeypot_id       = $instance_id . '-company-fax';
+		$instance_id        = wp_unique_id( 'affilio-registration-' );
+		$required_note_id   = $instance_id . '-required-note';
+		$message_id         = $instance_id . '-message';
+		$payout_method_id   = $instance_id . '-payout-method';
+		$payout_email_id    = $instance_id . '-payout-email';
+		$payout_details_id  = $instance_id . '-payout-details';
+		$payout_help_id     = $instance_id . '-payout-details-help';
+		$terms_id           = $instance_id . '-terms-accepted';
+		$honeypot_id        = $instance_id . '-company-fax';
+		$is_logged_in       = is_user_logged_in();
+		$promotion_step     = $is_logged_in ? 1 : 2;
+		$payout_step        = $is_logged_in ? 2 : 3;
+		$total_steps        = $is_logged_in ? 2 : 3;
+		$identity_panel_id  = $instance_id . '-identity-panel';
+		$promotion_panel_id = $instance_id . '-promotion-panel';
+		$payout_panel_id    = $instance_id . '-payout-panel';
 
 		ob_start();
 		?>
 		<form id="<?php echo esc_attr( $instance_id ); ?>" class="affilio-registration-form" method="post" aria-describedby="<?php echo esc_attr( $required_note_id ); ?>" novalidate>
 			<header class="affilio-registration-header">
-				<p class="affilio-registration-eyebrow"><?php esc_html_e( 'Affiliate program', 'dreamax-affiliates' ); ?></p>
-				<h2><?php esc_html_e( 'Apply to become an affiliate', 'dreamax-affiliates' ); ?></h2>
-				<p><?php esc_html_e( 'Tell us how you plan to promote this site. Your application will be reviewed before referral tools become available.', 'dreamax-affiliates' ); ?></p>
+				<div class="affilio-registration-header-copy">
+					<p class="affilio-registration-eyebrow"><?php esc_html_e( 'Affiliate program', 'dreamax-affiliates' ); ?></p>
+					<h2><?php esc_html_e( 'Apply to become an affiliate', 'dreamax-affiliates' ); ?></h2>
+					<p><?php esc_html_e( 'Share products you believe in and earn commissions on qualified sales. Tell us about your audience to get started.', 'dreamax-affiliates' ); ?></p>
+				</div>
+				<ul class="affilio-registration-highlights" aria-label="<?php echo esc_attr__( 'Application highlights', 'dreamax-affiliates' ); ?>">
+					<li><span aria-hidden="true"></span><?php esc_html_e( 'Secure application', 'dreamax-affiliates' ); ?></li>
+					<li><span aria-hidden="true"></span><?php echo get_option( 'affilio_auto_approve_affiliates', false ) ? esc_html__( 'Automatic approval', 'dreamax-affiliates' ) : esc_html__( 'Human-reviewed', 'dreamax-affiliates' ); ?></li>
+					<li><span aria-hidden="true"></span><?php esc_html_e( 'Referral tools after approval', 'dreamax-affiliates' ); ?></li>
+				</ul>
 			</header>
+			<nav class="affilio-registration-progress affilio-registration-progress--<?php echo esc_attr( $total_steps ); ?>" aria-label="<?php echo esc_attr__( 'Application progress', 'dreamax-affiliates' ); ?>">
+				<div class="affilio-registration-progress-meta">
+					<span><?php esc_html_e( 'Application progress', 'dreamax-affiliates' ); ?></span>
+					<strong><span data-affilio-current-step>1</span> <?php esc_html_e( 'of', 'dreamax-affiliates' ); ?> <?php echo esc_html( $total_steps ); ?></strong>
+				</div>
+				<div class="affilio-registration-progress-bar" role="progressbar" aria-label="<?php echo esc_attr__( 'Application completion', 'dreamax-affiliates' ); ?>" aria-valuemin="1" aria-valuemax="<?php echo esc_attr( $total_steps ); ?>" aria-valuenow="1">
+					<span></span>
+				</div>
+				<ol>
+					<?php if ( ! $is_logged_in ) : ?>
+						<li><button type="button" data-affilio-step-target="1" aria-controls="<?php echo esc_attr( $identity_panel_id ); ?>"><span>1</span><strong><?php esc_html_e( 'Your details', 'dreamax-affiliates' ); ?></strong></button></li>
+					<?php endif; ?>
+					<li><button type="button" data-affilio-step-target="<?php echo esc_attr( $promotion_step ); ?>" aria-controls="<?php echo esc_attr( $promotion_panel_id ); ?>"><span><?php echo esc_html( $promotion_step ); ?></span><strong><?php esc_html_e( 'Promotion', 'dreamax-affiliates' ); ?></strong></button></li>
+					<li><button type="button" data-affilio-step-target="<?php echo esc_attr( $payout_step ); ?>" aria-controls="<?php echo esc_attr( $payout_panel_id ); ?>"><span><?php echo esc_html( $payout_step ); ?></span><strong><?php esc_html_e( 'Payout', 'dreamax-affiliates' ); ?></strong></button></li>
+				</ol>
+			</nav>
 			<p id="<?php echo esc_attr( $required_note_id ); ?>" class="affilio-required-note"><span aria-hidden="true">*</span> <?php esc_html_e( 'Required fields', 'dreamax-affiliates' ); ?></p>
 			<input type="hidden" name="affilio_nonce" value="<?php echo esc_attr( wp_create_nonce( 'affilio_register_nonce' ) ); ?>">
 
-			<?php if ( ! is_user_logged_in() ) : ?>
-				<?php $name_id = $instance_id . '-name'; ?>
-				<p class="affilio-field">
-					<label for="<?php echo esc_attr( $name_id ); ?>"><?php esc_html_e( 'Your name', 'dreamax-affiliates' ); ?> <span aria-hidden="true">*</span></label>
-					<input type="text" id="<?php echo esc_attr( $name_id ); ?>" name="name" autocomplete="name" required aria-required="true">
-				</p>
-				<?php $email_id = $instance_id . '-email'; ?>
-				<p class="affilio-field">
-					<label for="<?php echo esc_attr( $email_id ); ?>"><?php esc_html_e( 'Email address', 'dreamax-affiliates' ); ?> <span aria-hidden="true">*</span></label>
-					<input type="email" id="<?php echo esc_attr( $email_id ); ?>" name="email" autocomplete="email" required aria-required="true">
-				</p>
+			<?php if ( ! $is_logged_in ) : ?>
+				<section id="<?php echo esc_attr( $identity_panel_id ); ?>" class="affilio-registration-section" data-affilio-registration-step="1">
+					<div class="affilio-registration-section-heading affilio-registration-identity-heading">
+						<span class="affilio-registration-step" aria-hidden="true">01</span>
+						<div>
+							<h3 tabindex="-1"><?php esc_html_e( 'Your details', 'dreamax-affiliates' ); ?></h3>
+							<p><?php esc_html_e( 'Start with the contact details we will use for your application.', 'dreamax-affiliates' ); ?></p>
+						</div>
+					</div>
+					<div class="affilio-registration-grid">
+						<?php $name_id = $instance_id . '-name'; ?>
+						<p class="affilio-field">
+							<label for="<?php echo esc_attr( $name_id ); ?>"><?php esc_html_e( 'Your name', 'dreamax-affiliates' ); ?> <span aria-hidden="true">*</span></label>
+							<input type="text" id="<?php echo esc_attr( $name_id ); ?>" name="name" autocomplete="name" required aria-required="true">
+						</p>
+						<?php $email_id = $instance_id . '-email'; ?>
+						<p class="affilio-field">
+							<label for="<?php echo esc_attr( $email_id ); ?>"><?php esc_html_e( 'Email address', 'dreamax-affiliates' ); ?> <span aria-hidden="true">*</span></label>
+							<input type="email" id="<?php echo esc_attr( $email_id ); ?>" name="email" autocomplete="email" required aria-required="true">
+						</p>
+					</div>
+					<div class="affilio-registration-section-actions affilio-registration-section-actions--end">
+						<button type="button" class="affilio-registration-next" data-affilio-step-next><?php esc_html_e( 'Continue to promotion', 'dreamax-affiliates' ); ?><span aria-hidden="true"></span></button>
+					</div>
+				</section>
 			<?php endif; ?>
 
-			<div class="affilio-registration-section-heading">
-				<h3><?php esc_html_e( 'Promotion profile', 'dreamax-affiliates' ); ?></h3>
-				<p><?php esc_html_e( 'Help the program owner understand where and how you plan to promote their products.', 'dreamax-affiliates' ); ?></p>
-			</div>
+			<section id="<?php echo esc_attr( $promotion_panel_id ); ?>" class="affilio-registration-section" data-affilio-registration-step="<?php echo esc_attr( $promotion_step ); ?>">
+				<div class="affilio-registration-section-heading">
+					<span class="affilio-registration-step" aria-hidden="true"><?php echo esc_html( str_pad( (string) $promotion_step, 2, '0', STR_PAD_LEFT ) ); ?></span>
+					<div>
+						<h3 tabindex="-1"><?php esc_html_e( 'Promotion profile', 'dreamax-affiliates' ); ?></h3>
+						<p><?php esc_html_e( 'Help us understand where and how you plan to promote our products.', 'dreamax-affiliates' ); ?></p>
+					</div>
+				</div>
 
-			<?php $this->render_profile_fields( $instance_id ); ?>
+				<div class="affilio-registration-grid affilio-registration-profile-grid">
+					<?php $this->render_profile_fields( $instance_id ); ?>
+				</div>
+				<div class="affilio-registration-section-actions">
+					<?php if ( ! $is_logged_in ) : ?>
+						<button type="button" class="affilio-registration-back" data-affilio-step-back><span aria-hidden="true"></span><?php esc_html_e( 'Back', 'dreamax-affiliates' ); ?></button>
+					<?php endif; ?>
+					<button type="button" class="affilio-registration-next" data-affilio-step-next><?php esc_html_e( 'Continue to payout', 'dreamax-affiliates' ); ?><span aria-hidden="true"></span></button>
+				</div>
+			</section>
 
-			<div class="affilio-registration-section-heading affilio-registration-payout-heading">
-				<h3><?php esc_html_e( 'Payout information', 'dreamax-affiliates' ); ?></h3>
-				<p><?php esc_html_e( 'Choose how you prefer to receive approved commissions. You can update these details later from your affiliate dashboard.', 'dreamax-affiliates' ); ?></p>
-			</div>
+			<section id="<?php echo esc_attr( $payout_panel_id ); ?>" class="affilio-registration-section" data-affilio-registration-step="<?php echo esc_attr( $payout_step ); ?>">
+				<div class="affilio-registration-section-heading affilio-registration-payout-heading">
+					<span class="affilio-registration-step" aria-hidden="true"><?php echo esc_html( str_pad( (string) $payout_step, 2, '0', STR_PAD_LEFT ) ); ?></span>
+					<div>
+						<h3 tabindex="-1"><?php esc_html_e( 'Payout information', 'dreamax-affiliates' ); ?></h3>
+						<p><?php esc_html_e( 'Choose how you prefer to receive approved commissions. You can update these details later from your affiliate dashboard.', 'dreamax-affiliates' ); ?></p>
+					</div>
+				</div>
 
-			<p class="affilio-field">
+				<div class="affilio-registration-grid">
+					<p class="affilio-field">
 				<label for="<?php echo esc_attr( $payout_method_id ); ?>"><?php esc_html_e( 'Preferred payout method', 'dreamax-affiliates' ); ?></label>
 				<select id="<?php echo esc_attr( $payout_method_id ); ?>" class="affilio-payout-method" name="payout_method">
 					<?php foreach ( affilio()->payouts->get_payout_methods() as $method_key => $method_label ) : ?>
 						<option value="<?php echo esc_attr( $method_key ); ?>"><?php echo esc_html( $method_label ); ?></option>
 					<?php endforeach; ?>
 				</select>
-			</p>
+					</p>
 
-			<p class="affilio-field">
+					<p class="affilio-field">
 				<label for="<?php echo esc_attr( $payout_email_id ); ?>"><?php esc_html_e( 'Payout/contact email', 'dreamax-affiliates' ); ?> <span aria-hidden="true">*</span></label>
 				<input type="email" id="<?php echo esc_attr( $payout_email_id ); ?>" name="payout_email" autocomplete="email" required aria-required="true">
-			</p>
+					</p>
 
-			<p class="affilio-field">
+					<p class="affilio-field affilio-field--wide">
 				<label for="<?php echo esc_attr( $payout_details_id ); ?>"><?php esc_html_e( 'Payout destination / account details', 'dreamax-affiliates' ); ?> <span class="affilio-payout-details-required" aria-hidden="true" hidden>*</span></label>
 				<textarea id="<?php echo esc_attr( $payout_details_id ); ?>" class="affilio-payout-details" name="payout_details" rows="4" aria-describedby="<?php echo esc_attr( $payout_help_id ); ?>"></textarea>
 				<small id="<?php echo esc_attr( $payout_help_id ); ?>"><?php esc_html_e( 'For bank transfer or other manual methods, enter the destination/account details needed to receive the payout. Never enter passwords or card security codes.', 'dreamax-affiliates' ); ?></small>
-			</p>
+					</p>
+				</div>
+				<div class="affilio-registration-section-actions">
+					<button type="button" class="affilio-registration-back" data-affilio-step-back><span aria-hidden="true"></span><?php esc_html_e( 'Back', 'dreamax-affiliates' ); ?></button>
+					<span class="affilio-registration-ready"><span aria-hidden="true"></span><?php esc_html_e( 'Final step', 'dreamax-affiliates' ); ?></span>
+				</div>
+			</section>
 
 			<p class="affilio-field affilio-hp-field" aria-hidden="true">
 				<label for="<?php echo esc_attr( $honeypot_id ); ?>"><?php esc_html_e( 'Company fax', 'dreamax-affiliates' ); ?></label>
-				<input type="text" id="<?php echo esc_attr( $honeypot_id ); ?>" name="company_fax" value="" tabindex="-1" autocomplete="off">
+				<input type="text" id="<?php echo esc_attr( $honeypot_id ); ?>" name="affilio_hp_field" value="" tabindex="-1" autocomplete="new-password" data-lpignore="true" data-1p-ignore="true">
 			</p>
 
+			<div class="affilio-registration-final" data-affilio-registration-final>
 			<p class="affilio-field affilio-terms-field">
 				<label for="<?php echo esc_attr( $terms_id ); ?>">
 					<input type="checkbox" id="<?php echo esc_attr( $terms_id ); ?>" name="affilio_terms_accepted" value="1" required aria-required="true">
@@ -131,7 +199,13 @@ class Affilio_Registration {
 								__( 'I confirm that the information is accurate and agree to the site’s %s.', 'dreamax-affiliates' ),
 								'<a href="' . esc_url( $privacy_url ) . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'privacy policy', 'dreamax-affiliates' ) . '</a>'
 							),
-							array( 'a' => array( 'href' => array(), 'target' => array(), 'rel' => array() ) )
+							array(
+								'a' => array(
+									'href'   => array(),
+									'target' => array(),
+									'rel'    => array(),
+								),
+							)
 						);
 					} else {
 						esc_html_e( 'I confirm that the information is accurate and agree to the site’s terms and privacy practices.', 'dreamax-affiliates' );
@@ -141,8 +215,10 @@ class Affilio_Registration {
 			</p>
 
 			<p class="affilio-submit">
-				<button type="submit" data-default-label="<?php echo esc_attr__( 'Apply to become an affiliate', 'dreamax-affiliates' ); ?>"><?php esc_html_e( 'Apply to become an affiliate', 'dreamax-affiliates' ); ?></button>
+				<button type="submit" data-default-label="<?php echo esc_attr__( 'Submit application', 'dreamax-affiliates' ); ?>"><?php esc_html_e( 'Submit application', 'dreamax-affiliates' ); ?></button>
+				<span class="affilio-submit-note"><span aria-hidden="true"></span><?php echo get_option( 'affilio_auto_approve_affiliates', false ) ? esc_html__( 'Referral tools become available after your application is accepted.', 'dreamax-affiliates' ) : esc_html__( 'Your application is reviewed before referral tools become available.', 'dreamax-affiliates' ); ?></span>
 			</p>
+			</div>
 
 			<div id="<?php echo esc_attr( $message_id ); ?>" class="affilio-form-message" role="status" aria-live="polite" aria-atomic="true" tabindex="-1" hidden></div>
 		</form>
@@ -158,13 +234,23 @@ class Affilio_Registration {
 	public function handle_registration() {
 		check_ajax_referer( 'affilio_register_nonce', 'affilio_nonce' );
 
-		$honeypot = isset( $_POST['company_fax'] ) ? sanitize_text_field( wp_unslash( $_POST['company_fax'] ) ) : '';
+		// Use an autofill-neutral field name. Keep accepting the legacy name so
+		// cached forms and automated spam checks continue to be rejected.
+		$honeypot = isset( $_POST['affilio_hp_field'] )
+			? sanitize_text_field( wp_unslash( $_POST['affilio_hp_field'] ) )
+			: ( isset( $_POST['company_fax'] ) ? sanitize_text_field( wp_unslash( $_POST['company_fax'] ) ) : '' );
 		if ( '' !== trim( $honeypot ) ) {
 			wp_send_json_error( array( 'message' => __( 'Unable to process the application.', 'dreamax-affiliates' ) ), 400 );
 		}
 
 		if ( empty( $_POST['affilio_terms_accepted'] ) || '1' !== sanitize_text_field( wp_unslash( $_POST['affilio_terms_accepted'] ) ) ) {
-			wp_send_json_error( array( 'message' => __( 'Please accept the terms and privacy notice before applying.', 'dreamax-affiliates' ), 'field' => 'affilio_terms_accepted' ), 400 );
+			wp_send_json_error(
+				array(
+					'message' => __( 'Please accept the terms and privacy notice before applying.', 'dreamax-affiliates' ),
+					'field'   => 'affilio_terms_accepted',
+				),
+				400
+			);
 		}
 
 		$payout_method      = isset( $_POST['payout_method'] ) ? affilio()->payouts->sanitize_payout_method( wp_unslash( $_POST['payout_method'] ) ) : 'paypal'; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- sanitize_payout_method() sanitize_key()s and whitelists against known payout methods; not a WPCS-recognized sanitizer name.
@@ -174,15 +260,33 @@ class Affilio_Registration {
 		$profile_validation = $this->validate_required_profile_fields( $profile_fields );
 
 		if ( is_wp_error( $profile_validation ) ) {
-			wp_send_json_error( array( 'message' => $profile_validation->get_error_message(), 'field' => sanitize_key( (string) $profile_validation->get_error_data() ) ), 400 );
+			wp_send_json_error(
+				array(
+					'message' => $profile_validation->get_error_message(),
+					'field'   => sanitize_key( (string) $profile_validation->get_error_data() ),
+				),
+				400
+			);
 		}
 
 		if ( ! is_email( $payout_email ) ) {
-			wp_send_json_error( array( 'message' => __( 'Please enter a valid payout email address.', 'dreamax-affiliates' ), 'field' => 'payout_email' ), 400 );
+			wp_send_json_error(
+				array(
+					'message' => __( 'Please enter a valid payout email address.', 'dreamax-affiliates' ),
+					'field'   => 'payout_email',
+				),
+				400
+			);
 		}
 
 		if ( 'paypal' !== $payout_method && '' === $payout_details ) {
-			wp_send_json_error( array( 'message' => __( 'Please enter the payout account details for your selected method.', 'dreamax-affiliates' ), 'field' => 'payout_details' ), 400 );
+			wp_send_json_error(
+				array(
+					'message' => __( 'Please enter the payout account details for your selected method.', 'dreamax-affiliates' ),
+					'field'   => 'payout_details',
+				),
+				400
+			);
 		}
 
 		$rate_limit_key = $this->get_rate_limit_key( $payout_email );
@@ -205,7 +309,13 @@ class Affilio_Registration {
 			$user_id = $this->create_pending_user_account();
 
 			if ( is_wp_error( $user_id ) ) {
-				wp_send_json_error( array( 'message' => $user_id->get_error_message(), 'field' => sanitize_key( (string) $user_id->get_error_data() ) ), 400 );
+				wp_send_json_error(
+					array(
+						'message' => $user_id->get_error_message(),
+						'field'   => sanitize_key( (string) $user_id->get_error_data() ),
+					),
+					400
+				);
 			}
 
 			$created_user = true;
@@ -217,12 +327,12 @@ class Affilio_Registration {
 
 		$affiliate_id = affilio()->affiliates_db->insert(
 			array(
-				'user_id'         => $user_id,
-				'referral_code'   => $referral_code,
-				'status'          => $auto_approve ? 'active' : 'pending',
-				'payout_method'   => $payout_method,
-				'payout_email'    => $payout_email,
-				'payout_details'  => $payout_details,
+				'user_id'             => $user_id,
+				'referral_code'       => $referral_code,
+				'status'              => $auto_approve ? 'active' : 'pending',
+				'payout_method'       => $payout_method,
+				'payout_email'        => $payout_email,
+				'payout_details'      => $payout_details,
 				'website_url'         => $profile_fields['website_url'],
 				'promotion_method'    => $profile_fields['promotion_method'],
 				'social_profile'      => $profile_fields['social_profile'],
@@ -374,7 +484,7 @@ class Affilio_Registration {
 	 */
 	public static function get_profile_field_definitions() {
 		return array(
-			'website_url' => array(
+			'website_url'         => array(
 				'label'       => __( 'Website', 'dreamax-affiliates' ),
 				'description' => __( 'The main website or channel where you plan to promote products.', 'dreamax-affiliates' ),
 				'type'        => 'url',
@@ -382,21 +492,21 @@ class Affilio_Registration {
 				'required'    => false,
 				'order'       => 10,
 			),
-			'promotion_method' => array(
+			'promotion_method'    => array(
 				'label'       => __( 'How will you promote us?', 'dreamax-affiliates' ),
 				'description' => __( 'Briefly describe your audience and promotion method.', 'dreamax-affiliates' ),
 				'type'        => 'textarea',
 				'enabled'     => true,
 				'required'    => true,
-				'order'       => 20,
+				'order'       => 30,
 			),
-			'social_profile' => array(
+			'social_profile'      => array(
 				'label'       => __( 'Primary social profile', 'dreamax-affiliates' ),
 				'description' => __( 'Optional public profile URL.', 'dreamax-affiliates' ),
 				'type'        => 'url',
 				'enabled'     => true,
 				'required'    => false,
-				'order'       => 30,
+				'order'       => 20,
 			),
 			'application_message' => array(
 				'label'       => __( 'Application message', 'dreamax-affiliates' ),
@@ -427,7 +537,12 @@ class Affilio_Registration {
 		}
 		unset( $definition );
 
-		uasort( $definitions, static function ( $left, $right ) { return (int) $left['order'] <=> (int) $right['order']; } );
+		uasort(
+			$definitions,
+			static function ( $left, $right ) {
+				return (int) $left['order'] <=> (int) $right['order'];
+			}
+		);
 		return $definitions;
 	}
 
@@ -445,10 +560,13 @@ class Affilio_Registration {
 			$required = ! empty( $field['required'] );
 			$help_id  = $id . '-help';
 			?>
-			<p class="affilio-field">
+			<p class="affilio-field affilio-field--<?php echo esc_attr( str_replace( '_', '-', $key ) ); ?>">
 				<label for="<?php echo esc_attr( $id ); ?>">
 					<?php echo esc_html( $field['label'] ); ?>
-					<?php if ( $required ) : ?><span aria-hidden="true"> *</span><?php endif; ?>
+					<?php
+					if ( $required ) :
+						?>
+						<span aria-hidden="true"> *</span><?php endif; ?>
 				</label>
 				<?php if ( 'textarea' === $field['type'] ) : ?>
 					<textarea id="<?php echo esc_attr( $id ); ?>" name="<?php echo esc_attr( $key ); ?>" rows="4" aria-describedby="<?php echo esc_attr( $help_id ); ?>" <?php echo $required ? 'required aria-required="true"' : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static attribute. ?>></textarea>
@@ -471,10 +589,10 @@ class Affilio_Registration {
 		// before reaching this method.
 		// phpcs:disable WordPress.Security.NonceVerification.Missing
 		return array(
-			'website_url'        => isset( $_POST['website_url'] ) ? esc_url_raw( wp_unslash( $_POST['website_url'] ) ) : '',
-			'promotion_method'   => isset( $_POST['promotion_method'] ) ? sanitize_textarea_field( wp_unslash( $_POST['promotion_method'] ) ) : '',
-			'social_profile'     => isset( $_POST['social_profile'] ) ? esc_url_raw( wp_unslash( $_POST['social_profile'] ) ) : '',
-			'application_message'=> isset( $_POST['application_message'] ) ? sanitize_textarea_field( wp_unslash( $_POST['application_message'] ) ) : '',
+			'website_url'         => isset( $_POST['website_url'] ) ? esc_url_raw( wp_unslash( $_POST['website_url'] ) ) : '',
+			'promotion_method'    => isset( $_POST['promotion_method'] ) ? sanitize_textarea_field( wp_unslash( $_POST['promotion_method'] ) ) : '',
+			'social_profile'      => isset( $_POST['social_profile'] ) ? esc_url_raw( wp_unslash( $_POST['social_profile'] ) ) : '',
+			'application_message' => isset( $_POST['application_message'] ) ? sanitize_textarea_field( wp_unslash( $_POST['application_message'] ) ) : '',
 		);
 		// phpcs:enable WordPress.Security.NonceVerification.Missing
 	}

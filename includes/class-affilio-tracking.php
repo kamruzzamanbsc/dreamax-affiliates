@@ -9,6 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * Records referral visits and resolves secure attribution cookies.
+ */
 class Affilio_Tracking {
 
 	/**
@@ -32,6 +35,9 @@ class Affilio_Tracking {
 	 */
 	const CAMPAIGN_QUERY_VAR = 'aff_campaign';
 
+	/**
+	 * Registers referral tracking hooks.
+	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'maybe_track_visit' ) );
 	}
@@ -69,9 +75,9 @@ class Affilio_Tracking {
 			return;
 		}
 
-		$token      = $this->generate_token();
-		$campaign   = isset( $_GET[ self::CAMPAIGN_QUERY_VAR ] ) ? $this->sanitize_campaign( wp_unslash( $_GET[ self::CAMPAIGN_QUERY_VAR ] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- sanitize_campaign() (below) sanitizes and truncates; not a WPCS-recognized sanitizer name.
-		$visit_id   = $this->log_visit( (int) $affiliate->id, $referral_code, $ip_address, $token, $campaign );
+		$token    = $this->generate_token();
+		$campaign = isset( $_GET[ self::CAMPAIGN_QUERY_VAR ] ) ? $this->sanitize_campaign( wp_unslash( $_GET[ self::CAMPAIGN_QUERY_VAR ] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- sanitize_campaign() (below) sanitizes and truncates; not a WPCS-recognized sanitizer name.
+		$visit_id = $this->log_visit( (int) $affiliate->id, $referral_code, $ip_address, $token, $campaign );
 
 		if ( ! $visit_id ) {
 			return;
@@ -168,8 +174,24 @@ class Affilio_Tracking {
 	 * @return string
 	 */
 	private function get_current_url() {
-		$uri = isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : '/'; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- sanitized on the next line via sanitize_text_field(); also esc_url_raw()'d below before use.
-		$uri = '/' . ltrim( sanitize_text_field( $uri ), '/' );
+		$uri       = isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : '/'; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- sanitized on the next line via sanitize_text_field(); also esc_url_raw()'d below before use.
+		$uri       = '/' . ltrim( sanitize_text_field( $uri ), '/' );
+		$home_path = wp_parse_url( home_url( '/' ), PHP_URL_PATH );
+		$home_path = '/' . trim( is_string( $home_path ) ? $home_path : '', '/' );
+
+		// REQUEST_URI includes the WordPress subdirectory while home_url() already
+		// contains it. Remove that one leading copy before composing the URL.
+		if (
+			'/' !== $home_path
+			&& (
+				$uri === $home_path
+				|| 0 === strpos( $uri, $home_path . '/' )
+				|| 0 === strpos( $uri, $home_path . '?' )
+			)
+		) {
+			$uri = (string) substr( $uri, strlen( $home_path ) );
+			$uri = '/' . ltrim( $uri, '/' );
+		}
 		$url = home_url( $uri );
 
 		return remove_query_arg( array( self::QUERY_VAR, self::CAMPAIGN_QUERY_VAR ), esc_url_raw( $url ) );
@@ -224,6 +246,14 @@ class Affilio_Tracking {
 	 */
 	public static function get_cookie_duration_days() {
 		$days = (int) get_option( 'affilio_cookie_duration_days', AFFILIO_DEFAULT_COOKIE_DAYS );
+
+		/**
+		 * Filters the referral-cookie lifetime.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param int $days Cookie lifetime in days.
+		 */
 		$days = (int) apply_filters( 'affilio_cookie_duration_days', $days );
 
 		return max( 1, min( 365, $days ) );

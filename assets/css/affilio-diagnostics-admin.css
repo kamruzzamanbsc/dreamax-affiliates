@@ -1,0 +1,693 @@
+/**
+ * Premium, page-scoped Diagnostics workspace.
+ */
+
+.affilio-diagnostics-wrap {
+	--affilio-diag-ink: #172033;
+	--affilio-diag-muted: #64748b;
+	--affilio-diag-line: #e2e8f0;
+	--affilio-diag-soft: #f8fafc;
+	--affilio-diag-brand: #4f46e5;
+	--affilio-diag-brand-dark: #3730a3;
+	--affilio-diag-good: #15803d;
+	--affilio-diag-warning: #b45309;
+	--affilio-diag-critical: #b91c1c;
+	box-sizing: border-box;
+	color: var(--affilio-diag-ink);
+	max-inline-size: 1180px;
+	padding-block: 18px 42px;
+}
+
+.affilio-diagnostics-wrap *,
+.affilio-diagnostics-wrap *::before,
+.affilio-diagnostics-wrap *::after {
+	box-sizing: inherit;
+}
+
+.affilio-diagnostics-wrap h1,
+.affilio-diagnostics-wrap h2,
+.affilio-diagnostics-wrap h3,
+.affilio-diagnostics-wrap p {
+	margin-block-start: 0;
+}
+
+.affilio-diagnostics-hero {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 32px;
+	min-block-size: 190px;
+	padding: 38px 42px;
+	background:
+		radial-gradient(circle at 88% 18%, rgb(129 140 248 / 32%), transparent 30%),
+		linear-gradient(135deg, #172554 0%, #312e81 52%, #4338ca 100%);
+	border: 1px solid rgb(255 255 255 / 14%);
+	border-radius: 18px;
+	box-shadow: 0 18px 45px rgb(30 41 59 / 18%);
+	color: #fff;
+	overflow: hidden;
+}
+
+.affilio-diagnostics-hero__content {
+	max-inline-size: 760px;
+}
+
+.affilio-diagnostics-hero h1 {
+	color: #fff;
+	font-size: clamp(28px, 3.2vw, 40px);
+	font-weight: 700;
+	letter-spacing: -0.025em;
+	line-height: 1.15;
+	margin-block: 8px 12px;
+}
+
+.affilio-diagnostics-hero p {
+	color: #dbeafe;
+	font-size: 15px;
+	line-height: 1.65;
+	margin: 0;
+}
+
+.affilio-diagnostics-eyebrow {
+	display: block;
+	color: var(--affilio-diag-brand);
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+	line-height: 1.4;
+	text-transform: uppercase;
+}
+
+.affilio-diagnostics-hero .affilio-diagnostics-eyebrow {
+	color: #c7d2fe;
+}
+
+.affilio-diagnostics-hero__badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	flex: 0 0 auto;
+	padding: 9px 14px;
+	background: rgb(255 255 255 / 12%);
+	border: 1px solid rgb(255 255 255 / 24%);
+	border-radius: 999px;
+	box-shadow: inset 0 1px 0 rgb(255 255 255 / 14%);
+	font-size: 13px;
+	font-weight: 700;
+}
+
+.affilio-diagnostics-hero__badge .dashicons {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 18px;
+	inline-size: 18px;
+	block-size: 18px;
+	line-height: 1;
+	margin: 0;
+}
+
+.affilio-diagnostics-tabs {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 12px;
+	margin-block: 22px;
+	padding: 8px;
+	background: #fff;
+	border: 1px solid var(--affilio-diag-line);
+	border-radius: 14px;
+	box-shadow: 0 8px 24px rgb(15 23 42 / 6%);
+}
+
+.affilio-diagnostics-tabs > a {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	min-inline-size: 0;
+	padding: 13px 15px;
+	border: 1px solid transparent;
+	border-radius: 10px;
+	color: #475569;
+	text-decoration: none;
+	transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+.affilio-diagnostics-tabs > a:hover,
+.affilio-diagnostics-tabs > a:focus-visible {
+	background: #f8fafc;
+	border-color: #cbd5e1;
+	color: var(--affilio-diag-brand-dark);
+	outline: none;
+}
+
+.affilio-diagnostics-tabs > a.is-active {
+	background: #eef2ff;
+	border-color: #c7d2fe;
+	box-shadow: inset 0 0 0 1px rgb(79 70 229 / 5%);
+	color: var(--affilio-diag-brand-dark);
+}
+
+.affilio-diagnostics-tabs .dashicons {
+	display: inline-grid;
+	place-items: center;
+	flex: 0 0 auto;
+	inline-size: 38px;
+	block-size: 38px;
+	background: #fff;
+	border-radius: 10px;
+	color: var(--affilio-diag-brand);
+	font-size: 20px;
+}
+
+.affilio-diagnostics-tabs strong,
+.affilio-diagnostics-tabs small {
+	display: block;
+}
+
+.affilio-diagnostics-tabs strong {
+	font-size: 14px;
+	line-height: 1.35;
+}
+
+.affilio-diagnostics-tabs small {
+	color: var(--affilio-diag-muted);
+	font-size: 12px;
+	line-height: 1.4;
+	margin-block-start: 2px;
+}
+
+.affilio-diagnostics-wrap > .notice {
+	margin: 0 0 18px;
+	border-radius: 9px;
+}
+
+.affilio-diagnostics-section,
+.affilio-support-report {
+	margin-block: 22px;
+	padding: 26px;
+	background: #fff;
+	border: 1px solid var(--affilio-diag-line);
+	border-radius: 16px;
+	box-shadow: 0 8px 24px rgb(15 23 42 / 6%);
+}
+
+.affilio-diagnostics-wrap .affilio-diagnostics-heading {
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+	gap: 14px;
+	margin-block-end: 20px;
+}
+
+.affilio-diagnostics-wrap .affilio-diagnostics-heading > div {
+	flex: 1 1 auto;
+	min-inline-size: 0;
+}
+
+.affilio-diagnostics-heading__icon {
+	display: inline-grid;
+	place-items: center;
+	flex: 0 0 auto;
+	inline-size: 42px;
+	block-size: 42px;
+	background: #eef2ff;
+	border-radius: 11px;
+	color: var(--affilio-diag-brand);
+	font-size: 21px;
+}
+
+.affilio-diagnostics-heading h2 {
+	font-size: 22px;
+	line-height: 1.3;
+	margin-block: 4px 6px;
+}
+
+.affilio-diagnostics-heading p {
+	max-inline-size: 780px;
+	color: var(--affilio-diag-muted);
+	line-height: 1.55;
+	margin: 0;
+}
+
+.affilio-status-summary {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 12px;
+	margin-block-end: 18px;
+}
+
+.affilio-status-summary article {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	min-inline-size: 0;
+	min-block-size: 88px;
+	padding: 15px;
+	background: var(--affilio-diag-soft);
+	border: 1px solid var(--affilio-diag-line);
+	border-radius: 11px;
+}
+
+.affilio-status-summary article > .dashicons {
+	display: inline-grid;
+	place-items: center;
+	flex: 0 0 auto;
+	inline-size: 38px;
+	block-size: 38px;
+	background: #eef2ff;
+	border-radius: 10px;
+	color: var(--affilio-diag-brand);
+	font-size: 19px;
+}
+
+.affilio-status-summary article.is-good > .dashicons {
+	background: #ecfdf3;
+	color: var(--affilio-diag-good);
+}
+
+.affilio-status-summary article.is-warning > .dashicons {
+	background: #fff7ed;
+	color: var(--affilio-diag-warning);
+}
+
+.affilio-status-summary article.is-critical > .dashicons {
+	background: #fef2f2;
+	color: var(--affilio-diag-critical);
+}
+
+.affilio-status-summary small,
+.affilio-status-summary strong {
+	display: block;
+}
+
+.affilio-status-summary small {
+	color: var(--affilio-diag-muted);
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 1.35;
+}
+
+.affilio-status-summary strong {
+	color: var(--affilio-diag-ink);
+	font-size: 22px;
+	line-height: 1.2;
+	margin-block-start: 3px;
+}
+
+.affilio-diagnostics-boundary {
+	display: flex;
+	align-items: flex-start;
+	gap: 11px;
+	margin-block-end: 18px;
+	padding: 13px 15px;
+	background: #eef2ff;
+	border: 1px solid #c7d2fe;
+	border-inline-start: 4px solid var(--affilio-diag-brand);
+	border-radius: 9px;
+	color: var(--affilio-diag-brand-dark);
+}
+
+.affilio-diagnostics-boundary .dashicons {
+	flex: 0 0 auto;
+	margin-block-start: 1px;
+}
+
+.affilio-diagnostics-boundary p {
+	line-height: 1.5;
+	margin: 0;
+}
+
+.affilio-status-list {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 12px;
+}
+
+.affilio-status-row {
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr) auto;
+	align-items: start;
+	gap: 12px;
+	min-inline-size: 0;
+	min-block-size: 126px;
+	padding: 17px;
+	background: linear-gradient(145deg, #fff 0%, #f8fafc 100%);
+	border: 1px solid var(--affilio-diag-line);
+	border-radius: 12px;
+}
+
+.affilio-status-row__icon {
+	display: inline-grid;
+	place-items: center;
+	flex: 0 0 auto;
+	inline-size: 38px;
+	block-size: 38px;
+	background: #ecfdf3;
+	border-radius: 10px;
+	color: var(--affilio-diag-good);
+	font-size: 19px;
+}
+
+.affilio-status-row.is-warning .affilio-status-row__icon {
+	background: #fff7ed;
+	color: var(--affilio-diag-warning);
+}
+
+.affilio-status-row.is-critical .affilio-status-row__icon {
+	background: #fef2f2;
+	color: var(--affilio-diag-critical);
+}
+
+.affilio-status-row__content {
+	min-inline-size: 0;
+}
+
+.affilio-status-row__title {
+	display: flex;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	gap: 7px;
+}
+
+.affilio-status-row h3 {
+	font-size: 14px;
+	line-height: 1.4;
+	margin: 0;
+	overflow-wrap: anywhere;
+}
+
+.affilio-status-row p {
+	color: var(--affilio-diag-muted);
+	line-height: 1.5;
+	margin: 6px 0 0;
+}
+
+.affilio-status-row__state {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex: 0 0 auto;
+	padding: 3px 7px;
+	border-radius: 999px;
+	font-size: 10px;
+	font-weight: 700;
+	line-height: 1.3;
+	text-transform: uppercase;
+}
+
+.affilio-status-row__state {
+	background: #ecfdf3;
+	color: var(--affilio-diag-good);
+}
+
+.affilio-status-row.is-warning .affilio-status-row__state {
+	background: #fff7ed;
+	color: var(--affilio-diag-warning);
+}
+
+.affilio-status-row.is-critical .affilio-status-row__state {
+	background: #fef2f2;
+	color: var(--affilio-diag-critical);
+}
+
+.affilio-status-row__action {
+	display: inline-flex !important;
+	align-items: center;
+	justify-content: center;
+	gap: 5px;
+	grid-column: 2 / -1;
+	justify-self: start;
+	min-block-size: 34px;
+	margin-block-start: 2px !important;
+	border-color: #c7d2fe !important;
+	border-radius: 7px !important;
+	color: var(--affilio-diag-brand-dark) !important;
+	font-weight: 600;
+	line-height: 1.2 !important;
+}
+
+.affilio-status-row__action .dashicons {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 15px;
+	inline-size: 15px;
+	block-size: 15px;
+	line-height: 1;
+	margin: 0;
+	position: static;
+}
+
+.affilio-support-report {
+	border-color: #d8ddff;
+	inline-size: 100%;
+	max-inline-size: none;
+}
+
+.affilio-support-report__editor {
+	overflow: hidden;
+	background: #0f172a;
+	border: 1px solid #1e293b;
+	border-radius: 12px;
+}
+
+.affilio-support-report__label {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	padding: 12px 15px;
+	background: #1e293b;
+	color: #e2e8f0;
+}
+
+.affilio-support-report__label span {
+	color: #94a3b8;
+	font-size: 12px;
+}
+
+.affilio-support-report textarea.code {
+	display: block;
+	inline-size: 100%;
+	min-block-size: 270px;
+	margin: 0;
+	padding: 16px;
+	background: #0f172a;
+	border: 0;
+	border-radius: 0;
+	box-shadow: none;
+	color: #dbeafe;
+	font-size: 12px;
+	line-height: 1.65;
+	resize: vertical;
+	white-space: pre;
+}
+
+.affilio-support-report textarea.code:focus {
+	box-shadow: inset 0 0 0 2px #818cf8;
+	outline: 0;
+}
+
+/* Attribution workflow */
+.affilio-diagnostics-attribution-note {
+	max-inline-size: 900px;
+	margin-block-end: 0;
+	padding: 12px 14px;
+	background: #eef2ff;
+	border: 1px solid #c7d2fe;
+	border-radius: 9px;
+	color: var(--affilio-diag-brand-dark);
+	line-height: 1.5;
+}
+
+.affilio-diagnostics-section > .affilio-admin-card {
+	margin-block-start: 18px;
+	padding: 22px;
+	background: linear-gradient(145deg, #fff 0%, #fafaff 100%);
+	border: 1px solid #d8ddff;
+	border-radius: 12px;
+	box-shadow: none;
+}
+
+.affilio-diagnostics-section > .affilio-admin-card h3,
+.affilio-diagnostics-steps .affilio-admin-card h3 {
+	font-size: 17px;
+	margin-block-end: 9px;
+}
+
+.affilio-diagnostics-section form {
+	margin-block-start: 16px;
+}
+
+.affilio-diagnostics-section form label {
+	display: block;
+	margin-block-end: 7px;
+}
+
+.affilio-diagnostics-section select {
+	inline-size: min(100%, 520px);
+	min-inline-size: 0;
+	min-block-size: 42px;
+	margin: 0;
+	margin-inline-end: 10px;
+	border-color: #cbd5e1;
+	border-radius: 7px;
+}
+
+.affilio-diagnostics-section .button {
+	min-block-size: 38px;
+	border-radius: 7px;
+	font-weight: 600;
+}
+
+.affilio-diagnostics-section .button-primary {
+	background: var(--affilio-diag-brand);
+	border-color: var(--affilio-diag-brand);
+}
+
+.affilio-diagnostics-section .button-primary:hover,
+.affilio-diagnostics-section .button-primary:focus {
+	background: var(--affilio-diag-brand-dark);
+	border-color: var(--affilio-diag-brand-dark);
+}
+
+.affilio-diagnostics-steps {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 14px;
+	margin-block-start: 20px;
+}
+
+.affilio-diagnostics-steps .affilio-admin-card {
+	position: relative;
+	min-inline-size: 0;
+	min-block-size: 220px;
+	margin: 0;
+	padding: 22px;
+	background: var(--affilio-diag-soft);
+	border: 1px solid var(--affilio-diag-line);
+	border-radius: 12px;
+	box-shadow: none;
+}
+
+.affilio-diagnostics-steps .affilio-admin-card p {
+	color: var(--affilio-diag-muted);
+	line-height: 1.55;
+}
+
+.affilio-diagnostics-steps .affilio-admin-card form {
+	margin-block-start: 14px;
+}
+
+.affilio-test-success {
+	display: flex;
+	align-items: flex-start;
+	gap: 7px;
+	margin-block-start: 14px;
+	padding: 11px 12px;
+	background: #ecfdf3;
+	border: 1px solid #bbf7d0;
+	border-radius: 8px;
+	color: var(--affilio-diag-good) !important;
+}
+
+.affilio-test-success .dashicons {
+	flex: 0 0 auto;
+	margin-block-start: 1px;
+}
+
+@media (max-width: 1100px) {
+	.affilio-status-list {
+		grid-template-columns: 1fr;
+	}
+
+	.affilio-status-row {
+		min-block-size: 0;
+	}
+}
+
+@media (max-width: 900px) {
+	.affilio-status-summary {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.affilio-diagnostics-steps {
+		grid-template-columns: 1fr;
+	}
+
+	.affilio-diagnostics-steps .affilio-admin-card {
+		min-block-size: 0;
+	}
+}
+
+@media (max-width: 782px) {
+	.affilio-diagnostics-wrap {
+		padding-inline-end: 10px;
+	}
+
+	.affilio-diagnostics-hero {
+		align-items: flex-start;
+		flex-direction: column;
+		min-block-size: 0;
+		padding: 30px 26px;
+	}
+
+	.affilio-diagnostics-section,
+	.affilio-support-report {
+		padding: 21px;
+	}
+
+	.affilio-diagnostics-section select {
+		display: block;
+		inline-size: 100%;
+		margin: 0 0 10px;
+	}
+
+	.affilio-support-report__label {
+		align-items: flex-start;
+		flex-direction: column;
+		gap: 3px;
+	}
+}
+
+@media (max-width: 600px) {
+	.affilio-diagnostics-tabs,
+	.affilio-status-summary {
+		grid-template-columns: 1fr;
+	}
+
+	.affilio-status-row {
+		grid-template-columns: auto minmax(0, 1fr);
+	}
+
+	.affilio-status-row__state {
+		grid-column: 2;
+		justify-self: start;
+	}
+
+	.affilio-status-row__action {
+		grid-column: 2;
+	}
+
+	.affilio-diagnostics-section .button {
+		inline-size: 100%;
+		text-align: center;
+	}
+}
+
+@media (max-width: 480px) {
+	.affilio-diagnostics-hero {
+		border-radius: 14px;
+		padding: 25px 21px;
+	}
+
+	.affilio-diagnostics-section,
+	.affilio-support-report {
+		border-radius: 12px;
+		padding: 17px;
+	}
+
+	.affilio-diagnostics-wrap .affilio-diagnostics-heading {
+		flex-direction: column;
+	}
+}

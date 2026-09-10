@@ -11,7 +11,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, PluginCheck.Security.DirectDB.UnescapedDBParameter
-/*
+
+/**
+ * Provides the referral-ledger data access layer.
+ *
  * This class is a custom-table data-access layer (Dreamax Affiliates' own referrals table, not a
  * WordPress core table), so every method here necessarily runs a "direct database query" that
  * WordPress core object-cache groups (built around posts/users/terms) do not cover — there is
@@ -29,6 +32,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Affilio_DB_Referrals extends Affilio_DB {
 
 	/**
+	 * Referral custom-table suffix.
+	 *
 	 * @var string
 	 */
 	protected $table_suffix = 'referrals';
@@ -96,6 +101,8 @@ class Affilio_DB_Referrals extends Affilio_DB {
 	 * All referrals belonging to one affiliate, most recent first.
 	 *
 	 * @param int $affiliate_id Affiliate ID.
+	 * @param int $limit        Maximum referrals to return.
+	 * @param int $offset       Number of referrals to skip.
 	 * @return array
 	 */
 	public function get_by_affiliate( $affiliate_id, $limit = 200, $offset = 0 ) {
@@ -144,6 +151,13 @@ class Affilio_DB_Referrals extends Affilio_DB {
 	 * @return object[]
 	 */
 	public function get_all() {
+		/**
+		 * Filters the maximum row count returned by the legacy get-all helper.
+		 *
+		 * @since 2.1.3
+		 *
+		 * @param int $limit Maximum number of rows.
+		 */
 		$limit = (int) apply_filters( 'affilio_legacy_referral_get_all_limit', 5000 );
 		return $this->query(
 			array(
@@ -647,6 +661,7 @@ class Affilio_DB_Referrals extends Affilio_DB {
 			$rows    = empty( $where['params'] ) ? $wpdb->get_results( $sql ) : $wpdb->get_results( $wpdb->prepare( $sql, $where['params'] ) ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 			$summary = array(
 				'count'             => 0,
+				'status_counts'     => array_fill_keys( \Affilio\Domain\Referral\ReferralStatus::all(), 0 ),
 				'order_totals'      => array(),
 				'commission_totals' => array(),
 				'paid_totals'       => array(),
@@ -655,12 +670,15 @@ class Affilio_DB_Referrals extends Affilio_DB {
 			);
 
 			foreach ( $rows as $row ) {
-				$currency                                  = $row->currency ? strtoupper( $row->currency ) : '';
-				$status                                    = sanitize_key( $row->status );
-				$count                                     = (int) $row->referral_count;
-				$order                                     = (float) $row->order_total;
-				$commission                                = (float) $row->commission_total;
-				$summary['count']                         += $count;
+				$currency          = $row->currency ? strtoupper( $row->currency ) : '';
+				$status            = sanitize_key( $row->status );
+				$count             = (int) $row->referral_count;
+				$order             = (float) $row->order_total;
+				$commission        = (float) $row->commission_total;
+				$summary['count'] += $count;
+				if ( isset( $summary['status_counts'][ $status ] ) ) {
+					$summary['status_counts'][ $status ] += $count;
+				}
 				$summary['order_totals'][ $currency ]      = ( $summary['order_totals'][ $currency ] ?? 0 ) + $order;
 				$summary['commission_totals'][ $currency ] = ( $summary['commission_totals'][ $currency ] ?? 0 ) + $commission;
 				if ( 'paid' === $status ) {
@@ -675,7 +693,7 @@ class Affilio_DB_Referrals extends Affilio_DB {
 		};
 
 		return isset( affilio()->performance_cache )
-			? affilio()->performance_cache->remember( 'referral-summary-v2', $args, $resolver, 300 )
+			? affilio()->performance_cache->remember( 'referral-summary-v3', $args, $resolver, 300 )
 			: $resolver();
 	}
 

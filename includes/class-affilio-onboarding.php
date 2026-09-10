@@ -23,6 +23,7 @@ class Affilio_Onboarding {
 	public function __construct() {
 		add_action( 'admin_init', array( $this, 'maybe_redirect_to_setup' ) );
 		add_action( 'admin_notices', array( $this, 'render_setup_notice' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_setup_assets' ) );
 
 		add_action( 'admin_post_affilio_setup_save_pages', array( $this, 'save_pages_step' ) );
 		add_action( 'admin_post_affilio_setup_save_settings', array( $this, 'save_settings_step' ) );
@@ -187,6 +188,24 @@ class Affilio_Onboarding {
 	}
 
 	/**
+	 * Loads the wizard presentation only on the Setup screen.
+	 *
+	 * @param string $hook Current administration screen hook.
+	 * @return void
+	 */
+	public function enqueue_setup_assets( $hook ) {
+		if ( false === strpos( (string) $hook, '_page_' . self::PAGE_SLUG ) ) {
+			return;
+		}
+		$path = AFFILIO_PLUGIN_DIR . 'assets/css/affilio-setup-admin.css';
+		wp_enqueue_style(
+			'affilio-setup-admin',
+			AFFILIO_PLUGIN_URL . 'assets/css/affilio-setup-admin.css',
+			array( 'affilio-admin' ),
+			is_readable( $path ) ? (string) filemtime( $path ) : AFFILIO_VERSION
+		);
+	}
+	/**
 	 * Renders the current setup wizard step.
 	 *
 	 * @return void
@@ -200,10 +219,21 @@ class Affilio_Onboarding {
 		$step = max( 1, min( 4, $step ) );
 		?>
 		<div class="wrap affilio-setup-wrap">
-			<h1><?php esc_html_e( 'Dreamax Affiliates Setup', 'dreamax-affiliates' ); ?></h1>
-			<p class="affilio-setup-intro"><?php esc_html_e( 'Complete the essentials in a few minutes. Existing affiliate data and assigned pages are preserved unless you deliberately choose different pages.', 'dreamax-affiliates' ); ?></p>
+			<hr class="wp-header-end">
+			<header class="affilio-setup-hero">
+				<div class="affilio-setup-hero__content">
+					<span class="affilio-setup-eyebrow"><?php esc_html_e( 'Your affiliate program starts here', 'dreamax-affiliates' ); ?></span>
+					<h1><?php esc_html_e( 'Let’s set up your program', 'dreamax-affiliates' ); ?></h1>
+					<p><?php esc_html_e( 'Choose your affiliate pages, define your rewards, and review the essentials before inviting your first partners.', 'dreamax-affiliates' ); ?></p>
+				</div>
+				<div class="affilio-setup-position">
+					<span class="dashicons dashicons-admin-settings" aria-hidden="true"></span>
+					<div><span><?php esc_html_e( 'Guided setup', 'dreamax-affiliates' ); ?></span><strong><?php /* translators: %d: current wizard step, from 1 to 4. */ echo esc_html( sprintf( __( 'Step %d of 4', 'dreamax-affiliates' ), $step ) ); ?></strong></div>
+				</div>
+			</header>
 			<?php $this->render_progress( $step ); ?>
-			<div class="affilio-setup-card">
+			<div class="affilio-setup-layout">
+			<section class="affilio-setup-card" aria-label="<?php esc_attr_e( 'Current setup step', 'dreamax-affiliates' ); ?>">
 				<?php
 				switch ( $step ) {
 					case 2:
@@ -219,6 +249,8 @@ class Affilio_Onboarding {
 						$this->render_welcome_step();
 				}
 				?>
+			</section>
+			<?php $this->render_step_guidance( $step ); ?>
 			</div>
 		</div>
 		<?php
@@ -316,20 +348,46 @@ class Affilio_Onboarding {
 	 * @return void
 	 */
 	private function render_progress( $step ) {
-		$labels = array(
-			1 => __( 'Start', 'dreamax-affiliates' ),
-			2 => __( 'Pages', 'dreamax-affiliates' ),
-			3 => __( 'Program', 'dreamax-affiliates' ),
-			4 => __( 'Launch', 'dreamax-affiliates' ),
+		$steps = array(
+			1 => array( __( 'Welcome', 'dreamax-affiliates' ), __( 'Check the essentials', 'dreamax-affiliates' ) ),
+			2 => array( __( 'Pages', 'dreamax-affiliates' ), __( 'Connect your pages', 'dreamax-affiliates' ) ),
+			3 => array( __( 'Settings', 'dreamax-affiliates' ), __( 'Define your rewards', 'dreamax-affiliates' ) ),
+			4 => array( __( 'Finish', 'dreamax-affiliates' ), __( 'Review your program', 'dreamax-affiliates' ) ),
 		);
 		?>
-		<ol class="affilio-setup-progress" aria-label="<?php echo esc_attr__( 'Setup progress', 'dreamax-affiliates' ); ?>">
-			<?php foreach ( $labels as $number => $label ) : ?>
-				<li class="<?php echo esc_attr( $number === $step ? 'is-current' : ( $number < $step ? 'is-complete' : '' ) ); ?>" <?php echo $number === $step ? 'aria-current="step"' : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static attribute. ?>>
-					<span><?php echo esc_html( $number ); ?></span> <?php echo esc_html( $label ); ?>
+		<ol class="affilio-setup-progress" aria-label="<?php esc_attr_e( 'Setup progress', 'dreamax-affiliates' ); ?>">
+			<?php foreach ( $steps as $number => $labels ) : ?>
+				<li class="<?php echo esc_attr( $number === $step ? 'is-current' : 'is-other' ); ?>" <?php echo $number === $step ? 'aria-current="step"' : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static attribute. ?>>
+					<span class="affilio-setup-progress__number"><?php echo esc_html( $number ); ?></span>
+					<div class="affilio-setup-progress__label"><strong><?php echo esc_html( $labels[0] ); ?></strong><small><?php echo esc_html( $labels[1] ); ?></small></div>
 				</li>
 			<?php endforeach; ?>
 		</ol>
+		<?php
+	}
+
+	/**
+	 * Renders short guidance for the current step.
+	 *
+	 * @param int $step Current wizard step.
+	 * @return void
+	 */
+	private function render_step_guidance( $step ) {
+		$guidance = array(
+			1 => array( __( 'A clear path to launch', 'dreamax-affiliates' ), __( 'A few thoughtful defaults give your partners a consistent experience from their first visit.', 'dreamax-affiliates' ), array( __( 'Check your site readiness.', 'dreamax-affiliates' ), __( 'Choose where partners apply and sign in.', 'dreamax-affiliates' ), __( 'Set rewards that suit your store.', 'dreamax-affiliates' ) ) ),
+			2 => array( __( 'Two pages. One journey.', 'dreamax-affiliates' ), __( 'Give applicants a clear starting point and approved affiliates a dedicated place to work.', 'dreamax-affiliates' ), array( __( 'Registration welcomes new applications.', 'dreamax-affiliates' ), __( 'The dashboard serves approved affiliates.', 'dreamax-affiliates' ), __( 'Preview your selected pages before continuing.', 'dreamax-affiliates' ) ) ),
+			3 => array( __( 'Start with simple rules', 'dreamax-affiliates' ), __( 'Choose how affiliates join, how they earn, and which referral click receives credit.', 'dreamax-affiliates' ), array( __( 'Review applications manually or approve automatically.', 'dreamax-affiliates' ), __( 'Choose a percentage or flat reward.', 'dreamax-affiliates' ), __( 'Adjust these choices later in Settings.', 'dreamax-affiliates' ) ) ),
+			4 => array( __( 'Make your first referral count', 'dreamax-affiliates' ), __( 'Review your saved choices, then test the complete partner journey before opening your program.', 'dreamax-affiliates' ), array( __( 'Preview the registration and dashboard pages.', 'dreamax-affiliates' ), __( 'Confirm your commission and attribution rules.', 'dreamax-affiliates' ), __( 'Run one referral through a staging order.', 'dreamax-affiliates' ) ) ),
+		);
+		$item = $guidance[ $step ];
+		?>
+		<aside class="affilio-setup-guide" aria-labelledby="affilio-setup-guide-title">
+			<div class="affilio-setup-guide__heading"><span class="affilio-setup-icon-tile dashicons dashicons-lightbulb" aria-hidden="true"></span><span class="affilio-setup-eyebrow"><?php esc_html_e( 'A little guidance', 'dreamax-affiliates' ); ?></span></div>
+			<h2 id="affilio-setup-guide-title"><?php echo esc_html( $item[0] ); ?></h2>
+			<p><?php echo esc_html( $item[1] ); ?></p>
+			<ul><?php foreach ( $item[2] as $tip ) : ?><li><span class="dashicons dashicons-arrow-right-alt2" aria-hidden="true"></span><span><?php echo esc_html( $tip ); ?></span></li><?php endforeach; ?></ul>
+			<div class="affilio-setup-reassurance"><span class="dashicons dashicons-shield" aria-hidden="true"></span><div><strong><?php esc_html_e( 'Your existing work stays', 'dreamax-affiliates' ); ?></strong><p><?php esc_html_e( 'Revisiting setup keeps your affiliates and referral history. Page and program changes are applied when you save.', 'dreamax-affiliates' ); ?></p></div></div>
+		</aside>
 		<?php
 	}
 
@@ -366,7 +424,7 @@ class Affilio_Onboarding {
 		<?php if ( ! affilio()->is_woocommerce_active() ) : ?>
 			<p class="notice notice-warning inline"><?php esc_html_e( 'You can finish setup without WooCommerce, but sale attribution and the optional My Account affiliate shortcut will remain inactive until WooCommerce is installed and activated.', 'dreamax-affiliates' ); ?></p>
 		<?php endif; ?>
-		<p class="affilio-setup-actions"><a class="button button-primary button-hero" href="<?php echo esc_url( $this->setup_url( 2 ) ); ?>"><?php esc_html_e( 'Start Setup', 'dreamax-affiliates' ); ?></a></p>
+		<p class="affilio-setup-actions"><a class="button button-primary button-hero" href="<?php echo esc_url( $this->setup_url( 2 ) ); ?>"><span><?php esc_html_e( 'Start Setup', 'dreamax-affiliates' ); ?></span><span class="dashicons dashicons-arrow-right-alt2" aria-hidden="true"></span></a></p>
 		<?php
 	}
 
@@ -378,7 +436,7 @@ class Affilio_Onboarding {
 		$dashboard_id    = absint( get_option( self::OPTION_DASHBOARD_PAGE, 0 ) );
 		$this->render_query_notice();
 		?>
-		<h2><?php esc_html_e( 'Affiliate Pages', 'dreamax-affiliates' ); ?></h2>
+		<h2><?php esc_html_e( 'Connect your affiliate pages', 'dreamax-affiliates' ); ?></h2>
 		<p><?php esc_html_e( 'Dreamax Affiliates created sensible default pages. You can keep them or select existing pages; the required shortcode will be added only when it is missing.', 'dreamax-affiliates' ); ?></p>
 		<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
 			<input type="hidden" name="action" value="affilio_setup_save_pages">
@@ -424,8 +482,8 @@ class Affilio_Onboarding {
 				</tr>
 			</table>
 			<p class="affilio-setup-actions">
-				<a class="button" href="<?php echo esc_url( $this->setup_url( 1 ) ); ?>"><?php esc_html_e( 'Back', 'dreamax-affiliates' ); ?></a>
-				<button class="button button-primary" type="submit"><?php esc_html_e( 'Save and Continue', 'dreamax-affiliates' ); ?></button>
+				<a class="button" href="<?php echo esc_url( $this->setup_url( 1 ) ); ?>"><span class="dashicons dashicons-arrow-left-alt2" aria-hidden="true"></span><span><?php esc_html_e( 'Back', 'dreamax-affiliates' ); ?></span></a>
+				<button class="button button-primary" type="submit"><span><?php esc_html_e( 'Save and Continue', 'dreamax-affiliates' ); ?></span><span class="dashicons dashicons-arrow-right-alt2" aria-hidden="true"></span></button>
 			</p>
 		</form>
 		<?php
@@ -437,7 +495,7 @@ class Affilio_Onboarding {
 	private function render_settings_step() {
 		$this->render_query_notice();
 		?>
-		<h2><?php esc_html_e( 'Affiliate Program Settings', 'dreamax-affiliates' ); ?></h2>
+		<h2><?php esc_html_e( 'Shape your affiliate program', 'dreamax-affiliates' ); ?></h2>
 		<p><?php esc_html_e( 'Start with simple defaults. Every option on this screen can be changed later from Dreamax Affiliates Settings.', 'dreamax-affiliates' ); ?></p>
 		<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
 			<input type="hidden" name="action" value="affilio_setup_save_settings">
@@ -445,18 +503,18 @@ class Affilio_Onboarding {
 			<table class="form-table" role="presentation">
 				<tr>
 					<th scope="row"><?php esc_html_e( 'Affiliate approval', 'dreamax-affiliates' ); ?></th>
-					<td><label><input type="checkbox" name="auto_approve" value="1" <?php checked( get_option( 'affilio_auto_approve_affiliates', false ) ); ?>> <?php esc_html_e( 'Automatically approve new applications', 'dreamax-affiliates' ); ?></label><p class="description"><?php esc_html_e( 'Leave this off when you want to review each applicant before they can promote your store.', 'dreamax-affiliates' ); ?></p></td>
+					<td><label><input type="checkbox" name="auto_approve" value="1" <?php checked( get_option( 'affilio_auto_approve_affiliates', false ) ); ?>><span> <?php esc_html_e( 'Automatically approve new applications', 'dreamax-affiliates' ); ?></span></label><p class="description"><?php esc_html_e( 'Leave this off when you want to review each applicant before they can promote your store.', 'dreamax-affiliates' ); ?></p></td>
 				</tr>
 				<tr>
 					<th scope="row"><label for="affilio-setup-commission-type"><?php esc_html_e( 'Commission', 'dreamax-affiliates' ); ?></label></th>
 					<td>
-						<select id="affilio-setup-commission-type" name="commission_type">
+						<div class="affilio-setup-commission-fields"><select id="affilio-setup-commission-type" aria-describedby="affilio-setup-commission-help" name="commission_type">
 							<option value="percentage" <?php selected( get_option( 'affilio_default_commission_type', 'percentage' ), 'percentage' ); ?>><?php esc_html_e( 'Percentage', 'dreamax-affiliates' ); ?></option>
 							<option value="flat" <?php selected( get_option( 'affilio_default_commission_type', 'percentage' ), 'flat' ); ?>><?php esc_html_e( 'Flat amount', 'dreamax-affiliates' ); ?></option>
 						</select>
 						<label class="screen-reader-text" for="affilio-setup-commission-rate"><?php esc_html_e( 'Commission rate', 'dreamax-affiliates' ); ?></label>
-						<input id="affilio-setup-commission-rate" type="number" step="0.01" min="0" name="commission_rate" value="<?php echo esc_attr( get_option( 'affilio_default_commission_rate', 20 ) ); ?>">
-						<p class="description"><?php esc_html_e( 'For percentage commissions, enter percentage points such as 20. For flat commissions, enter the amount paid per qualifying order.', 'dreamax-affiliates' ); ?></p>
+						<input id="affilio-setup-commission-rate" aria-describedby="affilio-setup-commission-help" type="number" step="0.01" min="0" name="commission_rate" value="<?php echo esc_attr( get_option( 'affilio_default_commission_rate', 20 ) ); ?>">
+						</div><p id="affilio-setup-commission-help" class="description"><?php esc_html_e( 'For percentage commissions, enter percentage points such as 20. For flat commissions, enter the amount paid per qualifying order.', 'dreamax-affiliates' ); ?></p>
 					</td>
 				</tr>
 				<tr>
@@ -476,13 +534,13 @@ class Affilio_Onboarding {
 				<tr>
 					<th scope="row"><?php esc_html_e( 'WooCommerce My Account', 'dreamax-affiliates' ); ?></th>
 					<td>
-						<label><input type="checkbox" name="enable_my_account_tab" value="1" <?php checked( get_option( 'affilio_enable_my_account_tab', true ) ); ?>> <?php esc_html_e( 'Add an Affiliate Dashboard shortcut to WooCommerce My Account', 'dreamax-affiliates' ); ?></label><p class="description"><?php esc_html_e( 'This is a link to the standalone affiliate portal; the dashboard is not embedded inside WooCommerce My Account.', 'dreamax-affiliates' ); ?></p>
+						<label><input type="checkbox" name="enable_my_account_tab" value="1" <?php checked( get_option( 'affilio_enable_my_account_tab', true ) ); ?>><span> <?php esc_html_e( 'Add an Affiliate Dashboard shortcut to WooCommerce My Account', 'dreamax-affiliates' ); ?></span></label><p class="description"><?php esc_html_e( 'This is a link to the standalone affiliate portal; the dashboard is not embedded inside WooCommerce My Account.', 'dreamax-affiliates' ); ?></p>
 					</td>
 				</tr>
 			</table>
 			<p class="affilio-setup-actions">
-				<a class="button" href="<?php echo esc_url( $this->setup_url( 2 ) ); ?>"><?php esc_html_e( 'Back', 'dreamax-affiliates' ); ?></a>
-				<button class="button button-primary" type="submit"><?php esc_html_e( 'Save and Continue', 'dreamax-affiliates' ); ?></button>
+				<a class="button" href="<?php echo esc_url( $this->setup_url( 2 ) ); ?>"><span class="dashicons dashicons-arrow-left-alt2" aria-hidden="true"></span><span><?php esc_html_e( 'Back', 'dreamax-affiliates' ); ?></span></a>
+				<button class="button button-primary" type="submit"><span><?php esc_html_e( 'Save and Continue', 'dreamax-affiliates' ); ?></span><span class="dashicons dashicons-arrow-right-alt2" aria-hidden="true"></span></button>
 			</p>
 		</form>
 		<?php
@@ -514,7 +572,7 @@ class Affilio_Onboarding {
 			: __( 'Last affiliate click', 'dreamax-affiliates' );
 		$this->render_query_notice();
 		?>
-		<h2><?php echo $completed ? esc_html__( 'Dreamax Affiliates setup is complete', 'dreamax-affiliates' ) : esc_html__( 'Ready to launch your affiliate program', 'dreamax-affiliates' ); ?></h2>
+		<h2><?php echo $completed ? esc_html__( 'Dreamax Affiliates setup is complete', 'dreamax-affiliates' ) : esc_html__( 'Review your affiliate program', 'dreamax-affiliates' ); ?></h2>
 		<p><?php esc_html_e( 'Review the essentials below. You can return to this wizard at any time without removing affiliate data.', 'dreamax-affiliates' ); ?></p>
 		<ul class="affilio-setup-summary">
 			<li><strong><?php esc_html_e( 'Registration:', 'dreamax-affiliates' ); ?></strong> <a href="<?php echo esc_url( $registration_url ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html( $registration_url ); ?></a></li>
@@ -536,15 +594,15 @@ class Affilio_Onboarding {
 				<input type="hidden" name="action" value="affilio_setup_finish">
 				<?php wp_nonce_field( 'affilio_setup_finish' ); ?>
 				<p class="affilio-setup-actions">
-					<a class="button" href="<?php echo esc_url( $this->setup_url( 3 ) ); ?>"><?php esc_html_e( 'Back', 'dreamax-affiliates' ); ?></a>
-					<button class="button button-primary button-hero" type="submit"><?php esc_html_e( 'Finish Setup', 'dreamax-affiliates' ); ?></button>
+					<a class="button" href="<?php echo esc_url( $this->setup_url( 3 ) ); ?>"><span class="dashicons dashicons-arrow-left-alt2" aria-hidden="true"></span><span><?php esc_html_e( 'Back', 'dreamax-affiliates' ); ?></span></a>
+					<button class="button button-primary button-hero" type="submit"><span><?php esc_html_e( 'Finish Setup', 'dreamax-affiliates' ); ?></span><span class="dashicons dashicons-yes-alt" aria-hidden="true"></span></button>
 				</p>
 			</form>
 		<?php else : ?>
 			<p class="affilio-setup-actions">
-				<a class="button button-primary" href="<?php echo esc_url( admin_url( 'admin.php?page=affilio' ) ); ?>"><?php esc_html_e( 'Open Overview', 'dreamax-affiliates' ); ?></a>
-				<a class="button" href="<?php echo esc_url( admin_url( 'admin.php?page=affilio-affiliates' ) ); ?>"><?php esc_html_e( 'Manage Affiliates', 'dreamax-affiliates' ); ?></a>
-				<a class="button" href="<?php echo esc_url( admin_url( 'admin.php?page=' . Affilio_Settings::PAGE_SLUG ) ); ?>"><?php esc_html_e( 'Open Settings', 'dreamax-affiliates' ); ?></a>
+				<a class="button button-primary" href="<?php echo esc_url( admin_url( 'admin.php?page=affilio' ) ); ?>"><span><?php esc_html_e( 'Open Overview', 'dreamax-affiliates' ); ?></span><span class="dashicons dashicons-dashboard" aria-hidden="true"></span></a>
+				<a class="button" href="<?php echo esc_url( admin_url( 'admin.php?page=affilio-affiliates' ) ); ?>"><span><?php esc_html_e( 'Manage Affiliates', 'dreamax-affiliates' ); ?></span><span class="dashicons dashicons-groups" aria-hidden="true"></span></a>
+				<a class="button" href="<?php echo esc_url( admin_url( 'admin.php?page=' . Affilio_Settings::PAGE_SLUG ) ); ?>"><span><?php esc_html_e( 'Open Settings', 'dreamax-affiliates' ); ?></span><span class="dashicons dashicons-admin-settings" aria-hidden="true"></span></a>
 			</p>
 		<?php endif; ?>
 		<?php

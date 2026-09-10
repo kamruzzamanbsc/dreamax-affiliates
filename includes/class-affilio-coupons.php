@@ -326,41 +326,209 @@ class Affilio_Coupons {
 	 * @return void
 	 */
 	public function render_admin_page() {
-		$affiliates = affilio()->affiliates_db->query_for_selector( 'active' );
-		$rows       = $this->get_all_assigned();
-		$notice     = isset( $_GET['affilio_coupon_notice'] ) ? sanitize_key( wp_unslash( $_GET['affilio_coupon_notice'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$affiliates          = affilio()->affiliates_db->query_for_selector( 'active' );
+		$rows                = $this->get_all_assigned();
+		$notice              = isset( $_GET['affilio_coupon_notice'] ) ? sanitize_key( wp_unslash( $_GET['affilio_coupon_notice'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$woocommerce_ready   = class_exists( 'WooCommerce' ) && class_exists( 'WC_Coupon' );
+		$has_affiliates      = ! empty( $affiliates );
+		$campaigns           = array_filter( array_unique( wp_list_pluck( $rows, 'campaign' ) ) );
+		$attribution         = get_option( 'affilio_coupon_attribution_priority', 'coupon_first' );
+		$attribution_label   = 'cookie_first' === $attribution ? __( 'Referral link first', 'dreamax-affiliates' ) : __( 'Coupon first', 'dreamax-affiliates' );
+		$woocommerce_coupons = admin_url( 'edit.php?post_type=shop_coupon' );
+		$empty_state_title   = __( 'No coupon assignments yet', 'dreamax-affiliates' );
+		if ( ! $woocommerce_ready ) {
+			$empty_state_text = __( 'Activate WooCommerce before creating coupon-based partner assignments.', 'dreamax-affiliates' );
+		} elseif ( ! $has_affiliates ) {
+			$empty_state_text = __( 'Create or approve an active affiliate first, then return here to connect an existing WooCommerce coupon.', 'dreamax-affiliates' );
+		} else {
+			$empty_state_text = __( 'Connect an existing WooCommerce coupon above to begin coupon-based partner attribution.', 'dreamax-affiliates' );
+		}
 		?>
 		<div class="wrap affilio-coupons-page">
-			<h1><?php esc_html_e( 'Affiliate Coupons', 'dreamax-affiliates' ); ?></h1>
-			<?php $this->render_notice( $notice ); ?>
-			<p><?php esc_html_e( 'Assign an existing WooCommerce coupon to one affiliate. Orders using that coupon can be attributed even when no referral cookie is present.', 'dreamax-affiliates' ); ?></p>
+			<hr class="wp-header-end">
 
-			<?php if ( ! class_exists( 'WooCommerce' ) ) : ?>
-				<div class="notice notice-warning inline"><p><?php esc_html_e( 'WooCommerce must be active to manage coupon attribution.', 'dreamax-affiliates' ); ?></p></div>
+			<header class="affilio-coupons-hero">
+				<div class="affilio-coupons-hero__content">
+					<span class="affilio-coupons-eyebrow"><?php esc_html_e( 'Attribution controls', 'dreamax-affiliates' ); ?></span>
+					<h1><?php esc_html_e( 'Affiliate Coupons', 'dreamax-affiliates' ); ?></h1>
+					<p><?php esc_html_e( 'Connect existing WooCommerce coupons to active partners and keep every coupon-attributed order governed by one clear precedence policy.', 'dreamax-affiliates' ); ?></p>
+				</div>
+				<span class="affilio-coupons-hero__badge is-<?php echo $woocommerce_ready ? 'ready' : 'attention'; ?>">
+					<svg class="affilio-coupon-button-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+						<?php if ( $woocommerce_ready ) : ?>
+							<path d="m5 10 3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+						<?php else : ?>
+							<path d="M10 6v5m0 3h.01M10 2.75 18 17H2L10 2.75Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+						<?php endif; ?>
+					</svg>
+					<span><?php echo $woocommerce_ready ? esc_html__( 'Commerce connected', 'dreamax-affiliates' ) : esc_html__( 'WooCommerce required', 'dreamax-affiliates' ); ?></span>
+				</span>
+			</header>
+
+			<?php $this->render_notice( $notice ); ?>
+
+			<section class="affilio-coupon-summary" aria-label="<?php echo esc_attr__( 'Coupon attribution summary', 'dreamax-affiliates' ); ?>">
+				<article class="affilio-coupon-stat">
+					<span class="affilio-coupon-stat__icon dashicons dashicons-tickets-alt" aria-hidden="true"></span>
+					<div><small><?php esc_html_e( 'Assigned coupons', 'dreamax-affiliates' ); ?></small><strong><?php echo esc_html( Affilio_I18n::number( count( $rows ) ) ); ?></strong><p><?php esc_html_e( 'Connected attribution codes', 'dreamax-affiliates' ); ?></p></div>
+				</article>
+				<article class="affilio-coupon-stat is-good">
+					<span class="affilio-coupon-stat__icon dashicons dashicons-groups" aria-hidden="true"></span>
+					<div><small><?php esc_html_e( 'Eligible partners', 'dreamax-affiliates' ); ?></small><strong><?php echo esc_html( Affilio_I18n::number( count( $affiliates ) ) ); ?></strong><p><?php esc_html_e( 'Active affiliates available', 'dreamax-affiliates' ); ?></p></div>
+				</article>
+				<article class="affilio-coupon-stat">
+					<span class="affilio-coupon-stat__icon dashicons dashicons-megaphone" aria-hidden="true"></span>
+					<div><small><?php esc_html_e( 'Campaign labels', 'dreamax-affiliates' ); ?></small><strong><?php echo esc_html( Affilio_I18n::number( count( $campaigns ) ) ); ?></strong><p><?php esc_html_e( 'Distinct reporting groups', 'dreamax-affiliates' ); ?></p></div>
+				</article>
+				<article class="affilio-coupon-stat is-policy">
+					<span class="affilio-coupon-stat__icon dashicons dashicons-randomize" aria-hidden="true"></span>
+					<div><small><?php esc_html_e( 'Attribution priority', 'dreamax-affiliates' ); ?></small><strong><?php echo esc_html( $attribution_label ); ?></strong><p><?php esc_html_e( 'Applied when signals overlap', 'dreamax-affiliates' ); ?></p></div>
+				</article>
+			</section>
+
+			<?php if ( ! $woocommerce_ready ) : ?>
+				<div class="affilio-coupon-alert is-warning" role="status">
+					<span class="dashicons dashicons-warning" aria-hidden="true"></span>
+					<div><strong><?php esc_html_e( 'WooCommerce connection required', 'dreamax-affiliates' ); ?></strong><p><?php esc_html_e( 'Activate WooCommerce to assign coupons. Existing Dreamax affiliate and referral records remain unchanged.', 'dreamax-affiliates' ); ?></p></div>
+				</div>
 			<?php else : ?>
-				<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="affilio-admin-card">
-					<input type="hidden" name="action" value="affilio_assign_coupon">
-					<?php wp_nonce_field( 'affilio_assign_coupon' ); ?>
-					<table class="form-table" role="presentation">
-						<tr><th scope="row"><label for="affilio-coupon-code"><?php esc_html_e( 'Coupon code', 'dreamax-affiliates' ); ?></label></th><td><input class="regular-text" id="affilio-coupon-code" name="coupon_code" required></td></tr>
-						<tr><th scope="row"><label for="affilio-coupon-affiliate"><?php esc_html_e( 'Affiliate', 'dreamax-affiliates' ); ?></label></th><td><select id="affilio-coupon-affiliate" name="affiliate_id" required><option value=""><?php esc_html_e( 'Select affiliate', 'dreamax-affiliates' ); ?></option><?php foreach ( $affiliates as $affiliate ) : ?><option value="<?php echo esc_attr( $affiliate->id ); ?>"><?php echo esc_html( '' !== (string) $affiliate->display_name ? $affiliate->display_name : '#' . $affiliate->id ); ?></option><?php endforeach; ?></select></td></tr>
-						<tr><th scope="row"><label for="affilio-coupon-campaign"><?php esc_html_e( 'Campaign label', 'dreamax-affiliates' ); ?></label></th><td><input class="regular-text" id="affilio-coupon-campaign" name="campaign" maxlength="100"><p class="description"><?php esc_html_e( 'Optional label included in referral reports.', 'dreamax-affiliates' ); ?></p></td></tr>
-					</table>
-					<?php submit_button( __( 'Assign Coupon', 'dreamax-affiliates' ) ); ?>
-				</form>
+				<div class="affilio-coupon-workspace">
+					<section class="affilio-coupon-panel affilio-coupon-assignment" aria-labelledby="affilio-coupon-assignment-title">
+						<header class="affilio-coupon-section-heading">
+							<span class="affilio-coupon-section-heading__icon dashicons dashicons-admin-links" aria-hidden="true"></span>
+							<div><span class="affilio-coupons-eyebrow"><?php esc_html_e( 'Assignment workspace', 'dreamax-affiliates' ); ?></span><h2 id="affilio-coupon-assignment-title"><?php esc_html_e( 'Connect a coupon to an affiliate', 'dreamax-affiliates' ); ?></h2><p><?php esc_html_e( 'Select an existing WooCommerce coupon and one active partner. The optional campaign label travels with future attributed referrals.', 'dreamax-affiliates' ); ?></p></div>
+						</header>
+
+						<?php if ( ! $has_affiliates ) : ?>
+							<div class="affilio-coupon-alert is-attention">
+								<span class="dashicons dashicons-info-outline" aria-hidden="true"></span>
+								<div><strong><?php esc_html_e( 'An active affiliate is required', 'dreamax-affiliates' ); ?></strong><p><?php esc_html_e( 'Approve or create an affiliate before assigning a WooCommerce coupon.', 'dreamax-affiliates' ); ?></p></div>
+							</div>
+						<?php endif; ?>
+
+						<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="affilio-coupon-form">
+							<input type="hidden" name="action" value="affilio_assign_coupon">
+							<?php wp_nonce_field( 'affilio_assign_coupon' ); ?>
+							<div class="affilio-coupon-form__grid">
+								<label class="affilio-coupon-field">
+									<span><?php esc_html_e( 'Coupon code', 'dreamax-affiliates' ); ?> <em><?php esc_html_e( 'Required', 'dreamax-affiliates' ); ?></em></span>
+									<input id="affilio-coupon-code" name="coupon_code" autocomplete="off" placeholder="<?php esc_attr_e( 'Enter an existing coupon code', 'dreamax-affiliates' ); ?>" required <?php disabled( ! $has_affiliates ); ?>>
+									<small><?php esc_html_e( 'Codes are normalized using WooCommerce rules before assignment.', 'dreamax-affiliates' ); ?></small>
+								</label>
+								<label class="affilio-coupon-field">
+									<span><?php esc_html_e( 'Active affiliate', 'dreamax-affiliates' ); ?> <em><?php esc_html_e( 'Required', 'dreamax-affiliates' ); ?></em></span>
+									<select id="affilio-coupon-affiliate" name="affiliate_id" required <?php disabled( ! $has_affiliates ); ?>>
+										<option value=""><?php esc_html_e( 'Select an affiliate', 'dreamax-affiliates' ); ?></option>
+										<?php foreach ( $affiliates as $affiliate ) : ?>
+											<option value="<?php echo esc_attr( $affiliate->id ); ?>"><?php echo esc_html( '' !== (string) $affiliate->display_name ? $affiliate->display_name : '#' . $affiliate->id ); ?></option>
+										<?php endforeach; ?>
+									</select>
+									<small><?php esc_html_e( 'Only active affiliates can receive coupon attribution.', 'dreamax-affiliates' ); ?></small>
+								</label>
+								<label class="affilio-coupon-field is-wide">
+									<span><?php esc_html_e( 'Campaign label', 'dreamax-affiliates' ); ?> <em class="is-optional"><?php esc_html_e( 'Optional', 'dreamax-affiliates' ); ?></em></span>
+									<input id="affilio-coupon-campaign" name="campaign" maxlength="100" placeholder="<?php esc_attr_e( 'For example: Partner launch', 'dreamax-affiliates' ); ?>" <?php disabled( ! $has_affiliates ); ?>>
+									<small><?php esc_html_e( 'Use a stable label to group coupon performance in reports.', 'dreamax-affiliates' ); ?></small>
+								</label>
+							</div>
+							<div class="affilio-coupon-form__actions">
+								<button type="submit" class="button button-primary affilio-coupon-primary-action" <?php disabled( ! $has_affiliates ); ?>>
+									<svg class="affilio-coupon-button-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M7.25 6.25h-1.5a3.75 3.75 0 0 0 0 7.5h2.5m3.5 0h2.5a3.75 3.75 0 0 0 0-7.5h-1.5M6.75 10h6.5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+									<span><?php esc_html_e( 'Assign Coupon', 'dreamax-affiliates' ); ?></span>
+								</button>
+								<?php if ( $has_affiliates ) : ?>
+									<a class="button affilio-coupon-secondary-action" href="<?php echo esc_url( $woocommerce_coupons ); ?>">
+										<svg class="affilio-coupon-button-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 5.5h12v9H4zM7 3.5v4m6-4v4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+										<span><?php esc_html_e( 'Manage WooCommerce Coupons', 'dreamax-affiliates' ); ?></span>
+									</a>
+								<?php else : ?>
+									<a class="button affilio-coupon-secondary-action" href="<?php echo esc_url( admin_url( 'admin.php?page=affilio-affiliates' ) ); ?>">
+										<svg class="affilio-coupon-button-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 4v12M4 10h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+										<span><?php esc_html_e( 'Add an Affiliate', 'dreamax-affiliates' ); ?></span>
+									</a>
+								<?php endif; ?>
+							</div>
+						</form>
+					</section>
+
+					<aside class="affilio-coupon-panel affilio-coupon-guide" aria-labelledby="affilio-coupon-guide-title">
+						<header class="affilio-coupon-section-heading">
+							<span class="affilio-coupon-section-heading__icon dashicons dashicons-randomize" aria-hidden="true"></span>
+							<div><span class="affilio-coupons-eyebrow"><?php esc_html_e( 'Resolution guide', 'dreamax-affiliates' ); ?></span><h2 id="affilio-coupon-guide-title"><?php esc_html_e( 'How coupon attribution works', 'dreamax-affiliates' ); ?></h2><p><?php esc_html_e( 'A controlled sequence keeps partner ownership predictable.', 'dreamax-affiliates' ); ?></p></div>
+						</header>
+						<ol class="affilio-coupon-guide__steps">
+							<li><span>1</span><div><strong><?php esc_html_e( 'Match an assigned coupon', 'dreamax-affiliates' ); ?></strong><p><?php esc_html_e( 'The order coupon is resolved to its active affiliate and optional campaign label.', 'dreamax-affiliates' ); ?></p></div></li>
+							<li><span>2</span><div><strong><?php esc_html_e( 'Apply the precedence policy', 'dreamax-affiliates' ); ?></strong><p><?php echo 'cookie_first' === $attribution ? esc_html__( 'A valid referral link keeps ownership when both signals exist.', 'dreamax-affiliates' ) : esc_html__( 'The assigned coupon takes ownership when both signals exist.', 'dreamax-affiliates' ); ?></p></div></li>
+							<li><span>3</span><div><strong><?php esc_html_e( 'Fail safely on conflicts', 'dreamax-affiliates' ); ?></strong><p><?php esc_html_e( 'Coupons assigned to different affiliates do not produce ambiguous attribution.', 'dreamax-affiliates' ); ?></p></div></li>
+						</ol>
+					</aside>
+				</div>
 			<?php endif; ?>
 
-			<h2><?php esc_html_e( 'Assigned Coupons', 'dreamax-affiliates' ); ?></h2>
-			<div class="affilio-admin-table-wrap">
-			<table class="widefat striped">
-				<caption class="screen-reader-text"><?php esc_html_e( 'Coupons assigned to affiliates', 'dreamax-affiliates' ); ?></caption>
-				<thead><tr><th scope="col"><?php esc_html_e( 'Coupon', 'dreamax-affiliates' ); ?></th><th scope="col"><?php esc_html_e( 'Affiliate', 'dreamax-affiliates' ); ?></th><th scope="col"><?php esc_html_e( 'Campaign', 'dreamax-affiliates' ); ?></th><th scope="col"><?php esc_html_e( 'Actions', 'dreamax-affiliates' ); ?></th></tr></thead>
-				<tbody>
-				<?php if ( empty( $rows ) ) : ?><tr><td colspan="4"><?php esc_html_e( 'No coupons are assigned yet.', 'dreamax-affiliates' ); ?></td></tr><?php else : foreach ( $rows as $row ) : ?>
-					<tr><td><code><?php echo esc_html( $row['code'] ); ?></code></td><td><?php echo esc_html( $row['affiliate_name'] ); ?></td><td><?php echo $row['campaign'] ? esc_html( $row['campaign'] ) : '&mdash;'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></td><td><?php if ( $row['edit_url'] ) : ?><a href="<?php echo esc_url( $row['edit_url'] ); ?>"><?php esc_html_e( 'Edit coupon', 'dreamax-affiliates' ); ?></a> | <?php endif; ?><a class="submitdelete" href="<?php echo esc_url( wp_nonce_url( add_query_arg( array( 'action' => 'affilio_unassign_coupon', 'coupon_id' => $row['id'] ), admin_url( 'admin-post.php' ) ), 'affilio_unassign_coupon_' . $row['id'] ) ); ?>"><?php esc_html_e( 'Unassign', 'dreamax-affiliates' ); ?></a></td></tr>
-				<?php endforeach; endif; ?>
-				</tbody>
-			</table>
+			<section class="affilio-coupon-panel affilio-coupon-directory <?php echo empty( $rows ) ? 'is-empty' : 'has-items'; ?>" aria-labelledby="affilio-coupon-directory-title">
+				<header class="affilio-coupon-section-heading">
+					<span class="affilio-coupon-section-heading__icon dashicons dashicons-tickets-alt" aria-hidden="true"></span>
+					<div><span class="affilio-coupons-eyebrow"><?php esc_html_e( 'Attribution directory', 'dreamax-affiliates' ); ?></span><h2 id="affilio-coupon-directory-title"><?php esc_html_e( 'Assigned coupons', 'dreamax-affiliates' ); ?></h2><p><?php esc_html_e( 'Review partner ownership and campaign grouping without leaving the affiliate workspace.', 'dreamax-affiliates' ); ?></p></div>
+					<?php /* translators: %s: number of assigned coupons. */ ?>
+					<span class="affilio-coupon-count"><?php echo esc_html( sprintf( _n( '%s assignment', '%s assignments', count( $rows ), 'dreamax-affiliates' ), Affilio_I18n::number( count( $rows ) ) ) ); ?></span>
+				</header>
+
+				<?php if ( empty( $rows ) ) : ?>
+					<div class="affilio-coupon-empty-state">
+						<span class="affilio-coupon-empty-state__icon dashicons dashicons-tickets-alt" aria-hidden="true"></span>
+						<div>
+							<strong><?php echo esc_html( $empty_state_title ); ?></strong>
+							<p><?php echo esc_html( $empty_state_text ); ?></p>
+							<?php if ( $woocommerce_ready && ! $has_affiliates ) : ?>
+								<a class="button affilio-coupon-empty-state__action" href="<?php echo esc_url( admin_url( 'admin.php?page=affilio-affiliates' ) ); ?>">
+									<svg class="affilio-coupon-button-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 4v12M4 10h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+									<span><?php esc_html_e( 'Add an Affiliate', 'dreamax-affiliates' ); ?></span>
+								</a>
+							<?php endif; ?>
+						</div>
+					</div>
+				<?php else : ?>
+					<div class="affilio-coupon-table-wrap">
+						<table class="widefat affilio-coupon-table">
+							<caption class="screen-reader-text"><?php esc_html_e( 'Coupons assigned to affiliates', 'dreamax-affiliates' ); ?></caption>
+							<thead><tr><th scope="col"><?php esc_html_e( 'Coupon', 'dreamax-affiliates' ); ?></th><th scope="col"><?php esc_html_e( 'Affiliate', 'dreamax-affiliates' ); ?></th><th scope="col"><?php esc_html_e( 'Campaign', 'dreamax-affiliates' ); ?></th><th scope="col"><?php esc_html_e( 'Actions', 'dreamax-affiliates' ); ?></th></tr></thead>
+							<tbody>
+							<?php foreach ( $rows as $row ) : ?>
+								<?php
+								$unassign_url = wp_nonce_url(
+									add_query_arg(
+										array(
+											'action'    => 'affilio_unassign_coupon',
+											'coupon_id' => $row['id'],
+										),
+										admin_url( 'admin-post.php' )
+									),
+									'affilio_unassign_coupon_' . $row['id']
+								);
+								?>
+								<tr>
+									<td data-label="<?php echo esc_attr__( 'Coupon', 'dreamax-affiliates' ); ?>"><code><?php echo esc_html( $row['code'] ); ?></code></td>
+									<td data-label="<?php echo esc_attr__( 'Affiliate', 'dreamax-affiliates' ); ?>"><strong><?php echo esc_html( $row['affiliate_name'] ); ?></strong></td>
+									<td data-label="<?php echo esc_attr__( 'Campaign', 'dreamax-affiliates' ); ?>"><?php echo $row['campaign'] ? esc_html( $row['campaign'] ) : '<span class="affilio-coupon-muted">' . esc_html__( 'Not labeled', 'dreamax-affiliates' ) . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Both branches are escaped. ?></td>
+									<td data-label="<?php echo esc_attr__( 'Actions', 'dreamax-affiliates' ); ?>">
+										<div class="affilio-coupon-row-actions">
+											<?php if ( $row['edit_url'] ) : ?>
+												<a class="button" href="<?php echo esc_url( $row['edit_url'] ); ?>"><svg class="affilio-coupon-button-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="m5 14.5.8-3.2 7.6-7.6 2.9 2.9-7.6 7.6-3.2.8-.5-.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><span><?php esc_html_e( 'Edit', 'dreamax-affiliates' ); ?></span></a>
+											<?php endif; ?>
+											<a class="button is-danger" href="<?php echo esc_url( $unassign_url ); ?>"><svg class="affilio-coupon-button-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M6 6h8m-7 0 .5 10h5L13 6m-5-2h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><?php esc_html_e( 'Unassign', 'dreamax-affiliates' ); ?></span></a>
+										</div>
+									</td>
+								</tr>
+							<?php endforeach; ?>
+							</tbody>
+						</table>
+					</div>
+				<?php endif; ?>
+			</section>
+
+			<div class="affilio-coupon-assurance">
+				<span class="dashicons dashicons-lock" aria-hidden="true"></span>
+				<p><strong><?php esc_html_e( 'Historical attribution stays intact.', 'dreamax-affiliates' ); ?></strong> <?php esc_html_e( 'Changing or removing an assignment affects future order resolution only; existing referral records retain their recorded source and coupon data.', 'dreamax-affiliates' ); ?></p>
 			</div>
 		</div>
 		<?php

@@ -1,0 +1,697 @@
+/* Dreamax Affiliates partner directory. Loaded only on the Affiliates screen. */
+.affilio-affiliates-wrap {
+	--affilio-affiliates-ink: #101828;
+	--affilio-affiliates-muted: #60708a;
+	--affilio-affiliates-border: #dce3ef;
+	--affilio-affiliates-soft: #f7f9fc;
+	--affilio-affiliates-brand: #5146e5;
+	--affilio-affiliates-good: #079447;
+	box-sizing: border-box;
+	max-inline-size: 1180px;
+	margin-block-start: 20px;
+	color: var(--affilio-affiliates-ink);
+}
+
+.affilio-affiliates-wrap *,
+.affilio-affiliates-wrap *::before,
+.affilio-affiliates-wrap *::after {
+	box-sizing: border-box;
+}
+
+.affilio-affiliates-wrap .wp-header-end {
+	margin: 0;
+}
+
+.affilio-affiliates-hero {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 30px;
+	min-block-size: 196px;
+	margin-block-end: 22px;
+	padding: 38px 42px;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	border-radius: 18px;
+	background: linear-gradient(125deg, #202d68 0%, #312f91 56%, #5548e3 100%);
+	box-shadow: 0 20px 42px rgba(30, 41, 91, 0.16);
+	color: #fff;
+}
+
+.affilio-affiliates-hero__content {
+	min-inline-size: 0;
+	max-inline-size: 770px;
+}
+
+.affilio-affiliates-eyebrow {
+	display: block;
+	margin-block-end: 7px;
+	color: #5146e5;
+	font-size: 11px;
+	font-weight: 750;
+	letter-spacing: 0.11em;
+	line-height: 1.4;
+	text-transform: uppercase;
+}
+
+.affilio-affiliates-hero .affilio-affiliates-eyebrow {
+	color: #c7d2fe;
+}
+
+.affilio-affiliates-hero h1 {
+	margin: 0;
+	color: #fff;
+	font-size: clamp(28px, 3.2vw, 40px);
+	font-weight: 700;
+	letter-spacing: -0.025em;
+	line-height: 1.15;
+}
+
+.affilio-affiliates-hero p {
+	max-inline-size: 720px;
+	margin: 15px 0 0;
+	color: #eef2ff;
+	font-size: 15px;
+	line-height: 1.65;
+}
+
+.affilio-affiliates-wrap .affilio-affiliates-hero__action {
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
+	gap: 7px;
+	min-block-size: 42px;
+	padding: 8px 16px;
+	border-color: #fff;
+	border-radius: 8px;
+	background: #fff;
+	box-shadow: none;
+	color: #312f91;
+	font-weight: 700;
+	white-space: nowrap;
+}
+
+.affilio-affiliates-wrap .affilio-affiliates-hero__action:hover,
+.affilio-affiliates-wrap .affilio-affiliates-hero__action:focus {
+	border-color: #fff;
+	background: #eef2ff;
+	color: #272880;
+}
+
+.affilio-affiliates-hero__action .dashicons {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	inline-size: 17px;
+	block-size: 17px;
+	font-size: 17px;
+	line-height: 1;
+}
+
+.affilio-affiliate-summary {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 14px;
+	margin-block-end: 22px;
+}
+
+.affilio-affiliate-stat {
+	display: grid;
+	grid-template-columns: 42px minmax(0, 1fr);
+	align-items: center;
+	gap: 12px;
+	min-block-size: 116px;
+	padding: 18px;
+	border: 1px solid var(--affilio-affiliates-border);
+	border-radius: 14px;
+	background: #fff;
+	box-shadow: 0 10px 25px rgba(26, 36, 72, 0.06);
+}
+
+.affilio-affiliate-stat__icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	inline-size: 42px;
+	block-size: 42px;
+	border-radius: 12px;
+	background: #eceeff;
+	color: var(--affilio-affiliates-brand);
+	font-size: 20px;
+	line-height: 1;
+}
+
+.affilio-affiliate-stat.is-good .affilio-affiliate-stat__icon {
+	background: #eafaf1;
+	color: var(--affilio-affiliates-good);
+}
+
+.affilio-affiliate-stat.is-pending .affilio-affiliate-stat__icon {
+	background: #fff6e8;
+	color: #b45309;
+}
+
+.affilio-affiliate-stat.is-attention .affilio-affiliate-stat__icon {
+	background: #fff0f1;
+	color: #c52a38;
+}
+
+.affilio-affiliate-stat > span:last-child {
+	display: flex;
+	min-inline-size: 0;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.affilio-affiliate-stat small,
+.affilio-affiliate-stat em {
+	color: var(--affilio-affiliates-muted);
+	font-size: 12px;
+	font-style: normal;
+	line-height: 1.4;
+}
+
+.affilio-affiliate-stat small {
+	font-weight: 650;
+}
+
+.affilio-affiliate-stat strong {
+	color: var(--affilio-affiliates-ink);
+	font-size: 25px;
+	font-weight: 730;
+	line-height: 1.15;
+}
+
+.affilio-affiliate-directory {
+	padding: 24px;
+	border: 1px solid var(--affilio-affiliates-border);
+	border-radius: 16px;
+	background: #fff;
+	box-shadow: 0 12px 28px rgba(26, 36, 72, 0.07);
+}
+
+.affilio-affiliate-directory__heading {
+	display: grid;
+	grid-template-columns: 42px minmax(0, 1fr) auto;
+	align-items: flex-start;
+	gap: 14px;
+	margin-block-end: 20px;
+}
+
+.affilio-affiliate-directory__icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	inline-size: 42px;
+	block-size: 42px;
+	border-radius: 12px;
+	background: #eef0ff;
+	color: var(--affilio-affiliates-brand);
+	font-size: 20px;
+	line-height: 1;
+}
+
+.affilio-affiliate-directory__heading > div {
+	min-inline-size: 0;
+}
+
+.affilio-affiliate-directory__heading h2 {
+	margin: 0;
+	color: var(--affilio-affiliates-ink);
+	font-size: 22px;
+	line-height: 1.25;
+}
+
+.affilio-affiliate-directory__heading p {
+	margin: 6px 0 0;
+	color: var(--affilio-affiliates-muted);
+	line-height: 1.55;
+}
+
+.affilio-affiliate-directory__count {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-block-size: 30px;
+	padding: 5px 10px;
+	border: 1px solid #d8ddff;
+	border-radius: 999px;
+	background: #f1f2ff;
+	color: #4338ca;
+	font-size: 12px;
+	font-weight: 700;
+	white-space: nowrap;
+}
+
+.affilio-affiliate-directory__filters {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 18px;
+	margin-block-end: 16px;
+	padding: 15px;
+	border: 1px solid #e1e6ef;
+	border-radius: 12px;
+	background: var(--affilio-affiliates-soft);
+}
+
+.affilio-affiliate-directory__views {
+	min-inline-size: 0;
+}
+
+.affilio-affiliate-directory__views .subsubsub {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 7px;
+	float: none;
+	margin: 0;
+	padding: 0;
+}
+
+.affilio-affiliate-directory__views .subsubsub li {
+	margin: 0;
+	font-size: 0;
+}
+
+.affilio-affiliate-directory__views .subsubsub a {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	min-block-size: 32px;
+	padding: 5px 10px;
+	border: 1px solid #d9dfeb;
+	border-radius: 999px;
+	background: #fff;
+	color: #3d4960;
+	font-size: 13px;
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.affilio-affiliate-directory__views .subsubsub a:hover,
+.affilio-affiliate-directory__views .subsubsub a:focus,
+.affilio-affiliate-directory__views .subsubsub a.current {
+	border-color: #abb3ff;
+	background: #eceeff;
+	color: #3932a4;
+}
+
+.affilio-affiliate-directory__views .subsubsub .count {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-inline-size: 20px;
+	padding: 1px 5px;
+	border-radius: 999px;
+	background: #f0f2f7;
+	color: inherit;
+	font-size: 11px;
+	line-height: 1.5;
+	opacity: 0.85;
+}
+
+.affilio-affiliate-directory__views .subsubsub a.current .count {
+	background: #fff;
+	color: #3932a4;
+	opacity: 1;
+}
+
+.affilio-affiliate-directory__tools {
+	display: flex;
+	flex: 0 1 520px;
+	align-items: flex-end;
+	justify-content: flex-end;
+	gap: 10px;
+}
+
+.affilio-affiliate-directory__tools > label {
+	display: flex;
+	min-inline-size: 250px;
+	flex: 1 1 300px;
+	flex-direction: column;
+	gap: 6px;
+	color: #344054;
+	font-size: 12px;
+	font-weight: 650;
+}
+
+.affilio-affiliate-directory__tools input[type="text"],
+.affilio-affiliate-directory__tools input[type="search"] {
+	inline-size: 100%;
+	min-block-size: 38px;
+	margin: 0;
+	border-color: #cbd3e1;
+	border-radius: 8px;
+	background: #fff;
+}
+
+.affilio-affiliate-directory__tools .search-box {
+	display: flex;
+	align-items: center;
+	gap: 7px;
+	margin: 0;
+}
+
+.affilio-affiliate-directory__tools .search-box label {
+	margin: 0;
+}
+
+.affilio-affiliate-directory__tools .button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-block-size: 38px;
+	margin: 0;
+	border-color: #aeb7ff;
+	border-radius: 8px;
+	color: #3832a5;
+	font-weight: 650;
+}
+
+.affilio-affiliate-directory__table {
+	inline-size: 100%;
+	overflow-x: auto;
+	border: 1px solid var(--affilio-affiliates-border);
+	border-radius: 12px;
+	background: #fff;
+	-webkit-overflow-scrolling: touch;
+}
+
+.affilio-affiliate-directory__table .tablenav {
+	min-block-size: 54px;
+	margin: 0;
+	padding: 10px 12px;
+	background: #f8f9fc;
+}
+
+.affilio-affiliate-directory__table .tablenav.top {
+	border-block-end: 1px solid var(--affilio-affiliates-border);
+}
+
+.affilio-affiliate-directory__table .tablenav.bottom {
+	border-block-start: 1px solid var(--affilio-affiliates-border);
+}
+
+.affilio-affiliate-directory.is-empty .affilio-affiliate-directory__filters {
+	align-items: center;
+}
+
+.affilio-affiliate-directory.is-empty .affilio-affiliate-directory__views {
+	inline-size: 100%;
+}
+
+.affilio-affiliate-directory.is-empty .affilio-affiliate-directory__table .tablenav,
+.affilio-affiliate-directory.is-empty .affilio-affiliate-directory__table .wp-list-table tfoot {
+	display: none;
+}
+
+.affilio-affiliate-directory__table .tablenav .actions {
+	display: flex;
+	align-items: center;
+	gap: 7px;
+	padding: 0;
+}
+
+.affilio-affiliate-directory__table .tablenav select,
+.affilio-affiliate-directory__table .tablenav .button {
+	min-block-size: 34px;
+	margin: 0;
+	border-radius: 7px;
+}
+
+.affilio-affiliate-directory__table .wp-list-table {
+	min-inline-size: 930px;
+	border: 0;
+	box-shadow: none;
+}
+
+.affilio-affiliate-directory__table .wp-list-table thead th,
+.affilio-affiliate-directory__table .wp-list-table thead td,
+.affilio-affiliate-directory__table .wp-list-table tfoot th,
+.affilio-affiliate-directory__table .wp-list-table tfoot td {
+	padding-block: 13px;
+	border-color: var(--affilio-affiliates-border);
+	background: #f4f6fa;
+	color: #344054;
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 0.02em;
+}
+
+.affilio-affiliate-directory__table .wp-list-table tbody td,
+.affilio-affiliate-directory__table .wp-list-table tbody th {
+	padding-block: 14px;
+	border-color: #e8ecf2;
+	vertical-align: middle;
+}
+
+.affilio-affiliate-directory__table .wp-list-table tbody tr:nth-child(even) {
+	background: #fafbfc;
+}
+
+.affilio-affiliate-directory__table .wp-list-table tbody tr:hover {
+	background: #f7f7ff;
+}
+
+.affilio-affiliate-directory__table .wp-list-table code {
+	display: inline-block;
+	padding: 3px 7px;
+	border-radius: 5px;
+	background: #f0f2f7;
+	color: #344054;
+}
+
+.affilio-affiliate-directory__table .row-actions {
+	padding-block-start: 6px;
+}
+
+.affilio-affiliate-directory__table .no-items td {
+	block-size: 150px;
+	color: var(--affilio-affiliates-muted);
+	font-size: 14px;
+	font-weight: 600;
+	text-align: center;
+}
+
+.affilio-affiliate-directory__table .pagination-links {
+	display: inline-flex;
+	align-items: center;
+	gap: 3px;
+}
+
+.affilio-affiliate-directory__table .tablenav-pages-navspan,
+.affilio-affiliate-directory__table .tablenav-pages a {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-inline-size: 32px;
+	min-block-size: 32px;
+	border-radius: 7px;
+}
+
+.affilio-affiliate-directory__form .notice {
+	margin-inline: 0;
+}
+
+/* Add/edit screen inherits the same premium surface without changing its form contract. */
+.affilio-admin-form {
+	box-sizing: border-box;
+	max-inline-size: 960px;
+	margin-block-start: 20px;
+	padding: 28px;
+	border: 1px solid var(--affilio-affiliates-border, #dce3ef);
+	border-radius: 16px;
+	background: #fff;
+	box-shadow: 0 12px 28px rgba(26, 36, 72, 0.07);
+}
+
+.affilio-admin-form h1 {
+	margin: 0 0 8px;
+	color: #101828;
+	font-size: 30px;
+	font-weight: 720;
+	letter-spacing: -0.025em;
+}
+
+.affilio-admin-form > p:first-of-type {
+	margin: 0 0 24px;
+}
+
+.affilio-admin-form > p:first-of-type a {
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.affilio-admin-form form > h2 {
+	margin: 25px 0 0;
+	padding: 16px 18px;
+	border: 1px solid #dfe3ff;
+	border-block-end: 0;
+	border-radius: 12px 12px 0 0;
+	background: #f7f7ff;
+	color: #252a6f;
+	font-size: 18px;
+}
+
+.affilio-admin-form .form-table {
+	margin: 0;
+	border: 1px solid #dfe3ff;
+	border-radius: 0 0 12px 12px;
+	border-collapse: separate;
+	background: #fff;
+}
+
+.affilio-admin-form .form-table th,
+.affilio-admin-form .form-table td {
+	padding: 16px 18px;
+	border-block-end: 1px solid #edf0f5;
+}
+
+.affilio-admin-form .form-table tr:last-child th,
+.affilio-admin-form .form-table tr:last-child td {
+	border-block-end: 0;
+}
+
+.affilio-admin-form input[type="text"],
+.affilio-admin-form input[type="email"],
+.affilio-admin-form input[type="url"],
+.affilio-admin-form input[type="number"],
+.affilio-admin-form select,
+.affilio-admin-form textarea {
+	min-block-size: 40px;
+	border-color: #cbd3e1;
+	border-radius: 8px;
+}
+
+.affilio-admin-form textarea {
+	min-block-size: 92px;
+}
+
+.affilio-admin-form .button-primary {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-block-size: 40px;
+	padding-inline: 17px;
+	border-radius: 8px;
+	background: #5146e5;
+	font-weight: 700;
+}
+
+@media screen and (max-width: 1080px) {
+	.affilio-affiliate-summary {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.affilio-affiliate-directory__filters {
+		align-items: stretch;
+		flex-direction: column;
+	}
+
+	.affilio-affiliate-directory__tools {
+		flex: 0 1 auto;
+		justify-content: flex-start;
+	}
+}
+
+@media screen and (max-width: 782px) {
+	.affilio-affiliates-wrap {
+		margin-block-start: 12px;
+	}
+
+	.affilio-affiliates-hero {
+		align-items: flex-start;
+		min-block-size: 0;
+		padding: 30px;
+		flex-direction: column;
+	}
+
+	.affilio-affiliate-directory__tools {
+		align-items: stretch;
+		flex-direction: column;
+	}
+
+	.affilio-affiliate-directory__tools > label {
+		min-inline-size: 0;
+		flex-basis: auto;
+	}
+
+	.affilio-affiliate-directory__tools .search-box {
+		align-items: stretch;
+		flex-direction: column;
+	}
+
+	.affilio-affiliate-directory__tools .search-box input {
+		inline-size: 100%;
+	}
+
+	.affilio-admin-form {
+		padding: 22px;
+	}
+
+	.affilio-admin-form .form-table th,
+	.affilio-admin-form .form-table td {
+		display: block;
+		inline-size: 100%;
+		padding: 12px 16px;
+	}
+
+	.affilio-admin-form .form-table th {
+		padding-block-end: 0;
+		border-block-end: 0;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.affilio-affiliates-hero,
+	.affilio-affiliate-directory {
+		padding: 20px;
+		border-radius: 13px;
+	}
+
+	.affilio-affiliates-wrap .affilio-affiliates-hero__action {
+		inline-size: 100%;
+	}
+
+	.affilio-affiliate-summary {
+		grid-template-columns: 1fr;
+	}
+
+	.affilio-affiliate-directory__heading {
+		grid-template-columns: 38px minmax(0, 1fr);
+	}
+
+	.affilio-affiliate-directory__icon {
+		inline-size: 38px;
+		block-size: 38px;
+		font-size: 18px;
+	}
+
+	.affilio-affiliate-directory__count {
+		grid-column: 2;
+		justify-self: start;
+	}
+
+	.affilio-affiliate-directory__views .subsubsub a {
+		min-block-size: 36px;
+	}
+}
+
+/* Keep padded form cells and controls inside narrow admin viewports. */
+.affilio-admin-form *,
+.affilio-admin-form *::before,
+.affilio-admin-form *::after {
+	box-sizing: border-box;
+}
+
+.affilio-admin-form :where(input, select, textarea) {
+	max-inline-size: 100%;
+	min-inline-size: 0;
+}
+
+@media screen and (max-width: 782px) {
+	.affilio-admin-form .form-table {
+		inline-size: 100%;
+		table-layout: fixed;
+	}
+}

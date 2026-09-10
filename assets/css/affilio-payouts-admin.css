@@ -1,0 +1,1046 @@
+/* Dreamax Affiliates controlled payout workspace. Loaded only on Payouts. */
+.affilio-payouts-page {
+	--affilio-payout-ink: #101828;
+	--affilio-payout-muted: #60708a;
+	--affilio-payout-border: #dce3ef;
+	--affilio-payout-soft: #f7f9fc;
+	--affilio-payout-brand: #5146e5;
+	--affilio-payout-good: #079447;
+	box-sizing: border-box;
+	max-inline-size: 1180px;
+	margin-block-start: 20px;
+	color: var(--affilio-payout-ink);
+}
+
+.affilio-payouts-page *,
+.affilio-payouts-page *::before,
+.affilio-payouts-page *::after {
+	box-sizing: border-box;
+}
+
+.affilio-payouts-page .wp-header-end {
+	margin: 0;
+}
+
+.affilio-payouts-hero {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 30px;
+	min-block-size: 196px;
+	margin-block-end: 22px;
+	padding: 38px 42px;
+	overflow: hidden;
+	border: 1px solid rgb(255 255 255 / 12%);
+	border-radius: 18px;
+	background:
+		radial-gradient(circle at 87% 15%, rgb(129 140 248 / 30%), transparent 31%),
+		linear-gradient(125deg, #202d68 0%, #312f91 56%, #5548e3 100%);
+	box-shadow: 0 20px 42px rgb(30 41 91 / 16%);
+	color: #fff;
+}
+
+.affilio-payouts-hero__content {
+	min-inline-size: 0;
+	max-inline-size: 800px;
+}
+
+.affilio-payouts-eyebrow {
+	display: block;
+	margin-block-end: 7px;
+	color: var(--affilio-payout-brand);
+	font-size: 11px;
+	font-weight: 750;
+	letter-spacing: 0.11em;
+	line-height: 1.4;
+	text-transform: uppercase;
+}
+
+.affilio-payouts-hero .affilio-payouts-eyebrow {
+	color: #c7d2fe;
+}
+
+.affilio-payouts-hero h1 {
+	margin: 0;
+	color: #fff;
+	font-size: clamp(28px, 3.2vw, 40px);
+	font-weight: 700;
+	letter-spacing: -0.025em;
+	line-height: 1.15;
+}
+
+.affilio-payouts-hero p {
+	max-inline-size: 760px;
+	margin: 15px 0 0;
+	color: #eef2ff;
+	font-size: 15px;
+	line-height: 1.65;
+}
+
+.affilio-payout-button,
+.affilio-payout-search__submit,
+.affilio-payout-action-button {
+	display: inline-flex !important;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	white-space: nowrap;
+}
+
+.affilio-payout-button-icon {
+	display: block;
+	flex: 0 0 18px;
+	inline-size: 18px;
+	block-size: 18px;
+	overflow: visible;
+}
+
+.affilio-payouts-hero__action {
+	flex: 0 0 auto;
+	min-block-size: 48px;
+	padding: 12px 18px;
+	border: 1px solid rgb(255 255 255 / 26%);
+	border-radius: 10px;
+	background: #fff;
+	box-shadow: 0 8px 22px rgb(19 27 77 / 22%);
+	color: #3028a0;
+	font-weight: 700;
+	line-height: 1.2;
+	text-decoration: none;
+}
+
+.affilio-payouts-hero__action:hover,
+.affilio-payouts-hero__action:focus {
+	background: #f8f9ff;
+	color: #21197f;
+}
+
+.affilio-payouts-hero__badge {
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	min-block-size: 38px;
+	padding: 8px 14px;
+	border: 1px solid rgb(255 255 255 / 28%);
+	border-radius: 999px;
+	background: rgb(255 255 255 / 12%);
+	color: #fff;
+	font-weight: 700;
+	line-height: 1.2;
+	white-space: nowrap;
+}
+
+.affilio-payouts-hero__badge.is-failed,
+.affilio-payouts-hero__badge.is-cancelled {
+	border-color: rgb(254 202 202 / 58%);
+	background: rgb(127 29 29 / 28%);
+}
+
+.affilio-payouts-hero__badge.is-paid {
+	border-color: rgb(167 243 208 / 58%);
+	background: rgb(6 95 70 / 26%);
+}
+
+.affilio-payout-summary {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 14px;
+	margin-block-end: 22px;
+}
+
+.affilio-payout-stat {
+	display: grid;
+	grid-template-columns: 42px minmax(0, 1fr);
+	align-items: center;
+	gap: 12px;
+	min-block-size: 116px;
+	padding: 18px;
+	border: 1px solid var(--affilio-payout-border);
+	border-radius: 14px;
+	background: #fff;
+	box-shadow: 0 10px 25px rgb(26 36 72 / 6%);
+}
+
+.affilio-payout-stat__icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	inline-size: 42px;
+	block-size: 42px;
+	border-radius: 12px;
+	background: #eceeff;
+	color: var(--affilio-payout-brand);
+	font-size: 20px;
+	line-height: 1;
+}
+
+.affilio-payout-stat.is-processing .affilio-payout-stat__icon {
+	background: #edf6ff;
+	color: #0969a6;
+}
+
+.affilio-payout-stat.is-good .affilio-payout-stat__icon {
+	background: #eafaf1;
+	color: var(--affilio-payout-good);
+}
+
+.affilio-payout-stat.is-attention .affilio-payout-stat__icon {
+	background: #fff3e5;
+	color: #b45309;
+}
+
+.affilio-payout-stat > div {
+	display: flex;
+	min-inline-size: 0;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.affilio-payout-stat small,
+.affilio-payout-stat p {
+	color: var(--affilio-payout-muted);
+	font-size: 12px;
+	line-height: 1.4;
+}
+
+.affilio-payout-stat small {
+	font-weight: 650;
+}
+
+.affilio-payout-stat strong {
+	color: var(--affilio-payout-ink);
+	font-size: 25px;
+	line-height: 1.15;
+}
+
+.affilio-payout-stat strong.is-text {
+	overflow-wrap: anywhere;
+	font-size: 17px;
+}
+
+.affilio-payout-stat p {
+	margin: 0;
+}
+
+.affilio-payout-assurance,
+.affilio-payout-footer-note {
+	display: grid;
+	grid-template-columns: 20px minmax(0, 1fr);
+	gap: 10px;
+	padding: 14px 16px;
+	border: 1px solid #c7d2fe;
+	border-inline-start: 4px solid var(--affilio-payout-brand);
+	border-radius: 10px;
+	background: #eef2ff;
+	color: #3730a3;
+}
+
+.affilio-payout-assurance {
+	margin-block-end: 22px;
+}
+
+.affilio-payout-footer-note {
+	margin-block-start: 22px;
+	border-color: var(--affilio-payout-border);
+	border-inline-start-color: #94a3b8;
+	background: #f8fafc;
+	color: #40516b;
+}
+
+.affilio-payout-assurance .dashicons,
+.affilio-payout-footer-note .dashicons {
+	inline-size: 20px;
+	block-size: 20px;
+	font-size: 19px;
+	line-height: 1.05;
+}
+
+.affilio-payout-assurance p,
+.affilio-payout-footer-note p {
+	margin: 0;
+	font-size: 12px;
+	line-height: 1.55;
+}
+
+.affilio-payout-panel {
+	padding: 26px;
+	border: 1px solid var(--affilio-payout-border);
+	border-radius: 16px;
+	background: #fff;
+	box-shadow: 0 12px 30px rgb(25 36 71 / 6%);
+}
+
+.affilio-payout-section-heading {
+	display: grid;
+	grid-template-columns: 42px minmax(0, 1fr) auto;
+	align-items: start;
+	gap: 14px;
+	margin-block-end: 20px;
+}
+
+.affilio-payout-section-heading__icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	inline-size: 42px;
+	block-size: 42px;
+	border-radius: 12px;
+	background: #eef0ff;
+	color: var(--affilio-payout-brand);
+	font-size: 20px;
+	line-height: 1;
+}
+
+.affilio-payout-section-heading h2 {
+	margin: 0;
+	color: var(--affilio-payout-ink);
+	font-size: 22px;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	line-height: 1.25;
+}
+
+.affilio-payout-section-heading p {
+	margin: 5px 0 0;
+	color: var(--affilio-payout-muted);
+	font-size: 13px;
+	line-height: 1.55;
+}
+
+.affilio-payout-count {
+	align-self: start;
+	padding: 7px 12px;
+	border: 1px solid #cfd5ff;
+	border-radius: 999px;
+	background: #f2f3ff;
+	color: #3730a3;
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 1.2;
+	white-space: nowrap;
+}
+
+.affilio-payout-toolbar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 18px;
+	margin-block-end: 16px;
+	padding: 14px;
+	border: 1px solid var(--affilio-payout-border);
+	border-radius: 12px;
+	background: var(--affilio-payout-soft);
+}
+
+.affilio-payout-views {
+	min-inline-size: 0;
+}
+
+.affilio-payout-views .subsubsub {
+	display: flex;
+	float: none;
+	flex-wrap: wrap;
+	gap: 7px;
+	margin: 0;
+	font-size: 0;
+}
+
+.affilio-payout-views .subsubsub li {
+	margin: 0;
+	font-size: 0;
+}
+
+.affilio-payout-views .subsubsub a {
+	display: inline-flex;
+	align-items: center;
+	min-block-size: 34px;
+	padding: 6px 10px;
+	border: 1px solid #d4dceb;
+	border-radius: 999px;
+	background: #fff;
+	color: #34435d;
+	font-size: 13px;
+	line-height: 1.2;
+	text-decoration: none;
+}
+
+.affilio-payout-views .subsubsub .count {
+	margin-inline-start: 3px;
+}
+
+.affilio-payout-views .subsubsub a.current {
+	border-color: #aeb8ff;
+	background: #eef0ff;
+	color: #3730a3;
+	font-weight: 700;
+}
+
+.affilio-payout-search {
+	display: flex;
+	flex: 0 1 500px;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 8px;
+}
+
+.affilio-payout-search input[type="search"] {
+	inline-size: 100%;
+	min-block-size: 40px;
+	margin: 0;
+	border-color: #cbd5e1;
+	border-radius: 8px;
+}
+
+.affilio-payout-search .button {
+	min-block-size: 40px;
+	margin: 0;
+	padding-inline: 14px;
+	border-radius: 8px;
+}
+
+.affilio-payout-search__submit {
+	border-color: var(--affilio-payout-brand) !important;
+	background: var(--affilio-payout-brand) !important;
+	color: #fff !important;
+}
+
+.affilio-payout-list-form {
+	margin: 0;
+	overflow: hidden;
+	border: 1px solid var(--affilio-payout-border);
+	border-radius: 12px;
+	background: #fff;
+}
+
+.affilio-payout-list-form .tablenav {
+	min-block-size: 44px;
+	margin: 0;
+	padding: 9px 12px;
+	background: #fbfcfe;
+}
+
+.affilio-payout-list-form .tablenav.top {
+	border-block-end: 1px solid var(--affilio-payout-border);
+}
+
+.affilio-payout-list-form .tablenav.bottom {
+	border-block-start: 1px solid var(--affilio-payout-border);
+}
+
+.affilio-payout-list-form .tablenav-pages {
+	margin: 0;
+}
+
+.affilio-payout-list-form .wp-list-table {
+	border: 0;
+	box-shadow: none;
+}
+
+.affilio-payout-list-form .wp-list-table thead th,
+.affilio-payout-list-form .wp-list-table thead td,
+.affilio-payout-list-form .wp-list-table tfoot th,
+.affilio-payout-list-form .wp-list-table tfoot td {
+	padding-block: 13px;
+	border-color: var(--affilio-payout-border);
+	background: #f3f6fb;
+	color: #23314d;
+	font-weight: 700;
+}
+
+.affilio-payout-list-form .wp-list-table tbody td,
+.affilio-payout-list-form .wp-list-table tbody th {
+	padding-block: 14px;
+	border-color: #e8edf4;
+	vertical-align: middle;
+}
+
+.affilio-payout-list-form .wp-list-table tbody tr:not(.no-items):hover td,
+.affilio-payout-list-form .wp-list-table tbody tr:not(.no-items):hover th {
+	background: #fafbff;
+}
+
+.affilio-payout-list-form .column-batch_key {
+	inline-size: 13%;
+}
+
+.affilio-payout-list-form .column-affiliate {
+	inline-size: 13%;
+}
+
+.affilio-payout-list-form .column-amount,
+.affilio-payout-list-form .column-method,
+.affilio-payout-list-form .column-status {
+	inline-size: 10%;
+}
+
+.affilio-payout-list-form .column-destination {
+	inline-size: 18%;
+}
+
+.affilio-payout-list-form .column-created,
+.affilio-payout-list-form .column-paid {
+	inline-size: 13%;
+}
+
+.affilio-payout-list-form .column-batch_key a {
+	color: #3730a3;
+	text-decoration: none;
+}
+
+.affilio-payout-list-form .column-batch_key a:hover {
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.affilio-payout-list-form .affilio-status {
+	padding: 5px 9px;
+	border-radius: 999px;
+	font-size: 10px;
+	letter-spacing: 0.04em;
+	line-height: 1.2;
+}
+
+.affilio-payout-directory.is-empty .wp-list-table thead,
+.affilio-payout-directory.is-empty .wp-list-table tfoot {
+	display: none;
+}
+
+.affilio-payout-directory.is-empty .affilio-payout-list-form .tablenav {
+	display: none;
+}
+
+.affilio-payout-directory.is-empty .wp-list-table .no-items td {
+	block-size: 154px;
+	padding: 26px;
+	border: 0;
+	background: #fbfcfe;
+	color: #52627c;
+	font-size: 14px;
+	text-align: center;
+}
+
+.affilio-payout-empty-state {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	max-inline-size: 540px;
+	margin-inline: auto;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.affilio-payout-empty-state__icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	inline-size: 42px;
+	block-size: 42px;
+	margin-block-end: 4px;
+	border-radius: 12px;
+	background: #eef0ff;
+	color: var(--affilio-payout-brand);
+	font-size: 20px;
+	line-height: 1;
+}
+
+.affilio-payout-empty-state strong {
+	color: var(--affilio-payout-ink);
+	font-size: 14px;
+	line-height: 1.35;
+}
+
+.affilio-payout-empty-state p {
+	margin: 0;
+	color: var(--affilio-payout-muted);
+	font-size: 12px;
+	line-height: 1.5;
+}
+
+.affilio-payout-empty-state__action {
+	display: inline-flex !important;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	min-block-size: 38px;
+	margin-block-start: 8px !important;
+	padding-inline: 13px !important;
+	border-color: var(--affilio-payout-brand) !important;
+	border-radius: 8px !important;
+	color: #3730a3 !important;
+	font-weight: 650;
+	line-height: 1.2 !important;
+	white-space: nowrap;
+}
+
+.affilio-payout-detail-hero {
+	align-items: flex-start;
+}
+
+.affilio-payout-detail-hero__back {
+	min-block-size: 40px;
+	margin-block-start: 22px;
+	padding: 9px 13px;
+	border: 1px solid rgb(255 255 255 / 30%);
+	border-radius: 9px;
+	background: rgb(255 255 255 / 12%);
+	color: #fff;
+	font-size: 13px;
+	font-weight: 700;
+	line-height: 1.2;
+	text-decoration: none;
+}
+
+.affilio-payout-detail-hero__back:hover,
+.affilio-payout-detail-hero__back:focus {
+	background: rgb(255 255 255 / 20%);
+	color: #fff;
+}
+
+.affilio-payout-detail-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 20px;
+	margin-block-end: 22px;
+}
+
+.affilio-payout-detail-grid .affilio-payout-panel {
+	min-inline-size: 0;
+}
+
+.affilio-payout-detail-grid .affilio-payout-section-heading {
+	grid-template-columns: 42px minmax(0, 1fr);
+}
+
+.affilio-payout-detail .affilio-destination-pre {
+	min-block-size: 128px;
+	margin: 0;
+	padding: 18px;
+	overflow: auto;
+	border: 1px solid var(--affilio-payout-border);
+	border-radius: 10px;
+	background: var(--affilio-payout-soft);
+	color: #253451;
+	font-family: inherit;
+	font-size: 13px;
+	line-height: 1.65;
+	overflow-wrap: anywhere;
+	white-space: pre-wrap;
+}
+
+.affilio-payout-record {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 10px;
+	margin: 0;
+}
+
+.affilio-payout-record > div {
+	min-inline-size: 0;
+	padding: 12px 14px;
+	border: 1px solid var(--affilio-payout-border);
+	border-radius: 9px;
+	background: var(--affilio-payout-soft);
+}
+
+.affilio-payout-record > div.is-wide {
+	grid-column: 1 / -1;
+}
+
+.affilio-payout-record dt {
+	margin-block-end: 5px;
+	color: var(--affilio-payout-muted);
+	font-size: 11px;
+	font-weight: 650;
+}
+
+.affilio-payout-record dd {
+	margin: 0;
+	color: var(--affilio-payout-ink);
+	font-size: 13px;
+	font-weight: 600;
+	line-height: 1.5;
+	overflow-wrap: anywhere;
+}
+
+.affilio-payout-referrals {
+	margin-block-end: 22px;
+}
+
+.affilio-payout-referrals .affilio-admin-table-wrap {
+	margin: 0;
+	overflow: hidden;
+	border: 1px solid var(--affilio-payout-border);
+	border-radius: 11px;
+}
+
+.affilio-payout-referrals__table {
+	border: 0;
+	box-shadow: none;
+}
+
+.affilio-payout-referrals__table thead th {
+	padding: 13px 14px;
+	border-color: var(--affilio-payout-border);
+	background: #f3f6fb;
+	color: #23314d;
+	font-weight: 700;
+}
+
+.affilio-payout-referrals__table tbody td {
+	padding: 14px;
+	border-color: #e8edf4;
+	vertical-align: middle;
+}
+
+.affilio-payout-empty-row td {
+	block-size: 120px;
+	color: #52627c;
+	text-align: center;
+}
+
+.affilio-payout-actions {
+	margin-block-end: 22px;
+}
+
+.affilio-payout-actions__grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 16px;
+}
+
+.affilio-payout-action-card {
+	min-inline-size: 0;
+	padding: 20px;
+	border: 1px solid var(--affilio-payout-border);
+	border-radius: 12px;
+	background: var(--affilio-payout-soft);
+}
+
+.affilio-payout-action-card.is-success {
+	border-color: #bbecd0;
+	background: #f3fcf7;
+}
+
+.affilio-payout-action-card.is-attention {
+	border-color: #fed7aa;
+	background: #fff9f1;
+}
+
+.affilio-payout-action-card h3 {
+	margin: 0;
+	color: var(--affilio-payout-ink);
+	font-size: 17px;
+	line-height: 1.3;
+}
+
+.affilio-payout-action-card > p {
+	margin: 7px 0 18px;
+	color: var(--affilio-payout-muted);
+	font-size: 12px;
+	line-height: 1.55;
+}
+
+.affilio-payout-action-card label {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	margin-block: 14px 6px;
+	color: var(--affilio-payout-ink);
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 1.4;
+}
+
+.affilio-payout-action-card label span {
+	padding: 3px 7px;
+	border-radius: 999px;
+	background: #eef1f6;
+	color: #52627c;
+	font-size: 10px;
+	font-weight: 650;
+}
+
+.affilio-payout-action-card input[type="text"],
+.affilio-payout-action-card textarea {
+	inline-size: 100%;
+	max-inline-size: none;
+	margin: 0;
+	border-color: #cbd5e1;
+	border-radius: 8px;
+	background: #fff;
+}
+
+.affilio-payout-action-card input[type="text"] {
+	min-block-size: 40px;
+}
+
+.affilio-payout-action-button {
+	min-block-size: 42px !important;
+	margin-block-start: 16px !important;
+	padding: 9px 15px !important;
+	border-radius: 8px !important;
+	line-height: 1.2 !important;
+}
+
+.affilio-payout-action-card.is-success .button-primary {
+	border-color: var(--affilio-payout-good);
+	background: var(--affilio-payout-good);
+}
+
+.affilio-payout-action-card.is-attention .affilio-payout-action-button {
+	border-color: #c2410c;
+	color: #9a3412;
+}
+
+.affilio-payout-cancel-form {
+	margin-block-start: 16px;
+	padding-block-start: 16px;
+	border-block-start: 1px solid #fed7aa;
+}
+
+.affilio-payout-cancel-form .affilio-payout-action-button {
+	margin-block-start: 0 !important;
+	border-color: #94a3b8;
+	color: #40516b;
+}
+
+.affilio-payouts-page :where(a, button, input, textarea):focus-visible {
+	outline: 3px solid #005fcc;
+	outline-offset: 2px;
+	box-shadow: none;
+}
+
+@media screen and (max-width: 1100px) {
+	.affilio-payout-summary {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.affilio-payout-toolbar {
+		align-items: stretch;
+		flex-direction: column;
+	}
+
+	.affilio-payout-search {
+		flex-basis: auto;
+		justify-content: flex-start;
+	}
+
+	.affilio-payout-list-form {
+		overflow-x: auto;
+	}
+
+	.affilio-payout-list-form .wp-list-table {
+		min-inline-size: 980px;
+	}
+}
+
+@media screen and (max-width: 782px) {
+	.affilio-payouts-page {
+		margin-inline-end: 10px;
+	}
+
+	.affilio-payouts-hero {
+		align-items: flex-start;
+		flex-direction: column;
+		min-block-size: 0;
+		padding: 30px;
+	}
+
+	.affilio-payouts-hero__action,
+	.affilio-payouts-hero__badge {
+		align-self: flex-start;
+	}
+
+	.affilio-payout-detail-hero__back {
+		margin-block-start: 18px;
+	}
+
+	.affilio-payout-detail-grid,
+	.affilio-payout-actions__grid {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.affilio-payout-list-form .wp-list-table {
+		min-inline-size: 0;
+	}
+
+	.affilio-payout-list-form .tablenav {
+		block-size: auto;
+		min-block-size: 46px;
+	}
+
+	.affilio-payout-list-form .tablenav-pages {
+		margin-block: 0;
+	}
+
+	.affilio-payout-search input[type="search"],
+	.affilio-payout-search .button,
+	.affilio-payout-action-card input[type="text"],
+	.affilio-payout-action-card textarea {
+		font-size: 16px;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.affilio-payouts-hero {
+		padding: 26px 22px;
+		border-radius: 14px;
+	}
+
+	.affilio-payouts-hero h1 {
+		font-size: clamp(28px, 3.2vw, 40px);
+	}
+
+	.affilio-payouts-hero p {
+		font-size: 15px;
+	}
+
+	.affilio-payout-summary {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.affilio-payout-panel {
+		padding: 19px;
+		border-radius: 13px;
+	}
+
+	.affilio-payout-section-heading {
+		grid-template-columns: 38px minmax(0, 1fr);
+		gap: 11px;
+	}
+
+	.affilio-payout-section-heading__icon {
+		inline-size: 38px;
+		block-size: 38px;
+	}
+
+	.affilio-payout-count {
+		grid-column: 1 / -1;
+		justify-self: start;
+	}
+
+	.affilio-payout-search {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+	}
+
+	.affilio-payout-search input[type="search"] {
+		grid-column: 1 / -1;
+	}
+
+	.affilio-payout-search__clear {
+		inline-size: 100%;
+	}
+
+	.affilio-payout-record {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.affilio-payout-record > div.is-wide {
+		grid-column: auto;
+	}
+
+	.affilio-payout-referrals .affilio-admin-table-wrap {
+		overflow: visible;
+		border: 0;
+	}
+
+	.affilio-payout-referrals__table,
+	.affilio-payout-referrals__table tbody,
+	.affilio-payout-referrals__table tr,
+	.affilio-payout-referrals__table td {
+		display: block;
+		inline-size: 100%;
+	}
+
+	.affilio-payout-referrals__table thead {
+		position: absolute;
+		inline-size: 1px;
+		block-size: 1px;
+		overflow: hidden;
+		clip: rect(0 0 0 0);
+		clip-path: inset(50%);
+		white-space: nowrap;
+	}
+
+	.affilio-payout-referrals__table tbody {
+		display: grid;
+		gap: 12px;
+	}
+
+	.affilio-payout-referrals__table tbody tr {
+		overflow: hidden;
+		border: 1px solid var(--affilio-payout-border);
+		border-radius: 10px;
+		background: #fff;
+	}
+
+	.affilio-payout-referrals__table tbody td {
+		display: grid;
+		grid-template-columns: minmax(105px, 42%) minmax(0, 1fr);
+		gap: 12px;
+		padding: 11px 13px;
+		border-block: 0 1px;
+		border-inline: 0;
+		text-align: start;
+	}
+
+	.affilio-payout-referrals__table tbody td::before {
+		content: attr(data-label);
+		color: var(--affilio-payout-muted);
+		font-size: 11px;
+		font-weight: 700;
+	}
+
+	.affilio-payout-referrals__table tbody td:last-child {
+		border-block-end: 0;
+	}
+
+	.affilio-payout-referrals__table .affilio-payout-empty-row td {
+		display: block;
+		block-size: auto;
+		padding: 28px 18px;
+		text-align: center;
+	}
+
+	.affilio-payout-referrals__table .affilio-payout-empty-row td::before {
+		content: none;
+	}
+
+	.affilio-payout-action-card {
+		padding: 17px;
+	}
+
+	.affilio-payout-action-button,
+	.affilio-payouts-hero__action {
+		inline-size: 100%;
+	}
+}
+
+@media (prefers-contrast: more) {
+	.affilio-payout-stat,
+	.affilio-payout-panel,
+	.affilio-payout-list-form,
+	.affilio-payout-action-card {
+		border: 2px solid currentColor;
+	}
+
+	.affilio-payouts-hero__action,
+	.affilio-payouts-hero__badge {
+		border: 2px solid currentColor;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.affilio-payouts-page *,
+	.affilio-payouts-page *::before,
+	.affilio-payouts-page *::after {
+		scroll-behavior: auto !important;
+		transition-duration: 0.01ms !important;
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+	}
+}

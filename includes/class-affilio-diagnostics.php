@@ -9,6 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * Provides privacy-safe system checks and an attribution test workflow.
+ */
 class Affilio_Diagnostics {
 
 	const PAGE_SLUG             = 'affilio-diagnostics';
@@ -19,6 +22,9 @@ class Affilio_Diagnostics {
 	const ACTION_VERIFY_TEST    = 'affilio_verify_attribution_test';
 	const ACTION_CLEAR_TEST     = 'affilio_clear_attribution_test';
 
+	/**
+	 * Registers diagnostics request handlers.
+	 */
 	public function __construct() {
 		add_action( 'admin_post_' . self::ACTION_PREPARE_TEST, array( $this, 'handle_prepare_test' ) );
 		add_action( 'admin_post_' . self::ACTION_VERIFY_TEST, array( $this, 'handle_verify_test' ) );
@@ -37,11 +43,14 @@ class Affilio_Diagnostics {
 		$tab = in_array( $tab, array( 'status', 'attribution' ), true ) ? $tab : 'status';
 		?>
 		<div class="wrap affilio-diagnostics-wrap">
-			<h1><?php esc_html_e( 'Dreamax Affiliates Diagnostics', 'dreamax-affiliates' ); ?></h1>
-			<p class="affilio-diagnostics-intro"><?php esc_html_e( 'Review local system readiness and test the real referral-attribution path without sending diagnostics to an external service.', 'dreamax-affiliates' ); ?></p>
-			<nav class="nav-tab-wrapper" aria-label="<?php echo esc_attr__( 'Diagnostics sections', 'dreamax-affiliates' ); ?>">
-				<a class="nav-tab <?php echo 'status' === $tab ? 'nav-tab-active' : ''; ?>" href="<?php echo esc_url( admin_url( 'admin.php?page=' . self::PAGE_SLUG . '&tab=status' ) ); ?>"><?php esc_html_e( 'System Status', 'dreamax-affiliates' ); ?></a>
-				<a class="nav-tab <?php echo 'attribution' === $tab ? 'nav-tab-active' : ''; ?>" href="<?php echo esc_url( admin_url( 'admin.php?page=' . self::PAGE_SLUG . '&tab=attribution' ) ); ?>"><?php esc_html_e( 'Test Attribution', 'dreamax-affiliates' ); ?></a>
+			<hr class="wp-header-end">
+			<header class="affilio-diagnostics-hero">
+				<div class="affilio-diagnostics-hero__content"><span class="affilio-diagnostics-eyebrow"><?php esc_html_e( 'Operational assurance', 'dreamax-affiliates' ); ?></span><h1><?php esc_html_e( 'Diagnostics', 'dreamax-affiliates' ); ?></h1><p><?php esc_html_e( 'Review local system readiness and verify the real referral-attribution path from one privacy-safe workspace.', 'dreamax-affiliates' ); ?></p></div>
+				<span class="affilio-diagnostics-hero__badge"><span class="dashicons dashicons-lock" aria-hidden="true"></span><?php esc_html_e( 'Local and private', 'dreamax-affiliates' ); ?></span>
+			</header>
+			<nav class="affilio-diagnostics-tabs" aria-label="<?php echo esc_attr__( 'Diagnostics sections', 'dreamax-affiliates' ); ?>">
+				<a class="<?php echo 'status' === $tab ? 'is-active' : ''; ?>" <?php echo 'status' === $tab ? 'aria-current="page"' : ''; ?> href="<?php echo esc_url( admin_url( 'admin.php?page=' . self::PAGE_SLUG . '&tab=status' ) ); ?>"><span class="dashicons dashicons-heart" aria-hidden="true"></span><span><strong><?php esc_html_e( 'System Status', 'dreamax-affiliates' ); ?></strong><small><?php esc_html_e( 'Readiness and integrations', 'dreamax-affiliates' ); ?></small></span></a>
+				<a class="<?php echo 'attribution' === $tab ? 'is-active' : ''; ?>" <?php echo 'attribution' === $tab ? 'aria-current="page"' : ''; ?> href="<?php echo esc_url( admin_url( 'admin.php?page=' . self::PAGE_SLUG . '&tab=attribution' ) ); ?>"><span class="dashicons dashicons-randomize" aria-hidden="true"></span><span><strong><?php esc_html_e( 'Test Attribution', 'dreamax-affiliates' ); ?></strong><small><?php esc_html_e( 'Guided referral-path check', 'dreamax-affiliates' ); ?></small></span></a>
 			</nav>
 			<?php $this->render_notice(); ?>
 			<?php 'attribution' === $tab ? $this->render_attribution_tab() : $this->render_status_tab(); ?>
@@ -137,33 +146,34 @@ class Affilio_Diagnostics {
 	private function render_status_tab() {
 		$checks  = $this->get_system_checks();
 		$summary = array_count_values( array_column( $checks, 'status' ) );
+		$total   = count( $checks );
 		?>
 		<section class="affilio-diagnostics-section" aria-labelledby="affilio-status-title">
 			<div class="affilio-diagnostics-heading">
-				<div>
-					<h2 id="affilio-status-title"><?php esc_html_e( 'System Status', 'dreamax-affiliates' ); ?></h2>
+				<span class="affilio-diagnostics-heading__icon dashicons dashicons-shield-alt" aria-hidden="true"></span>
+				<div><span class="affilio-diagnostics-eyebrow"><?php esc_html_e( 'Readiness overview', 'dreamax-affiliates' ); ?></span>
+					<h2 id="affilio-status-title"><?php esc_html_e( 'System health checks', 'dreamax-affiliates' ); ?></h2>
 					<p><?php esc_html_e( 'Checks are performed locally on this WordPress site. No report is transmitted automatically.', 'dreamax-affiliates' ); ?></p>
 				</div>
-				<div class="affilio-status-summary" aria-label="<?php echo esc_attr__( 'Status summary', 'dreamax-affiliates' ); ?>">
-					<?php /* translators: %s: number of "good" status checks. */ ?>
-					<span class="is-good"><?php echo esc_html( sprintf( __( '%s good', 'dreamax-affiliates' ), Affilio_I18n::number( (int) ( $summary['good'] ?? 0 ) ) ) ); ?></span>
-					<?php /* translators: %s: number of "warning" status checks. */ ?>
-					<span class="is-warning"><?php echo esc_html( sprintf( __( '%s warnings', 'dreamax-affiliates' ), Affilio_I18n::number( (int) ( $summary['warning'] ?? 0 ) ) ) ); ?></span>
-					<?php /* translators: %s: number of "critical" status checks. */ ?>
-					<span class="is-critical"><?php echo esc_html( sprintf( __( '%s critical', 'dreamax-affiliates' ), Affilio_I18n::number( (int) ( $summary['critical'] ?? 0 ) ) ) ); ?></span>
-				</div>
 			</div>
+
+			<div class="affilio-status-summary" aria-label="<?php echo esc_attr__( 'Status summary', 'dreamax-affiliates' ); ?>">
+				<article class="is-total"><span class="dashicons dashicons-list-view" aria-hidden="true"></span><div><small><?php esc_html_e( 'Total checks', 'dreamax-affiliates' ); ?></small><strong><?php echo esc_html( Affilio_I18n::number( $total ) ); ?></strong></div></article>
+				<article class="is-good"><span class="dashicons dashicons-yes-alt" aria-hidden="true"></span><div><small><?php esc_html_e( 'Healthy', 'dreamax-affiliates' ); ?></small><strong><?php echo esc_html( Affilio_I18n::number( (int) ( $summary['good'] ?? 0 ) ) ); ?></strong></div></article>
+				<article class="is-warning"><span class="dashicons dashicons-warning" aria-hidden="true"></span><div><small><?php esc_html_e( 'Warnings', 'dreamax-affiliates' ); ?></small><strong><?php echo esc_html( Affilio_I18n::number( (int) ( $summary['warning'] ?? 0 ) ) ); ?></strong></div></article>
+				<article class="is-critical"><span class="dashicons dashicons-dismiss" aria-hidden="true"></span><div><small><?php esc_html_e( 'Critical', 'dreamax-affiliates' ); ?></small><strong><?php echo esc_html( Affilio_I18n::number( (int) ( $summary['critical'] ?? 0 ) ) ); ?></strong></div></article>
+			</div>
+
+			<div class="affilio-diagnostics-boundary"><span class="dashicons dashicons-privacy" aria-hidden="true"></span><p><?php esc_html_e( 'Results are generated on this site and include extension-provided checks only through the normalized, append-only diagnostics boundary.', 'dreamax-affiliates' ); ?></p></div>
 
 			<div class="affilio-status-list">
 				<?php foreach ( $checks as $check ) : ?>
 					<article class="affilio-status-row is-<?php echo esc_attr( $check['status'] ); ?>">
-						<span class="dashicons <?php echo esc_attr( $this->status_icon( $check['status'] ) ); ?>" aria-hidden="true"></span>
-						<div>
-							<h3><?php echo esc_html( $check['label'] ); ?></h3>
-							<p><?php echo esc_html( $check['detail'] ); ?></p>
-						</div>
+						<span class="affilio-status-row__icon dashicons <?php echo esc_attr( $this->status_icon( $check['status'] ) ); ?>" aria-hidden="true"></span>
+						<div class="affilio-status-row__content"><div class="affilio-status-row__title"><h3><?php echo esc_html( $check['label'] ); ?></h3></div><p><?php echo esc_html( $check['detail'] ); ?></p></div>
+						<span class="affilio-status-row__state"><?php echo esc_html( $this->status_label( $check['status'] ) ); ?></span>
 						<?php if ( ! empty( $check['action_url'] ) && ! empty( $check['action_label'] ) ) : ?>
-							<a class="button button-small" href="<?php echo esc_url( $check['action_url'] ); ?>"><?php echo esc_html( $check['action_label'] ); ?></a>
+							<a class="button button-small affilio-status-row__action" href="<?php echo esc_url( $check['action_url'] ); ?>"><?php echo esc_html( $check['action_label'] ); ?><span class="dashicons dashicons-arrow-right-alt2" aria-hidden="true"></span></a>
 						<?php endif; ?>
 					</article>
 				<?php endforeach; ?>
@@ -171,9 +181,8 @@ class Affilio_Diagnostics {
 		</section>
 
 		<section class="affilio-admin-card affilio-support-report" aria-labelledby="affilio-support-report-title">
-			<h2 id="affilio-support-report-title"><?php esc_html_e( 'Privacy-safe Support Report', 'dreamax-affiliates' ); ?></h2>
-			<p><?php esc_html_e( 'Copy this report when requesting support. It excludes administrator email addresses, filesystem paths, database credentials, table prefixes, cookies, and visitor data.', 'dreamax-affiliates' ); ?></p>
-			<textarea class="large-text code" rows="16" readonly onclick="this.select();" aria-label="<?php echo esc_attr__( 'Dreamax Affiliates support report', 'dreamax-affiliates' ); ?>"><?php echo esc_textarea( $this->build_support_report( $checks ) ); ?></textarea>
+			<div class="affilio-diagnostics-heading"><span class="affilio-diagnostics-heading__icon dashicons dashicons-media-text" aria-hidden="true"></span><div><span class="affilio-diagnostics-eyebrow"><?php esc_html_e( 'Support handoff', 'dreamax-affiliates' ); ?></span><h2 id="affilio-support-report-title"><?php esc_html_e( 'Privacy-safe support report', 'dreamax-affiliates' ); ?></h2><p><?php esc_html_e( 'Copy this report when requesting support. It excludes administrator email addresses, filesystem paths, database credentials, table prefixes, cookies, and visitor data.', 'dreamax-affiliates' ); ?></p></div></div>
+			<div class="affilio-support-report__editor"><div class="affilio-support-report__label"><strong><?php esc_html_e( 'Redacted diagnostic summary', 'dreamax-affiliates' ); ?></strong><span><?php esc_html_e( 'Click inside to select the report.', 'dreamax-affiliates' ); ?></span></div><textarea class="large-text code" rows="13" readonly onclick="this.select();" aria-label="<?php echo esc_attr__( 'Dreamax Affiliates support report', 'dreamax-affiliates' ); ?>"><?php echo esc_textarea( $this->build_support_report( $checks ) ); ?></textarea></div>
 		</section>
 		<?php
 	}
@@ -188,9 +197,14 @@ class Affilio_Diagnostics {
 		$affiliates = affilio()->affiliates_db->query_for_selector( 'active', 200 );
 		?>
 		<section class="affilio-diagnostics-section" aria-labelledby="affilio-attribution-title">
-			<h2 id="affilio-attribution-title"><?php esc_html_e( 'Test Attribution', 'dreamax-affiliates' ); ?></h2>
-			<p><?php esc_html_e( 'This guided test opens a real referral link, writes the normal secure attribution cookie, and confirms that the cookie resolves to the expected visit. Test visits use a diagnostic campaign and can be removed here.', 'dreamax-affiliates' ); ?></p>
-			<p class="description"><?php esc_html_e( 'Preparing a test clears any existing Dreamax Affiliates attribution cookie in this administrator browser so first-click and last-click modes can be tested consistently. It does not delete the earlier visit row.', 'dreamax-affiliates' ); ?></p>
+			<div class="affilio-diagnostics-heading">
+				<span class="affilio-diagnostics-heading__icon dashicons dashicons-randomize" aria-hidden="true"></span>
+				<div><span class="affilio-diagnostics-eyebrow"><?php esc_html_e( 'Guided verification', 'dreamax-affiliates' ); ?></span>
+					<h2 id="affilio-attribution-title"><?php esc_html_e( 'Test the attribution path', 'dreamax-affiliates' ); ?></h2>
+					<p><?php esc_html_e( 'Open a real referral link, write the normal secure attribution cookie, and confirm that it resolves to the expected visit.', 'dreamax-affiliates' ); ?></p>
+				</div>
+			</div>
+			<p class="description affilio-diagnostics-attribution-note"><?php esc_html_e( 'Test visits use a dedicated diagnostic campaign and can be removed here. Preparing a test clears any existing Dreamax Affiliates attribution cookie in this administrator browser; it does not delete the earlier visit row.', 'dreamax-affiliates' ); ?></p>
 
 			<?php if ( empty( $state ) ) : ?>
 				<div class="affilio-admin-card">
@@ -356,6 +370,8 @@ class Affilio_Diagnostics {
 		/**
 		 * Filters the final diagnostics collection so extensions may append checks.
 		 *
+		 * @since 2.1.3
+		 *
 		 * @param array $checks Free-owned normalized system checks.
 		 */
 		$filtered = apply_filters( 'affilio_diagnostics_system_checks', $checks );
@@ -457,6 +473,11 @@ class Affilio_Diagnostics {
 	/**
 	 * Creates a normalized status item.
 	 *
+	 * @param string $status       Status key.
+	 * @param string $label        Human-readable check label.
+	 * @param string $detail       Human-readable check result.
+	 * @param string $action_url   Optional remediation URL.
+	 * @param string $action_label Optional remediation link label.
 	 * @return array<string,string>
 	 */
 	private function check( $status, $label, $detail, $action_url = '', $action_label = '' ) {
@@ -519,6 +540,22 @@ class Affilio_Diagnostics {
 			return 'dashicons-dismiss';
 		}
 		return 'dashicons-warning';
+	}
+
+	/**
+	 * Returns a human-readable status label.
+	 *
+	 * @param string $status Normalized status.
+	 * @return string
+	 */
+	private function status_label( $status ) {
+		if ( 'good' === $status ) {
+			return __( 'Healthy', 'dreamax-affiliates' );
+		}
+		if ( 'critical' === $status ) {
+			return __( 'Critical', 'dreamax-affiliates' );
+		}
+		return __( 'Warning', 'dreamax-affiliates' );
 	}
 
 	/**

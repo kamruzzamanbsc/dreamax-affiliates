@@ -52,9 +52,17 @@ class Affilio_Payouts_List_Table extends WP_List_Table {
 		$current_page = $this->get_pagenum();
 		$status       = isset( $_GET['status'] ) ? sanitize_key( wp_unslash( $_GET['status'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$search       = isset( $_REQUEST['s'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['s'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$status       = in_array( $status, \Affilio\Domain\Payout\PayoutStatus::all(), true ) ? $status : '';
 
 		$this->_column_headers = array( $this->get_columns(), array(), array() );
-		$total_items          = affilio()->payouts_db->count( array( 'status' => $status, 's' => $search ) );
+		$total_items           = affilio()->payouts_db->count(
+			array(
+				'status' => $status,
+				's'      => $search,
+			)
+		);
+		$total_pages           = max( 1, (int) ceil( $total_items / $per_page ) );
+		$current_page          = min( $current_page, $total_pages );
 		$this->items           = affilio()->payouts_db->get_paged(
 			array(
 				'number' => $per_page,
@@ -69,16 +77,51 @@ class Affilio_Payouts_List_Table extends WP_List_Table {
 			array(
 				'total_items' => $total_items,
 				'per_page'    => $per_page,
-				'total_pages' => ceil( $total_items / $per_page ),
+				'total_pages' => $total_pages,
 			)
 		);
 	}
 
 	/**
-	 * @inheritDoc
+	 * Renders an informative empty state for the current filters.
+	 *
+	 * @return void
+	 */
+	public function no_items() {
+		$has_filter = ! empty( $_REQUEST['s'] ) || ! empty( $_GET['status'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+
+		if ( $has_filter ) {
+			?>
+			<div class="affilio-payout-empty-state">
+				<span class="affilio-payout-empty-state__icon dashicons dashicons-search" aria-hidden="true"></span>
+				<strong><?php esc_html_e( 'No matching payout batches', 'dreamax-affiliates' ); ?></strong>
+				<p><?php esc_html_e( 'Try another search term or lifecycle status to review the payout history.', 'dreamax-affiliates' ); ?></p>
+			</div>
+			<?php
+			return;
+		}
+
+		?>
+		<div class="affilio-payout-empty-state">
+			<span class="affilio-payout-empty-state__icon dashicons dashicons-money-alt" aria-hidden="true"></span>
+			<strong><?php esc_html_e( 'No payout batches yet', 'dreamax-affiliates' ); ?></strong>
+			<p><?php esc_html_e( 'Select eligible unpaid referrals to create the first controlled payment batch.', 'dreamax-affiliates' ); ?></p>
+			<a class="button affilio-payout-empty-state__action" href="<?php echo esc_url( admin_url( 'admin.php?page=affilio-referrals&status=unpaid' ) ); ?>">
+				<svg class="affilio-payout-button-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M10 2a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2h-6v6a1 1 0 1 1-2 0v-6H3a1 1 0 1 1 0-2h6V3a1 1 0 0 1 1-1Z"/></svg>
+				<span><?php esc_html_e( 'Create from Referrals', 'dreamax-affiliates' ); ?></span>
+			</a>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Returns the available payout lifecycle views.
+	 *
+	 * @return array<string,string>
 	 */
 	public function get_views() {
 		$current = isset( $_GET['status'] ) ? sanitize_key( wp_unslash( $_GET['status'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$current = in_array( $current, \Affilio\Domain\Payout\PayoutStatus::all(), true ) ? $current : '';
 		$base    = remove_query_arg( array( 'status', 'paged' ) );
 		$counts  = affilio()->payouts_db->get_status_counts();
 		$views   = array(

@@ -11,11 +11,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * Registers and validates the independently useful Core settings workspace.
+ */
 class Affilio_Settings {
 
 	const OPTION_GROUP = 'affilio_settings_group';
 	const PAGE_SLUG    = 'affilio-settings';
 
+	/**
+	 * Registers Settings API initialization.
+	 */
 	public function __construct() {
 		add_action( 'admin_init', array( $this, 'register_settings' ) );
 	}
@@ -86,7 +92,6 @@ class Affilio_Settings {
 			)
 		);
 
-
 		register_setting(
 			self::OPTION_GROUP,
 			'affilio_coupon_attribution_priority',
@@ -116,8 +121,6 @@ class Affilio_Settings {
 				'default'           => 90,
 			)
 		);
-
-
 
 		register_setting(
 			self::OPTION_GROUP,
@@ -149,7 +152,6 @@ class Affilio_Settings {
 			)
 		);
 
-
 		register_setting(
 			self::OPTION_GROUP,
 			'affilio_registration_fields',
@@ -170,7 +172,6 @@ class Affilio_Settings {
 			)
 		);
 
-
 		register_setting(
 			self::OPTION_GROUP,
 			'affilio_enable_payout_requests',
@@ -190,7 +191,6 @@ class Affilio_Settings {
 				'default'           => 50,
 			)
 		);
-
 
 		register_setting(
 			self::OPTION_GROUP,
@@ -264,7 +264,6 @@ class Affilio_Settings {
 			'affilio_main_section'
 		);
 
-
 		add_settings_field(
 			'affilio_coupon_attribution_priority',
 			__( 'Coupon attribution priority', 'dreamax-affiliates' ),
@@ -289,8 +288,6 @@ class Affilio_Settings {
 			'affilio_main_section'
 		);
 
-
-
 		add_settings_field(
 			'affilio_default_commission_type',
 			__( 'Default commission type', 'dreamax-affiliates' ),
@@ -306,7 +303,6 @@ class Affilio_Settings {
 			self::PAGE_SLUG,
 			'affilio_main_section'
 		);
-
 
 		add_settings_section(
 			'affilio_registration_section',
@@ -338,7 +334,6 @@ class Affilio_Settings {
 			'affilio_approval_section'
 		);
 
-
 		add_settings_section(
 			'affilio_payout_request_section',
 			__( 'Affiliate Payout Requests', 'dreamax-affiliates' ),
@@ -369,7 +364,6 @@ class Affilio_Settings {
 			self::PAGE_SLUG
 		);
 
-
 		add_settings_field(
 			'affilio_email_notifications',
 			__( 'Essential notifications', 'dreamax-affiliates' ),
@@ -395,6 +389,8 @@ class Affilio_Settings {
 	}
 
 	/**
+	 * Sanitizes the selected registration page.
+	 *
 	 * @param mixed $value Raw registration page ID.
 	 * @return int
 	 */
@@ -403,6 +399,8 @@ class Affilio_Settings {
 	}
 
 	/**
+	 * Sanitizes the selected affiliate dashboard page.
+	 *
 	 * @param mixed $value Raw dashboard page ID.
 	 * @return int
 	 */
@@ -457,6 +455,8 @@ class Affilio_Settings {
 	}
 
 	/**
+	 * Sanitizes the WooCommerce account integration toggle.
+	 *
 	 * @param mixed $value Raw checkbox value.
 	 * @return bool
 	 */
@@ -466,6 +466,8 @@ class Affilio_Settings {
 	}
 
 	/**
+	 * Sanitizes the referral cookie duration.
+	 *
 	 * @param mixed $value Raw cookie duration.
 	 * @return int
 	 */
@@ -474,6 +476,8 @@ class Affilio_Settings {
 	}
 
 	/**
+	 * Sanitizes the referral attribution model.
+	 *
 	 * @param mixed $value Raw attribution model.
 	 * @return string
 	 */
@@ -483,6 +487,8 @@ class Affilio_Settings {
 
 
 	/**
+	 * Sanitizes coupon-versus-cookie attribution priority.
+	 *
 	 * @param mixed $value Raw coupon priority.
 	 * @return string
 	 */
@@ -491,6 +497,8 @@ class Affilio_Settings {
 	}
 
 	/**
+	 * Sanitizes the stored IP retention period.
+	 *
 	 * @param mixed $value Raw retention period.
 	 * @return int
 	 */
@@ -499,6 +507,8 @@ class Affilio_Settings {
 	}
 
 	/**
+	 * Sanitizes the default commission type.
+	 *
 	 * @param mixed $value Raw submitted value.
 	 * @return string 'percentage' or 'flat'.
 	 */
@@ -507,6 +517,8 @@ class Affilio_Settings {
 	}
 
 	/**
+	 * Sanitizes the default commission rate.
+	 *
 	 * @param mixed $value Raw submitted value.
 	 * @return float Never negative.
 	 */
@@ -515,6 +527,8 @@ class Affilio_Settings {
 	}
 
 	/**
+	 * Describes the affiliate page integration section.
+	 *
 	 * @return void
 	 */
 	public function render_pages_section() {
@@ -522,6 +536,8 @@ class Affilio_Settings {
 	}
 
 	/**
+	 * Renders the registration page selector.
+	 *
 	 * @return void
 	 */
 	public function render_registration_page_field() {
@@ -529,6 +545,8 @@ class Affilio_Settings {
 	}
 
 	/**
+	 * Renders the affiliate dashboard page selector.
+	 *
 	 * @return void
 	 */
 	public function render_dashboard_page_field() {
@@ -536,6 +554,8 @@ class Affilio_Settings {
 	}
 
 	/**
+	 * Renders the WooCommerce account integration toggle.
+	 *
 	 * @return void
 	 */
 	public function render_my_account_field() {
@@ -551,6 +571,8 @@ class Affilio_Settings {
 	}
 
 	/**
+	 * Renders a validated affiliate page selector.
+	 *
 	 * @param string $option Option name.
 	 * @param string $id Select element ID.
 	 * @param string $shortcode_tag Required shortcode tag.
@@ -597,6 +619,8 @@ class Affilio_Settings {
 	}
 
 	/**
+	 * Renders the referral cookie duration field.
+	 *
 	 * @return void
 	 */
 	public function render_cookie_duration_field() {
@@ -609,6 +633,8 @@ class Affilio_Settings {
 	}
 
 	/**
+	 * Renders the referral attribution model field.
+	 *
 	 * @return void
 	 */
 	public function render_attribution_model_field() {
@@ -640,6 +666,8 @@ class Affilio_Settings {
 	}
 
 	/**
+	 * Renders the visitor IP anonymization toggle.
+	 *
 	 * @return void
 	 */
 	public function render_anonymize_ip_field() {
@@ -654,6 +682,8 @@ class Affilio_Settings {
 	}
 
 	/**
+	 * Renders the stored IP retention field.
+	 *
 	 * @return void
 	 */
 	public function render_ip_retention_field() {
@@ -666,6 +696,8 @@ class Affilio_Settings {
 	}
 
 	/**
+	 * Renders the default commission type field.
+	 *
 	 * @return void
 	 */
 	public function render_commission_type_field() {
@@ -679,6 +711,8 @@ class Affilio_Settings {
 	}
 
 	/**
+	 * Renders the default commission rate field.
+	 *
 	 * @return void
 	 */
 	public function render_commission_rate_field() {
@@ -690,6 +724,8 @@ class Affilio_Settings {
 	}
 
 	/**
+	 * Describes the uninstall data policy section.
+	 *
 	 * @return void
 	 */
 	public function render_data_section() {
@@ -697,6 +733,8 @@ class Affilio_Settings {
 	}
 
 	/**
+	 * Renders the destructive uninstall data toggle.
+	 *
 	 * @return void
 	 */
 	public function render_delete_data_field() {
@@ -753,7 +791,11 @@ class Affilio_Settings {
 			}
 		}
 
-		return array_values( array_unique( $clean ?: array( 'completed' ) ) );
+		if ( empty( $clean ) ) {
+			$clean = array( 'completed' );
+		}
+
+		return array_values( array_unique( $clean ) );
 	}
 
 
@@ -787,7 +829,11 @@ class Affilio_Settings {
 					$output[ $status ] = $label;
 				}
 			}
-			return $output ?: array( 'completed' => __( 'Completed', 'dreamax-affiliates' ) );
+			if ( empty( $output ) ) {
+				return array( 'completed' => __( 'Completed', 'dreamax-affiliates' ) );
+			}
+
+			return $output;
 		}
 
 		return array(
@@ -819,13 +865,13 @@ class Affilio_Settings {
 		echo '<div class="affilio-admin-table-wrap"><table class="widefat striped affilio-registration-fields-table"><caption class="screen-reader-text">' . esc_html__( 'Affiliate application field configuration', 'dreamax-affiliates' ) . '</caption><thead><tr><th scope="col">' . esc_html__( 'Field', 'dreamax-affiliates' ) . '</th><th scope="col">' . esc_html__( 'Enabled', 'dreamax-affiliates' ) . '</th><th scope="col">' . esc_html__( 'Required', 'dreamax-affiliates' ) . '</th><th scope="col">' . esc_html__( 'Order', 'dreamax-affiliates' ) . '</th></tr></thead><tbody>';
 
 		foreach ( $rows as $key => $definition ) {
-			$row          = $config[ $key ];
-			$enabled_id   = 'affilio-registration-' . sanitize_html_class( $key ) . '-enabled';
-			$required_id  = 'affilio-registration-' . sanitize_html_class( $key ) . '-required';
-			$order_id     = 'affilio-registration-' . sanitize_html_class( $key ) . '-order';
-			$enabled_name = 'affilio_registration_fields[' . $key . '][enabled]';
+			$row           = $config[ $key ];
+			$enabled_id    = 'affilio-registration-' . sanitize_html_class( $key ) . '-enabled';
+			$required_id   = 'affilio-registration-' . sanitize_html_class( $key ) . '-required';
+			$order_id      = 'affilio-registration-' . sanitize_html_class( $key ) . '-order';
+			$enabled_name  = 'affilio_registration_fields[' . $key . '][enabled]';
 			$required_name = 'affilio_registration_fields[' . $key . '][required]';
-			$order_name   = 'affilio_registration_fields[' . $key . '][order]';
+			$order_name    = 'affilio_registration_fields[' . $key . '][order]';
 			?>
 			<tr>
 				<th scope="row"><?php echo esc_html( $definition['label'] ); ?></th>
@@ -933,5 +979,4 @@ class Affilio_Settings {
 		echo '</fieldset>';
 		echo '<p class="description">' . esc_html__( 'Email delivery depends on the site mail configuration. Existing custom subjects and messages are preserved in the database for a compatible add-on but are not executed or editable by Dreamax Affiliates Free.', 'dreamax-affiliates' ) . '</p>';
 	}
-
 }

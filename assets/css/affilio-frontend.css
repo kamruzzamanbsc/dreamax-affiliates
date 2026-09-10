@@ -2752,6 +2752,18 @@
 	margin-top: 0;
 	font-size: clamp(23px, 3vw, 30px);
 }
+/* Programmatically focused panel headings should not inherit the browser's
+   harsh black rectangle. Keyboard focus keeps a branded visible indicator. */
+.affilio-dashboard.affilio-portal [data-affilio-panel] :is(h2, h3)[tabindex="-1"]:focus,
+.affilio-dashboard.affilio-portal :is(h2, h3)[data-affilio-panel][tabindex="-1"]:focus {
+	outline: 0;
+}
+
+.affilio-dashboard.affilio-portal [data-affilio-panel] :is(h2, h3)[tabindex="-1"]:focus-visible,
+.affilio-dashboard.affilio-portal :is(h2, h3)[data-affilio-panel][tabindex="-1"]:focus-visible {
+	border-radius: 4px;
+	box-shadow: 0 0 0 3px rgba(47, 128, 237, 0.24);
+}
 
 .affilio-dashboard.affilio-portal .affilio-portal-panel > p:first-of-type {
 	max-width: 70ch;
@@ -2859,6 +2871,8 @@
 
 	.affilio-dashboard.affilio-portal .affilio-portal-sidebar ul {
 		display: flex;
+		min-width: 0;
+		max-width: 100%;
 		gap: 6px;
 		margin: 12px 0 0;
 		padding-bottom: 3px;
@@ -3591,6 +3605,9 @@
  * affiliate portal, so other site pages remain untouched.
  */
 main.affilio-portal-host-main {
+	/* Match block-theme full-width offsets to the portal host gutters. */
+	--wp--style--root--padding-left: 24px;
+	--wp--style--root--padding-right: 24px;
 	box-sizing: border-box !important;
 	width: 100% !important;
 	max-width: 1240px !important;
@@ -3600,6 +3617,7 @@ main.affilio-portal-host-main {
 
 /* Keep the plugin shell fluid inside the controlled host width. */
 main.affilio-portal-host-main .affilio-dashboard.affilio-portal {
+	box-sizing: border-box;
 	width: 100%;
 	max-width: none;
 }
@@ -3642,6 +3660,8 @@ main.affilio-portal-host-main .affilio-dashboard.affilio-portal {
 /* Retain comfortable spacing on smaller screens without forcing 80px margins. */
 @media screen and (max-width: 900px) {
 	main.affilio-portal-host-main {
+		--wp--style--root--padding-left: 16px;
+		--wp--style--root--padding-right: 16px;
 		margin: 32px auto !important;
 		padding: 0 16px !important;
 	}
@@ -3649,7 +3669,966 @@ main.affilio-portal-host-main .affilio-dashboard.affilio-portal {
 
 @media screen and (max-width: 600px) {
 	main.affilio-portal-host-main {
+		--wp--style--root--padding-left: 12px;
+		--wp--style--root--padding-right: 12px;
 		margin: 20px auto !important;
 		padding: 0 12px !important;
+	}
+}
+
+
+/* ==========================================================================
+   Premium affiliate application
+   A wide, sectioned application experience scoped to the registration form.
+   ========================================================================== */
+
+.affilio-registration-form {
+	--affilio-registration-gutter: clamp(22px, 4vw, 42px);
+	--affilio-registration-navy: #17235b;
+	--affilio-registration-indigo: #5046e5;
+	--affilio-registration-violet: #6d5dfc;
+	--affilio-registration-soft: #f6f7fc;
+	--affilio-registration-line: #e1e5f0;
+	--affilio-registration-green: #12805c;
+	display: block;
+	width: 100%;
+	max-width: 1040px;
+	margin-inline: auto;
+	padding: 0 var(--affilio-registration-gutter) var(--affilio-registration-gutter);
+	overflow: hidden;
+	border: 1px solid #dfe3ef;
+	border-radius: 24px;
+	background: var(--affilio-registration-soft);
+	box-shadow: 0 24px 70px rgba(30, 41, 89, 0.11), 0 3px 12px rgba(30, 41, 89, 0.05);
+}
+
+.affilio-registration-form > * {
+	min-width: 0;
+}
+
+.affilio-registration-form .affilio-registration-header {
+	position: relative;
+	display: grid;
+	grid-template-columns: minmax(0, 1.35fr) minmax(230px, 0.65fr);
+	gap: clamp(28px, 5vw, 64px);
+	align-items: center;
+	margin: 0 calc(var(--affilio-registration-gutter) * -1);
+	padding: clamp(34px, 5vw, 54px) var(--affilio-registration-gutter);
+	overflow: hidden;
+	background:
+		radial-gradient(circle at 92% 5%, rgba(255, 255, 255, 0.18), transparent 28%),
+		linear-gradient(120deg, var(--affilio-registration-navy) 0%, #343192 54%, var(--affilio-registration-violet) 100%);
+	color: #ffffff;
+}
+
+.affilio-registration-form .affilio-registration-header::after {
+	position: absolute;
+	right: -72px;
+	bottom: -115px;
+	width: 280px;
+	height: 280px;
+	border: 1px solid rgba(255, 255, 255, 0.16);
+	border-radius: 50%;
+	content: "";
+	pointer-events: none;
+}
+
+.affilio-registration-header-copy,
+.affilio-registration-highlights {
+	position: relative;
+	z-index: 1;
+}
+
+.affilio-registration-form .affilio-registration-eyebrow {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	margin: 0 0 10px;
+	color: #dcdcff;
+	font-size: 12px;
+	font-weight: 750;
+	letter-spacing: 0.11em;
+	text-transform: uppercase;
+}
+
+.affilio-registration-form .affilio-registration-eyebrow::before {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: #8ff0c8;
+	box-shadow: 0 0 0 5px rgba(143, 240, 200, 0.14);
+	content: "";
+}
+
+.affilio-registration-form .affilio-registration-header h2 {
+	max-width: 14ch;
+	margin: 0;
+	color: #ffffff;
+	font-size: clamp(30px, 4.2vw, 46px);
+	font-weight: 750;
+	line-height: 1.08;
+	letter-spacing: -0.04em;
+}
+
+.affilio-registration-form .affilio-registration-header-copy > p:last-child {
+	max-width: 60ch;
+	margin: 16px 0 0;
+	color: rgba(255, 255, 255, 0.82);
+	font-size: 15px;
+	line-height: 1.75;
+}
+
+.affilio-registration-highlights {
+	display: grid;
+	gap: 10px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.affilio-registration-highlights li {
+	display: grid;
+	grid-template-columns: 24px minmax(0, 1fr);
+	gap: 10px;
+	align-items: center;
+	margin: 0;
+	padding: 10px 12px;
+	border: 1px solid rgba(255, 255, 255, 0.16);
+	border-radius: 12px;
+	background: rgba(255, 255, 255, 0.09);
+	color: #ffffff;
+	font-size: 13px;
+	font-weight: 650;
+	line-height: 1.4;
+}
+
+.affilio-registration-highlights li > span {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	background: rgba(143, 240, 200, 0.16);
+	color: #a6f4d3;
+}
+
+.affilio-registration-highlights li > span::before {
+	font-size: 13px;
+	font-weight: 800;
+	content: "\2713";
+}
+
+.affilio-registration-form > .affilio-required-note {
+	display: inline-flex;
+	gap: 4px;
+	align-items: center;
+	width: fit-content;
+	margin: 22px 0 18px auto;
+	padding: 7px 11px;
+	border: 1px solid #dfe3ef;
+	border-radius: 999px;
+	background: #ffffff;
+	color: #68718a;
+	font-size: 12px;
+	line-height: 1.4;
+}
+
+.affilio-registration-form > .affilio-required-note > span {
+	color: #c0264b;
+	font-weight: 800;
+}
+
+.affilio-registration-section {
+	margin: 0 0 18px;
+	padding: clamp(22px, 3.5vw, 30px);
+	border: 1px solid var(--affilio-registration-line);
+	border-radius: 18px;
+	background: #ffffff;
+	box-shadow: 0 8px 24px rgba(23, 35, 91, 0.045);
+}
+
+.affilio-registration-form .affilio-registration-section-heading,
+.affilio-registration-form .affilio-registration-payout-heading {
+	display: grid;
+	grid-template-columns: 42px minmax(0, 1fr);
+	gap: 14px;
+	align-items: start;
+	margin: 0 0 24px;
+	padding: 0 0 20px;
+	border-top: 0;
+	border-bottom: 1px solid var(--affilio-registration-line);
+}
+
+.affilio-registration-step {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 42px;
+	height: 42px;
+	border: 1px solid #d9dcff;
+	border-radius: 13px;
+	background: #f0f1ff;
+	color: #4540c9;
+	font-size: 12px;
+	font-weight: 800;
+	line-height: 1;
+	letter-spacing: 0.03em;
+}
+
+.affilio-registration-form .affilio-registration-section-heading h3 {
+	margin: 0;
+	color: #172033;
+	font-size: 19px;
+	font-weight: 750;
+	line-height: 1.3;
+	letter-spacing: -0.015em;
+}
+
+.affilio-registration-form .affilio-registration-section-heading p {
+	max-width: 68ch;
+	margin: 5px 0 0;
+	color: #667085;
+	font-size: 13px;
+	line-height: 1.6;
+}
+
+.affilio-registration-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 22px 24px;
+	align-items: start;
+}
+
+.affilio-registration-form .affilio-registration-grid .affilio-field {
+	min-width: 0;
+	margin: 0;
+}
+
+.affilio-registration-grid .affilio-field--wide {
+	grid-column: 1 / -1;
+}
+
+.affilio-registration-form .affilio-field > label {
+	color: #27314c;
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: -0.005em;
+}
+
+.affilio-registration-form .affilio-field > input[type="text"],
+.affilio-registration-form .affilio-field > input[type="email"],
+.affilio-registration-form .affilio-field > input[type="url"],
+.affilio-registration-form .affilio-field > select,
+.affilio-registration-form .affilio-field > textarea {
+	border-color: #cbd2e1;
+	border-radius: 11px;
+	background: #fbfcff;
+}
+
+.affilio-registration-form .affilio-field > input[type="text"],
+.affilio-registration-form .affilio-field > input[type="email"],
+.affilio-registration-form .affilio-field > input[type="url"],
+.affilio-registration-form .affilio-field > select {
+	min-height: 50px;
+	padding-inline: 14px;
+}
+
+.affilio-registration-form .affilio-field > textarea {
+	min-height: 142px;
+	padding: 12px 14px;
+}
+
+.affilio-registration-form .affilio-field > input:hover,
+.affilio-registration-form .affilio-field > select:hover,
+.affilio-registration-form .affilio-field > textarea:hover {
+	border-color: #929db4;
+	background: #ffffff;
+}
+
+.affilio-registration-form .affilio-field > input:focus,
+.affilio-registration-form .affilio-field > select:focus,
+.affilio-registration-form .affilio-field > textarea:focus {
+	border-color: var(--affilio-registration-indigo);
+	background: #ffffff;
+	box-shadow: 0 0 0 4px rgba(80, 70, 229, 0.12);
+}
+
+.affilio-registration-form .affilio-field > small {
+	color: #778097;
+	font-size: 11.5px;
+	line-height: 1.55;
+}
+
+.affilio-registration-form > .affilio-terms-field {
+	margin: 4px 0 0;
+	padding: 17px 18px;
+	border: 1px solid #dce1ee;
+	border-radius: 13px;
+	background: #ffffff;
+	box-shadow: 0 6px 18px rgba(23, 35, 91, 0.035);
+}
+
+.affilio-registration-form .affilio-terms-field input[type="checkbox"] {
+	accent-color: var(--affilio-registration-indigo);
+}
+
+.affilio-registration-form > .affilio-submit {
+	display: flex;
+	gap: 18px;
+	align-items: center;
+	justify-content: space-between;
+	margin: 18px 0 0;
+}
+
+.affilio-registration-form .affilio-submit button {
+	flex: 0 0 auto;
+	min-height: 52px;
+	padding: 12px 22px;
+	border: 0;
+	border-radius: 11px;
+	background: linear-gradient(135deg, #3730a3, var(--affilio-registration-violet));
+	font-size: 14px;
+	font-weight: 750;
+	box-shadow: 0 10px 24px rgba(80, 70, 229, 0.24);
+}
+
+.affilio-registration-form .affilio-submit button::after {
+	margin-inline-start: 10px;
+	font-size: 17px;
+	line-height: 1;
+	content: "\2192";
+}
+
+.affilio-registration-form .affilio-submit button:hover:not([disabled]),
+.affilio-registration-form .affilio-submit button:focus-visible:not([disabled]) {
+	border: 0;
+	background: linear-gradient(135deg, #29257d, #5147df);
+	box-shadow: 0 12px 28px rgba(80, 70, 229, 0.3);
+}
+
+.affilio-submit-note {
+	display: grid;
+	grid-template-columns: 26px minmax(0, 1fr);
+	gap: 9px;
+	align-items: center;
+	max-width: 390px;
+	color: #667085;
+	font-size: 12px;
+	line-height: 1.5;
+}
+
+.affilio-submit-note > span {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 26px;
+	height: 26px;
+	border-radius: 50%;
+	background: #eaf8f2;
+	color: var(--affilio-registration-green);
+}
+
+.affilio-submit-note > span::before {
+	font-size: 13px;
+	font-weight: 800;
+	content: "\2713";
+}
+
+.affilio-registration-form > .affilio-form-message {
+	margin-bottom: 0;
+}
+
+@media screen and (max-width: 800px) {
+	.affilio-registration-form .affilio-registration-header {
+		grid-template-columns: 1fr;
+		gap: 24px;
+	}
+
+	.affilio-registration-form .affilio-registration-header h2 {
+		max-width: none;
+	}
+
+	.affilio-registration-highlights {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	.affilio-registration-highlights li {
+		grid-template-columns: 22px minmax(0, 1fr);
+		padding: 9px 10px;
+	}
+
+	.affilio-registration-highlights li > span {
+		width: 22px;
+		height: 22px;
+	}
+}
+
+@media screen and (max-width: 680px) {
+	.affilio-registration-form {
+		--affilio-registration-gutter: 14px;
+		width: calc(100% - 16px);
+		max-width: calc(100% - 16px);
+		margin-inline: 0 16px;
+		padding: 0 var(--affilio-registration-gutter) 20px;
+		border-radius: 17px;
+	}
+
+	.affilio-registration-form .affilio-registration-header {
+		padding-block: 30px;
+	}
+
+	.affilio-registration-form .affilio-registration-header h2 {
+		font-size: 30px;
+	}
+
+	.affilio-registration-highlights,
+	.affilio-registration-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.affilio-registration-grid .affilio-field--wide {
+		grid-column: auto;
+	}
+
+	.affilio-registration-section {
+		padding: 19px;
+		border-radius: 14px;
+	}
+
+	.affilio-registration-form .affilio-registration-section-heading,
+	.affilio-registration-form .affilio-registration-payout-heading {
+		grid-template-columns: 38px minmax(0, 1fr);
+		gap: 12px;
+	}
+
+	.affilio-registration-step {
+		width: 38px;
+		height: 38px;
+		border-radius: 11px;
+	}
+
+	.affilio-registration-form > .affilio-submit {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.affilio-registration-form .affilio-submit button {
+		width: 100%;
+	}
+
+	.affilio-submit-note {
+		max-width: none;
+	}
+}
+
+@media (forced-colors: active) {
+	.affilio-registration-section,
+	.affilio-registration-highlights li,
+	.affilio-registration-step,
+	.affilio-submit-note > span {
+		border: 1px solid CanvasText;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.affilio-registration-form .affilio-submit button {
+		transition: none;
+	}
+}
+
+
+/* ==========================================================================
+   Compact interactive registration wizard
+   Progressive enhancement: navigation is shown only after JavaScript starts.
+   ========================================================================== */
+
+main.affilio-registration-host-main {
+	--wp--style--root--padding-left: 24px;
+	--wp--style--root--padding-right: 24px;
+	box-sizing: border-box !important;
+	width: 100% !important;
+	max-width: 1080px !important;
+	margin: 44px auto 64px !important;
+	padding: 0 24px !important;
+}
+
+.affilio-registration-form.is-wizard-enhanced {
+	max-width: 900px;
+	padding-bottom: 28px;
+	border-radius: 20px;
+}
+
+.affilio-registration-form.is-wizard-enhanced .affilio-registration-header {
+	grid-template-columns: minmax(0, 1.45fr) minmax(220px, 0.55fr);
+	gap: 30px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+.affilio-registration-form.is-wizard-enhanced .affilio-registration-header h2 {
+	max-width: none;
+	font-size: clamp(28px, 3.5vw, 38px);
+}
+
+.affilio-registration-form.is-wizard-enhanced .affilio-registration-header-copy > p:last-child {
+	margin-top: 10px;
+	font-size: 13px;
+	line-height: 1.6;
+}
+
+.affilio-registration-form.is-wizard-enhanced .affilio-registration-highlights {
+	gap: 7px;
+}
+
+.affilio-registration-form.is-wizard-enhanced .affilio-registration-highlights li {
+	padding: 7px 10px;
+	border-radius: 9px;
+	font-size: 11px;
+}
+
+.affilio-registration-progress {
+	display: none;
+}
+
+.affilio-registration-form.is-wizard-enhanced .affilio-registration-progress {
+	display: block;
+	margin: 0 calc(var(--affilio-registration-gutter) * -1) 16px;
+	padding: 15px var(--affilio-registration-gutter) 14px;
+	border-bottom: 1px solid var(--affilio-registration-line);
+	background: #ffffff;
+}
+
+.affilio-registration-progress-meta {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	margin-bottom: 8px;
+	color: #69738b;
+	font-size: 11px;
+	font-weight: 650;
+	line-height: 1.4;
+}
+
+.affilio-registration-progress-meta > strong {
+	color: #3330a3;
+	font-weight: 750;
+}
+
+.affilio-registration-progress-bar {
+	height: 4px;
+	overflow: hidden;
+	border-radius: 999px;
+	background: #eaecf5;
+}
+
+.affilio-registration-progress-bar > span {
+	display: block;
+	width: 33.333%;
+	height: 100%;
+	border-radius: inherit;
+	background: linear-gradient(90deg, #3730a3, #6d5dfc);
+	transition: width 220ms ease;
+}
+
+.affilio-registration-progress ol {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 8px;
+	margin: 12px 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+.affilio-registration-progress--2 ol {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.affilio-registration-progress li {
+	margin: 0;
+}
+
+.affilio-registration-progress button {
+	display: flex;
+	gap: 9px;
+	align-items: center;
+	width: 100%;
+	min-height: 38px;
+	margin: 0;
+	padding: 6px 9px;
+	border: 1px solid transparent;
+	border-radius: 9px;
+	background: transparent;
+	color: #7a8398;
+	font: inherit;
+	font-size: 11px;
+	line-height: 1.25;
+	text-align: start;
+	box-shadow: none;
+	cursor: pointer;
+}
+
+.affilio-registration-progress button > span {
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	border: 1px solid #d9deeb;
+	border-radius: 8px;
+	background: #f7f8fc;
+	font-size: 10px;
+	font-weight: 800;
+}
+
+.affilio-registration-progress button > strong {
+	font-weight: 700;
+}
+
+.affilio-registration-progress button[aria-current="step"] {
+	border-color: #daddff;
+	background: #f1f1ff;
+	color: #3531ad;
+}
+
+.affilio-registration-progress button[aria-current="step"] > span {
+	border-color: #5147df;
+	background: #5147df;
+	color: #ffffff;
+}
+
+.affilio-registration-progress li.is-complete button {
+	color: #14805c;
+}
+
+.affilio-registration-progress button:disabled {
+	cursor: default;
+	opacity: 0.62;
+}
+
+.affilio-registration-progress button:focus-visible {
+	outline: 0;
+	box-shadow: 0 0 0 3px rgba(80, 70, 229, 0.16);
+}
+
+.affilio-registration-form.is-wizard-enhanced > .affilio-required-note {
+	margin-top: 0;
+	margin-bottom: 12px;
+}
+
+.affilio-registration-form.is-wizard-enhanced .affilio-registration-section {
+	margin-bottom: 0;
+	padding: 24px;
+	border-radius: 15px;
+	box-shadow: 0 7px 20px rgba(23, 35, 91, 0.04);
+}
+
+.affilio-registration-form.is-wizard-enhanced .affilio-registration-section:not([hidden]) {
+	animation: affilio-registration-step-enter 180ms ease-out both;
+}
+
+.affilio-registration-form.is-wizard-enhanced .affilio-registration-section-heading {
+	grid-template-columns: 36px minmax(0, 1fr);
+	gap: 12px;
+	margin-bottom: 18px;
+	padding-bottom: 16px;
+}
+
+.affilio-registration-form.is-wizard-enhanced .affilio-registration-step {
+	width: 36px;
+	height: 36px;
+	border-radius: 10px;
+}
+
+.affilio-registration-form.is-wizard-enhanced .affilio-registration-section-heading h3 {
+	font-size: 18px;
+}
+
+.affilio-registration-form.is-wizard-enhanced .affilio-registration-grid {
+	gap: 16px 20px;
+}
+
+.affilio-registration-form.is-wizard-enhanced .affilio-field > input[type="text"],
+.affilio-registration-form.is-wizard-enhanced .affilio-field > input[type="email"],
+.affilio-registration-form.is-wizard-enhanced .affilio-field > input[type="url"],
+.affilio-registration-form.is-wizard-enhanced .affilio-field > select {
+	min-height: 46px;
+}
+
+.affilio-registration-form.is-wizard-enhanced .affilio-field > textarea {
+	min-height: 108px;
+}
+
+.affilio-registration-section-actions {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 20px;
+	padding-top: 17px;
+	border-top: 1px solid var(--affilio-registration-line);
+}
+
+.affilio-registration-section-actions--end {
+	justify-content: flex-end;
+}
+
+.affilio-registration-section-actions button {
+	display: inline-flex;
+	gap: 9px;
+	align-items: center;
+	justify-content: center;
+	min-height: 42px;
+	margin: 0;
+	padding: 9px 15px;
+	border-radius: 9px;
+	font: inherit;
+	font-size: 12px;
+	font-weight: 750;
+	line-height: 1.25;
+	cursor: pointer;
+	transition: transform 120ms ease, background-color 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.affilio-registration-next {
+	border: 1px solid #5147df;
+	background: #5147df;
+	color: #ffffff;
+	box-shadow: 0 7px 16px rgba(80, 70, 229, 0.18);
+}
+
+.affilio-registration-next > span::before {
+	content: "\2192";
+}
+
+.affilio-registration-back {
+	border: 1px solid #d6dbe7;
+	background: #ffffff;
+	color: #4d5870;
+	box-shadow: none;
+}
+
+.affilio-registration-back > span::before {
+	content: "\2190";
+}
+
+.affilio-registration-next:hover,
+.affilio-registration-next:focus-visible {
+	border-color: #3933b6;
+	background: #3933b6;
+	color: #ffffff;
+	transform: translateY(-1px);
+}
+
+.affilio-registration-back:hover,
+.affilio-registration-back:focus-visible {
+	border-color: #aeb7ca;
+	background: #f7f8fc;
+	color: #26314b;
+}
+
+.affilio-registration-next:focus-visible,
+.affilio-registration-back:focus-visible {
+	outline: 0;
+	box-shadow: 0 0 0 3px rgba(80, 70, 229, 0.14);
+}
+
+.affilio-registration-ready {
+	display: inline-flex;
+	gap: 7px;
+	align-items: center;
+	color: #14805c;
+	font-size: 11px;
+	font-weight: 700;
+}
+
+.affilio-registration-ready > span {
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: currentColor;
+	box-shadow: 0 0 0 4px rgba(20, 128, 92, 0.1);
+}
+
+.affilio-registration-final {
+	margin-top: 14px;
+}
+
+.affilio-registration-form .affilio-registration-final .affilio-terms-field {
+	margin: 0;
+	padding: 14px 16px;
+	border: 1px solid #dce1ee;
+	border-radius: 11px;
+	background: #ffffff;
+}
+
+.affilio-registration-form .affilio-registration-final .affilio-submit {
+	display: flex;
+	gap: 16px;
+	align-items: center;
+	justify-content: space-between;
+	margin: 14px 0 0;
+}
+
+@keyframes affilio-registration-step-enter {
+	from {
+		opacity: 0;
+		transform: translateY(5px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@media screen and (max-width: 680px) {
+	main.affilio-registration-host-main {
+		--wp--style--root--padding-left: 16px;
+		--wp--style--root--padding-right: 16px;
+		margin: 24px auto 40px !important;
+		padding: 0 16px !important;
+	}
+
+	.affilio-registration-form.is-wizard-enhanced {
+		width: 100%;
+		max-width: 100%;
+		margin-inline: 0;
+		padding-bottom: 18px;
+	}
+
+	.affilio-registration-form.is-wizard-enhanced .affilio-registration-header {
+		grid-template-columns: 1fr;
+		gap: 14px;
+		padding-top: 24px;
+		padding-bottom: 24px;
+	}
+
+	.affilio-registration-form.is-wizard-enhanced .affilio-registration-highlights {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 5px;
+	}
+
+	.affilio-registration-form.is-wizard-enhanced .affilio-registration-highlights li {
+		display: flex;
+		gap: 5px;
+		padding: 6px;
+		font-size: 9px;
+	}
+
+	.affilio-registration-form.is-wizard-enhanced .affilio-registration-highlights li > span {
+		width: 18px;
+		height: 18px;
+		min-width: 18px;
+	}
+
+	.affilio-registration-progress button {
+		justify-content: center;
+		min-height: 34px;
+		padding: 5px;
+	}
+
+	.affilio-registration-progress button > strong {
+		display: none;
+	}
+
+	.affilio-registration-form.is-wizard-enhanced .affilio-registration-section {
+		padding: 18px;
+	}
+
+	.affilio-registration-form .affilio-registration-final .affilio-submit {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.affilio-registration-section-actions button {
+		flex: 1 1 auto;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.affilio-registration-progress-bar > span,
+	.affilio-registration-section-actions button {
+		transition: none;
+	}
+
+	.affilio-registration-form.is-wizard-enhanced .affilio-registration-section:not([hidden]) {
+		animation: none;
+	}
+}
+
+/* Keep the completed application focused on its confirmation and next action. */
+.affilio-registration-form.is-registration-complete > .affilio-required-note {
+	display: none;
+}
+
+.affilio-registration-form.is-registration-complete .affilio-registration-progress button:disabled {
+	opacity: 1;
+}
+
+.affilio-registration-form.is-registration-complete .affilio-form-message.affilio-success {
+	margin-top: 24px;
+	padding: 24px;
+	font-size: 14px;
+	line-height: 1.7;
+}
+
+.affilio-registration-form.is-registration-complete .affilio-form-message a {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 44px;
+	margin-top: 12px;
+	padding: 8px 16px;
+	border-radius: 9px;
+	background: #147d5b;
+	color: #ffffff;
+	font-weight: 700;
+}
+
+.affilio-registration-form.is-registration-complete .affilio-form-message > span {
+	display: block;
+}
+
+/* Use one clear dropdown affordance across customer dashboard and registration forms. */
+.affilio-dashboard select:not([multiple]):not([size]),
+.affilio-registration-form select:not([multiple]):not([size]),
+.affilio-payout-profile select:not([multiple]):not([size]),
+.affilio-payout-request-form select:not([multiple]):not([size]) {
+	-webkit-appearance: none;
+	appearance: none;
+	padding-inline-end: 40px !important;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='m4 6 4 4 4-4' fill='none' stroke='%234f46e5' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+	background-repeat: no-repeat !important;
+	background-position: right 13px center !important;
+	background-size: 16px 16px !important;
+	cursor: pointer;
+}
+
+[dir="rtl"] .affilio-dashboard select:not([multiple]):not([size]),
+[dir="rtl"] .affilio-registration-form select:not([multiple]):not([size]),
+[dir="rtl"] .affilio-payout-profile select:not([multiple]):not([size]),
+[dir="rtl"] .affilio-payout-request-form select:not([multiple]):not([size]) {
+	background-position: left 13px center !important;
+}
+
+.affilio-dashboard select:not([multiple]):not([size]):disabled,
+.affilio-registration-form select:not([multiple]):not([size]):disabled,
+.affilio-payout-profile select:not([multiple]):not([size]):disabled,
+.affilio-payout-request-form select:not([multiple]):not([size]):disabled {
+	cursor: not-allowed;
+}
+
+@media (forced-colors: active) {
+	.affilio-dashboard select:not([multiple]):not([size]),
+	.affilio-registration-form select:not([multiple]):not([size]),
+	.affilio-payout-profile select:not([multiple]):not([size]),
+	.affilio-payout-request-form select:not([multiple]):not([size]) {
+		-webkit-appearance: auto;
+		appearance: auto;
+		padding-inline-end: 12px !important;
+		background-image: none !important;
 	}
 }

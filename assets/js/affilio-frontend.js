@@ -34,7 +34,87 @@
 			var $method = $form.find( '.affilio-payout-method' );
 			var $details = $form.find( '.affilio-payout-details' );
 			var $requiredMarker = $form.find( '.affilio-payout-details-required' );
+			var $steps = $form.find( '[data-affilio-registration-step]' );
+			var $stepButtons = $form.find( '[data-affilio-step-target]' );
+			var $final = $form.find( '[data-affilio-registration-final]' );
+			var $progress = $form.find( '.affilio-registration-progress-bar' );
+			var $currentStep = $form.find( '[data-affilio-current-step]' );
+			var currentStep = 1;
+			var furthestStep = 1;
+			var totalSteps = $steps.length;
+			var isSubmitting = false;
+			var isComplete = false;
+			var $navigation = $form.find( '[data-affilio-step-next], [data-affilio-step-back], [data-affilio-step-target]' );
 			var defaultButtonLabel = String( $button.attr( 'data-default-label' ) || $button.text() );
+
+			function getStep( stepNumber ) {
+				return $steps.filter( function () {
+					return Number( $( this ).attr( 'data-affilio-registration-step' ) ) === stepNumber;
+				} ).first();
+			}
+
+			function firstInvalidField( $scope ) {
+				return $scope.find( ':input' ).filter( function () {
+					return typeof this.checkValidity === 'function' && ! this.checkValidity();
+				} ).first();
+			}
+
+			function showStep( stepNumber, options ) {
+				var progressPercent;
+				var $activeStep;
+
+				options = options || {};
+				stepNumber = Math.max( 1, Math.min( totalSteps, Number( stepNumber ) || 1 ) );
+				currentStep = stepNumber;
+				$activeStep = getStep( currentStep );
+
+				$steps.each( function () {
+					var $step = $( this );
+					var active = Number( $step.attr( 'data-affilio-registration-step' ) ) === currentStep;
+					$step.prop( 'hidden', ! active ).attr( 'aria-hidden', active ? 'false' : 'true' );
+				} );
+
+				$final.prop( 'hidden', currentStep !== totalSteps );
+				$currentStep.text( currentStep );
+				progressPercent = totalSteps ? ( currentStep / totalSteps ) * 100 : 100;
+				$progress.attr( 'aria-valuenow', currentStep ).find( '> span' ).css( 'width', progressPercent + '%' );
+
+				$stepButtons.each( function () {
+					var $stepButton = $( this );
+					var targetStep = Number( $stepButton.attr( 'data-affilio-step-target' ) );
+					var isCurrent = targetStep === currentStep;
+					$stepButton.prop( 'disabled', targetStep > furthestStep );
+					$stepButton.closest( 'li' ).toggleClass( 'is-complete', targetStep < currentStep );
+					if ( isCurrent ) {
+						$stepButton.attr( 'aria-current', 'step' );
+					} else {
+						$stepButton.removeAttr( 'aria-current' );
+					}
+				} );
+
+				if ( options.focus !== false && $activeStep.length ) {
+					$activeStep.find( 'h3' ).first().trigger( 'focus' );
+				}
+
+				if ( options.announce !== false ) {
+					announce( $activeStep.find( 'h3' ).first().text(), false );
+				}
+			}
+
+			function validateStep( stepNumber ) {
+				var $invalid = firstInvalidField( getStep( stepNumber ) );
+
+				if ( ! $invalid.length ) {
+					return true;
+				}
+
+				if ( typeof $invalid.get( 0 ).reportValidity === 'function' ) {
+					$invalid.get( 0 ).reportValidity();
+				} else {
+					$invalid.trigger( 'focus' );
+				}
+				return false;
+			}
 
 			function updatePayoutRequirement() {
 				var isRequired = String( $method.val() || '' ) !== 'paypal';
@@ -75,7 +155,11 @@
 					.prop( 'hidden', false );
 
 				if ( $field.length ) {
+					var $ownerStep = $field.closest( '[data-affilio-registration-step]' );
 					var ids = String( $field.attr( 'aria-describedby' ) || '' ).split( /\s+/ ).filter( Boolean );
+					if ( $ownerStep.length ) {
+						showStep( Number( $ownerStep.attr( 'data-affilio-registration-step' ) ), { focus: false, announce: false } );
+					}
 					if ( $message.attr( 'id' ) && ids.indexOf( $message.attr( 'id' ) ) === -1 ) {
 						ids.push( $message.attr( 'id' ) );
 					}
@@ -88,20 +172,73 @@
 			$method.on( 'change', updatePayoutRequirement );
 			updatePayoutRequirement();
 
+			var $hostMain = $form.closest( 'main' ).first();
+			if ( $hostMain.length ) {
+				$hostMain.addClass( 'affilio-registration-host-main' );
+			}
+
+			$form.addClass( 'is-wizard-enhanced' );
+			showStep( 1, { focus: false, announce: false } );
+
+			$form.on( 'click', '[data-affilio-step-next]', function () {
+				if ( isSubmitting || isComplete ) {
+					return;
+				}
+				if ( ! validateStep( currentStep ) ) {
+					return;
+				}
+				furthestStep = Math.max( furthestStep, Math.min( totalSteps, currentStep + 1 ) );
+				showStep( currentStep + 1 );
+			} );
+
+			$form.on( 'click', '[data-affilio-step-back]', function () {
+				if ( isSubmitting || isComplete ) {
+					return;
+				}
+				showStep( currentStep - 1 );
+			} );
+
+			$form.on( 'click', '[data-affilio-step-target]', function () {
+				if ( isSubmitting || isComplete ) {
+					return;
+				}
+				var targetStep = Number( $( this ).attr( 'data-affilio-step-target' ) );
+				if ( targetStep > currentStep && ! validateStep( currentStep ) ) {
+					return;
+				}
+				showStep( targetStep );
+			} );
+
 			$form.on( 'input change', '[aria-invalid="true"]', function () {
 				clearFieldError( $( this ) );
 			} );
 
 			$form.on( 'submit', function ( e ) {
+				var $invalid;
+				var $invalidStep;
 				e.preventDefault();
+				if ( isSubmitting || isComplete ) {
+					return;
+				}
 				clearFieldErrors();
 				updatePayoutRequirement();
 
 				if ( $form.get( 0 ) && ! $form.get( 0 ).checkValidity() ) {
-					$form.get( 0 ).reportValidity();
+					$invalid = firstInvalidField( $form );
+					$invalidStep = $invalid.closest( '[data-affilio-registration-step]' );
+					if ( $invalidStep.length ) {
+						showStep( Number( $invalidStep.attr( 'data-affilio-registration-step' ) ), { focus: false, announce: false } );
+					}
+					if ( $invalid.length && typeof $invalid.get( 0 ).reportValidity === 'function' ) {
+						$invalid.get( 0 ).reportValidity();
+					} else {
+						$form.get( 0 ).reportValidity();
+					}
 					return;
 				}
 
+				isSubmitting = true;
+				$navigation.each( function () { $( this ).data( 'affilio-was-disabled', this.disabled ).prop( 'disabled', true ); } );
 				$button.prop( 'disabled', true ).text( affilioFrontend.submitLabel );
 				$form.attr( 'aria-busy', 'true' );
 				$message.attr( { role: 'status', 'aria-live': 'polite' } ).prop( 'hidden', true );
@@ -122,8 +259,11 @@
 								$message.append( ' ' ).append( $( '<a>' ).attr( 'href', response.data.dashboardUrl ).text( affilioFrontend.openDashboard ) );
 							}
 
-							$form.trigger( 'reset' );
-							updatePayoutRequirement();
+							isComplete = true;
+							$form.addClass( 'is-registration-complete' );
+							$steps.add( $final ).prop( 'hidden', true ).attr( 'aria-hidden', 'true' );
+							$form.find( ':input' ).prop( 'disabled', true );
+							$stepButtons.removeAttr( 'aria-current' ).closest( 'li' ).addClass( 'is-complete' );
 							$message.trigger( 'focus' );
 						} else {
 							showError( response && response.data ? response.data : null );
@@ -133,7 +273,11 @@
 						showError( xhr.responseJSON && xhr.responseJSON.data ? xhr.responseJSON.data : null );
 					} )
 					.always( function () {
-						$button.prop( 'disabled', false ).text( defaultButtonLabel );
+						isSubmitting = false;
+						$button.prop( 'disabled', isComplete ).text( defaultButtonLabel );
+						$navigation.each( function () {
+							$( this ).prop( 'disabled', isComplete || Boolean( $( this ).data( 'affilio-was-disabled' ) ) );
+						} );
 						$form.removeAttr( 'aria-busy' );
 					} );
 			} );
@@ -141,14 +285,15 @@
 	}
 
 	function copyText( value, $source ) {
+		var copiedMessage = $source.hasClass( 'affilio-copy-value' ) ? affilioFrontend.copyCodeMessage : affilioFrontend.copiedMessage;
 		function success() {
 			var original = $source.data( 'original-label' );
 			if ( ! original ) {
 				original = $source.text();
 				$source.data( 'original-label', original );
 			}
-			$source.text( affilioFrontend.copiedMessage );
-			announce( affilioFrontend.copiedMessage, false );
+			$source.text( copiedMessage );
+			announce( copiedMessage, false );
 			window.setTimeout( function () { $source.text( original ); }, 1600 );
 		}
 
@@ -160,8 +305,12 @@
 		var $temp = $( '<textarea>' ).val( value ).attr( 'readonly', true ).css( { position: 'absolute', left: '-9999px' } ).appendTo( 'body' );
 		$temp.trigger( 'select' );
 		try {
-			document.execCommand( 'copy' );
-			success();
+			if ( document.execCommand( 'copy' ) ) {
+				success();
+			} else {
+				announce( affilioFrontend.copyFailed, true );
+				window.prompt( affilioFrontend.copyFailed, value );
+			}
 		} catch ( error ) {
 			announce( affilioFrontend.copyFailed, true ); window.prompt( affilioFrontend.copyFailed, value );
 		}
@@ -257,7 +406,7 @@
 					return false;
 				}
 
-				if ( target.host !== home.host ) {
+				if ( target.host !== home.host || ( target.protocol !== 'http:' && target.protocol !== 'https:' ) ) {
 					invalidateGeneratedLink();
 					return false;
 				}
@@ -280,6 +429,11 @@
 			setLinkActionsEnabled( Boolean( String( $output.val() || '' ).trim() ) );
 
 			$generator.on( 'click', '.affilio-generate-link', generateLink );
+			$generator.on( 'input change', '.affilio-link-destination, .affilio-link-campaign', function () {
+				if ( String( $output.val() || '' ).trim() ) {
+					generateLink();
+				}
+			} );
 
 			$generator.on( 'click', '.affilio-copy-link', function () {
 				if ( ! generateLink() ) {
@@ -366,6 +520,20 @@
 
 
 
+	function initPayoutProfiles() {
+		$( '.affilio-profile-settings-form' ).each( function () {
+			var $form = $( this );
+			var $method = $form.find( '.affilio-payout-method' );
+			var $details = $form.find( '.affilio-payout-details' );
+			function updateRequirement() {
+				var required = String( $method.val() || 'paypal' ) !== 'paypal';
+				$details.prop( 'required', required ).attr( 'aria-required', required ? 'true' : 'false' );
+				$form.find( '.affilio-payout-details-required' ).prop( 'hidden', ! required );
+			}
+			$method.on( 'change', updateRequirement );
+			updateRequirement();
+		} );
+	}
 	function initAffiliatePortal() {
 		$( '[data-affilio-portal]' ).each( function () {
 			var $portal = $( this );
@@ -401,7 +569,18 @@
 			}
 
 			function panelExists( panelName ) {
-				return $panels.filter( '[data-affilio-panel="' + panelName + '"]' ).length > 0;
+				return $panels.filter( function () {
+					return String( $( this ).attr( 'data-affilio-panel' ) || '' ) === panelName;
+				} ).length > 0;
+			}
+
+			function targetFromHash( hash ) {
+				try {
+					var target = document.getElementById( decodeURIComponent( hash.slice( 1 ) ) );
+					return target && $.contains( $portal.get( 0 ), target ) ? $( target ) : $();
+				} catch ( error ) {
+					return $();
+				}
 			}
 
 			function panelFromHash() {
@@ -415,7 +594,7 @@
 				}
 
 				if ( hash ) {
-					var $target = $portal.find( hash );
+					var $target = targetFromHash( hash );
 					if ( $target.length ) {
 						var direct = String( $target.attr( 'data-affilio-panel' ) || '' );
 						if ( direct && panelExists( direct ) ) {
@@ -568,6 +747,19 @@
 					}
 				} );
 
+				// Keep the selected item visible in the mobile horizontal navigation.
+				var list = $nav.find( 'ul' ).get( 0 );
+				var currentLink = $navLinks.filter( '[aria-current="page"]' ).get( 0 );
+				if ( list && currentLink && list.scrollWidth > list.clientWidth ) {
+					var bounds = list.getBoundingClientRect();
+					var item = currentLink.getBoundingClientRect();
+					if ( item.right > bounds.right ) {
+						list.scrollLeft += item.right - bounds.right;
+					} else if ( item.left < bounds.left ) {
+						list.scrollLeft -= bounds.left - item.left;
+					}
+				}
+
 				if ( options.updateHash !== false ) {
 					updateStableHash( panelName, options.pushState === true );
 				}
@@ -602,7 +794,7 @@
 					return;
 				}
 
-				var $target = $portal.find( selector );
+				var $target = targetFromHash( selector );
 				if ( ! $target.length ) {
 					return;
 				}
@@ -630,6 +822,7 @@
 
 	$( function () {
 		initRegistration();
+		initPayoutProfiles();
 		initLinkGenerator();
 		initCopyValues();
 		initAffiliatePortal();

@@ -240,7 +240,7 @@ class Affilio_Dashboard {
 				</div>
 			</nav>
 
-			<section class="affilio-dashboard-section affilio-portal-panel" data-affilio-panel="links" hidden aria-hidden="true" id="<?php echo esc_attr( $link_section_id ); ?>" aria-labelledby="<?php echo esc_attr( $link_section_id . '-title' ); ?>">
+			<section class="affilio-dashboard-section affilio-portal-panel" data-affilio-panel="links" id="<?php echo esc_attr( $link_section_id ); ?>" aria-labelledby="<?php echo esc_attr( $link_section_id . '-title' ); ?>">
 				<h3 id="<?php echo esc_attr( $link_section_id . '-title' ); ?>"><?php esc_html_e( 'Create and Share Referral Links', 'dreamax-affiliates' ); ?></h3>
 				<p><?php esc_html_e( 'Start with the homepage or paste any page or product URL from this website. The generated link already includes your referral code.', 'dreamax-affiliates' ); ?></p>
 				<div class="affilio-link-generator" data-referral-code="<?php echo esc_attr( $affiliate->referral_code ); ?>" data-home-url="<?php echo esc_url( home_url( '/' ) ); ?>">
@@ -297,7 +297,7 @@ class Affilio_Dashboard {
 			<?php endif; ?>
 			</section>
 
-			<section class="affilio-dashboard-section affilio-portal-panel" data-affilio-panel="results" hidden aria-hidden="true" id="<?php echo esc_attr( $overview_section_id ); ?>" aria-labelledby="<?php echo esc_attr( $overview_section_id . '-title' ); ?>">
+			<section class="affilio-dashboard-section affilio-portal-panel" data-affilio-panel="results" id="<?php echo esc_attr( $overview_section_id ); ?>" aria-labelledby="<?php echo esc_attr( $overview_section_id . '-title' ); ?>">
 				<h3 id="<?php echo esc_attr( $overview_section_id . '-title' ); ?>"><?php esc_html_e( 'Your Results', 'dreamax-affiliates' ); ?></h3>
 				<p><?php esc_html_e( 'See the traffic, referrals, and commissions attributed to your links and coupon codes.', 'dreamax-affiliates' ); ?></p>
 			<form method="get" class="affilio-dashboard-report-filter" aria-label="<?php echo esc_attr__( 'Filter affiliate reports', 'dreamax-affiliates' ); ?>">
@@ -394,7 +394,7 @@ class Affilio_Dashboard {
 			</section>
 
 			<?php if ( ! empty( $creatives ) ) : ?>
-			<section class="affilio-dashboard-section affilio-portal-panel" data-affilio-panel="creatives" hidden aria-hidden="true" id="<?php echo esc_attr( $creatives_section_id ); ?>" aria-labelledby="<?php echo esc_attr( $creatives_section_id . '-title' ); ?>">
+			<section class="affilio-dashboard-section affilio-portal-panel" data-affilio-panel="creatives" id="<?php echo esc_attr( $creatives_section_id ); ?>" aria-labelledby="<?php echo esc_attr( $creatives_section_id . '-title' ); ?>">
 				<h3 id="<?php echo esc_attr( $creatives_section_id . '-title' ); ?>"><?php esc_html_e( 'Creative Library', 'dreamax-affiliates' ); ?></h3>
 				<p><?php esc_html_e( 'Use these ready-made banners and links. Every URL below already contains your affiliate code.', 'dreamax-affiliates' ); ?></p>
 				<div class="affilio-creative-grid">
@@ -413,7 +413,7 @@ class Affilio_Dashboard {
 			<?php endif; ?>
 
 
-			<section class="affilio-dashboard-section affilio-profile-settings-section affilio-portal-panel" data-affilio-panel="profile" hidden aria-hidden="true" id="<?php echo esc_attr( $profile_section_id ); ?>" aria-labelledby="<?php echo esc_attr( $profile_section_id . '-title' ); ?>">
+			<section class="affilio-dashboard-section affilio-profile-settings-section affilio-portal-panel" data-affilio-panel="profile" id="<?php echo esc_attr( $profile_section_id ); ?>" aria-labelledby="<?php echo esc_attr( $profile_section_id . '-title' ); ?>">
 				<div class="affilio-profile-page-head">
 					<div>
 						<p class="affilio-dashboard-eyebrow"><?php esc_html_e( 'Affiliate account', 'dreamax-affiliates' ); ?></p>
@@ -493,9 +493,9 @@ class Affilio_Dashboard {
 							</p>
 
 							<p class="affilio-field affilio-field--full">
-								<label for="<?php echo esc_attr( $payout_details_id ); ?>"><?php esc_html_e( 'Payout destination / account details', 'dreamax-affiliates' ); ?></label>
+								<label for="<?php echo esc_attr( $payout_details_id ); ?>"><?php esc_html_e( 'Payout destination / account details', 'dreamax-affiliates' ); ?> <span class="affilio-payout-details-required" aria-hidden="true" <?php if ( 'paypal' === $payout_method ) : ?>hidden<?php endif; ?>>*</span></label>
 								<span class="affilio-profile-control">
-									<textarea id="<?php echo esc_attr( $payout_details_id ); ?>" class="affilio-payout-details" name="payout_details" rows="5" aria-describedby="<?php echo esc_attr( $payout_help_id ); ?>"><?php echo esc_textarea( $affiliate->payout_details ?? '' ); ?></textarea>
+									<textarea id="<?php echo esc_attr( $payout_details_id ); ?>" class="affilio-payout-details" name="payout_details" rows="5" <?php if ( 'paypal' !== $payout_method ) : ?>required aria-required="true"<?php endif; ?> aria-describedby="<?php echo esc_attr( $payout_help_id ); ?>"><?php echo esc_textarea( $affiliate->payout_details ?? '' ); ?></textarea>
 								</span>
 								<small id="<?php echo esc_attr( $payout_help_id ); ?>"><?php esc_html_e( 'For bank transfer or other manual methods, enter the destination/account details needed to receive the payout. These details are shown to administrators as the payout destination.', 'dreamax-affiliates' ); ?></small>
 							</p>
@@ -512,7 +512,7 @@ class Affilio_Dashboard {
 				</form>
 			</section>
 
-			<section class="affilio-dashboard-section affilio-portal-panel" data-affilio-panel="payouts" hidden aria-hidden="true" id="<?php echo esc_attr( $payouts_section_id ); ?>" aria-labelledby="<?php echo esc_attr( $payouts_section_id . '-title' ); ?>">
+			<section class="affilio-dashboard-section affilio-portal-panel" data-affilio-panel="payouts" id="<?php echo esc_attr( $payouts_section_id ); ?>" aria-labelledby="<?php echo esc_attr( $payouts_section_id . '-title' ); ?>">
 				<h3 id="<?php echo esc_attr( $payouts_section_id . '-title' ); ?>"><?php esc_html_e( 'Payouts', 'dreamax-affiliates' ); ?></h3>
 			<p><?php esc_html_e( 'Review available balances, request eligible payouts, and follow payout history. Payment preferences are managed in Profile & Settings.', 'dreamax-affiliates' ); ?></p>
 			<div class="affilio-payout-profile-summary">
