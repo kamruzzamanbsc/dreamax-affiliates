@@ -319,6 +319,9 @@ final class Affilio {
 		$this->payout_requests = new Affilio_Payout_Requests();
 		$this->register_service( 'application.payout_requests', $this->payout_requests );
 
+		require_once AFFILIO_PLUGIN_DIR . 'includes/class-affilio-login-branding.php';
+		$this->register_service( 'frontend.login_branding', new Affilio_Login_Branding() );
+
 		require_once AFFILIO_PLUGIN_DIR . 'includes/class-affilio-registration.php';
 		$this->register_service( 'frontend.registration', new Affilio_Registration() );
 

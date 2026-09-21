@@ -68,12 +68,7 @@ class Affilio_Dashboard {
 	 */
 	public function render_dashboard() {
 		if ( ! is_user_logged_in() ) {
-			$current_url = get_permalink();
-			$login_url   = wp_login_url( $current_url ? $current_url : home_url( '/' ) );
-			return $this->notice(
-				esc_html__( 'Please log in to view your affiliate dashboard.', 'dreamax-affiliates' ) . ' ' .
-				'<a href="' . esc_url( $login_url ) . '">' . esc_html__( 'Log in', 'dreamax-affiliates' ) . '</a>'
-			);
+			return $this->logged_out_access_card();
 		}
 
 		$affiliate = affilio()->affiliates_db->get_by_user_id( get_current_user_id() );
@@ -681,6 +676,68 @@ class Affilio_Dashboard {
 		return ob_get_clean();
 	}
 
+	/**
+	 * Renders the signed-out entry point for the affiliate area.
+	 *
+	 * @return string
+	 */
+	private function logged_out_access_card() {
+		$current_url          = get_permalink();
+		$current_url          = $current_url ? $current_url : home_url( '/' );
+		$login_url            = class_exists( 'Affilio_Login_Branding' )
+			? Affilio_Login_Branding::login_url( $current_url )
+			: wp_login_url( $current_url );
+		$password_url         = class_exists( 'Affilio_Login_Branding' )
+			? Affilio_Login_Branding::password_reset_url( $current_url )
+			: wp_lostpassword_url( $current_url );
+		$registration_page_id = absint( get_option( 'affilio_registration_page_id', 0 ) );
+		$registration_url     = $registration_page_id ? get_permalink( $registration_page_id ) : '';
+		$title_id             = wp_unique_id( 'affilio-dashboard-access-title-' );
+
+		ob_start();
+		?>
+		<section class="affilio-dashboard-access" aria-labelledby="<?php echo esc_attr( $title_id ); ?>">
+			<header class="affilio-dashboard-access-header">
+				<span class="affilio-dashboard-access-mark" aria-hidden="true">D</span>
+				<div>
+					<p class="affilio-dashboard-access-eyebrow"><?php esc_html_e( 'Affiliate partner portal', 'dreamax-affiliates' ); ?></p>
+					<h2 id="<?php echo esc_attr( $title_id ); ?>"><?php esc_html_e( 'Welcome back', 'dreamax-affiliates' ); ?></h2>
+					<p><?php esc_html_e( 'Sign in securely to review your application and manage your affiliate account.', 'dreamax-affiliates' ); ?></p>
+				</div>
+			</header>
+
+			<div class="affilio-dashboard-access-body">
+				<div class="affilio-dashboard-access-copy">
+					<p class="affilio-dashboard-access-label"><?php esc_html_e( 'Your affiliate workspace', 'dreamax-affiliates' ); ?></p>
+					<h3><?php esc_html_e( 'Everything you need, in one secure place', 'dreamax-affiliates' ); ?></h3>
+					<p><?php esc_html_e( 'Use the email address and password connected to your affiliate application.', 'dreamax-affiliates' ); ?></p>
+					<ul>
+						<li><?php esc_html_e( 'Review your application status', 'dreamax-affiliates' ); ?></li>
+						<li><?php esc_html_e( 'Create referral links after approval', 'dreamax-affiliates' ); ?></li>
+						<li><?php esc_html_e( 'Track referrals, earnings, and payouts', 'dreamax-affiliates' ); ?></li>
+					</ul>
+				</div>
+
+				<div class="affilio-dashboard-access-actions">
+					<a class="affilio-dashboard-access-primary" href="<?php echo esc_url( $login_url ); ?>">
+						<?php esc_html_e( 'Sign in to affiliate area', 'dreamax-affiliates' ); ?><span aria-hidden="true">&rarr;</span>
+					</a>
+					<a class="affilio-dashboard-access-secondary" href="<?php echo esc_url( $password_url ); ?>"><?php esc_html_e( 'Forgot or need a password?', 'dreamax-affiliates' ); ?></a>
+					<p class="affilio-dashboard-access-security"><span aria-hidden="true"></span><?php esc_html_e( 'Secure access powered by your WordPress account', 'dreamax-affiliates' ); ?></p>
+				</div>
+			</div>
+
+			<?php if ( $registration_url ) : ?>
+			<footer class="affilio-dashboard-access-footer">
+				<span><?php esc_html_e( 'Interested in becoming a partner?', 'dreamax-affiliates' ); ?></span>
+				<a href="<?php echo esc_url( $registration_url ); ?>"><?php esc_html_e( 'Apply to the affiliate program', 'dreamax-affiliates' ); ?><span aria-hidden="true">&rarr;</span></a>
+			</footer>
+			<?php endif; ?>
+		</section>
+		<?php
+		return ob_get_clean();
+	}
+
 
 	/**
 	 * Saves the logged-in affiliate's standalone profile/settings form.
@@ -856,6 +913,10 @@ class Affilio_Dashboard {
 
 		$dashboard_return_url = class_exists( 'Affilio_My_Account' ) ? Affilio_My_Account::get_preferred_dashboard_url() : get_permalink();
 		$logout_url           = wp_logout_url( $dashboard_return_url ? $dashboard_return_url : home_url( '/' ) );
+		$password_url         = class_exists( 'Affilio_Login_Branding' )
+			? Affilio_Login_Branding::password_reset_url( $dashboard_return_url )
+			: wp_lostpassword_url( $dashboard_return_url );
+		$current_user         = wp_get_current_user();
 
 		$reason = '';
 		if ( in_array( $status, array( 'rejected', 'suspended', 'banned' ), true ) && ! empty( $affiliate->status_reason ) ) {
@@ -866,9 +927,12 @@ class Affilio_Dashboard {
 		?>
 		<section class="affilio-application-state affilio-application-state-<?php echo esc_attr( $status ); ?>" aria-labelledby="<?php echo esc_attr( $title_id ); ?>">
 			<div class="affilio-application-state-heading">
-				<div>
+				<div class="affilio-application-state-heading-copy">
+					<span class="affilio-application-state-icon" aria-hidden="true"></span>
+					<div>
 					<p class="affilio-application-state-eyebrow"><?php esc_html_e( 'Affiliate Area', 'dreamax-affiliates' ); ?></p>
 					<h2 id="<?php echo esc_attr( $title_id ); ?>"><?php echo esc_html( $state['title'] ); ?></h2>
+					</div>
 				</div>
 				<span class="affilio-application-status-badge affilio-application-status-<?php echo esc_attr( $status ); ?>">
 					<span class="affilio-application-status-dot" aria-hidden="true"></span>
@@ -877,8 +941,30 @@ class Affilio_Dashboard {
 			</div>
 
 			<p class="affilio-application-state-description"><?php echo esc_html( $state['description'] ); ?></p>
+			<?php if ( 'pending' === $status ) : ?>
+			<ol class="affilio-application-review-steps" aria-label="<?php echo esc_attr__( 'Application review progress', 'dreamax-affiliates' ); ?>">
+				<li class="is-complete">
+					<span aria-hidden="true"></span>
+					<div><strong><?php esc_html_e( 'Application received', 'dreamax-affiliates' ); ?></strong><small><?php esc_html_e( 'Your details were submitted securely.', 'dreamax-affiliates' ); ?></small></div>
+				</li>
+				<li class="is-current">
+					<span aria-hidden="true"></span>
+					<div><strong><?php esc_html_e( 'Review in progress', 'dreamax-affiliates' ); ?></strong><small><?php esc_html_e( 'The program owner is reviewing your application.', 'dreamax-affiliates' ); ?></small></div>
+				</li>
+				<li>
+					<span aria-hidden="true"></span>
+					<div><strong><?php esc_html_e( 'Referral tools', 'dreamax-affiliates' ); ?></strong><small><?php esc_html_e( 'Your dashboard unlocks after approval.', 'dreamax-affiliates' ); ?></small></div>
+				</li>
+			</ol>
+			<?php endif; ?>
 
 			<dl class="affilio-application-state-meta">
+				<?php if ( $current_user instanceof WP_User && is_email( $current_user->user_email ) ) : ?>
+				<div>
+					<dt><?php esc_html_e( 'Sign-in email', 'dreamax-affiliates' ); ?></dt>
+					<dd><?php echo esc_html( $current_user->user_email ); ?></dd>
+				</div>
+				<?php endif; ?>
 				<div>
 					<dt><?php esc_html_e( 'Application status', 'dreamax-affiliates' ); ?></dt>
 					<dd><?php echo esc_html( $label ); ?></dd>
@@ -891,9 +977,11 @@ class Affilio_Dashboard {
 				<?php endif; ?>
 			</dl>
 
-			<p class="affilio-application-state-note"><?php echo esc_html( $state['note'] ); ?></p>
+			<p class="affilio-application-state-note"><span aria-hidden="true"></span><?php echo esc_html( $state['note'] ); ?></p>
 			<nav class="affilio-application-state-actions" aria-label="<?php echo esc_attr__( 'Affiliate account actions', 'dreamax-affiliates' ); ?>">
-				<a href="<?php echo esc_url( $logout_url ); ?>"><?php esc_html_e( 'Log out', 'dreamax-affiliates' ); ?></a>
+				<a class="affilio-application-state-action-primary" href="<?php echo esc_url( $password_url ); ?>"><?php esc_html_e( 'Password and security', 'dreamax-affiliates' ); ?><span aria-hidden="true">&rarr;</span></a>
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Return to website', 'dreamax-affiliates' ); ?></a>
+				<a class="affilio-application-state-logout" href="<?php echo esc_url( $logout_url ); ?>"><?php esc_html_e( 'Log out', 'dreamax-affiliates' ); ?></a>
 			</nav>
 		</section>
 		<?php

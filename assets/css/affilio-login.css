@@ -1,0 +1,299 @@
+/**
+ * Dreamax affiliate account access.
+ * Loaded only for login/reset requests opened from the affiliate flow.
+ */
+
+body.affilio-login {
+	--affilio-login-navy: #071a2f;
+	--affilio-login-navy-soft: #0c2941;
+	--affilio-login-teal: #08a6a0;
+	--affilio-login-teal-dark: #087b77;
+	--affilio-login-ink: #11253a;
+	--affilio-login-muted: #607181;
+	--affilio-login-line: #d8e4e7;
+	--affilio-login-soft: #f3f8f8;
+	display: grid;
+	place-items: center;
+	min-height: 100vh;
+	background:
+		radial-gradient(circle at 12% 8%, rgba(8, 166, 160, 0.11), transparent 28%),
+		radial-gradient(circle at 88% 92%, rgba(7, 26, 47, 0.08), transparent 30%),
+		#f6f9fa;
+	color: var(--affilio-login-ink);
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body.affilio-login::before {
+	content: "";
+	position: fixed;
+	inset: 0;
+	pointer-events: none;
+	background-image: linear-gradient(rgba(7, 26, 47, 0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(7, 26, 47, 0.025) 1px, transparent 1px);
+	background-size: 36px 36px;
+	mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.45), transparent 72%);
+}
+
+body.affilio-login #login {
+	position: relative;
+	z-index: 1;
+	width: min(430px, calc(100% - 32px));
+	margin: 36px auto;
+	padding: 0;
+}
+
+body.affilio-login #login h1 {
+	margin: 0 0 22px;
+}
+
+body.affilio-login #login h1 a {
+	display: flex;
+	gap: 12px;
+	align-items: center;
+	justify-content: center;
+	width: auto;
+	height: auto;
+	margin: 0;
+	padding: 0;
+	background: none;
+	color: var(--affilio-login-navy);
+	font-size: 21px;
+	font-weight: 760;
+	line-height: 1;
+	text-indent: 0;
+	overflow: visible;
+}
+
+body.affilio-login #login h1 a::before {
+	content: "D";
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 44px;
+	height: 44px;
+	border-radius: 12px;
+	background-color: var(--affilio-login-navy);
+	background-position: center;
+	background-size: cover;
+	color: #44d5cd;
+	font-size: 18px;
+	font-weight: 850;
+	box-shadow: 0 8px 20px rgba(7, 26, 47, 0.14);
+}
+
+body.affilio-login.affilio-login-has-icon #login h1 a::before {
+	content: "";
+}
+
+body.affilio-login .affilio-login-intro {
+	padding: 27px 28px 23px;
+	border-radius: 18px;
+	background:
+		radial-gradient(circle at 100% 0%, rgba(8, 166, 160, 0.25), transparent 40%),
+		linear-gradient(135deg, var(--affilio-login-navy), var(--affilio-login-navy-soft));
+	color: #fff;
+	box-shadow: 0 22px 55px rgba(7, 26, 47, 0.12);
+}
+
+body.affilio-login .affilio-login-eyebrow {
+	display: block;
+	margin-bottom: 8px;
+	color: #85e4de;
+	font-size: 10px;
+	font-weight: 800;
+	letter-spacing: 0.13em;
+	text-transform: uppercase;
+}
+
+body.affilio-login .affilio-login-intro h2 {
+	margin: 0;
+	color: #fff;
+	font-size: 27px;
+	font-weight: 760;
+	line-height: 1.2;
+	letter-spacing: -0.035em;
+}
+
+body.affilio-login .affilio-login-intro p {
+	margin: 10px 0 0;
+	color: rgba(235, 246, 249, 0.78);
+	font-size: 13.5px;
+	line-height: 1.65;
+}
+
+body.affilio-login #loginform,
+body.affilio-login #lostpasswordform,
+body.affilio-login #resetpassform,
+body.affilio-login #registerform {
+	margin: 12px 0 0;
+	padding: 25px 28px 28px;
+	border: 1px solid var(--affilio-login-line);
+	border-radius: 16px;
+	background: #fff;
+	box-shadow: 0 22px 55px rgba(7, 26, 47, 0.12);
+}
+
+body.affilio-login #login form p {
+	margin-bottom: 18px;
+}
+
+body.affilio-login #login form label {
+	color: #263b4e;
+	font-size: 13px;
+	font-weight: 680;
+}
+
+body.affilio-login #login input[type="text"],
+body.affilio-login #login input[type="password"],
+body.affilio-login #login input[type="email"] {
+	min-height: 48px;
+	margin-top: 7px;
+	padding: 10px 13px;
+	border: 1px solid #c8d7dc;
+	border-radius: 9px;
+	background: #fff;
+	color: var(--affilio-login-ink);
+	font-size: 15px;
+	box-shadow: 0 1px 2px rgba(7, 26, 47, 0.03);
+}
+
+body.affilio-login #login input:focus {
+	border-color: var(--affilio-login-teal-dark);
+	box-shadow: 0 0 0 3px rgba(8, 166, 160, 0.13);
+}
+
+body.affilio-login.wp-core-ui .button-primary {
+	min-height: 44px;
+	padding: 0 18px;
+	border: 1px solid var(--affilio-login-navy);
+	border-radius: 9px;
+	background: var(--affilio-login-navy);
+	color: #fff;
+	font-size: 13px;
+	font-weight: 720;
+	text-shadow: none;
+	box-shadow: 0 8px 18px rgba(7, 26, 47, 0.16);
+}
+
+body.affilio-login.wp-core-ui .button-primary:hover,
+body.affilio-login.wp-core-ui .button-primary:focus {
+	border-color: #0d3955;
+	background: #0d3955;
+	color: #fff;
+	box-shadow: 0 0 0 3px rgba(8, 166, 160, 0.14), 0 8px 18px rgba(7, 26, 47, 0.16);
+}
+
+body.affilio-login.wp-core-ui .button-secondary:not(.wp-hide-pw),
+body.affilio-login.wp-core-ui .wp-generate-pw {
+	min-height: 44px;
+	padding: 0 16px;
+	border: 1px solid #bccdd2;
+	border-radius: 9px;
+	background: #fff;
+	color: var(--affilio-login-navy);
+	font-size: 12.5px;
+	font-weight: 700;
+	box-shadow: none;
+}
+
+body.affilio-login.wp-core-ui .button-secondary:not(.wp-hide-pw):hover,
+body.affilio-login.wp-core-ui .button-secondary:not(.wp-hide-pw):focus,
+body.affilio-login.wp-core-ui .wp-generate-pw:hover,
+body.affilio-login.wp-core-ui .wp-generate-pw:focus {
+	border-color: var(--affilio-login-teal-dark);
+	background: var(--affilio-login-soft);
+	color: var(--affilio-login-teal-dark);
+	box-shadow: 0 0 0 3px rgba(8, 166, 160, 0.12);
+}
+
+body.affilio-login .wp-hide-pw .dashicons {
+	color: var(--affilio-login-teal-dark);
+}
+
+body.affilio-login #pass-strength-result {
+	border-radius: 8px;
+	font-size: 12px;
+	font-weight: 700;
+}
+
+body.affilio-login .message,
+body.affilio-login #login_error,
+body.affilio-login .success {
+	margin: 12px 0 0;
+	padding: 13px 15px;
+	border: 1px solid #cfe3e1;
+	border-left: 4px solid var(--affilio-login-teal-dark);
+	border-radius: 9px;
+	background: #f3faf9;
+	color: #35515d;
+	font-size: 12.5px;
+	line-height: 1.55;
+	box-shadow: none;
+}
+
+body.affilio-login #login_error {
+	border-color: #efd1d1;
+	border-left-color: #b4233d;
+	background: #fff7f7;
+}
+
+body.affilio-login #nav,
+body.affilio-login #backtoblog,
+body.affilio-login .privacy-policy-page-link {
+	margin: 14px 0 0;
+	padding: 0;
+	text-align: center;
+}
+
+body.affilio-login #nav a,
+body.affilio-login #backtoblog a,
+body.affilio-login .privacy-policy-page-link a {
+	color: #526b78;
+	font-size: 12.5px;
+	font-weight: 620;
+	text-decoration: none;
+}
+
+body.affilio-login #nav a:hover,
+body.affilio-login #backtoblog a:hover,
+body.affilio-login .privacy-policy-page-link a:hover {
+	color: var(--affilio-login-teal-dark);
+}
+
+body.affilio-login .language-switcher {
+	margin-top: 20px;
+}
+
+@media screen and (max-width: 520px) {
+	body.affilio-login #login {
+		width: min(100% - 24px, 430px);
+		margin: 22px auto;
+	}
+
+	body.affilio-login .affilio-login-intro,
+	body.affilio-login #loginform,
+	body.affilio-login #lostpasswordform,
+	body.affilio-login #resetpassform,
+	body.affilio-login #registerform {
+		padding-right: 21px;
+		padding-left: 21px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	body.affilio-login *,
+	body.affilio-login *::before,
+	body.affilio-login *::after {
+		scroll-behavior: auto !important;
+		transition: none !important;
+	}
+}
+
+@media (forced-colors: active) {
+	body.affilio-login .affilio-login-intro,
+	body.affilio-login #loginform,
+	body.affilio-login #lostpasswordform,
+	body.affilio-login #resetpassform,
+	body.affilio-login #registerform {
+		border: 1px solid CanvasText;
+	}
+}

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Dreamax Affiliates 2.1.3\n"
+"Project-Id-Version: Dreamax Affiliates 2.1.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/dreamax-affiliates/\n"
-"POT-Creation-Date: 2026-09-02 00:00+0000\n"
+"POT-Creation-Date: 2026-09-16 00:00+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2148,7 +2148,7 @@ msgid "Your affiliate account status is now {status}"
 msgstr ""
 
 #: includes/class-affilio-email-templates.php:35
-msgid "Hello {affiliate_name},\n\nYour affiliate account status is now: {status}.\nReason: {reason}\n\nAffiliate area: {dashboard_url}"
+msgid "Hello {affiliate_name},\n\nYour affiliate account status is now: {status}.\nStatus details: {reason}\n\nSign-in email: {affiliate_email}\nAffiliate area: {dashboard_url}\nSign in: {login_url}\nSet or reset your password: {password_reset_url}"
 msgstr ""
 
 #: includes/class-affilio-email-templates.php:38
@@ -3060,12 +3060,20 @@ msgstr ""
 msgid "Something went wrong saving your application. Please try again."
 msgstr ""
 
-#: includes/class-affilio-registration.php:251
-msgid "You are now an affiliate! Open your affiliate area to get your referral link."
+#: includes/class-affilio-registration.php
+msgid "Welcome to the affiliate program"
 msgstr ""
 
-#: includes/class-affilio-registration.php:252
-msgid "Thanks! Your application is under review."
+#: includes/class-affilio-registration.php
+msgid "Application submitted"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Your affiliate account is active. Open your affiliate area to create and share referral links."
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Your application is under review. We will email you when its status changes."
 msgstr ""
 
 #: includes/class-affilio-registration.php:279
@@ -3651,4 +3659,272 @@ msgstr ""
 
 #: includes/class-affilio-registration.php
 msgid "Your application is reviewed before referral tools become available."
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Log in to continue"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Set or reset password"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Your sign-in details"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Sign-in email"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "We created a secure WordPress account for you. Check your email for the link to set your password. If the email does not arrive, use the password reset option below."
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "You are signed in on this device and can check your application status now."
+msgstr ""
+
+#: includes/class-affilio-emails.php
+msgid "Your application has been approved."
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Affiliate partners"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Turn trusted recommendations into earnings"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Apply to share our products with your audience. Once approved, you will receive referral tools and a private dashboard to track your results."
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Free to apply"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Instant approval"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Application reviewed"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Payout setup in your dashboard"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Current account"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Applying as"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "This application will be connected to your current WordPress account."
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Account"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Application"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Required"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Create your affiliate account"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "We will use these details for your application and program emails."
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Continue to application"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Tell us about your audience"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Share where you publish and how our products fit your audience."
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Referral tools will be ready after submission."
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "We review applications before enabling referral tools."
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Website or channel URL"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Share the main place where your audience finds your content."
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "How will you promote our products?"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Tell us briefly about your audience, content, and promotion plan."
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Social profile URL"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Add the public profile most relevant to your application."
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Anything else we should know?"
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Add any details that may help us review your application."
+msgstr ""
+
+#: includes/class-affilio-registration.php
+msgid "Please enter a valid email address."
+msgstr ""
+
+#: includes/class-affilio-login-branding.php
+msgid "Reset your password"
+msgstr ""
+
+#: includes/class-affilio-login-branding.php
+msgid "Enter your affiliate sign-in email. We will send a secure password-reset link to that address."
+msgstr ""
+
+#: includes/class-affilio-login-branding.php
+msgid "Choose a new password"
+msgstr ""
+
+#: includes/class-affilio-login-branding.php
+msgid "Create a strong password for secure access to your affiliate account."
+msgstr ""
+
+#: includes/class-affilio-login-branding.php
+msgid "Affiliate account sign in"
+msgstr ""
+
+#: includes/class-affilio-login-branding.php
+msgid "Sign in to review your application and access affiliate tools when your account is approved."
+msgstr ""
+
+#: includes/class-affilio-login-branding.php
+msgid "Affiliate access"
+msgstr ""
+
+#: includes/class-affilio-login-branding.php
+msgid "Send reset link"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php
+msgid "Application review progress"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php
+msgid "Application received"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php
+msgid "Your details were submitted securely."
+msgstr ""
+
+#: includes/class-affilio-dashboard.php
+msgid "Review in progress"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php
+msgid "The program owner is reviewing your application."
+msgstr ""
+
+#: includes/class-affilio-dashboard.php
+msgid "Referral tools"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php
+msgid "Your dashboard unlocks after approval."
+msgstr ""
+
+#: includes/class-affilio-dashboard.php
+msgid "Password and security"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php
+msgid "Return to website"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php
+msgid "Affiliate partner portal"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php
+msgid "Welcome back"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php
+msgid "Sign in securely to review your application and manage your affiliate account."
+msgstr ""
+
+#: includes/class-affilio-dashboard.php
+msgid "Your affiliate workspace"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php
+msgid "Everything you need, in one secure place"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php
+msgid "Use the email address and password connected to your affiliate application."
+msgstr ""
+
+#: includes/class-affilio-dashboard.php
+msgid "Review your application status"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php
+msgid "Create referral links after approval"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php
+msgid "Track referrals, earnings, and payouts"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php
+msgid "Sign in to affiliate area"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php
+msgid "Forgot or need a password?"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php
+msgid "Secure access powered by your WordPress account"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php
+msgid "Interested in becoming a partner?"
+msgstr ""
+
+#: includes/class-affilio-dashboard.php
+msgid "Apply to the affiliate program"
 msgstr ""

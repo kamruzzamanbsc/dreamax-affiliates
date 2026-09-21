@@ -31,9 +31,6 @@
 			var $form = $( this );
 			var $message = $form.find( '.affilio-form-message' );
 			var $button = $form.find( 'button[type="submit"]' );
-			var $method = $form.find( '.affilio-payout-method' );
-			var $details = $form.find( '.affilio-payout-details' );
-			var $requiredMarker = $form.find( '.affilio-payout-details-required' );
 			var $steps = $form.find( '[data-affilio-registration-step]' );
 			var $stepButtons = $form.find( '[data-affilio-step-target]' );
 			var $final = $form.find( '[data-affilio-registration-final]' );
@@ -116,12 +113,6 @@
 				return false;
 			}
 
-			function updatePayoutRequirement() {
-				var isRequired = String( $method.val() || '' ) !== 'paypal';
-				$details.prop( 'required', isRequired ).attr( 'aria-required', isRequired ? 'true' : 'false' );
-				$requiredMarker.prop( 'hidden', ! isRequired );
-			}
-
 			function clearFieldError( $field ) {
 				var describedBy = String( $field.attr( 'aria-describedby' ) || '' )
 					.split( /\s+/ )
@@ -142,6 +133,31 @@
 				} );
 			}
 
+			function appendActions( $container, actions ) {
+				if ( ! Array.isArray( actions ) || ! actions.length ) {
+					return;
+				}
+
+				var $actions = $( '<div>' ).addClass( 'affilio-registration-message-actions' );
+				actions.forEach( function ( action ) {
+					if ( ! action || ! action.url || ! action.label ) {
+						return;
+					}
+
+					var style = action.style === 'primary' ? 'primary' : 'secondary';
+					$actions.append(
+						$( '<a>' )
+							.addClass( 'affilio-registration-message-action is-' + style )
+							.attr( 'href', action.url )
+							.text( action.label )
+					);
+				} );
+
+				if ( $actions.children().length ) {
+					$container.append( $actions );
+				}
+			}
+
 			function showError( data ) {
 				var errorMessage = data && data.message ? data.message : affilioFrontend.genericError;
 				var fieldName = data && data.field ? String( data.field ) : '';
@@ -151,8 +167,10 @@
 					.attr( { role: 'alert', 'aria-live': 'assertive' } )
 					.removeClass( 'affilio-success' )
 					.addClass( 'affilio-error' )
-					.text( errorMessage )
+					.empty()
+					.append( $( '<span>' ).text( errorMessage ) )
 					.prop( 'hidden', false );
+				appendActions( $message, data && data.actions ? data.actions : [] );
 
 				if ( $field.length ) {
 					var $ownerStep = $field.closest( '[data-affilio-registration-step]' );
@@ -168,9 +186,6 @@
 					$message.trigger( 'focus' );
 				}
 			}
-
-			$method.on( 'change', updatePayoutRequirement );
-			updatePayoutRequirement();
 
 			var $hostMain = $form.closest( 'main' ).first();
 			if ( $hostMain.length ) {
@@ -221,8 +236,6 @@
 					return;
 				}
 				clearFieldErrors();
-				updatePayoutRequirement();
-
 				if ( $form.get( 0 ) && ! $form.get( 0 ).checkValidity() ) {
 					$invalid = firstInvalidField( $form );
 					$invalidStep = $invalid.closest( '[data-affilio-registration-step]' );
@@ -247,17 +260,45 @@
 				$.post( affilioFrontend.ajaxUrl, $form.serialize() + '&action=affilio_register' )
 					.done( function ( response ) {
 						if ( response && response.success ) {
+							var data = response.data || {};
+							var $card = $( '<div>' ).addClass( 'affilio-registration-success-card' );
+							var $content = $( '<div>' ).addClass( 'affilio-registration-success-content' );
+
+							$card.append( $( '<span>' ).addClass( 'affilio-registration-success-icon' ).attr( 'aria-hidden', 'true' ).text( '✓' ) );
+							if ( data.title ) {
+								$content.append( $( '<h3>' ).text( data.title ) );
+							}
+							$content.append( $( '<p>' ).addClass( 'affilio-registration-success-summary' ).text( data.message || '' ) );
+
+							if ( data.account ) {
+								var $account = $( '<div>' ).addClass( 'affilio-registration-account-access' );
+								if ( data.account.heading ) {
+									$account.append( $( '<h4>' ).text( data.account.heading ) );
+								}
+								if ( data.account.guidance ) {
+									$account.append( $( '<p>' ).text( data.account.guidance ) );
+								}
+								if ( data.account.email ) {
+									var $details = $( '<dl>' );
+									$details.append( $( '<dt>' ).text( data.account.emailLabel || '' ) );
+									$details.append( $( '<dd>' ).text( data.account.email ) );
+									$account.append( $details );
+								}
+								if ( data.account.session ) {
+									$account.append( $( '<p>' ).addClass( 'affilio-registration-session-note' ).text( data.account.session ) );
+								}
+								$content.append( $account );
+							}
+
+							appendActions( $content, data.actions || [] );
+							$card.append( $content );
 							$message
 								.attr( { role: 'status', 'aria-live': 'polite' } )
 								.removeClass( 'affilio-error' )
 								.addClass( 'affilio-success' )
 								.empty()
-								.append( $( '<span>' ).text( response.data.message ) )
+								.append( $card )
 								.prop( 'hidden', false );
-
-							if ( response.data.dashboardUrl ) {
-								$message.append( ' ' ).append( $( '<a>' ).attr( 'href', response.data.dashboardUrl ).text( affilioFrontend.openDashboard ) );
-							}
 
 							isComplete = true;
 							$form.addClass( 'is-registration-complete' );

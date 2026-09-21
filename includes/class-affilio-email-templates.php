@@ -32,7 +32,7 @@ class Affilio_Email_Templates {
 				'label'   => __( 'Affiliate: application or account status changed', 'dreamax-affiliates' ),
 				'enabled' => true,
 				'subject' => __( 'Your affiliate account status is now {status}', 'dreamax-affiliates' ),
-				'body'    => __( "Hello {affiliate_name},\n\nYour affiliate account status is now: {status}.\nReason: {reason}\n\nAffiliate area: {dashboard_url}", 'dreamax-affiliates' ),
+				'body'    => __( "Hello {affiliate_name},\n\nYour affiliate account status is now: {status}.\nStatus details: {reason}\n\nSign-in email: {affiliate_email}\nAffiliate area: {dashboard_url}\nSign in: {login_url}\nSet or reset your password: {password_reset_url}", 'dreamax-affiliates' ),
 			),
 			'admin_referral' => array(
 				'label'   => __( 'Admin: new referral', 'dreamax-affiliates' ),

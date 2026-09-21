@@ -641,6 +641,7 @@
 	}
 }
 
+
 @media (forced-colors: active) {
 	.affilio-status,
 	.affilio-link-actions button,
@@ -4570,26 +4571,198 @@ main.affilio-registration-host-main {
 
 .affilio-registration-form.is-registration-complete .affilio-form-message.affilio-success {
 	margin-top: 24px;
-	padding: 24px;
+	padding: clamp(22px, 4vw, 32px);
+	border: 1px solid #b7e4d2;
+	border-inline-start: 5px solid #147d5b;
+	border-radius: 16px;
+	background: linear-gradient(145deg, #f3fcf8 0%, #ffffff 72%);
 	font-size: 14px;
 	line-height: 1.7;
+	box-shadow: 0 12px 32px rgba(20, 125, 91, 0.09);
 }
 
-.affilio-registration-form.is-registration-complete .affilio-form-message a {
+.affilio-registration-success-card {
+	display: grid;
+	grid-template-columns: 48px minmax(0, 1fr);
+	gap: 18px;
+	align-items: start;
+}
+
+.affilio-registration-success-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	background: #147d5b;
+	color: #ffffff;
+	font-size: 24px;
+	font-weight: 800;
+	line-height: 1;
+	box-shadow: 0 8px 18px rgba(20, 125, 91, 0.2);
+}
+
+.affilio-registration-success-content h3,
+.affilio-registration-success-content h4,
+.affilio-registration-success-content p,
+.affilio-registration-success-content dl,
+.affilio-registration-success-content dt,
+.affilio-registration-success-content dd {
+	margin: 0;
+}
+
+.affilio-registration-success-content h3 {
+	color: #123b2f;
+	font-size: clamp(21px, 3vw, 27px);
+	line-height: 1.25;
+	letter-spacing: -0.015em;
+}
+
+.affilio-registration-success-summary {
+	margin-top: 7px !important;
+	color: #38584f;
+}
+
+.affilio-registration-account-access {
+	margin-top: 20px;
+	padding: 18px;
+	border: 1px solid #d7e8e1;
+	border-radius: 12px;
+	background: rgba(255, 255, 255, 0.88);
+}
+
+.affilio-registration-account-access h4 {
+	color: #223b34;
+	font-size: 15px;
+	line-height: 1.4;
+}
+
+.affilio-registration-account-access > p {
+	margin-top: 7px !important;
+	color: #536b64;
+}
+
+.affilio-registration-account-access dl {
+	display: grid;
+	grid-template-columns: minmax(110px, auto) minmax(0, 1fr);
+	gap: 8px 14px;
+	align-items: baseline;
+	margin-top: 14px;
+	padding-top: 13px;
+	border-top: 1px solid #e3eee9;
+}
+
+.affilio-registration-account-access dt {
+	color: #657b74;
+	font-size: 12px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+
+.affilio-registration-account-access dd {
+	min-width: 0;
+	color: #173e32;
+	font-weight: 700;
+	overflow-wrap: anywhere;
+}
+
+.affilio-registration-session-note {
+	padding-inline-start: 22px;
+	position: relative;
+}
+
+.affilio-registration-session-note::before {
+	position: absolute;
+	inset-inline-start: 0;
+	color: #147d5b;
+	font-weight: 800;
+	content: "\2713";
+}
+
+.affilio-registration-message-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-top: 20px;
+}
+
+.affilio-registration-form .affilio-form-message .affilio-registration-message-action {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
 	min-height: 44px;
-	margin-top: 12px;
-	padding: 8px 16px;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 9px 17px;
+	border: 1px solid #147d5b;
 	border-radius: 9px;
+	font-weight: 700;
+	line-height: 1.35;
+	text-decoration: none;
+}
+
+.affilio-registration-form .affilio-form-message .affilio-registration-message-action.is-primary {
 	background: #147d5b;
 	color: #ffffff;
-	font-weight: 700;
+}
+
+.affilio-registration-form .affilio-form-message .affilio-registration-message-action.is-secondary {
+	background: #ffffff;
+	color: #116b4e;
+}
+
+.affilio-registration-form .affilio-form-message .affilio-registration-message-action:hover,
+.affilio-registration-form .affilio-form-message .affilio-registration-message-action:focus-visible {
+	border-color: #0d5f45;
+	background: #0d5f45;
+	color: #ffffff;
+}
+
+.affilio-registration-form .affilio-form-message.affilio-error .affilio-registration-message-actions {
+	margin-top: 14px;
+}
+
+.affilio-registration-form .affilio-form-message.affilio-error .affilio-registration-message-action {
+	border-color: #a12622;
+}
+
+.affilio-registration-form .affilio-form-message.affilio-error .affilio-registration-message-action.is-primary {
+	background: #a12622;
+}
+
+.affilio-registration-form .affilio-form-message.affilio-error .affilio-registration-message-action.is-secondary {
+	color: #8a211e;
 }
 
 .affilio-registration-form.is-registration-complete .affilio-form-message > span {
 	display: block;
+}
+
+@media screen and (max-width: 560px) {
+	.affilio-registration-success-card {
+		grid-template-columns: 1fr;
+	}
+
+	.affilio-registration-success-icon {
+		width: 42px;
+		height: 42px;
+		font-size: 21px;
+	}
+
+	.affilio-registration-account-access dl {
+		grid-template-columns: 1fr;
+		gap: 3px;
+	}
+
+	.affilio-registration-message-actions {
+		flex-direction: column;
+	}
+
+	.affilio-registration-form .affilio-form-message .affilio-registration-message-action {
+		width: 100%;
+	}
 }
 
 /* Use one clear dropdown affordance across customer dashboard and registration forms. */
@@ -4630,5 +4803,660 @@ main.affilio-registration-host-main {
 		appearance: auto;
 		padding-inline-end: 12px !important;
 		background-image: none !important;
+	}
+}
+
+/* Affiliate application status experience -------------------------------- */
+
+.affilio-application-state {
+	--affilio-state-navy: #071a2f;
+	--affilio-state-teal: #08a6a0;
+	--affilio-state-teal-dark: #087b77;
+	--affilio-state-ink: #11253a;
+	--affilio-state-muted: #607181;
+	--affilio-state-line: #d9e5e8;
+	max-width: 840px;
+	padding: 0;
+	overflow: hidden;
+	border: 1px solid #d5e1e5;
+	border-radius: 20px;
+	background: #fff;
+	box-shadow: 0 24px 64px rgba(7, 26, 47, 0.1), 0 2px 8px rgba(7, 26, 47, 0.04);
+}
+
+.affilio-application-state-heading {
+	position: relative;
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 20px;
+	padding: 28px clamp(22px, 4vw, 34px);
+	overflow: hidden;
+	background:
+		radial-gradient(circle at 100% 0%, rgba(8, 166, 160, 0.25), transparent 40%),
+		linear-gradient(135deg, var(--affilio-state-navy), #0c2941);
+}
+
+.affilio-application-state-heading::after {
+	content: "";
+	position: absolute;
+	right: -90px;
+	bottom: -185px;
+	width: 320px;
+	height: 320px;
+	border: 1px solid rgba(92, 225, 217, 0.12);
+	border-radius: 50%;
+}
+
+.affilio-application-state-heading-copy {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	gap: 14px;
+	align-items: center;
+	min-width: 0;
+}
+
+.affilio-application-state-icon {
+	position: relative;
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
+	width: 46px;
+	height: 46px;
+	border: 1px solid rgba(117, 225, 218, 0.26);
+	border-radius: 13px;
+	background: rgba(8, 166, 160, 0.13);
+}
+
+.affilio-application-state-icon::before {
+	content: "";
+	width: 17px;
+	height: 17px;
+	border: 2px solid #7de3dd;
+	border-radius: 50%;
+}
+
+.affilio-application-state-icon::after {
+	content: "";
+	position: absolute;
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	background: #7de3dd;
+}
+
+.affilio-application-state .affilio-application-state-eyebrow {
+	margin: 0 0 5px;
+	color: #8de6e0;
+	font-size: 10px;
+	font-weight: 800;
+	letter-spacing: 0.13em;
+}
+
+.affilio-application-state .affilio-application-state-heading h2 {
+	margin: 0;
+	color: #fff;
+	font-size: clamp(24px, 4vw, 32px);
+	font-weight: 760;
+	line-height: 1.2;
+	letter-spacing: -0.035em;
+}
+
+.affilio-application-state .affilio-application-status-badge {
+	position: relative;
+	z-index: 1;
+	margin-top: 3px;
+	border: 1px solid rgba(255, 255, 255, 0.16);
+	background: rgba(255, 255, 255, 0.1);
+	color: #f8dd85;
+	backdrop-filter: blur(8px);
+}
+
+.affilio-application-state-description,
+.affilio-application-review-steps,
+.affilio-application-state-meta,
+.affilio-application-state-note,
+.affilio-application-state-actions {
+	margin-right: clamp(22px, 4vw, 34px);
+	margin-left: clamp(22px, 4vw, 34px);
+}
+
+.affilio-application-state-description {
+	max-width: 66ch;
+	margin-top: 25px;
+	margin-bottom: 0;
+	color: var(--affilio-state-muted);
+	font-size: 14px;
+	line-height: 1.7;
+}
+
+.affilio-application-review-steps {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 0;
+	margin-top: 24px;
+	margin-bottom: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.affilio-application-review-steps li {
+	position: relative;
+	display: grid;
+	grid-template-columns: 25px minmax(0, 1fr);
+	gap: 9px;
+	padding-right: 15px;
+}
+
+.affilio-application-review-steps li:not(:last-child)::after {
+	content: "";
+	position: absolute;
+	top: 12px;
+	right: 5px;
+	left: 25px;
+	height: 1px;
+	background: #dbe5e8;
+}
+
+.affilio-application-review-steps li > span {
+	position: relative;
+	z-index: 1;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 25px;
+	height: 25px;
+	border: 1px solid #cedadd;
+	border-radius: 50%;
+	background: #fff;
+}
+
+.affilio-application-review-steps li > span::before {
+	content: "";
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: #b5c2c7;
+}
+
+.affilio-application-review-steps li.is-complete > span,
+.affilio-application-review-steps li.is-current > span {
+	border-color: #89d3ce;
+	background: #edf9f8;
+}
+
+.affilio-application-review-steps li.is-complete > span::before,
+.affilio-application-review-steps li.is-current > span::before {
+	background: var(--affilio-state-teal-dark);
+}
+
+.affilio-application-review-steps li.is-current > span {
+	box-shadow: 0 0 0 4px rgba(8, 166, 160, 0.1);
+}
+
+.affilio-application-review-steps div {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	gap: 3px;
+	padding-top: 2px;
+	background: #fff;
+}
+
+.affilio-application-review-steps strong {
+	color: var(--affilio-state-ink);
+	font-size: 12px;
+	font-weight: 740;
+	line-height: 1.4;
+}
+
+.affilio-application-review-steps small {
+	color: #71818d;
+	font-size: 10.5px;
+	line-height: 1.45;
+}
+
+.affilio-application-state-meta {
+	margin-top: 25px;
+	border-color: var(--affilio-state-line);
+	border-radius: 11px;
+}
+
+.affilio-application-state-meta > div {
+	grid-template-columns: minmax(125px, 0.34fr) minmax(0, 1fr);
+	padding: 12px 15px;
+}
+
+.affilio-application-state-meta dt {
+	color: #657783;
+	font-size: 12px;
+}
+
+.affilio-application-state-meta dd {
+	min-width: 0;
+	color: var(--affilio-state-ink);
+	font-size: 12.5px;
+	overflow-wrap: anywhere;
+}
+
+.affilio-application-state-note {
+	display: grid;
+	grid-template-columns: 22px minmax(0, 1fr);
+	gap: 9px;
+	align-items: start;
+	margin-top: 16px;
+	padding: 13px 14px;
+	border-color: #cfe5e3;
+	border-radius: 10px;
+	background: #f3faf9;
+	color: #526b75;
+	font-size: 12px;
+}
+
+.affilio-application-state-note > span {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 22px;
+	height: 22px;
+	border-radius: 50%;
+	background: #dff3f1;
+	color: var(--affilio-state-teal-dark);
+}
+
+.affilio-application-state-note > span::before {
+	content: "i";
+	font-size: 12px;
+	font-weight: 800;
+}
+
+.affilio-application-state-actions {
+	margin-top: 19px;
+	margin-bottom: 0;
+	padding: 19px 0 28px;
+	border-top-color: var(--affilio-state-line);
+}
+
+.affilio-application-state-actions a {
+	min-height: 42px;
+	padding: 8px 14px;
+	border-color: #ccdadd;
+	border-radius: 9px;
+	color: #344b5d;
+	font-size: 12px;
+}
+
+.affilio-application-state-actions .affilio-application-state-action-primary {
+	gap: 8px;
+	border-color: var(--affilio-state-navy);
+	background: var(--affilio-state-navy);
+	color: #fff;
+	box-shadow: 0 8px 18px rgba(7, 26, 47, 0.15);
+}
+
+.affilio-application-state-actions .affilio-application-state-action-primary:hover,
+.affilio-application-state-actions .affilio-application-state-action-primary:focus-visible {
+	border-color: #0d3955;
+	background: #0d3955;
+	color: #fff;
+}
+
+.affilio-application-state-actions .affilio-application-state-logout {
+	margin-inline-start: auto;
+	border-color: transparent;
+	background: transparent;
+	color: #7a4b53;
+}
+
+@media screen and (max-width: 680px) {
+	.affilio-application-state-heading {
+		flex-direction: column;
+		padding: 23px 20px;
+	}
+
+	.affilio-application-state-description,
+	.affilio-application-review-steps,
+	.affilio-application-state-meta,
+	.affilio-application-state-note,
+	.affilio-application-state-actions {
+		margin-right: 20px;
+		margin-left: 20px;
+	}
+
+	.affilio-application-review-steps {
+		grid-template-columns: 1fr;
+		gap: 14px;
+	}
+
+	.affilio-application-review-steps li:not(:last-child)::after {
+		top: 24px;
+		bottom: -14px;
+		left: 12px;
+		width: 1px;
+		height: auto;
+	}
+
+	.affilio-application-review-steps div {
+		padding-bottom: 3px;
+	}
+
+	.affilio-application-state-meta > div {
+		grid-template-columns: 1fr;
+		gap: 3px;
+	}
+
+	.affilio-application-state-actions .affilio-application-state-logout {
+		margin-inline-start: 0;
+	}
+}
+
+/* Signed-out affiliate dashboard entry
+------------------------------------------------ */
+
+.affilio-dashboard-access {
+	--affilio-access-navy: #071a2f;
+	--affilio-access-teal: #08a6a0;
+	--affilio-access-ink: #10283b;
+	--affilio-access-muted: #607584;
+	width: min(100%, 920px);
+	margin: clamp(32px, 7vw, 88px) auto;
+	overflow: hidden;
+	border: 1px solid #d5e0e5;
+	border-radius: 20px;
+	background: #fff;
+	box-shadow: 0 24px 64px rgba(7, 26, 47, 0.12);
+	color: var(--affilio-access-ink);
+}
+
+.affilio-dashboard-access,
+.affilio-dashboard-access * {
+	box-sizing: border-box;
+}
+
+.affilio-dashboard-access-header {
+	position: relative;
+	display: grid;
+	grid-template-columns: 58px minmax(0, 1fr);
+	gap: 18px;
+	align-items: center;
+	padding: 34px 38px;
+	overflow: hidden;
+	background: linear-gradient(122deg, #071a2f 0%, #083349 70%, #07505b 100%);
+	color: #fff;
+}
+
+.affilio-dashboard-access-header::after {
+	content: "";
+	position: absolute;
+	right: -65px;
+	bottom: -115px;
+	width: 250px;
+	height: 250px;
+	border: 1px solid rgba(90, 222, 211, 0.22);
+	border-radius: 50%;
+}
+
+.affilio-dashboard-access-mark {
+	position: relative;
+	z-index: 1;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 58px;
+	height: 58px;
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	border-radius: 15px;
+	background: rgba(255, 255, 255, 0.09);
+	color: #55ddd3;
+	font-size: 23px;
+	font-weight: 800;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.affilio-dashboard-access-header > div {
+	position: relative;
+	z-index: 1;
+}
+
+.affilio-dashboard-access-eyebrow,
+.affilio-dashboard-access-label {
+	margin: 0 0 7px;
+	color: #64ded6;
+	font-size: 11px;
+	font-weight: 800;
+	letter-spacing: 0.12em;
+	line-height: 1.35;
+	text-transform: uppercase;
+}
+
+.affilio-dashboard-access-header h2 {
+	margin: 0;
+	color: #fff;
+	font-size: clamp(29px, 4vw, 40px);
+	font-weight: 780;
+	letter-spacing: -0.035em;
+	line-height: 1.08;
+}
+
+.affilio-dashboard-access-header p:last-child {
+	max-width: 620px;
+	margin: 10px 0 0;
+	color: #c7d8e2;
+	font-size: 15px;
+	line-height: 1.65;
+}
+
+.affilio-dashboard-access-body {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(280px, 0.72fr);
+	gap: 42px;
+	align-items: center;
+	padding: 38px;
+}
+
+.affilio-dashboard-access-label {
+	color: #087f7a;
+}
+
+.affilio-dashboard-access-copy h3 {
+	margin: 0;
+	color: var(--affilio-access-ink);
+	font-size: clamp(22px, 3vw, 29px);
+	font-weight: 760;
+	letter-spacing: -0.025em;
+	line-height: 1.22;
+}
+
+.affilio-dashboard-access-copy > p:not(.affilio-dashboard-access-label) {
+	margin: 10px 0 20px;
+	color: var(--affilio-access-muted);
+	font-size: 14px;
+	line-height: 1.65;
+}
+
+.affilio-dashboard-access-copy ul {
+	display: grid;
+	gap: 11px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.affilio-dashboard-access-copy li {
+	position: relative;
+	margin: 0;
+	padding-left: 29px;
+	color: #344e5d;
+	font-size: 13px;
+	line-height: 1.5;
+}
+
+.affilio-dashboard-access-copy li::before {
+	content: "\2713";
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 19px;
+	height: 19px;
+	border-radius: 50%;
+	background: #dff6f3;
+	color: #087f7a;
+	font-size: 11px;
+	font-weight: 800;
+}
+
+.affilio-dashboard-access-actions {
+	display: grid;
+	gap: 11px;
+	padding: 24px;
+	border: 1px solid #dce6ea;
+	border-radius: 14px;
+	background: #f8fbfc;
+}
+
+.affilio-dashboard-access-actions a {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 48px;
+	padding: 11px 17px;
+	border-radius: 9px;
+	font-size: 13px;
+	font-weight: 750;
+	line-height: 1.35;
+	text-align: center;
+	text-decoration: none;
+	transition: border-color 160ms ease, background 160ms ease, box-shadow 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.affilio-dashboard-access-actions .affilio-dashboard-access-primary {
+	gap: 9px;
+	border: 1px solid var(--affilio-access-navy);
+	background: var(--affilio-access-navy);
+	color: #fff;
+	box-shadow: 0 10px 22px rgba(7, 26, 47, 0.16);
+}
+
+.affilio-dashboard-access-actions .affilio-dashboard-access-primary:hover,
+.affilio-dashboard-access-actions .affilio-dashboard-access-primary:focus-visible {
+	border-color: #0d3e57;
+	background: #0d3e57;
+	color: #fff;
+	transform: translateY(-1px);
+}
+
+.affilio-dashboard-access-actions .affilio-dashboard-access-secondary {
+	border: 1px solid #cad9df;
+	background: #fff;
+	color: #1f475a;
+}
+
+.affilio-dashboard-access-actions .affilio-dashboard-access-secondary:hover,
+.affilio-dashboard-access-actions .affilio-dashboard-access-secondary:focus-visible {
+	border-color: #8db7ba;
+	background: #f2faf9;
+	color: #075f5c;
+}
+
+.affilio-dashboard-access :where(a):focus-visible {
+	outline: 3px solid rgba(8, 166, 160, 0.28);
+	outline-offset: 3px;
+}
+
+.affilio-dashboard-access-security {
+	display: flex;
+	gap: 8px;
+	align-items: flex-start;
+	justify-content: center;
+	margin: 4px 0 0;
+	color: #6a7e89;
+	font-size: 10.5px;
+	line-height: 1.45;
+	text-align: center;
+}
+
+.affilio-dashboard-access-security span {
+	flex: 0 0 auto;
+	width: 8px;
+	height: 8px;
+	margin-top: 3px;
+	border-radius: 50%;
+	background: var(--affilio-access-teal);
+	box-shadow: 0 0 0 3px rgba(8, 166, 160, 0.12);
+}
+
+.affilio-dashboard-access-footer {
+	display: flex;
+	gap: 16px;
+	align-items: center;
+	justify-content: space-between;
+	padding: 17px 38px;
+	border-top: 1px solid #e1e8eb;
+	background: #fbfcfd;
+	color: #657987;
+	font-size: 12px;
+}
+
+.affilio-dashboard-access-footer a {
+	display: inline-flex;
+	gap: 7px;
+	align-items: center;
+	color: #087f7a;
+	font-weight: 750;
+	text-decoration: none;
+}
+
+.affilio-dashboard-access-footer a:hover,
+.affilio-dashboard-access-footer a:focus-visible {
+	color: #075f5c;
+	text-decoration: underline;
+}
+
+@media screen and (max-width: 720px) {
+	.affilio-dashboard-access {
+		margin: 24px auto;
+		border-radius: 16px;
+	}
+
+	.affilio-dashboard-access-header {
+		grid-template-columns: 46px minmax(0, 1fr);
+		gap: 14px;
+		padding: 27px 24px;
+	}
+
+	.affilio-dashboard-access-mark {
+		width: 46px;
+		height: 46px;
+		border-radius: 12px;
+		font-size: 19px;
+	}
+
+	.affilio-dashboard-access-body {
+		grid-template-columns: 1fr;
+		gap: 28px;
+		padding: 28px 24px;
+	}
+
+	.affilio-dashboard-access-footer {
+		align-items: flex-start;
+		flex-direction: column;
+		padding: 17px 24px;
+	}
+}
+
+@media screen and (max-width: 420px) {
+	.affilio-dashboard-access-header {
+		grid-template-columns: 1fr;
+	}
+
+	.affilio-dashboard-access-body,
+	.affilio-dashboard-access-actions {
+		padding-right: 20px;
+		padding-left: 20px;
 	}
 }

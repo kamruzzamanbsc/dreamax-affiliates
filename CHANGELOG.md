@@ -1,5 +1,30 @@
 # Changelog
 
+# 2.1.6 - 2026-09-16
+
+- Replaced the plain signed-out dashboard notice with a polished, responsive affiliate access card.
+- Routed dashboard sign-in and password recovery through the affiliate-scoped branded WordPress account flow.
+- Added safe internal redirect recognition so existing dashboard login links receive the same branded experience.
+- Included the affected referral IDs in paid, failed, and cancelled payout lifecycle hooks so compatible extensions can synchronize derived data immediately.
+- Left ordinary WordPress login pages, authentication, Core API 1.3.0, and database schema 1.8 unchanged.
+
+# 2.1.5 - 2026-09-16
+
+- Corrected the logged-in single-step registration grid so hidden step markers cannot collapse the heading into a narrow column.
+- Removed redundant progress navigation after successful submission and retained a focused confirmation with account actions.
+- Rebuilt pending and restricted affiliate status cards with a branded header, review timeline, sign-in email, password/security action, and responsive account controls.
+- Added an affiliate-scoped Dreamax login and password-reset experience, including branded reset links in WordPress new-user and recovery emails.
+- Kept core WordPress authentication, reset-key validation, Subscriber roles, Core API 1.3.0, and database schema 1.8 unchanged.
+
+# 2.1.4 - 2026-09-16
+
+- Rebuilt affiliate registration as a compact, brand-aligned account and application flow with clearer hierarchy, balanced fields, explicit optional labels, responsive mobile styling, and signed-in account context.
+- Moved payout setup out of the public application. Approved affiliates now complete or change payout preferences securely from their authenticated dashboard before requesting payment.
+- Added a polished post-registration account-access card with the sign-in email, password setup guidance, active-session confirmation, affiliate-area link, and secure password recovery action.
+- Added Login and Set/Reset Password actions when a registration email already belongs to an existing WordPress account.
+- Added login and password-recovery URLs to Free's email runtime context and included complete access instructions in affiliate status notifications.
+- Preserved WordPress-generated passwords, Subscriber roles, automatic post-registration sign-in, approval behavior, Core API 1.3.0, and database schema 1.8.
+
 # 2.1.3 - 2026-09-02
 
 - Corrected tracked landing URLs on WordPress subdirectory installs so the site path is not duplicated when a referral click is recorded.

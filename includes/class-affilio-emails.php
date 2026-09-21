@@ -47,6 +47,9 @@ class Affilio_Emails {
 		$status = sanitize_key( $status );
 		if ( 'pending' !== $status ) {
 			$context['status'] = $status;
+			if ( 'active' === $status ) {
+				$context['reason'] = __( 'Your application has been approved.', 'dreamax-affiliates' );
+			}
 			$this->send( 'affiliate_status', $context['affiliate_email'], $context );
 		}
 	}
@@ -62,7 +65,9 @@ class Affilio_Emails {
 			return;
 		}
 		$context['status'] = sanitize_key( $new_status );
-		$context['reason'] = $reason ? sanitize_textarea_field( $reason ) : __( 'No reason was provided.', 'dreamax-affiliates' );
+		$context['reason'] = $reason
+			? sanitize_textarea_field( $reason )
+			: ( 'active' === $context['status'] ? __( 'Your application has been approved.', 'dreamax-affiliates' ) : __( 'No reason was provided.', 'dreamax-affiliates' ) );
 		$this->send( 'affiliate_status', $context['affiliate_email'], $context );
 	}
 
@@ -162,17 +167,21 @@ class Affilio_Emails {
 		if ( ! $template || empty( $template['enabled'] ) || ! is_email( $recipient ) ) {
 			return false;
 		}
-		$context = array_merge(
+		$dashboard_url = class_exists( 'Affilio_My_Account' ) ? Affilio_My_Account::get_preferred_dashboard_url() : '';
+		$dashboard_url = $dashboard_url ? $dashboard_url : home_url( '/' );
+		$context       = array_merge(
 			array(
-				'site_name'     => wp_specialchars_decode( get_bloginfo( 'name' ), ENT_QUOTES ),
-				'admin_url'     => admin_url( 'admin.php?page=affilio-affiliates' ),
-				'dashboard_url' => class_exists( 'Affilio_My_Account' ) ? Affilio_My_Account::get_preferred_dashboard_url() : home_url( '/' ),
-				'reason'        => __( 'No reason was provided.', 'dreamax-affiliates' ),
-				'reference'     => __( 'Not provided', 'dreamax-affiliates' ),
+				'site_name'          => wp_specialchars_decode( get_bloginfo( 'name' ), ENT_QUOTES ),
+				'admin_url'          => admin_url( 'admin.php?page=affilio-affiliates' ),
+				'dashboard_url'      => $dashboard_url,
+				'login_url'          => Affilio_Login_Branding::login_url( $dashboard_url ),
+				'password_reset_url' => Affilio_Login_Branding::password_reset_url( $dashboard_url ),
+				'reason'             => __( 'No reason was provided.', 'dreamax-affiliates' ),
+				'reference'          => __( 'Not provided', 'dreamax-affiliates' ),
 			),
 			$context
 		);
-		$replace = array();
+		$replace       = array();
 		foreach ( $context as $placeholder => $value ) {
 			$replace[ '{' . $placeholder . '}' ] = is_scalar( $value ) ? (string) $value : '';
 		}

@@ -62,6 +62,19 @@ class Affilio_Assets {
 			);
 		}
 
+		if ( $has_registration ) {
+			$registration_css_path = AFFILIO_PLUGIN_DIR . 'assets/css/affilio-registration.css';
+			$registration_css_ver  = file_exists( $registration_css_path ) ? (string) filemtime( $registration_css_path ) : AFFILIO_VERSION;
+			$registration_css_deps = is_rtl() ? array( 'affilio-frontend', 'affilio-frontend-rtl' ) : array( 'affilio-frontend' );
+
+			wp_enqueue_style(
+				'affilio-registration',
+				AFFILIO_PLUGIN_URL . 'assets/css/affilio-registration.css',
+				$registration_css_deps,
+				$registration_css_ver
+			);
+		}
+
 		$script_dependencies = array( 'jquery' );
 
 		if ( $has_dashboard || $is_account_endpoint ) {

@@ -288,7 +288,7 @@ class Affilio_Payouts {
 
 		$wpdb->query( 'COMMIT' ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
 		affilio()->audit->record( 'payout', (int) $payout->id, 'paid', '', array( 'amount' => $final_amount, 'currency' => $payout->currency ), 0 );
-		do_action( 'affilio_payout_paid', (int) $payout->id );
+		do_action( 'affilio_payout_paid', (int) $payout->id, array_map( 'absint', wp_list_pluck( $linked, 'id' ) ) );
 
 		return true;
 	}
@@ -386,7 +386,7 @@ class Affilio_Payouts {
 		// Both branches of this ternary are fixed, already-prefixed literal hook names
 		// ('affilio_payout_failed' / 'affilio_payout_cancelled'); the linter's static parser
 		// cannot evaluate the ternary and mis-reports a fragment of the expression as the hook name.
-		do_action( 'failed' === $status ? 'affilio_payout_failed' : 'affilio_payout_cancelled', (int) $payout->id ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
+		do_action( 'failed' === $status ? 'affilio_payout_failed' : 'affilio_payout_cancelled', (int) $payout->id, array_map( 'absint', wp_list_pluck( $linked, 'id' ) ) ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 		return true;
 	}
 

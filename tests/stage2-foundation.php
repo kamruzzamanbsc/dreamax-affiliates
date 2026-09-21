@@ -341,6 +341,10 @@ try {
 	$admin_source      = file_get_contents( $root . '/includes/class-affilio-admin-menu.php' );
 	$admin_css         = file_get_contents( $root . '/assets/css/affilio-admin.css' );
 	$frontend_css      = file_get_contents( $root . '/assets/css/affilio-frontend.css' );
+	$registration_css  = file_get_contents( $root . '/assets/css/affilio-registration.css' );
+	$login_css         = file_get_contents( $root . '/assets/css/affilio-login.css' );
+	$login_source      = file_get_contents( $root . '/includes/class-affilio-login-branding.php' );
+	$dashboard_source  = file_get_contents( $root . '/includes/class-affilio-dashboard.php' );
 	$workflow_source   = file_get_contents( $root . '/includes/class-affilio-admin-workflows.php' );
 	$coupon_source     = file_get_contents( $root . '/includes/class-affilio-coupons.php' );
 	$affiliates_css    = file_get_contents( $root . '/assets/css/affilio-affiliates-admin.css' );
@@ -362,6 +366,11 @@ try {
 	affilio_test_assert( false !== strpos( $admin_source, 'action="options.php"' ) && false !== strpos( $admin_source, 'settings_fields( Affilio_Settings::OPTION_GROUP )' ), 'Settings API form boundary changed.' );
 	affilio_test_assert( false !== strpos( $admin_css, '.wp-core-ui select:not([multiple]):not([size])' ) && false !== strpos( $admin_css, "stroke='%234f46e5'" ) && false !== strpos( $admin_css, '@media (forced-colors: active)' ), 'Shared admin dropdown cue or high-contrast fallback is missing.' );
 	affilio_test_assert( false !== strpos( $frontend_css, '.affilio-dashboard select:not([multiple]):not([size])' ) && false !== strpos( $frontend_css, '.affilio-registration-form select:not([multiple]):not([size])' ) && false !== strpos( $frontend_css, '[dir="rtl"]' ), 'Frontend dropdown cue or RTL handling is missing.' );
+	affilio_test_assert( false !== strpos( $registration_css, '.affilio-registration-form.affilio-registration-form--single-step.is-wizard-enhanced .affilio-registration-section-heading' ) && false !== strpos( $registration_css, '.is-registration-complete .affilio-registration-progress' ), 'Logged-in registration layout or completed-state focus styling is missing.' );
+	affilio_test_assert( false !== strpos( $login_source, "const QUERY_ARG   = 'affilio_access'" ) && false !== strpos( $login_source, 'wp_new_user_notification_email' ) && false !== strpos( $login_source, 'retrieve_password_message' ) && false !== strpos( $login_css, 'body.affilio-login' ), 'Affiliate-scoped login and password branding is incomplete.' );
+	affilio_test_assert( false !== strpos( $login_source, 'redirect_targets_affiliate_area' ) && false !== strpos( $dashboard_source, 'Affilio_Login_Branding::login_url' ), 'Affiliate dashboard login redirect does not preserve the branded account context.' );
+	affilio_test_assert( false !== strpos( $dashboard_source, 'affilio-dashboard-access-primary' ) && false !== strpos( $frontend_css, '.affilio-dashboard-access-header' ), 'Premium signed-out affiliate dashboard entry is incomplete.' );
+	affilio_test_assert( false !== strpos( $dashboard_source, 'affilio-application-review-steps' ) && false !== strpos( $dashboard_source, 'Affilio_Login_Branding::password_reset_url' ) && false !== strpos( $frontend_css, '.affilio-application-state-action-primary' ), 'Premium pending affiliate status experience is incomplete.' );
 	affilio_test_assert( false !== strpos( $admin_source, 'do_settings_fields( $page, $section_id )' ) && false !== strpos( $admin_source, "wp_enqueue_style( 'affilio-settings-admin'" ), 'Settings fields or page-scoped asset registration changed.' );
 	affilio_test_assert( false !== strpos( $settings_css, '.affilio-settings-wrap' ) && false !== strpos( $settings_css, '.affilio-settings-card.is-danger' ), 'Premium Settings layout or destructive-action treatment is missing.' );
 	affilio_test_assert( false !== strpos( $admin_source, 'affilio-overview-progress' ) && false !== strpos( $admin_source, "wp_enqueue_style( 'affilio-overview-admin'" ), 'Overview readiness UI or page-scoped asset registration changed.' );

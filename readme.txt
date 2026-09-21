@@ -4,7 +4,7 @@ Tags: affiliate, referral tracking, woocommerce, commission, payouts
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.0
-Stable tag: 2.1.3
+Stable tag: 2.1.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,6 +105,14 @@ Affiliates may request an eligible unpaid balance after reaching the configured 
 
 Program data is preserved by default. Enable **Delete data on uninstall** before deleting the plugin to remove Dreamax Affiliates-owned tables, options, creatives, transients, and metadata. WordPress users and WooCommerce orders are never deleted.
 
+= How do affiliates receive login access? =
+
+An applicant who is not already signed in receives a lowest-privilege WordPress Subscriber account. Their email address is the sign-in username, and WordPress sends a secure link for choosing a password; Dreamax Affiliates never displays or emails a generated password. Existing WordPress or WooCommerce customers keep their current credentials. Registration and status screens provide dashboard, login, and password-recovery guidance.
+
+= When do affiliates add payout details? =
+
+The public application collects only account and promotion information. After approval, an affiliate adds or changes their payout method and destination from the authenticated affiliate dashboard. A payout request cannot proceed without a valid destination.
+
 = Where can I get support? =
 
 After publication, use the WordPress.org support forum for non-sensitive questions. Include versions and reproducible steps, but never post credentials, payout details, customer data, or vulnerability details publicly.
@@ -121,6 +129,28 @@ After publication, use the WordPress.org support forum for non-sensitive questio
 8. Settings with affiliate-page integration, WooCommerce My Account shortcut, approval behavior, referral duration, attribution, coupon priority, privacy, retention, commissions, payout requests, email notifications, and uninstall controls.
 
 == Changelog ==
+
+= 2.1.6 =
+* Replaced the signed-out dashboard notice with a responsive affiliate access card and clear account actions.
+* Connected dashboard sign-in and password recovery to the branded affiliate account experience.
+* Recognized safe internal dashboard redirects so older or cached login links also receive affiliate branding.
+* Added affected referral IDs to payout completion, failure, and cancellation hooks for compatible extension synchronization.
+* Kept ordinary WordPress login screens, authentication behavior, Core API 1.3.0, and database schema 1.8 unchanged.
+
+= 2.1.5 =
+* Corrected the logged-in single-step application layout so its heading and fields retain the intended full-width hierarchy.
+* Refined the completed-application screen and removed redundant progress controls after submission.
+* Rebuilt pending and restricted affiliate status cards with clearer review progress, sign-in context, account-security access, and responsive actions.
+* Added a Dreamax-branded login and password-reset experience scoped to affiliate-generated access links, including branded WordPress password emails.
+* Preserved WordPress authentication, secure reset keys, Subscriber roles, Core API 1.3.0, and database schema 1.8.
+
+= 2.1.4 =
+* Rebuilt registration as a compact, responsive account and application flow with clearer content, balanced fields, explicit optional labels, and signed-in account context.
+* Moved payout setup to the authenticated affiliate dashboard so applicants provide payment details only after joining; payout requests still require a valid destination.
+* Added a clear post-registration account-access card with the affiliate's sign-in email, current-session guidance, affiliate-area link, and secure password recovery action.
+* Added direct Login and Set/Reset Password actions when an applicant's email already belongs to a WordPress account.
+* Expanded affiliate status emails with sign-in, dashboard, and password recovery details while continuing to use WordPress's secure password setup flow.
+* Kept generated passwords private and preserved the existing Subscriber role, approval workflow, Core API 1.3.0, and database schema 1.8.
 
 = 2.1.3 =
 * Rebuilt affiliate registration as a compact, accessible three-step application wizard.
@@ -177,6 +207,15 @@ After publication, use the WordPress.org support forum for non-sensitive questio
 For older changes, see `CHANGELOG.md` in the development source package.
 
 == Upgrade Notice ==
+
+= 2.1.6 =
+Adds a polished signed-out affiliate entry, branded dashboard login handoff, and richer payout lifecycle hooks. Authentication and stored data are unchanged.
+
+= 2.1.5 =
+Polishes logged-in registration, affiliate status, and password-reset screens. Authentication behavior and stored data are unchanged.
+
+= 2.1.4 =
+Introduces a refined two-stage application, moves payout setup to the authenticated dashboard, and clarifies secure account access. No database migration or stored-data rewrite is required.
 
 = 2.1.3 =
 Adds a compact progressive registration wizard with no database migration or stored-data rewrite.
