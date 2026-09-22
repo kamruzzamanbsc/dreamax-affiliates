@@ -1,5 +1,11 @@
 # Changelog
 
+# 2.1.7 - 2026-09-22
+
+- Connected the existing Pro information page to the published Gumroad checkout when the Pro add-on is not installed.
+- Preserved the `affilio_pro_upgrade_url` filter so site owners and compatible add-ons can replace the commercial destination.
+- Changed no affiliate data, attribution, commission, payout, database schema, or Core API behavior.
+
 # 2.1.6 - 2026-09-16
 
 - Replaced the plain signed-out dashboard notice with a polished, responsive affiliate access card.

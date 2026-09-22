@@ -4,7 +4,7 @@ Tags: affiliate, referral tracking, woocommerce, commission, payouts
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.0
-Stable tag: 2.1.6
+Stable tag: 2.1.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -130,6 +130,11 @@ After publication, use the WordPress.org support forum for non-sensitive questio
 
 == Changelog ==
 
+= 2.1.7 =
+* Connected the existing Pro information page to the published Gumroad checkout when the Pro add-on is not installed.
+* Kept the purchase destination filterable for site owners and compatible add-ons.
+* Changed no affiliate data, attribution, commission, payout, database, or Core API behavior.
+
 = 2.1.6 =
 * Replaced the signed-out dashboard notice with a responsive affiliate access card and clear account actions.
 * Connected dashboard sign-in and password recovery to the branded affiliate account experience.
@@ -207,6 +212,9 @@ After publication, use the WordPress.org support forum for non-sensitive questio
 For older changes, see `CHANGELOG.md` in the development source package.
 
 == Upgrade Notice ==
+
+= 2.1.7 =
+Adds the official Pro purchase destination to the existing upgrade screen. Affiliate program behavior and stored data are unchanged.
 
 = 2.1.6 =
 Adds a polished signed-out affiliate entry, branded dashboard login handoff, and richer payout lifecycle hooks. Authentication and stored data are unchanged.

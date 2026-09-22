@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Dreamax Affiliates 2.1.6\n"
+"Project-Id-Version: Dreamax Affiliates 2.1.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/dreamax-affiliates/\n"
 "POT-Creation-Date: 2026-09-16 00:00+0000\n"
 "MIME-Version: 1.0\n"

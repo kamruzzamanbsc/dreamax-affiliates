@@ -361,6 +361,7 @@ try {
 	$referral_source   = file_get_contents( $root . '/includes/database/class-affilio-db-referrals.php' );
 	$privacy_source    = file_get_contents( $root . '/includes/class-affilio-privacy.php' );
 	$approval_source   = file_get_contents( $root . '/includes/class-affilio-commission-approval.php' );
+	$upgrade_source    = file_get_contents( $root . '/includes/class-affilio-upgrade-page.php' );
 	affilio_test_assert( false !== strpos( $diagnostic_source, 'Affilio_Capabilities::MANAGE_AFFILIATES' ), 'Diagnostics capability boundary changed.' );
 	affilio_test_assert( false !== strpos( $diagnostic_source, 'esc_html( $check[' ) && false !== strpos( $diagnostic_source, 'esc_url( $check[' ), 'Diagnostics rendering escaping changed.' );
 	affilio_test_assert( false !== strpos( $admin_source, 'action="options.php"' ) && false !== strpos( $admin_source, 'settings_fields( Affilio_Settings::OPTION_GROUP )' ), 'Settings API form boundary changed.' );
@@ -409,6 +410,7 @@ try {
 	affilio_test_assert( false !== strpos( $approval_source, "ReferralStatus::can_transition( 'pending', 'unpaid' )" ), 'Domain transition validation is missing.' );
 	affilio_test_assert( false !== strpos( $approval_source, "'status_changed'" ) && false !== strpos( $approval_source, "do_action( 'affilio_referral_status_changed'" ), 'Release audit/event ownership is incomplete.' );
 	affilio_test_assert( 2 === substr_count( $privacy_source, "'affilio_visit_identifiers_anonymized'" ) && false === strpos( $privacy_source, "'ip_address' =>" ) && false === strpos( $privacy_source, "'visitor_hash' =>" ), 'Privacy notification contract is incomplete or sensitive.' );
+	affilio_test_assert( false !== strpos( $upgrade_source, 'https://dreamaxsoft.gumroad.com/l/dreamax-affiliates-pro?wanted=true' ) && false !== strpos( $upgrade_source, "apply_filters( 'affilio_pro_upgrade_url', self::PRO_PURCHASE_URL )" ), 'Official Pro purchase destination or override filter is missing.' );
 
 	$compatibility = new Affilio\Core\Compatibility( '2.1.2' );
 	affilio_test_assert( $compatibility->supports_api( '1.2.0' ) && $compatibility->supports_api( '1.3.0' ) && ! $compatibility->supports_api( '2.0.0' ), 'Core API compatibility regression.' );

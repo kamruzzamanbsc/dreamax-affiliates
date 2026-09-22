@@ -12,6 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Affilio_Upgrade_Page {
 
 	const PAGE_SLUG = 'affilio-pro';
+	const PRO_PURCHASE_URL = 'https://dreamaxsoft.gumroad.com/l/dreamax-affiliates-pro?wanted=true';
 
 	/**
 	 * Registers assets for this information page.
@@ -73,7 +74,7 @@ class Affilio_Upgrade_Page {
 
 		$pro_active  = (bool) apply_filters( 'affilio_pro_is_active', defined( 'AFFILIO_PRO_VERSION' ) );
 		$pro_version = (string) apply_filters( 'affilio_pro_version', defined( 'AFFILIO_PRO_VERSION' ) ? AFFILIO_PRO_VERSION : '' );
-		$upgrade_url = (string) apply_filters( 'affilio_pro_upgrade_url', '' );
+		$upgrade_url = (string) apply_filters( 'affilio_pro_upgrade_url', self::PRO_PURCHASE_URL );
 		$url_parts   = wp_parse_url( $upgrade_url );
 		$upgrade_url = is_array( $url_parts ) && ! empty( $url_parts['host'] ) && in_array( strtolower( $url_parts['scheme'] ?? '' ), array( 'http', 'https' ), true ) ? $upgrade_url : '';
 		$license_url = $pro_active ? $this->available_pro_url( 'affilio-pro-license' ) : '';
