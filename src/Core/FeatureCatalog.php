@@ -140,7 +140,7 @@ final class FeatureCatalog {
 			'affiliate.approval'              => $this->feature( 'Approval, rejection, and ban workflow', 'affiliate', self::TIER_FREE, self::STATE_KEEP, 'admin.workflows', $preserve ),
 			'affiliate.profile'               => $this->feature( 'Affiliate profile and payout details', 'affiliate', self::TIER_FREE, self::STATE_KEEP, 'frontend.dashboard', $preserve ),
 			'affiliate.registration'          => $this->feature( 'Registration and basic configurable fields', 'affiliate', self::TIER_FREE, self::STATE_KEEP, 'frontend.registration', $preserve ),
-			'affiliate.unlimited'             => $this->feature( 'Unlimited affiliate records', 'affiliate', self::TIER_FREE, self::STATE_KEEP, 'database.affiliates', $preserve ),
+			'affiliate.unlimited'             => $this->feature( 'Affiliate records remain in the Free core', 'affiliate', self::TIER_FREE, self::STATE_KEEP, 'database.affiliates', $preserve ),
 
 			'commission.affiliate_override'   => $this->feature( 'Per-affiliate rate override', 'commission', self::TIER_FREE, self::STATE_KEEP, 'application.commission', $preserve ),
 			'commission.category_rules'       => $this->feature( 'Category-specific commission rules', 'commission', self::TIER_PRO, self::STATE_EXTERNAL, 'extension.commission_provider', $preserve ),

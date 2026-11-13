@@ -225,7 +225,7 @@ class Affilio_Upgrade_Page {
 						</tbody>
 					</table>
 				</div>
-				<p class="affilio-upgrade-foundation"><span class="dashicons dashicons-shield-alt" aria-hidden="true"></span><span><?php esc_html_e( 'Always in Free: unlimited affiliate records, referral links, coupons, creatives, the affiliate dashboard, and core reports.', 'dreamax-affiliates' ); ?></span></p>
+				<p class="affilio-upgrade-foundation"><span class="dashicons dashicons-shield-alt" aria-hidden="true"></span><span><?php esc_html_e( 'Always in Free: affiliate records remain part of the Free core, alongside referral links, coupons, creatives, the affiliate dashboard, and core reports.', 'dreamax-affiliates' ); ?></span></p>
 			</section>
 
 			<section class="affilio-upgrade-next" aria-labelledby="affilio-upgrade-next-title">

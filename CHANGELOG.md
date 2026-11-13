@@ -1,5 +1,11 @@
 # Changelog
 
+# 2.1.8 - 2026-10-02
+
+- Replaced an unbounded affiliate-records phrase on the optional Pro information page with bounded Free-core wording.
+- Retained the existing `affiliate.unlimited` machine identifier for compatibility; only its human-facing label changed.
+- Changed no affiliate storage, limits, attribution, commission, payout, database schema, or Core API behavior.
+
 # 2.1.7 - 2026-09-22
 
 - Connected the existing Pro information page to the published Gumroad checkout when the Pro add-on is not installed.
