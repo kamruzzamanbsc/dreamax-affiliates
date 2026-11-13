@@ -4,7 +4,7 @@ Tags: affiliate, referral tracking, woocommerce, commission, payouts
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.0
-Stable tag: 2.1.7
+Stable tag: 2.1.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -71,11 +71,15 @@ Extensions should use the commission-approval service rather than updating refer
 
 1. Install the ZIP through **Plugins → Add New → Upload Plugin**, or upload the `dreamax-affiliates` folder to `/wp-content/plugins/`.
 2. Activate Dreamax Affiliates.
-3. Complete **Dreamax Affiliates → Setup**.
+3. Complete **Dreamax Affiliates → Setup**. Follow the [Free setup guide](https://dreamaxsoft.com/docs/dreamax-affiliates/setup/) for a staging-first verification path.
 4. Review attribution, commission, privacy, payout, and uninstall settings.
-5. Test checkout attribution, refunds, reports, and manual payouts on a staging site.
+5. Test checkout attribution, refunds, reports, and manual payouts on a staging site. If a referral is not recorded as expected, use the [troubleshooting guide](https://dreamaxsoft.com/docs/dreamax-affiliates/troubleshooting/).
 
 == Frequently Asked Questions ==
+
+= Where can I find the documentation? =
+
+Browse the [Dreamax Affiliates documentation library](https://dreamaxsoft.com/docs/dreamax-affiliates/) for Free setup, attribution, troubleshooting, refunds, manual payouts, requirements, limitations, and related Pro workflows.
 
 = Does Dreamax Affiliates work without WooCommerce? =
 
@@ -129,6 +133,10 @@ After publication, use the WordPress.org support forum for non-sensitive questio
 8. Settings with affiliate-page integration, WooCommerce My Account shortcut, approval behavior, referral duration, attribution, coupon priority, privacy, retention, commissions, payout requests, email notifications, and uninstall controls.
 
 == Changelog ==
+
+= 2.1.8 =
+* Replaced an unbounded affiliate-records phrase on the optional Pro information page with bounded Free-core wording.
+* Changed no affiliate storage, limits, attribution, commission, payout, database, or Core API behavior.
 
 = 2.1.7 =
 * Connected the existing Pro information page to the published Gumroad checkout when the Pro add-on is not installed.
@@ -212,6 +220,9 @@ After publication, use the WordPress.org support forum for non-sensitive questio
 For older changes, see `CHANGELOG.md` in the development source package.
 
 == Upgrade Notice ==
+
+= 2.1.8 =
+Clarifies affiliate-record wording on the optional Pro information page. Program behavior and stored data are unchanged.
 
 = 2.1.7 =
 Adds the official Pro purchase destination to the existing upgrade screen. Affiliate program behavior and stored data are unchanged.
